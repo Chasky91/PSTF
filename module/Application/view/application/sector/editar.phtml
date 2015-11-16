@@ -1,0 +1,34 @@
+<div class="container">
+<h1>Editar sector</h1>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-midnightblue">
+            <div class="panel-heading"><h4>Cambio del sector</h4></div>
+            <div class="panel-body">
+                <?php $formSector->prepare(); ?>
+                    <?php echo $this->form()->openTag($formSector->setAttributes(['class' => 'form-horizontal row-border', 'data-validate' => 'parsley', 'id' => 'validate-form'])); ?> 
+                    <?php $sector = $formSector->get('sector'); ?>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">
+                            Nombre
+                        </label>
+                        <div class="col-sm-6">
+                            <?php echo $this->formRow($sector->get('nombre')->setAttributes(['type'=>'text','data-type'=>'digits','required' => 'required', 'class' => 'form-control', 'placeholder'=>'Campo requerido'])); ?>
+                        </div>
+                    </div>                     
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <div class="btn-toolbar">
+                            <button type="submit" class="btn-primary btn" >Registrar</button>
+                    </div>
+                </div>
+            </div>
+            <?php echo $this->form()->closeTag(); ?> 
+        </div>
+    </div>
+</div>
+</div>
+</div>

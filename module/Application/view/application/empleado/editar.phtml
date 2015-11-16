@@ -1,0 +1,55 @@
+
+<h1>Editar datos de empleado</h1>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-midnightblue">
+            <div class="panel-heading"><h4>Cambio de información</h4></div>
+            <div class="panel-body">
+                
+                <?php $form->prepare(); ?>
+                    <?php echo $this->form()->openTag($form->setAttributes(['class' => 'form-horizontal row-border', 'data-validate' => 'parsley', 'id' => 'validate-form'])); ?> 
+                    <?php $empleado = $form->get('empleado'); ?>                    
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">DNI</label>
+                        <div class="col-sm-6">
+                            <?php echo $this->formRow($empleado->get('dni')->setAttributes(['readonly'=>'readonly','class'=>'form-control'])); ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">
+                            Nombre
+                        </label>
+                        <div class="col-sm-6">
+                            <?php echo $this->formRow($empleado->get('nombre')->setAttributes(['placeholder' => 'Ingrese el Nombre completo', 'ata-minlength' => '3', 'required' => 'required', 'class' => 'form-control'])); ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">
+                            Apellido
+                        </label>
+                        <div class="col-sm-6">
+                            <?php echo $this->formRow($empleado->get('apellido')->setAttributes(['placeholder' => 'Ingrese el Apellido completo', 'ata-minlength' => '3', 'required' => 'required', 'class' => 'form-control'])); ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">
+                            Sector 
+                        </label>
+                        <div class="col-sm-6">
+                            <?php echo $this->formRow($empleado->get('sector')->setAttributes(['class' => 'form-control', 'id' => 'source'])); ?>
+                        </div>
+                    </div>   
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <div class="btn-toolbar">
+                            <button type="submit" class="btn-primary btn" >Registrar</button>
+                    </div>
+                </div>
+            </div>
+            <?php echo $this->form()->closeTag(); ?> 
+        </div>
+    </div>
+</div>

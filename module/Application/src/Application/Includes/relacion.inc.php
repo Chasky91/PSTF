@@ -1,0 +1,10 @@
+<option>Esposo/a</option>
+<option>Cónyuge/Concubino</option>
+<option>Hijo/a</option>
+<option>Jiastro/a</option>
+<option>Yerno</option>
+<option>Nuera</option>
+<option>Nieto/a</option>
+<option>Padre</option>
+<option>Madre</option>
+<option>Suegro/a</option>

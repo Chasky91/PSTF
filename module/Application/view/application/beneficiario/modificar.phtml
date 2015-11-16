@@ -1,0 +1,140 @@
+<html>
+<body class="">
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h4>Modificar Datos de Beneficiario</h4>
+    <div class="panel-body">
+        <p>The wizard has jQuery Validation plugin support built-in. All you need to do is turn on the <code>validate: true</code> option on and you instantly have a wizard with form validation!</p>
+        <form action="#" id="wizard" class="form-horizontal">
+            <fieldset title="Step 1">
+                <legend>Datos Personales</legend>
+                <div class="form-group">
+                    <label for="fieldname" class="col-md-1 control-label">Nombres</label> <div class="col-md-3">
+                    <input id="fieldname" class="form-control" name="name" minlength="4" type="text" required></div>
+                    <label for="fieldemail" class="col-md-1 control-label">Apellidos</label><div class="col-md-3">
+                    <input id="fieldemail" class="form-control" type="text" name="apell" required></div>
+                    <label for="fieldname" class="col-md-1 control-label">DNI</label> <div class="col-md-3">
+                    <input id="fieldname" class="form-control" name="DNI" minlength="4" type="text" required></div>                    
+                </div>
+                <div class="form-group">
+                    <label for="fieldname" class="col-md-1 control-label">Lugar de Nacimiento</label> <div class="col-md-3">
+                    <input id="fieldname" class="form-control" name="nac" minlength="4" type="text" required></div>
+                    <label class="col-sm-1 control-label">Fecha de Nacimiento</label>
+                    <div class="col-sm-3">
+                    <div class="input-group date" id="datepicker-startview1">
+                        <input type="date" class="form-control">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
+                    </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                <label class="col-sm-1 control-label">Estado civil</label>
+                <div class="col-sm-3">
+                    <select class="form-control" id="source">
+                            <option value="AK">Alaska</option>
+                            <option value="HI">Hawaii</option>
+                            <option value="CA">California</option>
+                            <option value="NV">Nevada</option>
+                            <option value="OR">Oregon</option>
+                            <option value="WA">Washington</option>
+                        </select></div>                    
+                </div>               
+            </fieldset>
+            <fieldset title="Step 2">
+                <legend>Domicilio</legend>
+                <div class="form-group">
+                    <label for="fieldname" class="col-md-1 control-label">Domicilio</label> <div class="col-md-3">
+                    <input id="fieldname" class="form-control" name="domicilio" minlength="4" type="text" required></div>
+                <label class="col-sm-1 control-label">Ciudad</label>
+                <div class="col-sm-3">
+                    <select id="e1" style="width:100%" class="populate">
+                            <option value="AK">Alaska</option>
+                            <option value="HI">Hawaii</option>
+                            <option value="CA">California</option>
+                            <option value="NV">Nevada</option>
+                            <option value="OR">Oregon</option>
+                            <option value="WA">Washington</option>
+                    </select>
+                </div>
+                <label class="col-sm-1 control-label">Provincia</label>
+                <div class="col-sm-3">
+                    <select id="e2" style="width:100%" class="populate">
+                            <option value="AK">Alaska</option>
+                            <option value="HI">Hawaii</option>
+                            <option value="CA">California</option>
+                            <option value="NV">Nevada</option>
+                            <option value="OR">Oregon</option>
+                            <option value="WA">Washington</option>
+                    </select>
+                </div>       
+                </div>                
+                    <label for="fieldname" class="col-md-1 control-label">Residencia en Catriel</label><div class="col-md-3">
+                    <input id="fieldname" class="form-control" name="residencia" minlength="4" type="text" required></div>
+                 </div>
+            </fieldset>
+            <fieldset title="Step 3">
+                <legend>Educación</legend>
+                <div class="form-group">
+                    <label for="fieldname" class="col-md-1 control-label">Educación</label> 
+                    <div class="col-sm-1">
+                    <label class="radio-inline">
+                      <input type="radio" id="inlineradio1" value="option1">Si
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" id="inlineradio2" value="option2">No
+                    </label>
+                </div>
+                <label class="col-sm-1 control-label">Tipo de Estudios</label>
+                <div class="col-sm-1">
+                    <select id="e2" style="width:100%" class="populate">
+                            <option value="AK">Alaska</option>
+                            <option value="HI">Hawaii</option>
+                            <option value="CA">California</option>
+                            <option value="NV">Nevada</option>
+                            <option value="OR">Oregon</option>
+                            <option value="WA">Washington</option>
+                    </select>
+                </div> 
+             </div> 
+             </div> 
+                <div class="form-group">
+                    <label for="fieldname" class="col-md-1 control-label">Empleo</label>
+                    <div class="col-sm-1">
+                    <label class="radio-inline">
+                      <input type="radio" id="inlineradio1" value="option1">Si
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" id="inlineradio2" value="option2">No
+                    </label>
+                </div>
+                <label class="col-sm-1 control-label">Ocupación</label>
+                <div class="col-sm-1">
+                    <select id="e2" style="width:100%" class="populate">
+                            <option value="AK">Alaska</option>
+                            <option value="HI">Hawaii</option>
+                            <option value="CA">California</option>
+                            <option value="NV">Nevada</option>
+                            <option value="OR">Oregon</option>
+                            <option value="WA">Washington</option>
+                    </select>
+                </div> 
+                </div>
+                </div> 
+            </fieldset>
+            <input type="submit" class="finish btn-success btn" value="Submit" />
+        </form>
+    </div>
+</div>
+
+
+    </div>
+
+    <div class="container">
+             <?php echo $this->content; ?>
+            
+
+        </div> <!-- container -->
+</div>
+ 
+</body>
+</html>

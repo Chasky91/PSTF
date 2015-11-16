@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Politica Social</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Politica Social">
+	<meta name="author" content="The Red Team">
+
+<!-- Styles propios de la plantilla Avant -->
+        <link rel="stylesheet" href="css/styles.css?=140">
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
+        <link href='demo/variations/default.css' rel='stylesheet' type='text/css' media='all' id='styleswitcher'>    
+        <link href='demo/variations/default.css' rel='stylesheet' type='text/css' media='all' id='headerswitcher'> 
+        <link rel='stylesheet' type='text/css' href='plugins/codeprettifier/prettify.css' /> 
+        <link rel='stylesheet' type='text/css' href='plugins/form-toggle/toggles.css' /> 
+</head>
+
+<body class="">
+    <header class="navbar navbar-inverse navbar-fixed-top" role="banner">
+        <a id="leftmenu-trigger" class="tooltips" data-toggle="tooltip" data-placement="right" title="Toggle Sidebar"></a>
+        <div class="navbar-header pull-left">
+            <a class="navbar-brand" href="index.htm">Politica Social</a>
+        </div>
+
+        <ul class="nav navbar-nav pull-right toolbar">
+        	<li class="dropdown">
+        		<a href="#" class="dropdown-toggle username" data-toggle="dropdown"><span class="hidden-xs">John McCartney <i class="fa fa-caret-down"></i></span><img src="demo/avatar/dangerfield.png" alt="Dangerfield" /></a>
+        		<ul class="dropdown-menu userinfo arrow">
+        			<li class="username">
+                        <a href="#">
+        				    <div class="pull-left"><img src="demo/avatar/dangerfield.png" alt="Jeff Dangerfield"/></div>
+        				    <div class="pull-right"><h5>Howdy, John!</h5><small>Logged in as <span>john275</span></small></div>
+                        </a>
+        			</li>
+        			<li class="userlinks">
+        				<ul class="dropdown-menu">
+        					<li><a href="#">Edit Profile <i class="pull-right fa fa-pencil"></i></a></li>
+        					<li><a href="#">Account <i class="pull-right fa fa-cog"></i></a></li>
+        					<li><a href="#">Help <i class="pull-right fa fa-question-circle"></i></a></li>
+        					<li class="divider"></li>
+        					<li><a href="#" class="text-right">Sign Out</a></li>
+        				</ul>
+        			</li>
+        		</ul>
+        	</li>
+		</ul>
+    </header>
+<!--Todo esto pertenece al menu vertical-->
+    <div id="page-container">
+        <!-- BEGIN SIDEBAR -->
+        <nav id="page-leftbar" role="navigation">
+                <!-- BEGIN SIDEBAR MENU -->
+            <ul class="acc-menu" id="sidebar">
+                <li id="search">
+                    <a href="javascript:;"><i class="fa fa-search opacity-control"></i></a>
+                     <form>
+                        <input type="text" class="search-query" placeholder="Buscar...">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </li>
+                <li class="divider"></li>
+                <li><a href="#"></i> <span>Inicio</span></a></li>
+                <li><a href="javascript:;"><i class="fa fa-shopping-cart"></i> <span>Producto</span></a>
+                    <ul class="acc-menu">
+                        <li><a href="javascript:;">Producto</a>
+                            <ul class="acc-menu">
+                                <li><a href="<?php echo $this->url('nuevo-producto') ?>">Nuevo Producto</a></li>
+                                <li><a href="<?php echo $this->url('ver-producto') ?>">Ver Producto</a></li>
+                                <li><a href="<?php echo $this->url('mod-producto') ?>">Modificar Producto</a></li>
+                                <li><a href="<?php echo $this->url('del-producto') ?>">Eliminar Producto</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="acc-menu">
+                        <li><a href="javascript:;">Stock</a>
+                            <ul class="acc-menu">
+                                <li><a href="<?php echo $this->url('mod-stock') ?>">Actualizar Stock</a></li>
+                                <li><a href="<?php echo $this->url('ver-stock') ?>">Ver Stock</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="javascript:;"><i class="fa fa-group"></i> <span>Tramites Beneficiario</span></a>
+                    <ul class="acc-menu">
+                        <li><a href="javascript:;">Beneficiario</a>
+                            <ul class="acc-menu">
+                                <li><a href="<?php echo $this->url('nuevo-beneficiario') ?>">Alta Beneficiario</a></li>
+                                <li><a href="<?php echo $this->url('ver-beneficiario') ?>">Ver Beneficiario</a></li>
+                                <li><a href="<?php echo $this->url('mod-beneficiario') ?>">Modificar Beneficiario</a></li>
+                                <li><a href="<?php echo $this->url('del-beneficiario') ?>">Baja Beneficiario</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="acc-menu">
+                        <li><a href="javascript:;">Familia</a>
+                            <ul class="acc-menu">
+                                <li><a href="#">Alta Familia</a></li>
+                                <li><a href="#">Ver Familia</a></li>
+                                <li><a href="#">Modificar Familia</a></li>
+                                <li><a href="#">Eliminar Familia</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                 <ul class="acc-menu">
+                        <li><a href="javascript:;">Asistencia Mensual</a>
+                            <ul class="acc-menu">
+                                <li><a href="<?php echo $this->url('nuevo-asistmen') ?>">Registro Asistencia</a></li>
+                                <li><a href="<?php echo $this->url('ver-asistmen') ?>">Ver Registro Asist.</a></li>
+                                <li><a href="<?php echo $this->url('mod-asistmen') ?>">Modificar Registro Asist.</a></li>
+                                <li><a href="<?php echo $this->url('del-asistmen') ?>">Eliminar Registro Asist.</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li> 
+                <li><a href="javascript:;"><i class="fa fa-user"></i> <span>Empleado</span></a>
+                    <ul class="acc-menu">
+                        <li><a href="javascript:;">Producto</a>
+                            <ul class="acc-menu">
+                                <li><a href="javascript:;">Menu Item 2.1</a></li>
+                                <li><a href="javascript:;">Menu Item 2.1</a></li>
+                                <li><a href="javascript:;">Menu Item 2.1</a></li>
+                                <li><a href="javascript:;">Menu Item 2.1</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- END SIDEBAR MENU -->
+            <!-- El nav final es el que mantiene la estructura del menu vertical -->
+        </nav>
+
+<div id="page-content">
+
+
+		<div class="container">
+             <?php echo $this->content; ?>
+			
+
+		</div> <!-- container -->
+
+</div> <!-- page-content -->
+
+    <footer role="contentinfo">
+        <div class="clearfix">
+            <ul class="list-unstyled list-inline pull-left">
+                <li>ISNU &copy; 2015</li>
+            </ul>
+            <button class="pull-right btn btn-inverse-alt btn-xs hidden-print" id="back-to-top"><i class="fa fa-arrow-up"></i></button>
+        </div>
+    </footer>
+
+</div> <!-- page-container -->
+
+<!--Script propios de la plantilla Avant-->
+
+<script type='text/javascript' src='js/jquery-1.10.2.min.js'></script> 
+<script type='text/javascript' src='js/jqueryui-1.10.3.min.js'></script> 
+<script type='text/javascript' src='js/bootstrap.min.js'></script> 
+<script type='text/javascript' src='js/enquire.js'></script> 
+<script type='text/javascript' src='js/jquery.cookie.js'></script> 
+<script type='text/javascript' src='js/jquery.nicescroll.min.js'></script> 
+<script type='text/javascript' src='plugins/codeprettifier/prettify.js'></script> 
+<script type='text/javascript' src='plugins/easypiechart/jquery.easypiechart.min.js'></script> 
+<script type='text/javascript' src='plugins/sparklines/jquery.sparklines.min.js'></script> 
+<script type='text/javascript' src='plugins/form-toggle/toggle.min.js'></script> 
+<script type='text/javascript' src='js/placeholdr.js'></script> 
+<script type='text/javascript' src='js/application.js'></script> 
+<script type='text/javascript' src='demo/demo.js'></script> 
+
+
+
+<!--Esto supuestamente es para el formulario Wizard para que funcione el STEP-->
+
+<script type='text/javascript' src='../plugins/form-validation/jquery.validate.min.js'></script> 
+<script type='text/javascript' src='../plugins/form-stepy/jquery.stepy.js'></script>
+
+<!--Esto supuestamente es para el formulario o cualquier lugar para que funcione el select de multifuncion-->
+<script type='text/javascript' src='assets/plugins/form-multiselect/js/jquery.multi-select.min.js'></script> 
+<script type='text/javascript' src='assets/plugins/quicksearch/jquery.quicksearch.min.js'></script> 
+<script type='text/javascript' src='assets/plugins/form-typeahead/typeahead.min.js'></script> 
+<script type='text/javascript' src='assets/plugins/form-select2/select2.min.js'></script> 
+<!--Esto es para que funcione el calendario en el formulario y cualquier parte en que este-->
+ 
+
+
+<script type='text/javascript' src='assets/plugins/form-autosize/jquery.autosize-min.js'></script> 
+<script type='text/javascript' src='assets/plugins/form-colorpicker/js/bootstrap-colorpicker.min.js'></script> 
+<script type='text/javascript' src='assets/plugins/jqueryui-timepicker/jquery.ui.timepicker.min.js'></script> 
+<script type='text/javascript' src='assets/plugins/form-daterangepicker/daterangepicker.min.js'></script> 
+<script type='text/javascript' src='assets/plugins/form-datepicker/js/bootstrap-datepicker.js'></script> 
+<script type='text/javascript' src='assets/plugins/form-daterangepicker/moment.min.js'></script> 
+<script type='text/javascript' src='assets/plugins/form-fseditor/jquery.fseditor-min.js'></script> 
+<script type='text/javascript' src='assets/plugins/form-jasnyupload/fileinput.min.js'></script> 
+<script type='text/javascript' src='assets/plugins/form-tokenfield/bootstrap-tokenfield.min.js'></script> 
+<script type='text/javascript' src='assets/demo/demo-formcomponents.js'></script> 
+
+
+
+
+
+
+
+</body>
+</html>
