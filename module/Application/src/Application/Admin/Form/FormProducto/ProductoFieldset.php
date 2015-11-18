@@ -37,6 +37,20 @@ class ProductoFieldset extends Fieldset
 				'required' => 'required',
 			],
 		]);
+		$this->add([
+			'name' => 'cantidad',
+			'type' => 'Text',
+			'attributes' => [
+				'required'=>'required',
+			],
+		]);
 
+		$this->add([
+			'name' => 'unidad',
+			'type' => 'Text',
+			'attributes' => [
+				'required'=>'required',
+			],
+		]);
 	}
 } 

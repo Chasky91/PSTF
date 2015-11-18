@@ -7,8 +7,27 @@ use Zend\View\Model\ViewModel;
 use Application\Entity\Producto;
 use Application\Admin\Form\FormProducto\ProductoForm;
 
+//moulo para utenticcion
+use Zend\Mvc\MvcEvent;
+
 class ProductoController extends AbstractActionController
 {
+
+    public function __construct()
+    {
+        $events = $this->getEventManager();
+        $events->attach(MvcEvent::EVENT_DISPATCH, array($this, 'checkLogin'));
+    }
+
+    public function checkLogin()
+    {   
+        $authService = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
+        var_dump($events);die;
+        if (!$authService->getIdentity()) {
+            return $this->redirect()->toRoute('login');
+        }
+    }
+
     protected function getEntityManager()
     {
         return $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');

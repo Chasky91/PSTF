@@ -13,6 +13,8 @@ use Application\Admin\Form\FormEmp\LoginForm;
 class EmpleadoController extends AbstractActionController
 {
 
+    
+    
     protected function getEntityManager() 
     {
         return $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
@@ -130,9 +132,8 @@ public function loginAction()
                 $authResult = $authService->authenticate();
                 //var_dump($authResult->isValid()); die;             
                 if ($authResult->isValid()) {
-                    var_dump("usuario autenticado"); die;
-                    
-                    //$this->redirect()->toRoute('http://google.com.ar/');
+                    //var_dump("usuario autenticado"); die;
+                    $this->redirect()->toRoute('index_producto');
                 } else {
                     var_dump("no se autentico"); die;
                     $vista->mensaje = 'Usuario y/o contraseña incorrectos';

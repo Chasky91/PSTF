@@ -4,7 +4,11 @@ namespace Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use DateTime;
-
+//producto tiene ID
+//               nombre
+//               cantidad
+//               fecha de ingreso
+//               descripcion
 /** 
 *
 *@ORM\Entity 

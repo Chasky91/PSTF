@@ -28,6 +28,24 @@
                 </div>
 
                 <div class="form-group">
+                        <label class="col-sm-3 control-label">
+                            Cantidad
+                        </label>
+                        <div class="col-sm-6">
+                            <?php echo $this->formRow($producto->get('cantidad')->setAttributes(['type'=>'text','data-type'=>'digits','required' => 'required', 'class' => 'form-control', 'placeholder'=>'Unicamente numeros'])); ?>
+                        </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="focusedinput" class="col-sm-3 control-label">Unidad</label>
+                    <div class="col-sm-6">
+
+                        <?php echo $this->formRow($producto->get('unidad')->setAttributes(['placeholder' => 'Ingrese la unidad del item', 'id' => 'focusedinput', 'ata-minlength' => '1',
+                                    'required' => 'required', 'class' => 'form-control', 'type' => 'text'])); ?> 
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label for="txtarea1" class="col-sm-3 control-label">Textarea</label>
                     <div class="col-sm-6"><?php echo $this->formRow($producto->get('descripcion')->setAttributes(['placeholder' => 'Ingrese  la descripcion', 'ata-minlength' => '2', 'required' => 'required',
                                     'class' => 'form-control']));?></div>
