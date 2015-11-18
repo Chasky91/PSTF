@@ -37,11 +37,11 @@
 
         <ul class="nav navbar-nav pull-right toolbar">
         	<li class="dropdown">
-        	<?php //if (!$this->empleado): ?>                
-                <a href="#" class="dropdown-toggle username" data-toggle="dropdown"><span class="hidden-xs">Benvenido usuario  <i class="fa fa-caret-down"></i></span><img src="demo/avatar/dangerfield.png" alt="Dangerfield" /></a>
-            <?php //else: ?>
-                <!--<li><a href="<?php echo $this->url('login') ?>" class="text-right">Logerse</a></li>-->
-            <?php //endif; ?>
+        	<?php if (!$this->empleado): ?>                
+                <a href="<?php echo $this->url('login') ?>" class="dropdown-toggle username" >Iniciar sesión</a>
+            <?php else: ?>
+                <a href="#" class="dropdown-toggle username" data-toggle="dropdown"><span class="hidden-xs"><?php echo $this->empleado->getNombre() ?>  <i class="fa fa-caret-down"></i></span><img src="demo/avatar/dangerfield.png" alt="Dangerfield" /></a>
+            <?php endif; ?>
         		<ul class="dropdown-menu userinfo arrow">
         			<li class="username">
                         <a href="#">
@@ -55,7 +55,7 @@
         					<li><a href="#">Account <i class="pull-right fa fa-cog"></i></a></li>
         					<li><a href="#">Help <i class="pull-right fa fa-question-circle"></i></a></li>
         					<li class="divider"></li>
-        					<li><a href="#" class="text-right">Sign Out</a></li>
+        					<li><a href="<?php echo $this->url('logout') ?>" class="text-right">Cerrar sesión</a></li>
         				</ul>
         			</li>
         		</ul>

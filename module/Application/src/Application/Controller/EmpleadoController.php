@@ -142,6 +142,13 @@ public function loginAction()
         }       
         return $vista;
     }
+    
+    public function logoutAction() {
+        $authService = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
+        $authService->clearIdentity();
+        $this->redirect()->toRoute('home');
+
+    }
 
 
 }

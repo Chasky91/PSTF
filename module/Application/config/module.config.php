@@ -342,10 +342,21 @@ return array(
             'login' => array(
                 'type' => 'literal', // 'Zend\Mvc\Router\Http\Literal'
                 'options' => array(
-                    'route' => '/login',
+                    'route' => '/iniciar-sesion',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Empleado',
                         'action' => 'login',
+                    ),
+                ),
+            ),
+            
+            'logout' => array(
+                'type' => 'literal', // 'Zend\Mvc\Router\Http\Literal'
+                'options' => array(
+                    'route' => '/cerrar-sesion',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Empleado',
+                        'action' => 'logout',
                     ),
                 ),
             ),
@@ -413,7 +424,7 @@ return array(
             'Application\Controller\Producto' => 'Application\Controller\ProductoController',  
             'Application\Controller\Stock' => 'Application\Controller\StockController',
             'Application\Controller\AsistMen' => 'Application\Controller\AsistMenController',
-            'Application\Controller\Stock' => 'Application\Controller\StockController',            
+            'Application\Controller\Sector' => 'Application\Controller\SectorController',            
             'Application\Controller\Empleado' => 'Application\Controller\EmpleadoController'
 
 
