@@ -19,13 +19,20 @@
                 ?>
 
                 <div class="form-group">
-                    <label for="focusedinput" class="col-sm-3 control-label">Item de producto</label>
+                    <label for="focusedinput" class="col-sm-3 control-label">Nombre del producto</label>
                     <div class="col-sm-6">
 
-                        <?php echo $this->formRow($producto->get('item')->setAttributes(['placeholder' => 'Ingrese el nombre del item', 'id' => 'focusedinput', 'ata-minlength' => '2',
+                        <?php echo $this->formRow($producto->get('nombre')->setAttributes(['placeholder' => 'Ingrese el nombre del item', 'id' => 'focusedinput', 'ata-minlength' => '2',
                                     'required' => 'required', 'class' => 'form-control', 'type' => 'text'])); ?> 
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label for="txtarea1" class="col-sm-3 control-label">Textarea</label>
+                    <div class="col-sm-6"><?php echo $this->formRow($producto->get('descripcion')->setAttributes(['placeholder' => 'Ingrese  la descripcion', 'ata-minlength' => '2', 'required' => 'required',
+                                    'class' => 'form-control']));?></div>
+                 
+                </div>      
 
                 <div class="form-group">
                         <label class="col-sm-3 control-label">
@@ -37,20 +44,15 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="focusedinput" class="col-sm-3 control-label">Unidad</label>
-                    <div class="col-sm-6">
-
-                        <?php echo $this->formRow($producto->get('unidad')->setAttributes(['placeholder' => 'Ingrese la unidad del item', 'id' => 'focusedinput', 'ata-minlength' => '1',
-                                    'required' => 'required', 'class' => 'form-control', 'type' => 'text'])); ?> 
-                    </div>
+                        <label class="col-sm-3 control-label">
+                            Stock Critico
+                        </label>
+                        <div class="col-sm-6">
+                            <?php echo $this->formRow($producto->get('stockCritico')->setAttributes(['type'=>'text','data-type'=>'digits','required' => 'required', 'class' => 'form-control', 'placeholder'=>'Unicamente numeros'])); ?>
+                        </div>
                 </div>
-
-                <div class="form-group">
-                    <label for="txtarea1" class="col-sm-3 control-label">Textarea</label>
-                    <div class="col-sm-6"><?php echo $this->formRow($producto->get('descripcion')->setAttributes(['placeholder' => 'Ingrese  la descripcion', 'ata-minlength' => '2', 'required' => 'required',
-                                    'class' => 'form-control']));?></div>
-                 
-                </div>				  
+                
+		  
 
             </div>
             <div class="panel-footer">

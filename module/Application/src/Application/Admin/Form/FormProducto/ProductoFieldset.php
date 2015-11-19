@@ -23,7 +23,7 @@ class ProductoFieldset extends Fieldset
 		]);
 
 		$this->add([
-			'name' => 'item',
+			'name' => 'nombre',
 			'type' => 'Text',
 			'attributes' => [
 				'required' => 'required',
@@ -46,7 +46,7 @@ class ProductoFieldset extends Fieldset
 		]);
 
 		$this->add([
-			'name' => 'unidad',
+			'name' => 'stockCritico',
 			'type' => 'Text',
 			'attributes' => [
 				'required'=>'required',
