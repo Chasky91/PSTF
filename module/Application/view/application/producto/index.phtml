@@ -16,18 +16,25 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Ítem</th>
+                                        <th>Nombre</th>
                                         <th>Descripción</th>
-                                        <th>Fecha ingreso</th>
+                                        <th>Cantidad</th>
+                                        <th>Estado de stock</th>
+                                        <th>Fecha de  ingreso</th>
                                         <th>Operaciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php //var_dump($comparar);die; ?>
                                     <?php foreach($productos as $producto): ?>
                                         <tr class="odd gradeX">
                                             <td><?php echo $producto->getIdProducto() ?></td>
-                                            <td><?php echo $producto->getItem() ?></td>                                            
+                                            <td><?php echo $producto->getNombre() ?></td>                                            
                                             <td><?php echo $producto->getDescripcion() ?></td>
+                                            <td><?php echo $producto->getCantidad() ?></td>
+                                                     <?php $cantidad = $producto->getCantidad() ?>
+                                                     <?php $stock = $producto->getStockCritico() ?>
+                                            <td> <?php echo $estado = $comparar->comparar($cantidad,$stock)?></td>                                                                                    
                                             <?php  $fechaIngreso  =$producto->getFechaIngreso()  ?>
                                             <td><?php echo $fechaIngreso->format('d-m-Y')  ?></td>
                                             <td>

@@ -10,6 +10,8 @@ use DateTime;
  *
  * @ORM\Table(name="empleado")
  * @ORM\Entity
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="rol", type="string")
  */
 class Empleado
 {

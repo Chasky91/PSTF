@@ -17,7 +17,10 @@
                       <th>DNI</th>
                       <th>Nombre</th>
                       <th>Apellido</th>
+                      <th>Email</th>
                       <th>Sector  </th>
+                      <th>Estado</th>
+                      <th>Fecha de ingreso</th>
                       <th>Acciones</th>
                   </tr>
               </thead>
@@ -39,10 +42,18 @@
                       <?php echo $empleado->getApellido() ?>
                     </td>
                     <td>
+                      <?php echo $empleado->getEmail() ?>
+                    </td>
+                    <td>
                       <?php  $sector = $empleado->getSector() 
                         ?>  
                       <?php echo $sector->getNombre() ?>                                      
                     </td>
+                    <td>
+                      <?php echo $empleado->getActivo() ?>
+                    </td>
+                            <?php  $fechaIngreso  =$empleado->getFechaAlta()  ?>
+                    <td><?php echo $fechaIngreso->format('d-m-Y')  ?></td>
                     <td>
                         <a class="btn btn-warning-alt btn-label" href="<?php echo $this->url('editar_empleado', array(
                       'id' => $empleado->getId())) ?>"><i class="fa fa-cog"></i>Editar</a>     

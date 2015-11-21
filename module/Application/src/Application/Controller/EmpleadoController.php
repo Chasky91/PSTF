@@ -6,6 +6,7 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Application\Entity\Empleado;
+use Application\Entity\Admin;
 use Application\Admin\Form\FormEmp\EmpleadoForm;
 use Application\Admin\Form\FormEmp\LoginForm;
 
@@ -58,7 +59,6 @@ class EmpleadoController extends AbstractActionController
                 
                     $this->flashMessenger()->addSuccessMessage(
                             sprintf('Empleado "%s" actualizado correctamente', $empleado->getNombre()));
-            
                     return $this->redirect()->toRoute('index_empleado'); 
             }        
         }
@@ -69,25 +69,27 @@ class EmpleadoController extends AbstractActionController
                 ]);
     }
 
-        public function nuevoAction()
-    {
-        $em = $this->getEntityManager();        
-        $empleadoForm = new EmpleadoForm($em);
-        $empleado = new Empleado();
+        public function nuevoAction()   {
+        $em = $this->getEntityManager();      
+        $repositorioAdmin  = $em->getRepository('Application\Entity\Admin');
+        $empleadoForm = new EmpleadoForm($em);                
+        if($repositorioAdmin->existeAlgunAdmin()) {
+            $empleado = new Empleado();
+        }else{
+            $empleado = new Admin();
+        }
         $empleadoForm->bind($empleado);
-
         if ($this->request->isPost()) {
             $empleadoForm->setData($this->request->getPost());
+            
             if ($empleadoForm->isValid()) {
-
+                
                 $password = $empleado->getContrasena();                
                 $password = $empleado->hashPassword($password);
-                $empleado->setContrasena($password);
-                // EntityManager guardame el apunte
-                $em->persist($empleado);
-                // EntityManager aplicame todos los cambios!
+                $empleado->setContrasena($password);   
+                
+                $em->persist($empleado);               
                 $em->flush();
-
                 $this->flashMessenger()->addSuccessMessage('Empleado nuevo registrado!');
                 return $this->redirect()->toRoute('index_empleado');
             }

@@ -6,6 +6,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Application\Entity\Producto;
 use Application\Admin\Form\FormProducto\ProductoForm;
+use Application\Helper\ComparaDosCifras;
 
 //moulo para utenticcion
 use Zend\Mvc\MvcEvent;
@@ -22,6 +23,7 @@ class ProductoController extends AbstractActionController
     public function checkLogin()
     {   
         $authService = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
+        var_dump($authService->getIdentity()->getRol());die;
         if (!$authService->getIdentity()) {
             return $this->redirect()->toRoute('login');
         }
@@ -41,8 +43,10 @@ class ProductoController extends AbstractActionController
                 ->orderBy('a.id_producto','DESC')
                 ->getQuery();
         $productos  = $query->getResult();
+        $comparar = new ComparaDosCifras();
         return new ViewModel([
             'productos'=>$productos,
+            'comparar' => $comparar,
         ]);
     }
 
@@ -86,7 +90,12 @@ class ProductoController extends AbstractActionController
             if($productoForm->isValid()) {
                 
                 $em->persist($producto);
-                $em->flush();              
+                $em->flush();
+                
+                $this->flashMessenger()->addSuccessMessage(
+                        sprintf('Producto "%s" actualizado correctamente',$producto->getIdProducto()));
+                
+                return $this->redirect()->toRoute('index_producto');
             }   
         }
         return new ViewModel([
