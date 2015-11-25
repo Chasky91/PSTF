@@ -12,9 +12,14 @@ namespace Application;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Zend\Validator\AbstractValidator;
-
+use Zend\Permissions\Acl\Acl;
+use Zend\Permissions\Acl\Role\GenericRole as Role;
+use Application\Entity\Empleado;
+use Application\Entity\Admin;
 class Module
 {
+    const HTTP_PERMANENT_REDIRECT = 302;
+    
     public function onBootstrap(MvcEvent $e)
     {
         $eventManager        = $e->getApplication()->getEventManager();
@@ -23,6 +28,9 @@ class Module
 
         $this->inyectarUsuarioEnLayout($e);
         $this->setupTraduccionesDelValidador($e);
+        //codigo agregado por david
+        $this->setupAcl($e);
+        $e->getApplication()->getEventManager()->attach('route',array($this, 'chequearAcl'));
     }
 
     protected function inyectarUsuarioEnLayout(MvcEvent $e)
@@ -43,6 +51,53 @@ class Module
             'es_ES'
         );
         AbstractValidator::setDefaultTranslator($translator);        
+    }
+    
+    //funcion agregada por david
+    public function setupAcl(MvcEvent $e) {
+        
+        $acl  = new Acl();
+        
+        $rolInvitado = new Role('invitado');
+        $admin = new Admin();
+        $rolAdmin = new Role($admin->getRol());
+        
+        $acl->addRole($rolInvitado);
+        $acl->addRole($rolAdmin,$rolInvitado);//el admin hereda los permisos de invitado
+        
+        $acl->addResource('index_empleado');
+        $acl->addResource('login');
+        
+        $acl->deny($rolInvitado,'index_empleado');
+        $acl->allow($rolAdmin, 'login');
+        $acl->allow($rolAdmin,'index_empleado');
+        
+        $vista = $e->getApplication()->getMvcEvent()->getViewModel();
+        $vista->acl=$acl;
+        $this->acl = $acl;
+        
+    }
+    
+    public function chequearAcl(MvcEvent $e) {
+        $serviceManager  =$e->getApplication()->getServiceManager();
+        $autentication  =  $serviceManager->get('Zend\Authentication\AuthenticationService');
+        $rol  =($usuario = $autentication->getIdentity())?
+                    $usuario->getRol():
+                        'invitado';
+        $ruta = $e->getRouteMatch()->getMatchedRouteName();
+        try {
+                if (!$this->acl->isAllowed($rol, $ruta)) {
+                    $url=$e ->getRouter()->assemble(array(), array('name' => 'login'));
+                    $response =  $e->getResponse();
+                    $response->getHeaders()->addHeaderLine('Location', $url);
+                    $response->setStatusCode(static::HTTP_PERMANENT_REDIRECT);
+                    $response->sendHeaders();
+                
+                }
+            }
+        } catch (\Zend\Permissions\Acl\Exception\InvalidArgumentException $e) {
+            //perimiso de una ruta que no definimos
+        }
     }
 
     public function getConfig()

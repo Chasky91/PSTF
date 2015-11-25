@@ -5,7 +5,7 @@ namespace Application\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="Application\Repository\Admin")
+ * @ORM\Entity(repositoryClass="Application\Repository\MesaEntrada")
  */
 
 class MesaEntrada extends Empleado
