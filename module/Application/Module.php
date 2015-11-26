@@ -16,7 +16,7 @@ use Zend\Permissions\Acl\Acl;
 use Zend\Permissions\Acl\Role\GenericRole as Role;
 use Application\Entity\Empleado;
 use Application\Entity\Admin;
-class Module
+        class Module
 {
     const HTTP_PERMANENT_REDIRECT = 302;
     
@@ -94,7 +94,7 @@ class Module
                     $response->sendHeaders();
                 
                 }
-            }
+            
         } catch (\Zend\Permissions\Acl\Exception\InvalidArgumentException $e) {
             //perimiso de una ruta que no definimos
         }
