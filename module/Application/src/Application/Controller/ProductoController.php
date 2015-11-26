@@ -23,6 +23,7 @@ class ProductoController extends AbstractActionController
     public function checkLogin()
     {   
         $authService = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
+        $empleado = $authService->getIdentity();
         if (!$authService->getIdentity()) {
             return $this->redirect()->toRoute('login');
         }

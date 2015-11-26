@@ -69,8 +69,7 @@ use Application\Entity\Admin;
         $acl->addResource('login');
         
         $acl->deny($rolInvitado,'index_empleado');
-        $acl->allow($rolInvitado,'login');
-        //$acl->allow($rolAdmin, 'login');
+        $acl->allow($rolAdmin, 'login');
         $acl->allow($rolAdmin,'index_empleado');
         
         $vista = $e->getApplication()->getMvcEvent()->getViewModel();
