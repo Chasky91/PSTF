@@ -137,7 +137,7 @@ public function loginAction()
                     //var_dump("usuario autenticado"); die;
                     $this->redirect()->toRoute('index_producto');
                 } else {
-                    var_dump("no se autentico"); die;
+                    //var_dump("no se autentico"); die;
                     $vista->mensaje = 'Usuario y/o contraseña incorrectos';
                 }
             }
