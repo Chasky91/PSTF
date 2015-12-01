@@ -20,9 +20,11 @@ use Zend\Paginator\Paginator as ZfPaginator;
 use Zend\Mvc\MvcEvent;
 use DateTime;
 
+
+
 class BeneficiarioController extends AbstractActionController
 {
-    public function __construct()
+    /*public function __construct()
     {
         $events = $this->getEventManager();
         $events->attach(MvcEvent::EVENT_DISPATCH, array($this, 'checkLogin'));
@@ -31,11 +33,10 @@ class BeneficiarioController extends AbstractActionController
     public function checkLogin()
     {
         $authService = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
-        $empleado = $authService->getIdentity();        
         if (!$authService->getIdentity()) {
             return $this->redirect()->toRoute('login');
         }
-    }
+    }*/
 
      protected function getEntityManager()
     {
@@ -59,12 +60,13 @@ class BeneficiarioController extends AbstractActionController
                     $form->setData($this->request->getPost());
                     if ($form->isValid()) {
                         // EntityManager guardame el apunte
+                        
                         $em->persist($beneficiario);
                         // EntityManager aplicame todos los cambios!
                         $em->flush();
 
                         $this->flashMessenger()->addSuccessMessage('Nuevo Beneficiario registrado!');
-                        return $this->redirect()->toRoute('home');
+                        return $this->redirect()->toRoute('ver-beneficiario');
                     }
                 }       
                 return new ViewModel(array(
@@ -72,74 +74,65 @@ class BeneficiarioController extends AbstractActionController
                 ));
     }
 
-/*
-       
-        if ($this->request->isPost()){ //si hizo el submito en el formulario
-            
-            $form->setData($this->request->getPost());
-            $data=$this->request->getPost(); //obtiene los datos del formulario
-            //var_dump($data); die;
-            //var_dump($data->beneficiario['dni']);die;           
-            //var_dump($beneficiario); die;
-            $beneficiario->setDni ($data->beneficiario['dni']);
-            $beneficiario->setNombre ($data->beneficiario['nombre']);
-            $beneficiario->setApellido ($data->beneficiario['apellido']);   
-            $beneficiario->setLugnac ($data->beneficiario['lugnac']); 
-            $beneficiario->setFechanac($data->beneficiario['fechanac']);
-        
-  
-            $idEstado = ($data->beneficiario['estado_civil']); 
-            //$idEstado = ($data->beneficiario->getEstadoCivil());
-            //var_dump($idEstado); die;           
-            $estado_civil= $em->find('Application\Entity\EstadoCivil', $idEstado); 
-            $beneficiario->setEstadoCivil($estado_civil);
-            //var_dump($estado_civil->getDescripcion()); die;
-
-
-
-            $beneficiario->setdomben ($data->beneficiario['domben']);
-            $beneficiario->setresben ($data->beneficiario['resben']);
-            $beneficiario->settelfben ($data->beneficiario['telfben']);           
-            
-           
-
-            $idEducacion = ($data->beneficiario['educacion']);            
-            $educacion = $em->find('Application\Entity\Educacion', $idEducacion); 
-            $beneficiario->setEducacion($educacion);
-            //var_dump($educacion->getDescripcion()); die;
-
-
-            $idProfesion = ($data->beneficiario['profession']);   
-            //var_dump($idProfesion); die;         
-            $profession = $em->find('Application\Entity\Profesion', $idProfesion);             
-            $beneficiario->setProfession($profession);
-          // var_dump($profession->getDescripcion());die;
-           
-            $em->persist($beneficiario); //persiste los datos
-            $em->flush();
-
-            return $this->redirect()->toRoute('ver-beneficiario');
-        }
-
-        return new ViewModel(array(            
-            'form'=>$form,            
-            ));
-    }
-    */
-
     public function verbenfAction()
     {
-        return new ViewModel();
+       $em = $this->getEntityManager();
+                $query = $em->createQueryBuilder()
+                        ->select('b')
+                        ->from('Application\Entity\Beneficiario', 'b')
+                        ->orderBy('b.idBeneficiario', 'DESC')
+                        ->getQuery();
+
+                $beneficiarios = $query->getResult(); //devuelve un arreglo con objetos beneficiario
+                return new ViewModel([
+                    'beneficiarios'=>$beneficiarios,
+                ]);
     }
 
     public function modificarAction()
     {
-        return new ViewModel();
+              $id= $this->params('id');
+                $em = $this->getEntityManager();  
+                $beneficiario = $em->find('Application\Entity\Beneficiario', $id);        
+                $form = new nuevobForm($em); 
+                $form->bind($beneficiario);
+                  if ($this->request->isPost()){
+                    $form->setData($this->request->getPost());
+                    
+                    if($form->isValid()) {
+                        
+                        $em->persist($beneficiario);
+                        $em->flush();
+                        
+                            $this->flashMessenger()->addSuccessMessage(
+                                    sprintf('El beneficiario  fue actualizado correctamente', $beneficiario->getNombre()));
+                    
+                            return $this->redirect()->toRoute('ver-beneficiario'); 
+                                        }        
+                                 }       
+
+
+        return new ViewModel([
+            'beneficiario'=>$beneficiario,
+            'form'=>$form,            
+                ]);
     }
 
     public function eliminarAction()
     {
-        return new ViewModel();
+        
+        $id=$this->params('id');      
+        $em=$this->getEntityManager();
+        $beneficiario=$em->find('Application\Entity\Beneficiario', $id);
+        //Elimino a la entidad con entity
+        $em->remove($beneficiario);
+        $em->flush();            
+        
+        $this->flashMessenger()->addSuccessMessage('Beneficiario eliminado del sistema');            
+        return $this->redirect()->toRoute('ver-beneficiario');
+        
+         
+        
     }
 
 

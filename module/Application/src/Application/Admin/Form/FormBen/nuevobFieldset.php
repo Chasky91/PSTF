@@ -61,7 +61,7 @@ class nuevobFieldset extends  Fieldset
 	        $this->add([
             'type' => 'DoctrineModule\Form\Element\ObjectSelect',
             //Este es el nombre que tendra la etiqueta de select
-            'name' => 'estado_civil',
+            'name' => 'estadocivil',
             'options' => [
                 'object_manager' => $em,
                 //Aqui lo dirigimos a la carpeta de la entidad
@@ -71,6 +71,8 @@ class nuevobFieldset extends  Fieldset
                // 'label' => 'Categoria:',
             		],
         	]); 
+
+
 
         	//Domicilio
 	        $this->add([

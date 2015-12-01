@@ -20,6 +20,7 @@ return array(
                     ),
                 ),
             ),
+
 //Esto corresponde al modulo de beneficiarios
             //aqui entramos a la vista o index de la vista de Beneficiario
             'beneficiario'=> array(
@@ -55,60 +56,88 @@ return array(
                                 ),
                             ),
             //Aqui a la vista de modificar beneficiario
-            'mod-beneficiario'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
+            'modbeneficiario'=> array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options'=> array(
-                    'route' => '/mod-beneficiario',
+                        'route' => '/mod-beneficiario/:id',
+                         'constraints' => array(
+                            'id' => '[0-9]+',
+                                ),
                     'defaults'=>array(
                         'controller'=>'Application\Controller\Beneficiario',
                         'action'=>'modificar',
+
                                     ),
                                 ),
                             ),
             //Aqui a la vista de Eliminar beneficiario
             'del-beneficiario'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
+                'type'=>'Zend\Mvc\Router\Http\Segment',
                 'options'=> array(
-                    'route' => '/del-beneficiario',
+                    'route' => '/del-beneficiario/:id',
                     'defaults'=>array(
                         'controller'=>'Application\Controller\Beneficiario',
                         'action'=>'eliminar',
                                     ),
                                 ),
                             ),
-
-//Esto corresponde al modulo de Stock
-            //aqui entramos a la vista o index de la vista de Stock
-            'stock'=> array(
-                'type'=>'Zend\Mvc\Router\Http\literal',
+//Esto corresponde al modulo de Famila
+            //aqui entramos a la vista o index de la vista de Familia
+            'familia'=> array(
+                'type'=>'Zend\Mvc\Router\Http\Literal',
                 'options'=> array(
-                    'route' => '/Stock',
-                     'default'=>array(
-                        'controller'=>'Application\Controller\Stock',
+                    'route' => '/familia',
+                    'defaults'=>array(
+                        'controller'=>'Application\Controller\Familia',
                         'action'=>'index',
                                     ),
                                 ),
                             ),
-
-//Aqui a la vista de ver stock
-            'ver-stock'=> array(
+            //Aqui a la vista de nuevo Familia
+            'nevoFam'=> array(
                 'type'=>'Zend\Mvc\Router\Http\Literal',
                 'options'=> array(
-                    'route' => '/ver-stock',
+                    'route' => '/nuevo-Familiar',
                     'defaults'=>array(
-                        'controller'=>'Application\Controller\Stock',
-                        'action'=>'verstock',
+                        'controller'=>'Application\Controller\Familia',
+                        'action'=>'nuevo',
                                     ),
                                 ),
                             ),
-            //Aqui a la vista de modificar Stock
-            'mod-stock'=> array(
+            //Aqui a la vista de ver Familia
+            'verFam'=> array(
                 'type'=>'Zend\Mvc\Router\Http\Literal',
                 'options'=> array(
-                    'route' => '/mod-stock',
+                    'route' => '/ver-Familiar',
                     'defaults'=>array(
-                        'controller'=>'Application\Controller\Stock',
-                        'action'=>'modstock',
+                        'controller'=>'Application\Controller\Familia',
+                        'action'=>'verfam',
+                                    ),
+                                ),
+                            ),
+            //Aqui a la vista de modificar Familia
+            'modFam'=> array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options'=> array(
+                        'route' => '/mod-Familiar/:id',
+                         'constraints' => array(
+                            'id' => '[0-9]+',
+                                ),
+                    'defaults'=>array(
+                        'controller'=>'Application\Controller\Familia',
+                        'action'=>'modificar',
+
+                                    ),
+                                ),
+                            ),
+            //Aqui a la vista de Eliminar Familia
+            'delFam'=> array(
+                'type'=>'Zend\Mvc\Router\Http\Segment',
+                'options'=> array(
+                    'route' => '/del-Familiar/:id',
+                    'defaults'=>array(
+                        'controller'=>'Application\Controller\Familia',
+                        'action'=>'eliminar',
                                     ),
                                 ),
                             ),
@@ -170,6 +199,7 @@ return array(
                                     ),
                                 ),
                             ),
+
 //Esto corresponde a todo lo referido a los empleados
                         //index empleados
             'index_empleado' => array(

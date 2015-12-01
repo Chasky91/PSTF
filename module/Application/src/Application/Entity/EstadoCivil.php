@@ -20,12 +20,16 @@ class EstadoCivil
 
     /** @ORM\Column(type="text", nullable=true) */
 	protected $descripcion;
-/**
-* @ORM\OnetoMany(targetEntity="Beneficiario", mappedBy="estado_civil")
-*/
-protected $idBeneficiario;
+    /**
+    * @ORM\OneToMany(targetEntity="Beneficiario", mappedBy="estadocivil")
+    **/
+    protected $idBeneficiario;
 
-    
+    /**
+    * @ORM\OnetoMany(targetEntity="Familia", mappedBy="nroF")
+    **/
+    protected $nroF;
+
     /**
      * Constructor
      */
@@ -100,5 +104,39 @@ protected $idBeneficiario;
     public function getIdBeneficiario()
     {
         return $this->idBeneficiario;
+    }
+
+    /**
+     * Add nroF
+     *
+     * @param \Application\Entity\Familia $nroF
+     *
+     * @return EstadoCivil
+     */
+    public function addNroF(\Application\Entity\Familia $nroF)
+    {
+        $this->nroF[] = $nroF;
+
+        return $this;
+    }
+
+    /**
+     * Remove nroF
+     *
+     * @param \Application\Entity\Familia $nroF
+     */
+    public function removeNroF(\Application\Entity\Familia $nroF)
+    {
+        $this->nroF->removeElement($nroF);
+    }
+
+    /**
+     * Get nroF
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNroF()
+    {
+        return $this->nroF;
     }
 }

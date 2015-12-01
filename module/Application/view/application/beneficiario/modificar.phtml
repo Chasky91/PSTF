@@ -1,50 +1,56 @@
-<html>
-<body class="">
-<div class="panel panel-info">
-    <div class="panel-heading">
-        <h4>Modificar Datos de Beneficiario</h4>
-    <div class="panel-body">
-        <p>The wizard has jQuery Validation plugin support built-in. All you need to do is turn on the <code>validate: true</code> option on and you instantly have a wizard with form validation!</p>
-        <form action="#" id="wizard" class="form-horizontal">
-            <fieldset title="Step 1">
-                <legend>Datos Personales</legend>
-                <div class="form-group">
-                    <label for="fieldname" class="col-md-1 control-label">Nombres</label> <div class="col-md-3">
-                    <input id="fieldname" class="form-control" name="name" minlength="4" type="text" required></div>
-                    <label for="fieldemail" class="col-md-1 control-label">Apellidos</label><div class="col-md-3">
-                    <input id="fieldemail" class="form-control" type="text" name="apell" required></div>
-                    <label for="fieldname" class="col-md-1 control-label">DNI</label> <div class="col-md-3">
-                    <input id="fieldname" class="form-control" name="DNI" minlength="4" type="text" required></div>                    
-                </div>
-                <div class="form-group">
-                    <label for="fieldname" class="col-md-1 control-label">Lugar de Nacimiento</label> <div class="col-md-3">
-                    <input id="fieldname" class="form-control" name="nac" minlength="4" type="text" required></div>
-                    <label class="col-sm-1 control-label">Fecha de Nacimiento</label>
-                    <div class="col-sm-3">
-                    <div class="input-group date" id="datepicker-startview1">
-                        <input type="date" class="form-control">
-                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
+
+<div class="container">
+<h1>Modificar Beneficiario</h1>
+    <div class="col-xs-12">
+        <div class="panel panel-midnightblue">
+            <div class="panel-heading"><h4>Registro del Beneficiario</h4></div>
+            <div class="panel-body">
+                        <?php $form->prepare();?>
+                        <?php echo $this->form()->openTag($form->setAttributes(['class' => 'form-horizontal', 'data-validate' => 'parsley', 'id' => 'validate-form'])); ?>  
+                         <?php $beneficiario=($form->get('beneficiario'));?>
+                  
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Nombres</label>
+                            <div class="col-sm-6">
+                            <?php echo $this->formRow($beneficiario->get('nombre')->setAttributes(['placeholder' => 'Ingrese el Nombre completo', 'ata-minlength' => '3', 'required' => 'required', 'class' => 'form-control'])); ?>
+                            </div>            
                     </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Apellidos</label>                       
+                            <div class="col-sm-6">
+                                <?php echo $this->formRow($beneficiario->get('apellido')->setAttributes(['placeholder' => 'Ingrese el Apellido completo', 'ata-minlength' => '3', 'required' => 'required', 'class' => 'form-control'])); ?>
+                            </div>
                     </div>
-                </div>
-                <div class="form-group">
-                <label class="col-sm-1 control-label">Estado civil</label>
-                <div class="col-sm-3">
-                    <select class="form-control" id="source">
-                            <option value="AK">Alaska</option>
-                            <option value="HI">Hawaii</option>
-                            <option value="CA">California</option>
-                            <option value="NV">Nevada</option>
-                            <option value="OR">Oregon</option>
-                            <option value="WA">Washington</option>
-                        </select></div>                    
-                </div>               
-            </fieldset>
-            <fieldset title="Step 2">
-                <legend>Domicilio</legend>
-                <div class="form-group">
-                    <label for="fieldname" class="col-md-1 control-label">Domicilio</label> <div class="col-md-3">
-                    <input id="fieldname" class="form-control" name="domicilio" minlength="4" type="text" required></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">DNI</label>
+                          <div class="col-sm-6">
+                            <?php echo $this->formRow($beneficiario->get('dni')->setAttributes(['type'=>'text','data-type'=>'digits','required' => 'required', 'class' => 'form-control', 'placeholder'=>'Unicamente numeros'])); ?>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Lugar de Nacimiento</label>
+                           <div class="col-sm-4">
+                           <?php echo $this->formRow($beneficiario->get('lugnac')->setAttributes(['class' => 'form-control','required' => 'required', 'minlength'=>'4'])); ?>
+                            </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Fecha de Nacimiento</label>
+                            <div class="col-sm-4">
+                            <?php echo $this->formRow($beneficiario->get('fechanac')->setAttributes(['type'=>'password','required' => 'required', 'class' => 'form-control'])); ?>
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Estado civil </label>
+                                <div class="col-sm-6">
+                                    <?php echo $this->formRow($beneficiario->get('estadocivil')->setAttributes(['class' => 'form-control', 'id' => 'source'])); ?>
+                                </div>
+                        </div>  
+                    </div>
+                    <div class="form-group">
+                    <label class="col-sm-3 control-label">Domicilio</label> <div class="col-sm-6">
+                    <?php echo $this->formRow($beneficiario->get('domben')->setAttributes(['class' => 'form-control','required' => 'required', 'minlength'=>'4'])); ?>
+                    </div>
                 <label class="col-sm-1 control-label">Ciudad</label>
                 <div class="col-sm-3">
                     <select id="e1" style="width:100%" class="populate">
@@ -67,74 +73,44 @@
                             <option value="WA">Washington</option>
                     </select>
                 </div>       
-                </div>                
-                    <label for="fieldname" class="col-md-1 control-label">Residencia en Catriel</label><div class="col-md-3">
-                    <input id="fieldname" class="form-control" name="residencia" minlength="4" type="text" required></div>
+                </div> 
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Residencia en Catriel</label><div class="col-sm-6">
+                    <?php echo $this->formRow($beneficiario->get('resben')->setAttributes(['class' => 'form-control','required' => 'required', 'minlength'=>'4'])); ?>
+                         </div>
+                </div>
+
+                    <div class="form-group">     
+                    <label for="fieldname" class="col-md-1 control-label">Telefono</label><div class="col-md-3">
+                       
+                    <?php echo $this->formRow($beneficiario->get('telfben')->setAttributes(['class' => 'form-control mask', 'minlength'=>'4', 'data-inputmask'=>'mask:(0000) 000-0000' ])); ?>
+                       <p class="help-block">(0000) 000-0000</p></div>
+
                  </div>
-            </fieldset>
-            <fieldset title="Step 3">
-                <legend>Educación</legend>
+                  <div class="form-group">
+                    <label class="col-sm-1 control-label">Tipo de Estudios</label>
+                <div class="col-sm-3">
+                    <?php echo $this->formRow($beneficiario->get('educacion')->setAttributes(['class' => 'form-control', 'id' => 'source'])); ?>
+                   </div> 
+                     </div> 
+
                 <div class="form-group">
-                    <label for="fieldname" class="col-md-1 control-label">Educación</label> 
-                    <div class="col-sm-1">
-                    <label class="radio-inline">
-                      <input type="radio" id="inlineradio1" value="option1">Si
-                    </label>
-                    <label class="radio-inline">
-                      <input type="radio" id="inlineradio2" value="option2">No
-                    </label>
+                <label class="col-sm-1 control-label">Oficio</label>
+                <div class="col-sm-3">
+                    <?php echo $this->formRow($beneficiario->get('profession')->setAttributes(['class' => 'form-control', 'id' => 'source'])); ?>
+                   </div> 
                 </div>
-                <label class="col-sm-1 control-label">Tipo de Estudios</label>
-                <div class="col-sm-1">
-                    <select id="e2" style="width:100%" class="populate">
-                            <option value="AK">Alaska</option>
-                            <option value="HI">Hawaii</option>
-                            <option value="CA">California</option>
-                            <option value="NV">Nevada</option>
-                            <option value="OR">Oregon</option>
-                            <option value="WA">Washington</option>
-                    </select>
-                </div> 
-             </div> 
-             </div> 
-                <div class="form-group">
-                    <label for="fieldname" class="col-md-1 control-label">Empleo</label>
-                    <div class="col-sm-1">
-                    <label class="radio-inline">
-                      <input type="radio" id="inlineradio1" value="option1">Si
-                    </label>
-                    <label class="radio-inline">
-                      <input type="radio" id="inlineradio2" value="option2">No
-                    </label>
+
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <div class="btn-toolbar">
+                            <button type="submit" class="btn-primary btn" >Guardar Cambios</button>
+                        </div>
+                    </div>
                 </div>
-                <label class="col-sm-1 control-label">Ocupación</label>
-                <div class="col-sm-1">
-                    <select id="e2" style="width:100%" class="populate">
-                            <option value="AK">Alaska</option>
-                            <option value="HI">Hawaii</option>
-                            <option value="CA">California</option>
-                            <option value="NV">Nevada</option>
-                            <option value="OR">Oregon</option>
-                            <option value="WA">Washington</option>
-                    </select>
-                </div> 
-                </div>
-                </div> 
-            </fieldset>
-            <input type="submit" class="finish btn-success btn" value="Submit" />
-        </form>
+                <?php echo $this->form()->closeTag(); ?> 
+            </div>
+        </div>
     </div>
 </div>
-
-
-    </div>
-
-    <div class="container">
-             <?php echo $this->content; ?>
-            
-
-        </div> <!-- container -->
-</div>
- 
-</body>
-</html>
