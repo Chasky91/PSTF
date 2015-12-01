@@ -1,0 +1,81 @@
+<div class="container">
+<h1>Familiar del Beneficiario</h1>
+    <div class="col-xs-12">
+        <div class="panel panel-midnightblue">
+            <div class="panel-heading"><h4>Registro de la Familia</h4></div>
+            <div class="panel-body">
+                        <?php $form->prepare();?>
+                        <?php echo $this->form()->openTag($form->setAttributes(['class' => 'form-horizontal', 'data-validate' => 'parsley', 'id' => 'validate-form'])); ?>  
+                         <?php $familia=($form->get('familia'));?>
+                  
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Nombres</label>
+                            <div class="col-sm-6">
+                            <?php echo $this->formRow($familia->get('nombre')->setAttributes(['placeholder' => 'Ingrese el Nombre completo', 'ata-minlength' => '3', 'required' => 'required', 'class' => 'form-control'])); ?>
+                            </div>            
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Apellidos</label>                       
+                            <div class="col-sm-6">
+                                <?php echo $this->formRow($familia->get('apellido')->setAttributes(['placeholder' => 'Ingrese el Apellido completo', 'ata-minlength' => '3', 'required' => 'required', 'class' => 'form-control'])); ?>
+                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">DNI</label>
+                          <div class="col-sm-6">
+                            <?php echo $this->formRow($familia->get('dni')->setAttributes(['type'=>'text','data-type'=>'digits','required' => 'required', 'class' => 'form-control', 'placeholder'=>'Unicamente numeros'])); ?>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Lugar de Nacimiento</label>
+                           <div class="col-sm-4">
+                           <?php echo $this->formRow($familia->get('lugnac')->setAttributes(['class' => 'form-control','required' => 'required', 'minlength'=>'4'])); ?>
+                            </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Fecha de Nacimiento</label>
+                            <div class="col-sm-4">
+                            <?php echo $this->formRow($familia->get('fechanac')->setAttributes(['type'=>'date','required' => 'required', 'class' => 'form-control'])); ?>
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Estado civil </label>
+                                <div class="col-sm-6">
+                                    <?php echo $this->formRow($familia->get('estadocivil')->setAttributes(['class' => 'form-control', 'id' => 'source'])); ?>
+                                </div>
+                        </div>  
+                    </div>
+                  <div class="form-group">
+                    <label class="col-sm-1 control-label">Tipo de Estudios</label>
+                <div class="col-sm-3">
+                    <?php echo $this->formRow($familia->get('educacion')->setAttributes(['class' => 'form-control', 'id' => 'source'])); ?>
+                   </div> 
+                     </div> 
+
+                <div class="form-group">
+                <label class="col-sm-1 control-label">Oficio</label>
+                <div class="col-sm-3">
+                    <?php echo $this->formRow($familia->get('profession')->setAttributes(['class' => 'form-control', 'id' => 'source'])); ?>
+                   </div> 
+                </div>
+                <div class="form-group">
+                <label class="col-sm-1 control-label">Relacion</label>
+                <div class="col-sm-3">
+                    <?php echo $this->formRow($familia->get('relacion')->setAttributes(['class' => 'form-control', 'id' => 'source'])); ?>
+                   </div> 
+                </div>
+
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <div class="btn-toolbar">
+                            <button type="submit" class="btn-primary btn" >Guardar Cambios</button>
+                        </div>
+                    </div>
+                </div>
+                <?php echo $this->form()->closeTag(); ?> 
+            </div>
+        </div>
+    </div>
+</div>
