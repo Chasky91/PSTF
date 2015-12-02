@@ -88,12 +88,45 @@ class FamiliaController extends AbstractActionController
 
     public function modificarAction()
     {
-        return new ViewModel();
+         $id= $this->params('id');
+                        $em = $this->getEntityManager();  
+                        $familia = $em->find('Application\Entity\Familia', $id);        
+                        $form = new famForm($em); 
+                        $form->bind($familia);
+                          if ($this->request->isPost()){
+                            $form->setData($this->request->getPost());
+                            
+                            if($form->isValid()) {
+                                
+                                $em->persist($familia);
+                                $em->flush();
+                                
+                                    $this->flashMessenger()->addSuccessMessage(
+                                            sprintf('El Familiar fue actualizado correctamente', $familia->getNombre()));
+                            
+                                    return $this->redirect()->toRoute('verFam'); 
+                                                }        
+                                         }       
+
+
+                return new ViewModel([
+                    'famlia'=>$famlia,
+                    'form'=>$form,            
+                        ]);
     }
 
     public function eliminarAction()
     {
-        return new ViewModel();
+        $id=$this->params('id');      
+        $em=$this->getEntityManager();
+        $familia=$em->find('Application\Entity\Familia', $id);
+        //Elimino a la entidad con entity
+        $em->remove($familia);
+        $em->flush();            
+        
+        $this->flashMessenger()->addSuccessMessage('El Familiar fue eliminado del sistema');            
+        return $this->redirect()->toRoute('verFam');
+        
     }
 
     public function verAction()

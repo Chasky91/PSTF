@@ -1,9 +1,9 @@
 <div class="col-md-12">
   <div class="panel panel-sky">
-    <h1>Empleado</h1>
+    <h1>Beneficiarios</h1>
   
       <div class="panel-heading">
-          <h4>Lista empleados</h4>
+          <h4>Lista de Beneficiarios</h4>
           <div class="options">
               <a href="javascript:;" class="panel-collapse"><i class="fa fa-chevron-down"></i></a>
           </div>
@@ -20,7 +20,7 @@
                         <th>Domicilio</th>
                         <th>Telefono</th>
                         <th>MÁS</th>
-                        <th>Modificar</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -46,15 +46,21 @@
                         <?php echo $beneficiario->getTelfben() ?>
                       </td>
                       <td>
-                        <a class="btn btn-warning-alt btn-label" href="<?php echo $this->url('nevoFam', array('id' => $beneficiario->getIdBeneficiario())) ?>"></i>Familia</a> 
-                      </td>
-                      <td>
-                      <a class="btn btn-warning-alt btn-label" href="<?php echo $this->url('modbeneficiario', array(
-                      'id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-cog"></i>Modificar</a>     
-                        <a class="btn btn-danger-alt btn-label" href="<?php echo $this->url('del-beneficiario', 
-                                array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-times"></i>Eliminar</a>
+                      <select>
+                      <!--Opcion uno se dirige a Ingresar Nuevo Familiar-->
+                      <option> <a class="btn btn-warning-alt btn-label" href="<?php echo $this->url('nevoFam', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-group"></i>Familia</a> </option> 
+                      <!--Opcion dos se dirige a Ingresar la Situacion Habitacional-->                      
+                        <option><a class="btn btn-warning-alt btn-label" href="#"><i class="fa fa-home"></i>Habitacional</a></option> 
+                      <!--Opcion tres se dirige a Ingresar la Situacion Economica-->
+                       <option><a class="btn btn-warning-alt btn-label" href="#"><i class="fa fa-briefcase"></i>Económica</a></option> 
+                      <!--Opcion cuatro se dirige a Ingresar la Situacion Sanidad-->
+                        <option><a class="btn btn-warning-alt btn-label" href="#"><i class="fa fa-h-square"></i>Sanidad</a></option> 
+                      <!--Opcion cinco se dirige a Modificar Beneficiario-->
+                      <option><a class="btn btn-warning-alt btn-label" href="<?php echo $this->url('modbeneficiario', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-cog"></i>Modificar</a></option>      
+                      <!--Opcion cinco se dirige a Eliminar Beneficiario-->
+                      <option><a class="btn btn-danger-alt btn-label" href="<?php echo $this->url('del-beneficiario', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-times"></i>Eliminar</a></option> 
 
-
+                      </select>
                       </td>
                     </tr>
 

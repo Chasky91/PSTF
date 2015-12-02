@@ -20,7 +20,7 @@
                         <th>Relacion</th>
                         <th>Beneficiario</th>
                         <th>MÁS</th>
-                        <th>Modificar</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -46,13 +46,8 @@
                         <?php echo $familia->getIdben() ?>
                       </td>
                       <td>
-                        <a class="btn btn-warning-alt btn-label" href="#"></i>Familia</a> 
-                      </td>
-                      <td>
-                      <a class="btn btn-warning-alt btn-label" href="#"><i class="fa fa-cog"></i>Modificar</a>     
-                        <a class="btn btn-danger-alt btn-label" href="#"><i class="fa fa-times"></i>Eliminar</a>
-
-
+                        <a class="btn btn-warning-alt btn-label" href="<?php echo $this->url('modFam', array('id' => $familia->getNroF())) ?>"><i class="fa fa-cog"></i>Modificar</a>     
+                        <a class="btn btn-danger-alt btn-label" href="<?php echo $this->url('delFam', array('id' => $familia->getNroF())) ?>"><i class="fa fa-times"></i>Eliminar</a>
                       </td>
                     </tr>
 

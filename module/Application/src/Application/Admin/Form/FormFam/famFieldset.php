@@ -115,7 +115,7 @@ class famFieldset extends  Fieldset
                     ],
             ]);
 
-
+/*
             $this->add([
             'type' => 'DoctrineModule\Form\Element\ObjectSelect',
             //Este es el nombre que tendra la etiqueta de select
@@ -129,7 +129,7 @@ class famFieldset extends  Fieldset
                 //'label' => 'Categoria:',
                     ],
             ]);
-
+*/
 
 	}		
 }
