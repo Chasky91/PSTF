@@ -10,8 +10,9 @@ use Application\Entity\Beneficiario;
 use Application\Entity\EstadoCivil;
 use Application\Entity\Educacion;
 use Application\Entity\Profesion;
+use Application\Entity\Familia;
+use Application\Entity\Relacion;
 use Application\Admin\Form\FormBen\nuevobForm;
-
 
 use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as DoctrineAdapter;
 use Doctrine\ORM\Tools\Pagination\Paginator as OrmPaginator;

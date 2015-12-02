@@ -11,6 +11,7 @@ use Application\Entity\Beneficiario;
 use Application\Entity\EstadoCivil;
 use Application\Entity\Educacion;
 use Application\Entity\Profesion;
+use Application\Entity\Relacion;
 use Application\Admin\Form\FormFam\famForm;
 
 
@@ -61,11 +62,14 @@ class FamiliaController extends AbstractActionController
                 $familia = new Familia();      
                 $form->bind($familia);
 
+                //Si saco esto de id me salta otro error
+                 $id=$this->params('id');      
+                 $beneficiario=$em->find('Application\Entity\Beneficiario', $id);
+
         if ($this->request->isPost()) {
                     $form->setData($this->request->getPost());
                     if ($form->isValid()) {
-                        // EntityManager guardame el apunte
-                       
+                        // EntityManager guardame el apunte                      
                         $em->persist($familia);
                         // EntityManager aplicame todos los cambios!
                         $em->flush();
@@ -77,21 +81,67 @@ class FamiliaController extends AbstractActionController
                 return new ViewModel(array(
                     'form' => $form,
                 ));
+    
+
     }
+
 
     public function modificarAction()
     {
-        return new ViewModel();
+         $id= $this->params('id');
+                        $em = $this->getEntityManager();  
+                        $familia = $em->find('Application\Entity\Familia', $id);        
+                        $form = new famForm($em); 
+                        $form->bind($familia);
+                          if ($this->request->isPost()){
+                            $form->setData($this->request->getPost());
+                            
+                            if($form->isValid()) {
+                                
+                                $em->persist($familia);
+                                $em->flush();
+                                
+                                    $this->flashMessenger()->addSuccessMessage(
+                                            sprintf('El Familiar fue actualizado correctamente', $familia->getNombre()));
+                            
+                                    return $this->redirect()->toRoute('verFam'); 
+                                                }        
+                                         }       
+
+
+                return new ViewModel([
+                    'famlia'=>$famlia,
+                    'form'=>$form,            
+                        ]);
     }
 
     public function eliminarAction()
     {
-        return new ViewModel();
+        $id=$this->params('id');      
+        $em=$this->getEntityManager();
+        $familia=$em->find('Application\Entity\Familia', $id);
+        //Elimino a la entidad con entity
+        $em->remove($familia);
+        $em->flush();            
+        
+        $this->flashMessenger()->addSuccessMessage('El Familiar fue eliminado del sistema');            
+        return $this->redirect()->toRoute('verFam');
+        
     }
 
     public function verAction()
     {
-        return new ViewModel();
+               $em = $this->getEntityManager();
+                $query = $em->createQueryBuilder()
+                        ->select('b')
+                        ->from('Application\Entity\Familia', 'b')
+                        ->orderBy('b.nroF', 'DESC')
+                        ->getQuery();
+
+                $familias = $query->getResult(); //devuelve un arreglo con objetos beneficiario
+                return new ViewModel([
+                    'familias'=>$familias,
+                ]);
     }
 
 
