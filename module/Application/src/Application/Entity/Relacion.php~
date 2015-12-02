@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use DateTime;
 
 /** @ORM\Entity */
-class EstadoCivil
+class Relacion
 {
 	/**
     * @ORM\Column(type="integer")
@@ -16,36 +16,31 @@ class EstadoCivil
     * @ORM\Id
     */
    
-    protected $idEstado; //TENGO  CLAVES PRIMARIAS, idEstado 
+    protected $idRelacion; //TENGO  CLAVES PRIMARIAS, idEstado 
 
     /** @ORM\Column(type="text", nullable=true) */
 	protected $descripcion;
-    /**
-    * @ORM\OneToMany(targetEntity="Beneficiario", mappedBy="estadocivil")
-    **/
-    protected $idBeneficiario;
 
     /**
     * @ORM\OnetoMany(targetEntity="Familia", mappedBy="nroF")
     **/
     protected $nroF;
-
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->idBeneficiario = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->nroF = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Get idEstado
+     * Get idRelacion
      *
      * @return integer
      */
-    public function getIdEstado()
+    public function getIdRelacion()
     {
-        return $this->idEstado;
+        return $this->idRelacion;
     }
 
     /**
@@ -53,7 +48,7 @@ class EstadoCivil
      *
      * @param string $descripcion
      *
-     * @return EstadoCivil
+     * @return Relacion
      */
     public function setDescripcion($descripcion)
     {
@@ -73,45 +68,11 @@ class EstadoCivil
     }
 
     /**
-     * Add idBeneficiario
-     *
-     * @param \Application\Entity\Beneficiario $idBeneficiario
-     *
-     * @return EstadoCivil
-     */
-    public function addIdBeneficiario(\Application\Entity\Beneficiario $idBeneficiario)
-    {
-        $this->idBeneficiario[] = $idBeneficiario;
-
-        return $this;
-    }
-
-    /**
-     * Remove idBeneficiario
-     *
-     * @param \Application\Entity\Beneficiario $idBeneficiario
-     */
-    public function removeIdBeneficiario(\Application\Entity\Beneficiario $idBeneficiario)
-    {
-        $this->idBeneficiario->removeElement($idBeneficiario);
-    }
-
-    /**
-     * Get idBeneficiario
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getIdBeneficiario()
-    {
-        return $this->idBeneficiario;
-    }
-
-    /**
      * Add nroF
      *
      * @param \Application\Entity\Familia $nroF
      *
-     * @return EstadoCivil
+     * @return Relacion
      */
     public function addNroF(\Application\Entity\Familia $nroF)
     {

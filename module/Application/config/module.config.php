@@ -20,7 +20,6 @@ return array(
                     ),
                 ),
             ),
-
 //Esto corresponde al modulo de beneficiarios
             //aqui entramos a la vista o index de la vista de Beneficiario
             'beneficiario'=> array(
@@ -199,7 +198,6 @@ return array(
                                     ),
                                 ),
                             ),
-
 //Esto corresponde a todo lo referido a los empleados
                         //index empleados
             'index_empleado' => array(
@@ -352,7 +350,7 @@ return array(
             ),
             //Termina eliminar sector
             
-            /////////////////////
+ /////////////////////
             //Comienza Stock///
             ////////////////////
             
@@ -390,11 +388,6 @@ return array(
                     ),
                 ),
             ),
-
-
-
-
-
 
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
@@ -454,8 +447,8 @@ return array(
             'Application\Controller\Producto' => 'Application\Controller\ProductoController',  
             'Application\Controller\Stock' => 'Application\Controller\StockController',
             'Application\Controller\AsistMen' => 'Application\Controller\AsistMenController',
-            'Application\Controller\Sector' => 'Application\Controller\SectorController',            
-            'Application\Controller\Empleado' => 'Application\Controller\EmpleadoController'
+            'Application\Controller\Empleado' => 'Application\Controller\EmpleadoController',
+            'Application\Controller\Familia' => 'Application\Controller\FamiliaController'
 
 
         ),
