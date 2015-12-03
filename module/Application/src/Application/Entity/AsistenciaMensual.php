@@ -9,14 +9,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class AsistenciaMensual
 {
-	/** @ORM\Column(type="integer", nullable=false)
-	 *  @ORM\Id
-	 */
-	protected $idBenificiario;
-	/** @ORM\Column(type="text", nullable=false) */
-	protected $idModulo;
-	/** @ORM\Column (type="datetime") */
-	protected $fechDeEntrega;
+    /** @ORM\Column(type="integer", nullable=false)
+     *  @ORM\Id
+     */
+    protected $idBenificiario;
+    /** @ORM\Column(type="text", nullable=false) */
+    protected $idModulo;
+    /** @ORM\Column (type="datetime") */
+    protected $fechDeEntrega;
 
 
     /**

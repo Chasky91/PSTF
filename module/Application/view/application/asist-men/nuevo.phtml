@@ -1,3 +1,33 @@
-Module: Application
-Controller: AsistMen
-Action: nuevo
+<div class="container">
+<h1>Nuevo empleado</h1>
+    <div class="col-xs-12">
+        <div class="panel panel-midnightblue">
+            <div class="panel-heading"><h4>Formulario de registro</h4></div>
+            <div class="panel-body">
+                <?php $form->prepare(); ?>
+                    <?php echo $this->form()->openTag($form->setAttributes(['class' => 'form-horizontal row-border', 'data-validate' => 'parsley', 'id' => 'validate-form'])); ?> 
+                    <?php $empleado = $form->get('asistenciamensual'); ?>
+                    
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">
+                            Nombre
+                        </label>
+                        <div class="col-sm-6">
+                            <?php echo $this->formRow($empleado->get('idBenificiario')->setAttributes([ 'ata-minlength' => '1', 'required' => 'required', 'class' => 'form-control'])); ?>
+                        </div>
+                    </div>    
+                      
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <div class="btn-toolbar">
+                            <button type="submit" class="btn-primary btn" >Registrar</button>
+                        </div>
+                    </div>
+                </div>
+                <?php echo $this->form()->closeTag(); ?> 
+            </div>
+        </div>
+    </div>
+</div>

@@ -329,22 +329,25 @@ return array(
 
 //Esto corresponde al modulo de Asistencia mensual
             //aqui entramos a la vista o index de la vista de Asistencia Mensual
-            'index_asis_mensual'=> array(
-                'type'=>'Zend\Mvc\Router\Http\literal',
-                'options'=> array(
-                    'route' => '/lista-asismen',
-                     'default'=>array(
-                        'controller'=>'Application\Controller\AsistMen',
-                        'action'=>'index',
-                                    ),
-                                ),
-                            ),
+            'index_asismen' => array(
+                'type' => 'Zend\Mvc\Router\Http\literal', // 'Zend\Mvc\Router\Http\Literal'
+                'options' => array(
+                    'route' => '/index-asismen',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\AsistMen',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
 
 //Aqui a la vista de nuevo Asistencia Mensual
-            'nuevo_asistmen'=> array(
-                'type'=>'Zend\Mvc\Router\Http\literal',
+            'nuevo_asismen'=> array(
+                'type'=>'Zend\Mvc\Router\Http\Segment',
                 'options'=> array(
-                    'route' => '/nuevo-asistmen',
+                    'route' => '/nuevo-asismen/:id',
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
                     'defaults'=>array(
                         'controller'=>'Application\Controller\AsistMen',
                         'action'=>'nuevo',
@@ -353,19 +356,7 @@ return array(
                             ),
 
             //Aqui a la vista de modificar Asistencia Mensual
-            'editar_asistmen'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                    'route' => '/editar-asistmen',
-                    'contrains' =>  array(
-                        'id' => '[0-9]+', 
-                        ),
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\AsistMen',
-                        'action'=>'modreg',
-                                    ),
-                                ),
-                            ),
+
 
 //Esto corresponde a todo lo referido a los empleados
                         //index empleados
