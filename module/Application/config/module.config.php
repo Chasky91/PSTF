@@ -329,10 +329,10 @@ return array(
 
 //Esto corresponde al modulo de Asistencia mensual
             //aqui entramos a la vista o index de la vista de Asistencia Mensual
-            'asistencia-mensual'=> array(
+            'index_asis_mensual'=> array(
                 'type'=>'Zend\Mvc\Router\Http\literal',
                 'options'=> array(
-                    'route' => '/asisten-mens',
+                    'route' => '/lista-asismen',
                      'default'=>array(
                         'controller'=>'Application\Controller\AsistMen',
                         'action'=>'index',
@@ -341,49 +341,32 @@ return array(
                             ),
 
 //Aqui a la vista de nuevo Asistencia Mensual
-            'nuevo-asistmen'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
+            'nuevo_asistmen'=> array(
+                'type'=>'Zend\Mvc\Router\Http\literal',
                 'options'=> array(
                     'route' => '/nuevo-asistmen',
                     'defaults'=>array(
                         'controller'=>'Application\Controller\AsistMen',
-                        'action'=>'registro',
+                        'action'=>'nuevo',
                                     ),
                                 ),
                             ),
-            //Aqui a la vista de ver Asistencia Mensual
-            'ver-asistmen'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
-                    'route' => '/ver-asistmen',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\AsistMen',
-                        'action'=>'verreg',
-                                    ),
-                                ),
-                            ),
+
             //Aqui a la vista de modificar Asistencia Mensual
-            'mod-asistmen'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
+            'editar_asistmen'=> array(
+                'type'=>'Zend\Mvc\Router\Http\Segment',
                 'options'=> array(
-                    'route' => '/mod-asistmen',
+                    'route' => '/editar-asistmen',
+                    'contrains' =>  array(
+                        'id' => '[0-9]+', 
+                        ),
                     'defaults'=>array(
                         'controller'=>'Application\Controller\AsistMen',
                         'action'=>'modreg',
                                     ),
                                 ),
                             ),
-            //Aqui a la vista de Eliminar Asistencia Mensual
-            'del-asistmen'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
-                    'route' => '/del-asistmen',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\AsistMen',
-                        'action'=>'elimreg',
-                                    ),
-                                ),
-                            ),
+
 //Esto corresponde a todo lo referido a los empleados
                         //index empleados
             'index_empleado' => array(
