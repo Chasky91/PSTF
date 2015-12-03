@@ -3,7 +3,7 @@ namespace Application\Admin\Form\FormAsisMensual;
 
 use Zend\Form\Form;
 
-use Doctrine\Common\PersistenceObjectManager;
+use Doctrine\Common\Persistence\ObjectManager;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 use Application\Admin\Form\FormAsisMensual\AsisMenFieldset;
 
@@ -13,7 +13,7 @@ class AsisMenForm extends Form
 	{
 		parent::__construct('asismen-form');
 
-		$this->setHydrator(new DoctryneHydrator($em));
+		$this->setHydrator(new DoctrineHydrator($em));
 
 		$asisMenFielset = new AsisMenFieldset($em);
 		$asisMenFielset->setUseAsBaseFieldSet(true);
