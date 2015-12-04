@@ -24,7 +24,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($famlias as $familia): ?>
+                <?php foreach ($familias as $familia): ?>
                     <tr class="odd gradeX">
                       <td>
                         <?php echo $familia->getNroF() ?>
@@ -40,14 +40,29 @@
                         <?php echo $familia->getDni() ?>
                       </td>
                       <td>
-                        <?php echo $familia->getRelacion() ?>
+                      <?php  $relacion = $familia->getRelacion() ?>  
+                        <?php echo $relacion->getDescripcion() ?>
                       </td>
                       <td>
-                        <?php echo $familia->getIdben() ?>
+                      <?php  $beneficiario = $familia->getIdben() ?>  
+                        <?php echo $beneficiario->getNombre(); echo "  "; echo $beneficiario->getApellido()?>
                       </td>
                       <td>
-                        <a class="btn btn-warning-alt btn-label" href="<?php echo $this->url('modFam', array('id' => $familia->getNroF())) ?>"><i class="fa fa-cog"></i>Modificar</a>     
-                        <a class="btn btn-danger-alt btn-label" href="<?php echo $this->url('delFam', array('id' => $familia->getNroF())) ?>"><i class="fa fa-times"></i>Eliminar</a>
+                           <div class="btn-group">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                Más <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu" role="menu">
+                                <!--Opcion uno se dirige a a la vista de Beneficiario-->
+                                <li><a  href="<?php echo $this->url('ver-beneficiario')?>"><i class="fa fa-group"></i>Ver Beneficiarios</a></li>
+                               <li class="divider"></li>
+                       <!--Opcion cinco se dirige a Modificar Familia-->
+                                <li><a href="<?php echo $this->url('modFam', array('id' => $familia->getNroF())) ?>"><i class="fa fa-cog"></i>Modificar</a></li>
+                        <!--Opcion cinco se dirige a Eliminar Familia-->
+                                <li><a href="<?php echo $this->url('delFam', array('id' => $familia->getNroF())) ?>"><i class="fa fa-times"></i>Eliminar</a></li>
+                                
+                              </ul>
+                            </div>
                       </td>
                     </tr>
 
