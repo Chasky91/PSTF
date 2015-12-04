@@ -510,7 +510,22 @@ return array(
             ),
             //Termina eliminar sector
             
- /////////////////////
+            ///////////////////////
+            //Comienza Modulo///
+            //////////////////////
+            //seccion nuevo Producto
+            'nuevo_modulo' => array(
+                'type' => 'literal', // 'Zend\Mvc\Router\Http\Literal'
+                'options' => array(
+                    'route' => '/nuevo-modulo',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Modulo',
+                        'action' => 'nuevo',
+                    ),
+                ),
+            ),
+            
+            /////////////////////
             //Comienza Stock///
             ////////////////////
             
@@ -612,7 +627,8 @@ return array(
             'Application\Controller\Familia' => 'Application\Controller\FamiliaController',
             'Application\Controller\Vivienda' => 'Application\Controller\ViviendaController',
             'Application\Controller\Economia'=> 'Application\Controller\EconomiaController',
-            'Application\Controller\Sanidad'=> 'Application\Controller\SanidadController'
+            'Application\Controller\Sanidad'=> 'Application\Controller\SanidadController',
+            'Application\Controller\Modulo'=> 'Application\Controller\ModuloController'
 
 
         ),
