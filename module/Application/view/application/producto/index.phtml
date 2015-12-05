@@ -47,14 +47,16 @@
                                                         <i class="fa fa-times"></i>Eliminar</a>
                                             </td>
                                             <td><select class="form-control" id="source" onchange="location = this.options[this.selectedIndex].value;">
-                                            <?php foreach ($modulos as $modulo):?> 
+                                                        <option data-hidden="true">Ningun modulo</option>
+                                                    <?php foreach ($modulos as $modulo):?> 
                                                 
-                                                <option value="<?php echo $this->url('editar_modulo', array(
-                                                'id' => $producto->getIdProducto())) ?>"><?php echo $modulo->getNombre() ?></option>
-                                            <?php endforeach; ?>
+                                                        <option value="<?php echo $this->url('cargar_modulo', array(
+                                                        'id' => $modulo->getIdModulo(),
+                                                        'idp' => $producto->getIdProducto())) ?>"><?php echo $modulo->getNombre() ?></option>
+                                                    <?php endforeach; ?>
                        
                 
-                    </select>
+                                                </select>
                                             </td>
                                            </tr>
                                      <?php endforeach; ?>

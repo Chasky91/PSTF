@@ -7,7 +7,6 @@ use Zend\View\Model\ViewModel;
 use Application\Admin\Form\FormModulo\ModuloForm;
 use Application\Entity\Modulo;
 
-
 class ModuloController extends AbstractActionController
 {
 
@@ -45,12 +44,33 @@ class ModuloController extends AbstractActionController
         return new ViewModel([
             'form' => $moduloForm,
         ]);
-        return new ViewModel();
     }
 
-    public function editarAction()
+    public function cargarAction()
     {
-        return new ViewModel();
+        $id = $this->params('id');
+        $em = $this->getEntityManager();  
+        $modulo = $em->find('Application\Entity\Modulo', $id);     
+        $moduloForm = new ModuloForm($em); 
+        $moduloForm->bind($modulo);
+          if ($this->request->isPost()){
+            $moduloForm->setData($this->request->getPost());
+            
+            if($moduloForm->isValid()) {
+                
+                $em->persist($modulo);
+                $em->flush();
+                
+                    $this->flashMessenger()->addSuccessMessage(
+                            sprintf('Producto cargado correctamente'));
+                    return $this->redirect()->toRoute('index_empleado'); 
+            }        
+        }
+
+        return new ViewModel([
+            'empleado'=>$modulo,
+            'form'=>$moduloForm,            
+                ]);
     }
 
 

@@ -525,16 +525,16 @@ return array(
                 ),
             ),
 
-            'editar_modulo' => array(
+            'cargar_modulo' => array(
                 'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => array(
-                    'route' => '/editar-modulo/:id',                    
+                    'route' => '/cargar-modulo/:id/:idp',                    
                     'constraints' => array(
                         'id' => '[0-9]+',
                     ),
                     'defaults' => array(
                         'controller' => 'Application\Controller\Modulo',
-                        'action' => 'editar',
+                        'action' => 'cargar',
                     ),
                 ),
             ),

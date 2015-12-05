@@ -29,6 +29,14 @@ class ModuloFieldset extends Fieldset
         ]);
         
         $this->add([
+            'name' => 'cantidad',
+            'type' => 'Text',
+            'attributes' => [
+                'required' => 'required'                
+            ],            
+        ]);
+        
+        $this->add([
             'name' => 'tipo',
             'type' => 'Text',
             'attributes' => [
