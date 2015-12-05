@@ -21,11 +21,22 @@ class Modulo {
      */
     protected $producto;
     /**
-     * @ORM\Column(name="nombre", type="string", length=140,  nullable=false, unique=false)
+     * @ORM\Column(name="nombre", type="string", length=140,  nullable=false)
+     */
+    protected $nombre;
+    /**
+     * @ORM\Column(name="cantidad",type="integer",  nullable=true)
+     */
+    protected $cantidad;
+    /**
+     * @ORM\Column(name="tipo", type="string", length=140,  nullable=false, unique=false)
      */
     protected $tipo;
-    
 
+
+ 
+
+    
 
     /**
      * Get idModulo
@@ -35,6 +46,54 @@ class Modulo {
     public function getIdModulo()
     {
         return $this->idModulo;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     *
+     * @return Modulo
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set cantidad
+     *
+     * @param integer $cantidad
+     *
+     * @return Modulo
+     */
+    public function setCantidad($cantidad)
+    {
+        $this->cantidad = $cantidad;
+
+        return $this;
+    }
+
+    /**
+     * Get cantidad
+     *
+     * @return integer
+     */
+    public function getCantidad()
+    {
+        return $this->cantidad;
     }
 
     /**

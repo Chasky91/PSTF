@@ -524,6 +524,20 @@ return array(
                     ),
                 ),
             ),
+
+            'editar_modulo' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/editar-modulo/:id',                    
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Modulo',
+                        'action' => 'editar',
+                    ),
+                ),
+            ),
             
             /////////////////////
             //Comienza Stock///

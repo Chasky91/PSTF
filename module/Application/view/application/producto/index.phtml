@@ -22,10 +22,11 @@
                                         <th>Estado de stock</th>
                                         <th>Fecha de  ingreso</th>
                                         <th>Operaciones</th>
+                                        <th>Modulo</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php //var_dump($comparar);die; ?>
+                                    <?php //var_dump($modulos);die; ?>
                                     <?php foreach($productos as $producto): ?>
                                         <tr class="odd gradeX">
                                             <td><?php echo $producto->getIdProducto() ?></td>
@@ -44,6 +45,16 @@
                                                     <a class="btn btn-danger-alt btn-label" href="<?php echo $this->url('eliminar_producto', array(
                                                 'id' => $producto->getIdProducto()))?>">
                                                         <i class="fa fa-times"></i>Eliminar</a>
+                                            </td>
+                                            <td><select class="form-control" id="source" onchange="location = this.options[this.selectedIndex].value;">
+                                            <?php foreach ($modulos as $modulo):?> 
+                                                
+                                                <option value="<?php echo $this->url('editar_modulo', array(
+                                                'id' => $producto->getIdProducto())) ?>"><?php echo $modulo->getNombre() ?></option>
+                                            <?php endforeach; ?>
+                       
+                
+                    </select>
                                             </td>
                                            </tr>
                                      <?php endforeach; ?>

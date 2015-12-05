@@ -16,7 +16,12 @@ class ModuloFieldset extends Fieldset
                 ->setObject(new Modulo);
         
         $this->add([
-            'name' => 'tipo',
+            'name' => 'id',
+            'type' => 'Hidden',
+        ]);
+
+        $this->add([
+            'name' => 'nombre',
             'type' => 'Text',
             'attributes' => [
                 'required' => 'required'                
@@ -24,18 +29,13 @@ class ModuloFieldset extends Fieldset
         ]);
         
         $this->add([
-            'type' => 'DoctrineModule\Form\Element\ObjectSelect',
-            'name' => 'producto',
-            'options' => [               
-                'object_manager' => $em,
-                'target_class' => 'Application\Entity\Producto',
-                'property' => 'nombre',
-            ],
+            'name' => 'tipo',
+            'type' => 'Text',
             'attributes' => [
-                  'required' => 'required',
-             ],
-
-        ]);  
+                'required' => 'required'                
+            ],            
+        ]);
+  
             
        
     }

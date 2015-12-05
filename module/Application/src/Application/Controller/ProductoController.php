@@ -7,7 +7,7 @@ use Zend\View\Model\ViewModel;
 use Application\Entity\Producto;
 use Application\Admin\Form\FormProducto\ProductoForm;
 use Application\Helper\ComparaDosCifras;
-
+use Application\Entity\Modulo;
 //moulo para utenticcion
 use Zend\Mvc\MvcEvent;
 
@@ -36,6 +36,7 @@ class ProductoController extends AbstractActionController
 
     public function indexAction()
     {
+        
         $em = $this->getEntityManager();
         $query  = $em->createQueryBuilder()
                 ->select('a')
@@ -43,10 +44,17 @@ class ProductoController extends AbstractActionController
                 ->orderBy('a.id_producto','DESC')
                 ->getQuery();
         $productos  = $query->getResult();
+                $query2  = $em->createQueryBuilder()
+                ->select('m')
+                ->from('Application\Entity\Modulo', 'm')
+                ->orderBy('m.idModulo','DESC')
+                ->getQuery();
+        $modulos  = $query2->getResult();
         $comparar = new ComparaDosCifras();
         return new ViewModel([
             'productos'=>$productos,
             'comparar' => $comparar,
+            'modulos'=>$modulos,
         ]);
     }
 
@@ -56,6 +64,7 @@ class ProductoController extends AbstractActionController
         $em = $this->getEntityManager();
         //creamos un nuevo formulario con un entity manager
         $productoForm = new ProductoForm($em);
+        
 
         $producto = new Producto();
         $productoForm->bind($producto);
