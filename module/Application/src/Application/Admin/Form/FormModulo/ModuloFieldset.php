@@ -14,11 +14,7 @@ class ModuloFieldset extends Fieldset
         
         $this->setHydrator(new DoctrineEntity($em, 'Application\Entity\Modulo'))
                 ->setObject(new Modulo);
-        
-        $this->add([
-            'name' => 'id',
-            'type' => 'Hidden',
-        ]);
+
 
         $this->add([
             'name' => 'nombre',
@@ -26,15 +22,8 @@ class ModuloFieldset extends Fieldset
             'attributes' => [
                 'required' => 'required'                
             ],            
-        ]);
-        
-        $this->add([
-            'name' => 'cantidad',
-            'type' => 'Text',
-            'attributes' => [
-                'required' => 'required'                
-            ],            
-        ]);
+        ]);      
+
         
         $this->add([
             'name' => 'tipo',

@@ -34,13 +34,17 @@ class Producto
     protected $stockCritico;
     /** @ORM\Column (type="datetime") */
     protected $fecha_ingreso;
-    
+     /**
+     * @ORM\ManyToOne(targetEntity="Modulo")
+     * @ORM\JoinColumn(name="modulo_id", referencedColumnName="idModulo",nullable=true)
+     */
+    protected $modulo_id;
     
     public function __construct() {
         $this->fecha_ingreso = new DateTime();
     }
 
-    
+
 
     /**
      * Get idProducto
@@ -170,5 +174,29 @@ class Producto
     public function getFechaIngreso()
     {
         return $this->fecha_ingreso;
+    }
+
+    /**
+     * Set moduloId
+     *
+     * @param \Application\Entity\Modulo $moduloId
+     *
+     * @return Producto
+     */
+    public function setModuloId(\Application\Entity\Modulo $moduloId = null)
+    {
+        $this->modulo_id = $moduloId;
+
+        return $this;
+    }
+
+    /**
+     * Get moduloId
+     *
+     * @return \Application\Entity\Modulo
+     */
+    public function getModuloId()
+    {
+        return $this->modulo_id;
     }
 }

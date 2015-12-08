@@ -10,33 +10,21 @@ use Doctrine\ORM\Mapping as ORM;
 class Modulo {
     
     /**
-     * @ORM\Column(name="id", type="integer",  nullable=false, unique=true)
+     * @ORM\Column(type="integer",  nullable=false, unique=true)
      * @ORM\Id
      * @ORM\GeneratedValue
      */
+
     protected $idModulo;
     /**
-     * @ORM\ManyToOne(targetEntity="Producto")
-     * @ORM\JoinColumn(name="producto_id", referencedColumnName="id_producto")
-     */
-    protected $producto;
-    /**
-     * @ORM\Column(name="nombre", type="string", length=140,  nullable=false)
+     * @ORM\Column(type="string", length=140,  nullable=false)
      */
     protected $nombre;
     /**
-     * @ORM\Column(name="cantidad",type="integer",  nullable=true)
-     */
-    protected $cantidad;
-    /**
-     * @ORM\Column(name="tipo", type="string", length=140,  nullable=false, unique=false)
+     * @ORM\Column(type="string", length=140,  nullable=false)
      */
     protected $tipo;
 
-
- 
-
-    
 
     /**
      * Get idModulo
@@ -73,30 +61,6 @@ class Modulo {
     }
 
     /**
-     * Set cantidad
-     *
-     * @param integer $cantidad
-     *
-     * @return Modulo
-     */
-    public function setCantidad($cantidad)
-    {
-        $this->cantidad = $cantidad;
-
-        return $this;
-    }
-
-    /**
-     * Get cantidad
-     *
-     * @return integer
-     */
-    public function getCantidad()
-    {
-        return $this->cantidad;
-    }
-
-    /**
      * Set tipo
      *
      * @param string $tipo
@@ -118,29 +82,5 @@ class Modulo {
     public function getTipo()
     {
         return $this->tipo;
-    }
-
-    /**
-     * Set producto
-     *
-     * @param \Application\Entity\Producto $producto
-     *
-     * @return Modulo
-     */
-    public function setProducto(\Application\Entity\Producto $producto = null)
-    {
-        $this->producto = $producto;
-
-        return $this;
-    }
-
-    /**
-     * Get producto
-     *
-     * @return \Application\Entity\Producto
-     */
-    public function getProducto()
-    {
-        return $this->producto;
     }
 }

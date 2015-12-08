@@ -4,8 +4,11 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Application\Admin\Form\FormProductoDeModulo\ProductoDeModuloForm;
 use Application\Admin\Form\FormModulo\ModuloForm;
 use Application\Entity\Modulo;
+use Application\Entity\Producto;
+use Application\Entity\ProductosDeModulo;
 
 class ModuloController extends AbstractActionController
 {
@@ -17,7 +20,18 @@ class ModuloController extends AbstractActionController
 
     public function indexAction()
     {
-        return new ViewModel();
+        $em = $this->getEntityManager();
+        $query = $em->createQueryBuilder()
+                ->select('lp')
+                ->from('Application\Entity\ProductosDeModulo', 'lp')
+                ->orderBy('lp.moduloId', 'DESC')
+                ->getQuery();
+        $lpenmodulos = $query->getResult();
+        
+        return new ViewModel([
+            'lpenmodulos'=>$lpenmodulos,
+        ]);
+
     }
 
     public function nuevoAction()
@@ -37,7 +51,7 @@ class ModuloController extends AbstractActionController
                 $em->flush();
 
                 $this->flashMessenger()->addSuccessMessage('Nuevo Modulo registrado!');
-                return $this->redirect()->toRoute('index_producto');
+                return $this->redirect()->toRoute('index_producto_en_modulo');
             }
         }
 
@@ -48,28 +62,44 @@ class ModuloController extends AbstractActionController
 
     public function cargarAction()
     {
-        $id = $this->params('id');
+        $id = $this->params('id'); 
+        $idp = $this->params('idp');
+                  
         $em = $this->getEntityManager();  
-        $modulo = $em->find('Application\Entity\Modulo', $id);     
-        $moduloForm = new ModuloForm($em); 
-        $moduloForm->bind($modulo);
+        $modulo = $em->find('Application\Entity\Modulo', $id);  
+        $producto = $em->find('Application\Entity\Producto', $idp); 
+        
+        $productoDeModuloForm = new ProductoDeModuloForm ($em); 
+        $productoDeModulo = new ProductosDeModulo();
+        $productoDeModuloForm->bind($productoDeModulo);
+        
           if ($this->request->isPost()){
-            $moduloForm->setData($this->request->getPost());
+            $productoDeModuloForm->setData($this->request->getPost());
             
-            if($moduloForm->isValid()) {
+            if($productoDeModuloForm->isValid()) {
                 
-                $em->persist($modulo);
+                $em->persist($productoDeModulo);
                 $em->flush();
-                
-                    $this->flashMessenger()->addSuccessMessage(
+
+                $this->flashMessenger()->addSuccessMessage(
                             sprintf('Producto cargado correctamente'));
-                    return $this->redirect()->toRoute('index_empleado'); 
+                    return $this->redirect()->toRoute('index_producto_en_modulo'); 
             }        
         }
+        //query update
+        $qb = $em->createQueryBuilder();
+          $query = $qb->update('Application\Entity\Producto', 'p')
+          ->set('p.modulo_id', '?1')
+          ->where('p.id_producto = ?3')
+          ->setParameter(1, $id)
+          ->setParameter(3, $idp)
+          ->getQuery();
+          $p = $query->execute(); 
 
         return new ViewModel([
-            'empleado'=>$modulo,
-            'form'=>$moduloForm,            
+            'modulo'=>$modulo,
+            'producto'=>$producto,
+            'form'=>$productoDeModuloForm,            
                 ]);
     }
 

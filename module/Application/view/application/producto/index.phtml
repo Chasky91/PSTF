@@ -26,7 +26,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php //var_dump($modulos);die; ?>
+                                    <?php //($productos);die; ?>
                                     <?php foreach($productos as $producto): ?>
                                         <tr class="odd gradeX">
                                             <td><?php echo $producto->getIdProducto() ?></td>
@@ -38,6 +38,7 @@
                                             <td> <?php echo $estado = $comparar->comparar($cantidad,$stock)?></td>                                                                                    
                                             <?php  $fechaIngreso  =$producto->getFechaIngreso()  ?>
                                             <td><?php echo $fechaIngreso->format('d-m-Y')  ?></td>
+ 
                                             <td>
                                                 <a class="btn btn-warning-alt btn-label" href="<?php echo $this->url('editar_producto', array(
                                                 'id' => $producto->getIdProducto()))?>">
@@ -46,6 +47,9 @@
                                                 'id' => $producto->getIdProducto()))?>">
                                                         <i class="fa fa-times"></i>Eliminar</a>
                                             </td>
+                                                                                       
+                                            <?php if (!$producto->getModuloId()): ?>
+                                            
                                             <td><select class="form-control" id="source" onchange="location = this.options[this.selectedIndex].value;">
                                                         <option data-hidden="true">Ningun modulo</option>
                                                     <?php foreach ($modulos as $modulo):?> 
@@ -54,10 +58,12 @@
                                                         'id' => $modulo->getIdModulo(),
                                                         'idp' => $producto->getIdProducto())) ?>"><?php echo $modulo->getNombre() ?></option>
                                                     <?php endforeach; ?>
-                       
-                
                                                 </select>
                                             </td>
+                                            <?php else:?>}
+                                            <?php $moduloAsignado=$producto->getModuloId() ?>
+                                            <td><?php echo$moduloAsignado->getNombre() ?></td>
+                                            <?php endif ?>
                                            </tr>
                                      <?php endforeach; ?>
                                 </tbody>

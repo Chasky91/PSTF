@@ -513,7 +513,20 @@ return array(
             ///////////////////////
             //Comienza Modulo///
             //////////////////////
-            //seccion nuevo Producto
+            
+            //lista de productos
+            'index_producto_en_modulo' => array(
+                'type' => 'literal', // 'Zend\Mvc\Router\Http\Literal'
+                'options' => array(
+                    'route' => '/lista-productos-en-modulo',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Modulo',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+            
+            //seccion nuevo productos del modulo
             'nuevo_modulo' => array(
                 'type' => 'literal', // 'Zend\Mvc\Router\Http\Literal'
                 'options' => array(
