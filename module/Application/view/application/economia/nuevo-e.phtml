@@ -1,0 +1,117 @@
+<?php include 'cabecera.php' ?>
+<div class="row">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4>Situación Económica</h4>
+        </div>
+        <div class="panel-body">
+            <p>Se registrara los datos sobre la Situación Económica tiene el Beneficiario</p>
+            <div class="tab-content">
+                <div class="tab-pane active" id="domwizard">
+                    <?php $form->prepare();?>
+                    <?php echo $this->form()->openTag($form->setAttributes(['class' => 'form-horizontal', 'id' => 'wizard'])); ?>  
+                    <?php $economia=($form->get('economia'));?>
+
+					<!--El 1er paso corresponde a los datos principales q otorga el Beneficiario con respecto de la situacion de Economica-->
+				    <fieldset title="Paso 1">
+				        <legend>Datos Esenciales</legend>
+				            <div class="form-group">
+				                <label class="col-sm-2 control-label">¿Trabaja actualmente?</label>
+				                    <div class="col-sm-1">
+				                        <label class="radio-inline">
+				                            <?php echo $this->formRow($economia->get('trabajo')); ?>
+
+				                        </label>
+				                    </div>
+				                <label for="fieldname" class="col-md-1 control-label">Nombre del ultimo lugar de trabajo</label>
+				                    <div class="col-md-3">
+				                        <?php echo $this->formRow($economia->get('nomTrab')->setAttributes(['placeholder' => 'Lugar en que Trabaja o Trabajo','class' => 'form-control', 'minlength'=>'4' ])); ?>
+				                    </div>
+				            </div>
+				    </fieldset>
+
+				<!--El 2do paso será indicar los ingresos economicos del Beneficario-->
+				    <fieldset title="Paso 2">
+				        <legend>Ingresos</legend>
+				            <div class="form-group">
+				                <label for="fieldname" class="col-md-1 control-label">¿Esta recibiendo algún Ingreso Económico?</label>
+				                    <div class="col-sm-1">
+				                        <label class="radio-inline">
+				                            <?php echo $this->formRow($economia->get('ingreso')); ?>
+
+				                        </label>
+				                    </div>
+				                <label for="fieldname" class="col-md-1 control-label">Cantidad aproximada de Ingreso Económico</label>
+				                    <div class="col-md-3">
+				                        <?php echo $this->formRow($economia->get('canIng')->setAttributes(['placeholder' => 'Cantidad','class' => 'form-control', 'minlength'=>'4' ])); ?>
+				                    </div>
+				                <label for="fieldname" class="col-md-1 control-label">Periodicidad que lo recibe</label>
+				                    <div class="col-md-3">
+				                        <?php echo $this->formRow($economia->get('tiempoIng')->setAttributes(['placeholder' => 'Tiempo','class' => 'form-control', 'minlength'=>'4' ])); ?>
+				                    </div>
+				            </div>
+				            <div class="form-group">
+				                <label class="col-sm-1 control-label">Otras Observaciones</label>
+				                <div class="col-sm-6">
+				                     <?php echo $this->formRow($economia->get('obser1')->setAttributes(['placeholder' => 'Describir cualquier otro detalle y/o observaciones que considere necesario','class' => 'form-control fullscreen'])); ?>
+				                </div>
+				            </div>
+				    </fieldset>
+				<!--El 3er paso será indicar si recibe algun tipo de plan economico el Beneficario-->
+				    <fieldset title="Paso 3">
+				        <legend>Otros Ingresos</legend>
+				            <div class="form-group">
+				                <label for="fieldname" class="col-md-1 control-label">¿Actualmente recibe otro tipo de ayuda Económica?</label>
+				                    <div class="col-sm-1">
+				                        <label class="radio-inline">
+				                            <?php echo $this->formRow($economia->get('ayuda')); ?>
+
+				                        </label>
+				                    </div>
+				                <label for="fieldname" class="col-md-1 control-label">Tipo de Ayuda</label>
+				                    <div class="col-md-3">
+				                        <?php echo $this->formRow($economia->get('tipo')->setAttributes(['placeholder' => 'Planes Sociales/Ayuda Familiar','class' => 'form-control', 'minlength'=>'4' ])); ?>
+				                    </div>
+				                <label for="fieldname" class="col-md-3 control-label">Cantidad aproximada de ayuda Económica</label>
+				                    <div class="col-md-3">
+				                        <?php echo $this->formRow($economia->get('canAyuda')->setAttributes(['placeholder' => 'Cantidad','class' => 'form-control', 'minlength'=>'4' ])); ?>
+				                    </div>
+				            </div>
+				            <div class="form-group">
+				                <label for="fieldname" class="col-md-1 control-label">Periodicidad que lo recibe</label>
+				                    <div class="col-md-3">
+				                        <?php echo $this->formRow($economia->get('tiempoA')->setAttributes(['placeholder' => 'Tiempo','class' => 'form-control', 'minlength'=>'4' ])); ?>
+				                    </div>
+				                <label class="col-sm-2 control-label">Otras Observaciones</label>
+				                <div class="col-sm-6">
+				                     <?php echo $this->formRow($economia->get('obser2')->setAttributes(['placeholder' => 'Describir cualquier otro detalle y/o observaciones que considere necesario','class' => 'form-control fullscreen'])); ?>
+				                </div>
+				            </div>
+				    </fieldset>
+				<!--El 4to paso estara para indicar algun otro detalle que considere necesario-->
+				    <fieldset title="Paso 4">
+				        <legend>Otros Detalles</legend>
+				            <div class="form-group">
+				                <label class="col-sm-3 control-label">Observacion</label>
+				                <div class="col-sm-6">
+				                     <?php echo $this->formRow($economia->get('obser3')->setAttributes(['placeholder' => 'Describir cualquier otro detalle y/o observaciones que considere necesario','class' => 'form-control fullscreen'])); ?>
+				                </div>
+				            </div>
+				    </fieldset>				      
+			        <div class="col-sm-6 col-sm-offset-3">
+			            <div class="btn-toolbar">
+			                <button type="submit" class="finish btn-success btn" value="Submit">Registrar
+			                </button>
+			            </div>
+			        </div>
+				    <?php echo $this->form()->closeTag(); ?> 
+					<!--
+		            <?php //echo $this->formSubmit($form->get('submit')->setAttributes(['class' => 'finish btn-success btn'])); ?>-->
+		            <!--<input type="submit" class="finish btn-success btn" value="Submit" />-->
+
+      
+        		</div>   
+            </div>     
+        </div>
+    </div>
+</div>

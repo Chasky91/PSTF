@@ -46,21 +46,31 @@
                         <?php echo $beneficiario->getTelfben() ?>
                       </td>
                       <td>
-                      <select>
-                      <!--Opcion uno se dirige a Ingresar Nuevo Familiar-->
-                      <option> <a class="btn btn-warning-alt btn-label" href="<?php echo $this->url('nevoFam', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-group"></i>Familia</a> </option> 
-                      <!--Opcion dos se dirige a Ingresar la Situacion Habitacional-->                      
-                        <option><a class="btn btn-warning-alt btn-label" href="#"><i class="fa fa-home"></i>Habitacional</a></option> 
-                      <!--Opcion tres se dirige a Ingresar la Situacion Economica-->
-                       <option><a class="btn btn-warning-alt btn-label" href="#"><i class="fa fa-briefcase"></i>Económica</a></option> 
-                      <!--Opcion cuatro se dirige a Ingresar la Situacion Sanidad-->
-                        <option><a class="btn btn-warning-alt btn-label" href="#"><i class="fa fa-h-square"></i>Sanidad</a></option> 
-                      <!--Opcion cinco se dirige a Modificar Beneficiario-->
-                      <option><a class="btn btn-warning-alt btn-label" href="<?php echo $this->url('modbeneficiario', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-cog"></i>Modificar</a></option>      
-                      <!--Opcion cinco se dirige a Eliminar Beneficiario-->
-                      <option><a class="btn btn-danger-alt btn-label" href="<?php echo $this->url('del-beneficiario', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-times"></i>Eliminar</a></option> 
+                      <div class="btn-group">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                Más <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu" role="menu">
+                                <!--Opcion uno se dirige a Ingresar Nuevo Familiar-->
+                                <li><a  href="<?php echo $this->url('nuevoFam', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-group"></i>Familia</a></li>
 
-                      </select>
+                      <!--Opcion dos se dirige a Ingresar la Situacion Habitacional-->                          
+                                <li><a  href="<?php echo $this->url('nuevoviv', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-home"></i>Habitacional</a></li>
+
+                      <!--Opcion tres se dirige a Ingresar la Situacion Economica-->
+                                <li><a href="<?php echo $this->url('nuevoE', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-briefcase"></i>Económia</a></li>
+
+                      <!--Opcion cuatro se dirige a Ingresar la Situacion Sanidad-->
+                                <li><a href="<?php echo $this->url('nuevo_S', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-h-square"></i>Sanidad</a></li>
+                               
+                                <li class="divider"></li>
+                       <!--Opcion cinco se dirige a Modificar Beneficiario-->
+                                <li><a href="<?php echo $this->url('modbeneficiario', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-cog"></i>Modificar</a></li>
+                        <!--Opcion cinco se dirige a Eliminar Beneficiario-->
+                                <li><a href="<?php echo $this->url('del-beneficiario', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-times"></i>Eliminar</a></li>
+                                
+                              </ul>
+                            </div>
                       </td>
                     </tr>
 

@@ -26,6 +26,7 @@
     <link rel='stylesheet' type='text/css' href='/plugins/form-toggle/toggles.css' />
 
 
+
 </head>
 
 <body class="">
@@ -110,7 +111,15 @@
                         <li><a href="javascript:;">Familia</a>
                             <ul class="acc-menu">
                                 <li><a href="#>">Alta Familia</a></li>
-                                <li><a href="#">Ver Familia</a></li>
+                                <li><a href="<?php echo $this->url('verFam') ?>">Ver Familia</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="acc-menu">
+                        <li><a href="javascript:;">Sanidad</a>
+                            <ul class="acc-menu">
+                                <li><a href="#>">Alta Familia</a></li>
+                                <li><a href="<?php echo $this->url('ver_S') ?>">Ver registro de Sanidad</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -122,7 +131,6 @@
                             </ul>
                         </li>
                  </ul>
-
                 </li> 
                 <li><a href="javascript:;"><i class="fa fa-user"></i> <span>Empleado</span></a>
                     <ul class="acc-menu">

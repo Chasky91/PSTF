@@ -15,10 +15,6 @@ use Application\Entity\Relacion;
 use Application\Admin\Form\FormFam\famForm;
 
 
-use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as DoctrineAdapter;
-use Doctrine\ORM\Tools\Pagination\Paginator as OrmPaginator;
-use Zend\Paginator\Paginator as ZfPaginator;
-
 use Zend\Mvc\MvcEvent;
 use DateTime;
 
@@ -62,10 +58,11 @@ class FamiliaController extends AbstractActionController
                 $familia = new Familia();      
                 $form->bind($familia);
 
-                //Si saco esto de id me salta otro error
+                //Asi capturo el ID de beneficiario y se carga en la base de datos
                  $id=$this->params('id');      
                  $beneficiario=$em->find('Application\Entity\Beneficiario', $id);
-
+                 $familia->setIdben($beneficiario);
+                
         if ($this->request->isPost()) {
                     $form->setData($this->request->getPost());
                     if ($form->isValid()) {
@@ -74,7 +71,7 @@ class FamiliaController extends AbstractActionController
                         // EntityManager aplicame todos los cambios!
                         $em->flush();
 
-                        $this->flashMessenger()->addSuccessMessage('Nuevo Beneficiario registrado!');
+                        $this->flashMessenger()->addSuccessMessage('Familiar registrado!');
                         return $this->redirect()->toRoute('verFam');
                     }
                 }       
@@ -138,7 +135,9 @@ class FamiliaController extends AbstractActionController
                         ->orderBy('b.nroF', 'DESC')
                         ->getQuery();
 
-                $familias = $query->getResult(); //devuelve un arreglo con objetos beneficiario
+                $familias = $query->getResult(); 
+
+                //devuelve un arreglo con objetos beneficiario
                 return new ViewModel([
                     'familias'=>$familias,
                 ]);

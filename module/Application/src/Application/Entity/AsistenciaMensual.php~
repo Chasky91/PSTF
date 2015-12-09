@@ -2,92 +2,30 @@
 namespace Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use DateTime;
 /**
  *
  * @ORM\Entity
  */
 class AsistenciaMensual
 {
-    /** @ORM\Column(type="integer", nullable=false)
-     *  @ORM\Id
+    /** 
+     * @ORM\Column(type="integer", nullable=false)
+     * @ORM\Id
+     */
+    protected  $idPlanilla;
+    /** 
+     * @ORM\Column(type="integer", nullable=false)
      */
     protected $idBenificiario;
     /** @ORM\Column(type="text", nullable=false) */
-    protected $idModulo;
+    protected $detalleEntrega;
     /** @ORM\Column (type="datetime") */
     protected $fechDeEntrega;
 
-
-    /**
-     * Set idBenificiario
-     *
-     * @param integer $idBenificiario
-     *
-     * @return AsistenciaMensual
-     */
-    public function setIdBenificiario($idBenificiario)
-    {
-        $this->idBenificiario = $idBenificiario;
-
-        return $this;
+    public function __construct() {
+         $this->fechDeEntrega = new DateTime();  
     }
 
-    /**
-     * Get idBenificiario
-     *
-     * @return integer
-     */
-    public function getIdBenificiario()
-    {
-        return $this->idBenificiario;
-    }
-
-    /**
-     * Set idModulo
-     *
-     * @param \Text $idModulo
-     *
-     * @return AsistenciaMensual
-     */
-    public function setIdModulo(\Text $idModulo)
-    {
-        $this->idModulo = $idModulo;
-
-        return $this;
-    }
-
-    /**
-     * Get idModulo
-     *
-     * @return \Text
-     */
-    public function getIdModulo()
-    {
-        return $this->idModulo;
-    }
-
-    /**
-     * Set fechDeEntrega
-     *
-     * @param \Datetime $fechDeEntrega
-     *
-     * @return AsistenciaMensual
-     */
-    public function setFechDeEntrega(\Datetime $fechDeEntrega)
-    {
-        $this->fechDeEntrega = $fechDeEntrega;
-
-        return $this;
-    }
-
-    /**
-     * Get fechDeEntrega
-     *
-     * @return \Datetime
-     */
-    public function getFechDeEntrega()
-    {
-        return $this->fechDeEntrega;
-    }
+    
 }

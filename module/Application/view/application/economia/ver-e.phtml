@@ -1,9 +1,9 @@
 <div class="col-md-12">
   <div class="panel panel-sky">
-    <h1>Familias</h1>
+    <h1>Situaciones Económicas</h1>
   
       <div class="panel-heading">
-          <h4>Lista de Familias</h4>
+          <h4>Lista de Situaciones Económicas</h4>
           <div class="options">
               <a href="javascript:;" class="panel-collapse"><i class="fa fa-chevron-down"></i></a>
           </div>
@@ -13,39 +13,48 @@
           <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="example">
               <thead>
                   <tr>
-                        <th>Nro Legajo</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>                                    
-                        <th>DNI</th>
-                        <th>Relacion</th>
+                        <th>Id Sit. Econ.</th>
                         <th>Beneficiario</th>
+                        <th>Trabaja</th>                                    
+                        <th>Último lugar de Trabajo</th>
+                        <th>Ingreso propio</th>
+                        <th>Cantidad ingreso</th>
+                        <th>Ayuda Social</th>
+                        <th>Tipo de ayuda</th>
                         <th>MÁS</th>
-
                     </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($familias as $familia): ?>
+                <?php foreach ($economias as $economia): ?>
                     <tr class="odd gradeX">
                       <td>
-                        <?php echo $familia->getNroF() ?>
+                        <?php echo $economia->getIdEconomia() ?>
                       </td>
                       <td>
-                        <?php echo $familia->getNombre() ?>
+                      <?php $beneficiario = $economia->getBeneficiario() ?>  
+                        <?php echo $beneficiario->getNombre(); echo "  "; echo $beneficiario->getApellido()?>
                       </td>
                       <td>
-                        <?php echo $familia->getApellido() ?>
+                      <!--aqui deberia ir el booleano-->
+                        <?php echo $economia->getTrabajo() ?>
+                      </td>
+                      <td>
+                        <?php echo $economia->getNomTrab() ?>
                       </td>
 
                       <td>
-                        <?php echo $familia->getDni() ?>
+                      <!--aqui deberia ir el booleano-->
+                        <?php echo $economia->getIngreso() ?>
                       </td>
                       <td>
-                      <?php  $relacion = $familia->getRelacion() ?>  
-                        <?php echo $relacion->getDescripcion() ?>
+                        <?php echo $economia->getCanIng() ?>
                       </td>
                       <td>
-                      <?php  $beneficiario = $familia->getIdben() ?>  
-                        <?php echo $beneficiario->getNombre(); echo "  "; echo $beneficiario->getApellido()?>
+                      <!--aqui deberia ir el booleano-->
+                        <?php echo $economia->getAyuda() ?>
+                      </td>
+                      <td>
+                        <?php echo $economia->getTipo() ?>
                       </td>
                       <td>
                            <div class="btn-group">
@@ -56,10 +65,10 @@
                                 <!--Opcion uno se dirige a a la vista de Beneficiario-->
                                 <li><a  href="<?php echo $this->url('ver-beneficiario')?>"><i class="fa fa-group"></i>Ver Beneficiarios</a></li>
                                <li class="divider"></li>
-                       <!--Opcion cinco se dirige a Modificar Familia-->
-                                <li><a href="<?php echo $this->url('modFam', array('id' => $familia->getNroF())) ?>"><i class="fa fa-cog"></i>Modificar</a></li>
-                        <!--Opcion cinco se dirige a Eliminar Familia-->
-                                <li><a href="<?php echo $this->url('delFam', array('id' => $familia->getNroF())) ?>"><i class="fa fa-times"></i>Eliminar</a></li>
+                       <!--Opcion cinco se dirige a Modificar Economia-->
+                                <li><a href="<?php echo $this->url('modE', array('id' => $economia->getIdEconomia())) ?>"><i class="fa fa-cog"></i>Modificar</a></li>
+                        <!--Opcion cinco se dirige a Eliminar Economia-->
+                                <li><a href="<?php echo $this->url('delE', array('id' => $economia->getIdEconomia())) ?>"><i class="fa fa-times"></i>Eliminar</a></li>
                                 
                               </ul>
                             </div>
