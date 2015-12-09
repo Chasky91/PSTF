@@ -23,10 +23,14 @@ class AsistMenController extends AbstractActionController
 
     public function nuevoAction()
     {
-
+        //hardcodeado
+        $id = $this->params('1');
         $em = $this->getEntityManager();
-        //var_dump($em);die;
+        //hardcodeado
+        $asisMen=$em->find('Application\Entity\Beneficiario','1');
         $asisMenForm = new AsisMenForm($em);
+        $asisMenForm->bind($beneficiario);
+        
 
         $asisMen = new AsistenciaMensual();
         $asisMenForm->bind($asisMen);

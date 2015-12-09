@@ -2,22 +2,57 @@
 namespace Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use DateTime;
 /**
  *
  * @ORM\Entity
  */
 class AsistenciaMensual
 {
-    /** @ORM\Column(type="integer", nullable=false)
-     *  @ORM\Id
+    /** 
+     * @ORM\Column(type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     */
+    protected  $idPlanilla;
+    /** 
+     * @ORM\Column(type="integer", nullable=false)
      */
     protected $idBenificiario;
     /** @ORM\Column(type="text", nullable=false) */
-    protected $idModulo;
+    protected $detalleEntrega;
     /** @ORM\Column (type="datetime") */
     protected $fechDeEntrega;
 
+    public function __construct() {
+         $this->fechDeEntrega = new DateTime();  
+    }
+
+    
+
+    /**
+     * Set idPlanilla
+     *
+     * @param integer $idPlanilla
+     *
+     * @return AsistenciaMensual
+     */
+    public function setIdPlanilla($idPlanilla)
+    {
+        $this->idPlanilla = $idPlanilla;
+
+        return $this;
+    }
+
+    /**
+     * Get idPlanilla
+     *
+     * @return integer
+     */
+    public function getIdPlanilla()
+    {
+        return $this->idPlanilla;
+    }
 
     /**
      * Set idBenificiario
@@ -44,37 +79,37 @@ class AsistenciaMensual
     }
 
     /**
-     * Set idModulo
+     * Set detalleEntrega
      *
-     * @param \Text $idModulo
+     * @param string $detalleEntrega
      *
      * @return AsistenciaMensual
      */
-    public function setIdModulo(\Text $idModulo)
+    public function setDetalleEntrega($detalleEntrega)
     {
-        $this->idModulo = $idModulo;
+        $this->detalleEntrega = $detalleEntrega;
 
         return $this;
     }
 
     /**
-     * Get idModulo
+     * Get detalleEntrega
      *
-     * @return \Text
+     * @return string
      */
-    public function getIdModulo()
+    public function getDetalleEntrega()
     {
-        return $this->idModulo;
+        return $this->detalleEntrega;
     }
 
     /**
      * Set fechDeEntrega
      *
-     * @param \Datetime $fechDeEntrega
+     * @param \DateTime $fechDeEntrega
      *
      * @return AsistenciaMensual
      */
-    public function setFechDeEntrega(\Datetime $fechDeEntrega)
+    public function setFechDeEntrega($fechDeEntrega)
     {
         $this->fechDeEntrega = $fechDeEntrega;
 
@@ -84,7 +119,7 @@ class AsistenciaMensual
     /**
      * Get fechDeEntrega
      *
-     * @return \Datetime
+     * @return \DateTime
      */
     public function getFechDeEntrega()
     {

@@ -327,6 +327,9 @@ return array(
                                 ),
                             ),                           
 
+            ///////////////////////
+            //Asistencia mensual//
+            /////////////////////
 //Esto corresponde al modulo de Asistencia mensual
             //aqui entramos a la vista o index de la vista de Asistencia Mensual
             'index_asismen' => array(
@@ -351,9 +354,9 @@ return array(
                     'defaults'=>array(
                         'controller'=>'Application\Controller\AsistMen',
                         'action'=>'nuevo',
-                                    ),
-                                ),
-                            ),
+                        ),
+                    ),
+                ),
 
             //Aqui a la vista de modificar Asistencia Mensual
 
