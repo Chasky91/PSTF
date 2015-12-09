@@ -55,13 +55,13 @@
                                 <li><a  href="<?php echo $this->url('nuevoFam', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-group"></i>Familia</a></li>
 
                       <!--Opcion dos se dirige a Ingresar la Situacion Habitacional-->                          
-                                <li><a  href="#"><i class="fa fa-home"></i>Habitacional</a></li>
+                                <li><a  href="<?php echo $this->url('nuevoviv', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-home"></i>Habitacional</a></li>
 
                       <!--Opcion tres se dirige a Ingresar la Situacion Economica-->
-                                <li><a href="#"><i class="fa fa-briefcase"></i>Económica</a></li>
+                                <li><a href="<?php echo $this->url('nuevoE', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-briefcase"></i>Económia</a></li>
 
                       <!--Opcion cuatro se dirige a Ingresar la Situacion Sanidad-->
-                                <li><a href="<?php echo $this->url('nuevoS', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-h-square"></i>Sanidad</a></li>
+                                <li><a href="<?php echo $this->url('nuevo_S', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-h-square"></i>Sanidad</a></li>
                                
                                 <li class="divider"></li>
                        <!--Opcion cinco se dirige a Modificar Beneficiario-->

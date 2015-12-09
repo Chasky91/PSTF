@@ -1,0 +1,117 @@
+<div class="row">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4>Situación Sanitaria</h4>
+        </div>
+        <div class="panel-body">
+            <p>Se registrara los datos sobre la Situación Sanitaria que tenga el Beneficiario o familiar del mismo</p>
+            <div class="tab-content">
+                <div class="tab-pane active" id="domwizard">
+                    <?php $form->prepare();?>
+                    <?php echo $this->form()->openTag($form->setAttributes(['class' => 'form-horizontal', 'id' => 'wizard'])); ?>  
+                    <?php $sanidad=($form->get('sanidad'));?>
+
+					<!--El 1er paso corresponde a los datos principales q otorga el Beneficiario con respecto de la situacion de Sanitaria-->
+				    <fieldset title="Paso 1">
+				     <legend>Sanidad</legend>
+				            <div class="form-group">
+				                <label class="col-sm-2 control-label">Cobertura de Obra Social</label>
+				                    <div class="col-sm-1">
+				                        <label class="radio-inline">
+				                            <?php echo $this->formRow($sanidad->get('cobertura')); ?>
+
+				                        </label>
+				                    </div>
+				                <label for="fieldname" class="col-md-1 control-label">Nombre de Obra Social</label>
+				                    <div class="col-md-3">
+				                        <?php echo $this->formRow($sanidad->get('obraS')->setAttributes(['placeholder' => 'Obra Social','class' => 'form-control', 'minlength'=>'4' ])); ?>
+				                    </div>
+				                <label for="fieldname" class="col-md-1 control-label">Miembro Poseedor de la Obra Social</label>
+				                    <div class="col-md-3">
+				                        <?php echo $this->formRow($sanidad->get('famOS')->setAttributes(['placeholder' => 'Nombre de Persona con Obra Social','class' => 'form-control', 'minlength'=>'4' ])); ?>
+				                    </div>
+				            </div>
+				            <div class="form-group">
+				                <label class="col-sm-2 control-label">Atención en el Hospital de Catriel</label>
+				                    <div class="col-sm-1">
+				                        <label class="radio-inline">
+				                            <?php echo $this->formRow($sanidad->get('atenHC')); ?>
+				                        </label>
+				                    </div>
+				                <label class="col-sm-2 control-label">Atención en otros Centros de Salud</label>
+				                    <div class="col-sm-1">
+				                        <label class="radio-inline">
+				                            <?php echo $this->formRow($sanidad->get('otroCS')); ?>
+				                        </label>
+				                    </div>
+				               <label for="fieldname" class="col-md-1 control-label">Nombre del Centro de Salud</label>
+				                    <div class="col-md-3">
+				                        <?php echo $this->formRow($sanidad->get('nomCS')->setAttributes(['placeholder' => 'Nombre del Centro de Salud','class' => 'form-control', 'minlength'=>'4' ])); ?>
+				                    </div>
+				            </div>
+				    </fieldset>
+				<!--El 2do paso es corresponde a la discapacidad-->
+				    <fieldset title="Paso 2">
+				        <legend>Discapacidad</legend>
+				            <div class="form-group">
+				                <label class="col-sm-2 control-label">¿Tiene um miebro Familiar con discapacidad?</label>
+				                    <div class="col-sm-1">
+				                        <label class="radio-inline">
+				                            <?php echo $this->formRow($sanidad->get('discapacidad')); ?>
+				                        </label>
+				                    </div>             
+				                <label for="fieldname" class="col-md-1 control-label">Nombre y Apellido</label> 
+				                    <div class="col-md-2">
+				                        <?php echo $this->formRow($sanidad->get('famDisc')->setAttributes(['placeholder' => 'Nombre de la Persona con Discapacidad','class' => 'form-control', 'minlength'=>'4'])); ?>
+				                    </div>
+				                <label for="fieldname" class="col-md-1 control-label">Tipo de Discapacidad</label> 
+				                    <div class="col-md-2">
+				                        <?php echo $this->formRow($sanidad->get('tipo')->setAttributes(['placeholder' => 'Tipo de Discapacidad','class' => 'form-control', 'minlength'=>'4'])); ?>
+				                    </div> 
+				                <label class="col-sm-1 control-label">¿Posee Certificado unico de Discapacidad?</label>
+				                    <div class="col-sm-1">
+				                        <label class="radio-inline">
+				                            <?php echo $this->formRow($sanidad->get('certificado')); ?>
+				                        </label>
+				                    </div> 
+				            </div>              
+				    </fieldset>
+				<!--El 3do paso es corresponde a los detalles de la enfermedad, repercusion o medicacion-->
+				    <fieldset title="Paso 3">
+				        <legend>Detalles</legend>
+				            <div class="form-group">
+				                <label class="col-sm-3 control-label">Detalles de la Enfermedad</label>
+				                <div class="col-sm-6">
+				                     <?php echo $this->formRow($sanidad->get('detalles')->setAttributes(['placeholder' => 'Describir detalles de la enfermedad, repercusion en la familia, tipo de medicacion...etc','class' => 'form-control fullscreen'])); ?>
+				                </div>
+				            </div>
+				                
+				    </fieldset>
+				<!--El 4er paso será otras obserciones que considere necesario el/la Asistente Social-->
+				    <fieldset title="Paso 4">
+				        <legend>Observación</legend>
+				            <div class="form-group">
+				                <label class="col-sm-3 control-label">Otras Observaciones</label>
+				                <div class="col-sm-6">
+				                     <?php echo $this->formRow($sanidad->get('observacion')->setAttributes(['placeholder' => 'Describir cualquier otro detalle y/o observaciones que considere necesario','class' => 'form-control fullscreen'])); ?>
+				                </div>
+				            </div>
+				          
+				    </fieldset> 
+			        <div class="col-sm-6 col-sm-offset-3">
+			            <div class="btn-toolbar">
+			                <button type="submit" class="finish btn-success btn" value="Submit">Registrar
+			                </button>
+			            </div>
+			        </div>
+				    <?php echo $this->form()->closeTag(); ?> 
+					<!--
+		            <?php //echo $this->formSubmit($form->get('submit')->setAttributes(['class' => 'finish btn-success btn'])); ?>-->
+		            <!--<input type="submit" class="finish btn-success btn" value="Submit" />-->
+
+      
+        		</div>   
+            </div>     
+        </div>
+    </div>
+</div>

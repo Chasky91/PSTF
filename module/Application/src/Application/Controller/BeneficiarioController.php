@@ -7,6 +7,7 @@ use Zend\View\Model\ViewModel;
 use Zend\View\Model\JsonModel;
 
 use Application\Entity\Beneficiario;
+use Application\Entity\Sanidad;
 use Application\Entity\EstadoCivil;
 use Application\Entity\Educacion;
 use Application\Entity\Profesion;
@@ -53,26 +54,27 @@ class BeneficiarioController extends AbstractActionController
     {    
        
         $em = $this->getEntityManager(); //obtengo mi EM             
-                $form = new nuevobForm($em); //creo el objeto  formulario  
-                $beneficiario = new Beneficiario();      
-                $form->bind($beneficiario);
+        $form = new nuevobForm($em); //creo el objeto  formulario  
+        $beneficiario = new Beneficiario();      
+        $form->bind($beneficiario);
 
         if ($this->request->isPost()) {
-                    $form->setData($this->request->getPost());
-                    if ($form->isValid()) {
-                        // EntityManager guardame el apunte
-                        
-                        $em->persist($beneficiario);
-                        // EntityManager aplicame todos los cambios!
-                        $em->flush();
+            //var_dump("llego"); die;
+            $form->setData($this->request->getPost());
+            if ($form->isValid()) {
+                // EntityManager guardame el apunte
+                
+                $em->persist($beneficiario);
+                // EntityManager aplicame todos los cambios!
+                $em->flush();
 
-                        $this->flashMessenger()->addSuccessMessage('Nuevo Beneficiario registrado!');
-                        return $this->redirect()->toRoute('ver-beneficiario');
-                    }
-                }       
-                return new ViewModel(array(
-                    'form' => $form,
-                ));
+                $this->flashMessenger()->addSuccessMessage('Nuevo Beneficiario registrado!');
+                return $this->redirect()->toRoute('ver-beneficiario');
+            }
+        }       
+        return new ViewModel(array(
+            'form' => $form,
+        ));
     }
 
     public function verbenfAction()

@@ -115,21 +115,7 @@ class famFieldset extends  Fieldset
                     ],
             ]);
 
-/*
-            $this->add([
-            'type' => 'DoctrineModule\Form\Element\ObjectSelect',
-            //Este es el nombre que tendra la etiqueta de select
-            'name' => 'idben',
-            'options' => [
-                'object_manager' => $em,
-                //Aqui lo dirigimos a la carpeta de la entidad
-                'target_class' => 'Application\Entity\beneficiario',
-                //Aqui debo poner el nombre de lo que voy a mostrar, en este caso la descirpcion
-                'property' => 'idBeneficiario',
-                //'label' => 'Categoria:',
-                    ],
-            ]);
-*/
+
 
 	}		
 }

@@ -81,6 +81,7 @@ class Beneficiario
     private $fechaAlta;
 
 
+
     public function __construct()
     {
 

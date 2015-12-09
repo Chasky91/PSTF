@@ -1,0 +1,99 @@
+<!--Se modificaran todos los valores del Familiar-->
+<div class="container">
+        <h1>Modificar Registro de Situación Económica</h1>
+    <div class="col-xs-12">
+        <div class="panel panel-midnightblue">
+            <div class="panel-heading"><h4>Registro de Situación Económica del Beneficiario</h4></div>
+                <div class="panel-body">
+                    <?php $form->prepare();?>
+                        <?php echo $this->form()->openTag($form->setAttributes(['class' => 'form-horizontal', 'data-validate' => 'parsley', 'id' => 'validate-form'])); ?>  
+                             <?php $economia=($form->get('economia'));?>
+<!--Datos de la situacion economica-->
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">¿Trabaja actualmente?</label>
+                                <div class="col-sx-1">
+                                    <label class="radio-inline">
+				                        <?php echo $this->formRow($economia->get('trabajo')); ?>
+
+                                    </label>
+                                </div>
+
+                            <label class="col-sm-2 control-label">Nombre del ultimo lugar de trabajo</label>
+                                <div class="col-sm-3">
+				                    <?php echo $this->formRow($economia->get('nomTrab')->setAttributes(['placeholder' => 'Lugar en que Trabaja o Trabajo','class' => 'form-control', 'ata-minlength' => '1' ])); ?>
+                                </div>
+                        </div>
+<!--Datos sobre el ingreso que tiene-->
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">¿Esta recibiendo algún Ingreso Económico?</label>
+                                <div class="col-sx-1">
+                                    <label class="radio-inline">
+				                        <?php echo $this->formRow($economia->get('ingreso')); ?>
+                                    </label>
+                                </div>
+                            <label class="col-sm-2 control-label">Cantidad aproximada de Ingreso Económico</label>
+                                <div class="col-sm-2">
+                                    <?php echo $this->formRow($economia->get('canIng')->setAttributes(['placeholder' => 'Cantidad','class' => 'form-control', 'ata-minlength' => '2' ])); ?>
+                                </div>
+                            <label class="col-sm-2 control-label">Periodicidad que lo recibe</label>
+                                <div class="col-sm-3">
+                                   <?php echo $this->formRow($economia->get('tiempoIng')->setAttributes(['placeholder' => 'Tiempo','class' => 'form-control', 'ata-minlength' => '1' ])); ?>
+                                </div>                                  
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">Otras Observaciones Sobre los Ingresos</label>
+                                <div class="col-sm-6">
+				                    <?php echo $this->formRow($economia->get('obser1')->setAttributes(['placeholder' => 'Describir cualquier otro detalle y/o observaciones que considere necesario','class' => 'form-control fullscreen'])); ?>
+                                </div>
+                        </div>                        
+<!--Datos de otros tipos de ingreso-->
+                        <div class="form-group">
+	                        <label class="col-sm-1 control-label">¿Actualmente recibe otro tipo de ayuda Económica?</label>
+	                            <div class="col-sx-1">
+	                               	<label class="radio-inline">
+					                   	<?php echo $this->formRow($economia->get('ayuda')); ?>
+	                 				</label>
+	                            </div>  
+		                    <label class="col-sm-2 control-label">Tipo de Ayuda</label> 
+		                        <div class="col-sm-2">
+						            <?php echo $this->formRow($economia->get('tipo')->setAttributes(['placeholder' => 'Planes Sociales/Ayuda Familiar','class' => 'form-control','ata-minlength' => '2'])); ?>
+		                        </div>
+	                       	<label class="col-sm-2 control-label">Cantidad aproximada de ayuda Económica</label>
+	                           	<div class="col-sm-2">
+				                    <?php echo $this->formRow($economia->get('canAyuda')->setAttributes(['placeholder' => 'Cantidad','class' => 'form-control','ata-minlength' => '2'])); ?>
+	                           	</div>
+	                    </div>
+	                    <div class="form-group">	
+	                       	<label class="col-sm-1 control-label">Periodicidad que lo recibe</label>
+	                           	<div class="col-sm-2">
+				                    <?php echo $this->formRow($economia->get('tiempoA')->setAttributes(['placeholder' => 'Tiempo','class' => 'form-control', 'ata-minlength' => '1' ])); ?>
+                               	</div>                                  
+		                </div>
+	                    <div class="form-group">
+	                        <label class="col-sm-1 control-label">Otras Observaciones sobre la ayuda Social</label>
+	                            <div class="col-sm-6">
+				                    <?php echo $this->formRow($economia->get('obser2')->setAttributes(['placeholder' => 'Describir cualquier otro detalle y/o observaciones que considere necesario','class' => 'form-control fullscreen'])); ?>
+	                            </div>
+                       	</div> 
+<!--Otras observaciones-->
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">Observacion Generales</label>
+                                <div class="col-sm-6">
+				                     <?php echo $this->formRow($economia->get('obser3')->setAttributes(['placeholder' => 'Describir cualquier otro detalle y/o observaciones que considere necesario','class' => 'form-control fullscreen'])); ?>
+                                 </div>
+                        </div>
+<!--Inicia del boton-->
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <div class="btn-toolbar">
+                                <button type="submit" class="btn-primary btn" >Guardar Cambios</button>
+                            </div>
+                        </div>
+                    </div>
+                    <?php echo $this->form()->closeTag(); ?> 
+                </div>
+<!--Finaliza Boton-->
+            </div>
+        </div>
+</div>
