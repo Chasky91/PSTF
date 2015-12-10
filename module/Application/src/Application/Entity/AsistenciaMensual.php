@@ -10,15 +10,14 @@ use DateTime;
 class AsistenciaMensual
 {
     /** 
-     * @ORM\Column(type="integer", nullable=false)
+     * @ORM\Column(type="integer", nullable=false) 
      * @ORM\Id
-     * @ORM\GeneratedValue
      */
-    protected  $idPlanilla;
-    /** 
-     * @ORM\Column(type="integer", nullable=false)
+    protected  $idRegistro;
+    /**
+     * @ORM\OneToMany(targetEntity="Beneficiario", mappedBy="idBeneficiario")
      */
-    protected $idBenificiario;
+    protected $benificiarioId;
     /** @ORM\Column(type="text", nullable=false) */
     protected $detalleEntrega;
     /** @ORM\Column (type="datetime") */
@@ -28,54 +27,18 @@ class AsistenciaMensual
          $this->fechDeEntrega = new DateTime();  
     }
 
+
+
     
 
     /**
-     * Set idPlanilla
-     *
-     * @param integer $idPlanilla
-     *
-     * @return AsistenciaMensual
-     */
-    public function setIdPlanilla($idPlanilla)
-    {
-        $this->idPlanilla = $idPlanilla;
-
-        return $this;
-    }
-
-    /**
-     * Get idPlanilla
+     * Get idRegistro
      *
      * @return integer
      */
-    public function getIdPlanilla()
+    public function getIdRegistro()
     {
-        return $this->idPlanilla;
-    }
-
-    /**
-     * Set idBenificiario
-     *
-     * @param integer $idBenificiario
-     *
-     * @return AsistenciaMensual
-     */
-    public function setIdBenificiario($idBenificiario)
-    {
-        $this->idBenificiario = $idBenificiario;
-
-        return $this;
-    }
-
-    /**
-     * Get idBenificiario
-     *
-     * @return integer
-     */
-    public function getIdBenificiario()
-    {
-        return $this->idBenificiario;
+        return $this->idRegistro;
     }
 
     /**
@@ -124,5 +87,39 @@ class AsistenciaMensual
     public function getFechDeEntrega()
     {
         return $this->fechDeEntrega;
+    }
+
+    /**
+     * Add benificiarioId
+     *
+     * @param \Application\Entity\Beneficiario $benificiarioId
+     *
+     * @return AsistenciaMensual
+     */
+    public function addBenificiarioId(\Application\Entity\Beneficiario $benificiarioId)
+    {
+        $this->benificiarioId[] = $benificiarioId;
+
+        return $this;
+    }
+
+    /**
+     * Remove benificiarioId
+     *
+     * @param \Application\Entity\Beneficiario $benificiarioId
+     */
+    public function removeBenificiarioId(\Application\Entity\Beneficiario $benificiarioId)
+    {
+        $this->benificiarioId->removeElement($benificiarioId);
+    }
+
+    /**
+     * Get benificiarioId
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBenificiarioId()
+    {
+        return $this->benificiarioId;
     }
 }

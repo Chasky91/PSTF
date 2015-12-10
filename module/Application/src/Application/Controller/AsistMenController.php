@@ -18,6 +18,17 @@ class AsistMenController extends AbstractActionController
                                                 
     public function indexAction()
     {
+        $em = $this->getEntityManager();
+        $query = $em->createQueryBuilder()
+                ->select('am')
+                ->from('Application\Entity\AsistenciaMensual', 'am')
+                ->orderBy('am.IdPlanilla', 'DESC')
+                ->getQuery();
+        $registros = $query->getResult();
+        
+        return new ViewModel([
+            'registros'=>$registros,
+        ]);
         return new ViewModel();
     }
 
@@ -26,20 +37,20 @@ class AsistMenController extends AbstractActionController
         //hardcodeado
         $id = $this->params('id');
         $em = $this->getEntityManager();
-        //hardcodeado
-        $beneficiario=$em->find('Application\Entity\Beneficiario','id');
+        $beneficiario = $em->find('Application\Entity\Beneficiario', $id);  
         $asisMen = new AsistenciaMensual();
         $asisMenForm = new AsisMenForm($em);
         $asisMenForm->bind($asisMen);     
-
+        
+          
         if($this->request->isPost()) {
             $asisMenForm->setData($this->request->getPost());
-            if($asisMenForm->isValid) {
+            if($asisMenForm->isValid()) {
                 $em->persist($asisMen);
                 $em->flush();
 
                 $this->flashMessenger()->addSuccessMessage('Registro de asistencia guardado');
-                return $this->redirect()->toRoute();
+                //return $this->redirect()->toRoute();
             }
         }
 

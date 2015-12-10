@@ -16,54 +16,19 @@ class AsisMenFieldset extends Fieldset {
                 ->setObject(new AsistenciaMensual());
         $this->add([
             'name' => 'idBenificiario',
-            'type' => 'Text',
+            'type' => 'Zend\Form\Element\Hidden',
             'attributes' => [
                 'required' => 'required',
             ],
         ]);
-        
+
         $this->add([
             'name' => 'detalleEntrega',
             'type' => 'Text',
             'attributes' => [
-                'required' => 'required',
+                'required' => 'required'                
             ],
-        ]);
 
-        $this->add([
-            'type' => 'DoctrineModule\Form\Element\ObjectSelect',
-            'name' => 'modulo',
-            'options' => [
-                'object_manager' => $em,
-                'target_class' => 'Application\Entity\Modulo',
-                'property' => 'nombre',
-            ],
-            'attributes' => [
-                  'required' => 'required',
-             ],
-
-        ]); 
-
-        $this->add([
-            'type' => 'DoctrineModule\Form\Element\ObjectSelect',
-            'name' => 'sector',
-            'options' => [
-                'object_manager' => $em,
-                'target_class' => 'Application\Entity\Producto',
-                'property' => 'nombre',
-            ],
-            'attributes' => [
-                  'required' => 'required',
-             ],
-
-        ]);
-
-        $this->add([
-            'name' => 'otro',
-            'type' => 'Text',
-            'attributes' => [
-                'required' => 'required',
-            ],
         ]); 
 
  

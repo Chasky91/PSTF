@@ -14,37 +14,20 @@
 
                 <?php $form->prepare(); ?>
                     <?php echo $this->form()->openTag($form->setAttributes(['class' => 'form-horizontal row-border', 'data-validate' => 'parsley', 'id' => 'validate-form'])); ?> 
-                    <?php $empleado = $form->get('asistenciamensual'); ?>
-                    
+                    <?php $asisMen = $form->get('asistenciamensual');?>
+                   
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">
-                            Detalle de entrega
-                        </label>
-                        <div class="col-sm-6">
-                            <?php echo $this->formRow($empleado->get('detalleEntrega')->setAttributes([ 'ata-minlength' => '1', 'required' => 'required', 'class' => 'form-control'])); ?>
-                        </div>
+                        <div class="col-sm-3">
+                            <?php echo $this->formRow($asisMen->get('idBenificiario')->setAttributes(['required' => 'required','value'=>$beneficiario->getIdBeneficiario()])); ?>
+                        </div>                    
                     </div> 
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Radio</label>
-                        <div class="col-sm-6">
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                                    <div class="col-sm-6">
-                                    <?php echo $this->formRow($empleado->get('modulo')->setAttributes([ 'ata-minlength' => '1', 'required' => 'required', 'class' => 'form-control'])); ?>
-                                    </div>
-                                </input>
-                              </label>
-                            </div>
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                                Option two can be something else
-                              </label>
-                            </div>
-                        </div>
-                    </div>   
-                      
+                        <label for="fieldname" class="col-md-1 control-label">Detalle de Entrega</label>
+                        <div class="col-sm-3">
+                            <?php echo $this->formRow($asisMen->get('detalleEntrega')->setAttributes(['required' => 'required','class' => 'form-control', 'minlength'=>'4'])); ?>
+                        </div>                    
+                    </div> 
+
             </div>
             <div class="panel-footer">
                 <div class="row">
@@ -57,5 +40,6 @@
                 <?php echo $this->form()->closeTag(); ?> 
             </div>
         </div>
+
     </div>
 </div>
