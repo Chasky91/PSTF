@@ -1,3 +1,257 @@
-Module: Application
-Controller: Vivienda
-Action: modviv
+<!--Se modificaran todos los valores del Familiar-->
+<div class="container">
+        <h1>Modificar Registro de Situación Habitacional</h1>
+    <div class="col-xs-12">
+        <div class="panel panel-midnightblue">
+            <div class="panel-heading"><h4>Registro de Situación Habitacional del Beneficiario</h4></div>
+                <div class="panel-body">
+                    <?php $form->prepare();?>
+                        <?php echo $this->form()->openTag($form->setAttributes(['class' => 'form-horizontal', 'data-validate' => 'parsley', 'id' => 'validate-form'])); ?>  
+                             <?php $vivienda=($form->get('vivienda'));?>
+<!--El 1er paso corresponde a los datos principales q otorga el Beneficiario con respecto de la situacion de Habitacional-->
+                        <div class="form-group">
+				            <label class="col-sm-1 control-label">Tipo de Tenencia</label>
+				                <div class="col-sm-3">
+				                        <?php echo $this->formRow($vivienda->get('tenencia')->setAttributes(['required' => 'required', 'class' => 'form-control'])); ?>
+				            	</div>  
+				        </div>    	                      
+                        <div class="form-group">
+                        	<label class="col-sm-1 control-label">Monto de Alquiler</label>
+				                    <div class="col-sm-2">
+				                        <?php echo $this->formRow($vivienda->get('montAlq')->setAttributes(['placeholder' => 'Monto','class' => 'form-control', 'ata-minlength'=>'4' ])); ?>
+				                    </div>
+				                <label class="col-sm-1 control-label">Propietario</label>
+				                    <div class="col-sm-2">
+				                        <?php echo $this->formRow($vivienda->get('propAlq')->setAttributes(['placeholder' => 'Nombre del Propietario','class' => 'form-control'])); ?>
+				                    </div>                   
+				                <label class="col-sm-1 control-label">Tiepo de Alquiler</label>
+				                    <div class="col-sm-2">
+				                        <?php echo $this->formRow($vivienda->get('tiemAlq')->setAttributes(['placeholder' => 'Tiempo aproximadosmclass', 'class' => 'form-control', 'ata-minlength'=>'4'])); ?>
+				                    </div>      
+				                <label class="col-sm-1 control-label">Cedida por</label>
+				                    <div class="col-sm-2">
+				                        <?php echo $this->formRow($vivienda->get('cedida')->setAttributes(['placeholder' => 'Nombre de la persona','class' => 'form-control', 'ata-minlength'=>'4'])); ?>
+				                    </div>	
+				        </div>
+                        <div class="form-group">
+				                <label class="col-sm-1 control-label">Terreno Propio</label>
+				                    <div class="col-sm-1">
+				                        <label class="radio-inline">
+				                            <?php echo $this->formRow($vivienda->get('terrPropio')); ?>
+
+				                        </label>
+				                    </div>
+				                <label class="col-sm-2 control-label"> El terreno se encuentra pago</label>
+				                    <div class="col-sm-1">
+				                        <label class="radio-inline">
+				                            <?php echo $this->formRow($vivienda->get('terrPago')); ?>
+
+				                        </label>
+				                    </div>
+				                <label class="col-sm-1 control-label">Tiene Escritura</label>
+				                    <div class="col-sm-1">
+				                        <label class="radio-inline">
+				                            <?php echo $this->formRow($vivienda->get('escritura')); ?>
+
+				                        </label>
+				                    </div>	                        
+				        </div>            
+                        <div class="form-group">
+					                <label class="col-sm-1 control-label">¿Posee Automóvil?</label>
+					                    <div class="col-sm-1">
+					                        <label class="radio-inline">
+					                            <?php echo $this->formRow($vivienda->get('auto')); ?>
+					                        </label>
+					                    </div>    
+				                <label class="col-sm-1 control-label">Modelo</label>
+				                    <div class="col-sm-2">
+				                        <?php echo $this->formRow($vivienda->get('modelo')->setAttributes(['placeholder' => 'Modelo','class' => 'form-control', 'ata-minlength'=>'4' ])); ?>
+				                    </div>					        
+				                <label class="col-sm-1 control-label">Año</label>
+				                    <div class="col-sm-2">
+				                        <?php echo $this->formRow($vivienda->get('año')->setAttributes(['placeholder' => 'Año','class' => 'form-control', 'ata-minlength'=>'4' ])); ?>
+				                    </div>	
+				        </div>
+					    <div class="form-group">
+					                <label class="col-sm-1 control-label">¿Otras propiedades?</label>
+					                    <div class="col-sm-1">
+					                        <label class="radio-inline">
+					                            <?php echo $this->formRow($vivienda->get('otraPropiedad')); ?>
+					                        </label>
+					                    </div>    
+				        </div>
+					    <div class="form-group">      
+				                <label class="col-sm-2 control-label">Detalle de otros tipo de propiedades</label>
+				                <div class="col-sm-6">
+				                     <?php echo $this->formRow($vivienda->get('detalleprop')->setAttributes(['placeholder' => 'Describir cualquier otro detalle y/o observaciones que considere necesario','class' => 'form-control fullscreen'])); ?>
+				                </div>						                
+				        </div>
+<!--Datos que corresponde a Ambiente y Mobiliario-->
+				            <div class="form-group">
+				                <label class="col-sm-2 control-label">¿Cuántas habitaciones para dormir posee?</label>
+				                    <div class="col-sm-2">
+				                        <?php echo $this->formRow($vivienda->get('habitacion')->setAttributes(['placeholder' => 'Habitaciones para dormir','class' => 'form-control', 'ata-minlength'=>'4' ])); ?>
+				                    </div>
+				                <label  class="col-sm-1 control-label">Piezas en total</label>
+				                    <div class="col-sm-2">
+				                        <?php echo $this->formRow($vivienda->get('pieza')->setAttributes(['placeholder' => 'Cantidad de Piezas sin contar cocina y baño','class' => 'form-control'])); ?>
+				                    </div>                    				                                  
+				            </div>					            
+				            <div class="form-group">
+				                <label class="col-sm-1 control-label">¿Tiene baño?</label>
+				                    <div class="col-sm-1">
+				                        <label class="radio-inline">
+				                            <?php echo $this->formRow($vivienda->get('baño')); ?>
+				                        </label>
+				                    </div> 
+				                <label class="col-sm-2 control-label">¿Posee botón de desague el inodoro?</label>
+				                    <div class="col-sm-1">
+				                        <label class="radio-inline">
+				                            <?php echo $this->formRow($vivienda->get('boton')); ?>
+				                        </label>
+				                    </div>  
+				                <label class="col-sm-1 control-label">El Desague es por</label>
+				                    <div class="col-sm-3">
+				                        <?php echo $this->formRow($vivienda->get('desagote')->setAttributes(['required' => 'required', 'class' => 'form-control'])); ?>
+				            		</div>
+				            </div>
+				            <div class="form-group">				            				      				
+				                <label class="col-sm-1 control-label">¿El baño es sólo usado por el hogar?</label>
+				                    <div class="col-sm-1">
+				                        <label class="radio-inline">
+				                            <?php echo $this->formRow($vivienda->get('uso')); ?>
+				                        </label>
+				                    </div> 
+				                <label class="col-sm-3 control-label">¿El baño se encuentra en forma interna/externa de la vivienda?</label>
+				                    <div class="col-sm-2">
+				                        <?php echo $this->formRow($vivienda->get('ubicacion')->setAttributes(['placeholder' => 'Es interno/externo','class' => 'form-control', 'ata-minlength'=>'4' ])); ?>
+				                    </div>
+				                <label  class="col-sm-2 control-label">¿Cómo ésta el estado del baño?</label>
+				                    <div class="col-sm-2">
+				                        <?php echo $this->formRow($vivienda->get('estado')->setAttributes(['placeholder' => 'Instalado/Semi-instalado','class' => 'form-control'])); ?>
+				                    </div> 
+				            </div>	
+				            <div class="form-group">
+				                <label class="col-sm-1 control-label">¿Posee Camas?</label>
+				                    <div class="col-sm-1">
+				                        <label class="radio-inline">
+				                            <?php echo $this->formRow($vivienda->get('cama')); ?>
+				                        </label>
+				                    </div> 
+				                <label class="col-sm-2 control-label">¿Cuantas camas tiene?</label>
+				                    <div class="col-sm-2">
+				                        <?php echo $this->formRow($vivienda->get('camcant')->setAttributes(['placeholder' => 'Es interno/externo','class' => 'form-control', 'ata-minlength'=>'4' ])); ?>
+				                    </div>
+				            </div>					            			
+				            <div class="form-group">
+				                <label class="col-sm-1 control-label">¿Mesas y Sillas?</label>
+				                    <div class="col-sm-1">
+				                        <label class="radio-inline">
+				                            <?php echo $this->formRow($vivienda->get('mesa')); ?>
+				                        </label>
+				                    </div> 
+				                <label class="col-sm-1 control-label">¿Cocina?</label>
+				                    <div class="col-sm-1">
+				                        <label class="radio-inline">
+				                            <?php echo $this->formRow($vivienda->get('cocina')); ?>
+				                        </label>
+				                    </div> 
+				                <label class="col-sm-1 control-label">Heladera?</label>
+				                    <div class="col-sm-1">
+				                        <label class="radio-inline">
+				                            <?php echo $this->formRow($vivienda->get('heladera')); ?>
+				                        </label>
+				                    </div>
+				            </div> 
+				            <div class="form-group">
+				                <label class="col-sm-2 control-label">Observaciones de Ambiente y Mobiliario</label>
+				                <div class="col-sm-6">
+				                     <?php echo $this->formRow($vivienda->get('obser1')->setAttributes(['placeholder' => 'Describir cualquier otro detalle y/o observaciones que considere necesario','class' => 'form-control fullscreen'])); ?>
+				                </div>
+				            </div>	
+
+<!--Datos corresponde a los servicios basicos de debería tener la vivienda-->
+					        <div class="form-group">
+					                <label class="col-sm-1 control-label">Electricidad</label>
+					                    <div class="col-sm-1">
+					                        <label class="radio-inline">
+					                            <?php echo $this->formRow($vivienda->get('luz')); ?>
+					                        </label>
+					                    </div>
+					                <label class="col-sm-2 control-label">¿Por cual medio?</label>   
+						        		<div class="col-sm-3">
+					                        <?php echo $this->formRow($vivienda->get('medio')->setAttributes(['required' => 'required', 'class' => 'form-control'])); ?>
+					            		</div>            
+					        </div>
+					        <div class="form-group">
+					                <label class="col-sm-1 control-label">Agua</label>
+					                    <div class="col-sm-1">
+					                        <label class="radio-inline">
+					                            <?php echo $this->formRow($vivienda->get('agua')); ?>
+					                        </label>
+					                    </div>
+					                <label class="col-sm-2 control-label">Es Obtenida por</label>   
+						        		<div class="col-sm-3">
+					                        <?php echo $this->formRow($vivienda->get('obtenida')->setAttributes(['required' => 'required', 'class' => 'form-control'])); ?>
+					            		</div>
+					                <label class="col-sm-1 control-label">¿Proviene de?</label>   
+						        		<div class="col-sm-3">
+					                        <?php echo $this->formRow($vivienda->get('proveniente')->setAttributes(['required' => 'required', 'class' => 'form-control'])); ?>
+					            		</div>	
+					        </div>    						            		            
+					        <div class="form-group">
+					                <label class="col-sm-1 control-label">Gas</label>
+					                    <div class="col-sm-1">
+					                        <label class="radio-inline">
+					                            <?php echo $this->formRow($vivienda->get('gas')); ?>
+					                        </label>
+					                    </div>
+					                <label class="col-sm-2 control-label">¿Qué medio utiliza?</label>   
+						        		<div class="col-sm-3">
+					                        <?php echo $this->formRow($vivienda->get('utiliza')->setAttributes(['required' => 'required', 'class' => 'form-control'])); ?>
+					            		</div>            
+					        </div>
+
+<!--Datos 4to será sobre el tipo de contruccion de la vivienda-->
+					        <div class="form-group">
+					                <label class="col-sm-1 control-label">La pared es de</label>   
+						        		<div class="col-sm-2">
+					                        <?php echo $this->formRow($vivienda->get('pared')->setAttributes(['required' => 'required', 'class' => 'form-control'])); ?>
+					            		</div>            
+					        
+					                <label class="col-sm-2 control-label">Material predominante del piso</label>   
+						        		<div class="col-sm-2">
+					                        <?php echo $this->formRow($vivienda->get('piso')->setAttributes(['required' => 'required', 'class' => 'form-control'])); ?>
+					            		</div> 
+					        </div>    		
+					        <div class="form-group">					          		
+					                <label class="col-sm-1 control-label">El techo es de</label>   
+						        		<div class="col-sm-2">
+					                        <?php echo $this->formRow($vivienda->get('techo')->setAttributes(['required' => 'required', 'class' => 'form-control'])); ?>
+					            		</div>	
+					                <label class="col-sm-2 control-label">El Cielo Razo es de</label>   
+						        		<div class="col-sm-2">
+					                        <?php echo $this->formRow($vivienda->get('cielrazo')->setAttributes(['required' => 'required', 'class' => 'form-control'])); ?>
+					            		</div>            
+					        </div>	
+				            <div class="form-group">
+				                <label class="col-sm-2 control-label">Observaciones de la Construcción</label>
+				                <div class="col-sm-6">
+				                     <?php echo $this->formRow($vivienda->get('obser2')->setAttributes(['placeholder' => 'Describir cualquier otro detalle y/o observaciones que considere necesario','class' => 'form-control fullscreen'])); ?>
+				                </div>
+				            </div>
+<!--Inicia del boton-->
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <div class="btn-toolbar">
+                                <button type="submit" class="btn-primary btn" >Guardar Cambios</button>
+                            </div>
+                        </div>
+                    </div>
+                    <?php echo $this->form()->closeTag(); ?> 
+                </div>
+<!--Finaliza Boton-->
+            </div>
+        </div>
+</div>

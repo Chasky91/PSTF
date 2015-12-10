@@ -21,12 +21,12 @@ class Profesion
     protected $descripcion;
 
     /**                                                                                          
-     * @ORM\OneToMany(targetEntity="Beneficiario", mappedBy="idBeneficiario")
+     * @ORM\OneToMany(targetEntity="Beneficiario", mappedBy="profession")
      * */
     protected $idBeneficiario;
 
     /**
-    * @ORM\OnetoMany(targetEntity="Familia", mappedBy="nroF")
+    * @ORM\OnetoMany(targetEntity="Familia", mappedBy="profession")
     **/
     protected $nroF;
 

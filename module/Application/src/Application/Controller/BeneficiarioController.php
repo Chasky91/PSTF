@@ -26,7 +26,7 @@ use DateTime;
 
 class BeneficiarioController extends AbstractActionController
 {
-    /*public function __construct()
+    public function __construct()
     {
         $events = $this->getEventManager();
         $events->attach(MvcEvent::EVENT_DISPATCH, array($this, 'checkLogin'));
@@ -38,7 +38,7 @@ class BeneficiarioController extends AbstractActionController
         if (!$authService->getIdentity()) {
             return $this->redirect()->toRoute('login');
         }
-    }*/
+    }
 
      protected function getEntityManager()
     {

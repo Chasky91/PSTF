@@ -21,7 +21,7 @@ class Pared
     /** @ORM\Column(type="text", nullable=true) */
 	protected $descripcion;
     /**
-    * @ORM\OneToMany(targetEntity="Vivienda", mappedBy="idVivienda")
+    * @ORM\OneToMany(targetEntity="Vivienda", mappedBy="pared")
     **/
     protected $idV;
     /**

@@ -18,7 +18,7 @@ use Application\Admin\Form\FormSan\sanForm;
 class SanidadController extends AbstractActionController
 {
 
-        /*public function __construct()
+    public function __construct()
     {
         $events = $this->getEventManager();
         $events->attach(MvcEvent::EVENT_DISPATCH, array($this, 'checkLogin'));
@@ -30,7 +30,7 @@ class SanidadController extends AbstractActionController
         if (!$authService->getIdentity()) {
             return $this->redirect()->toRoute('login');
         }
-    }*/
+    }
 
      protected function getEntityManager()
     {
