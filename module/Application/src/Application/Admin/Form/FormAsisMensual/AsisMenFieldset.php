@@ -29,6 +29,44 @@ class AsisMenFieldset extends Fieldset {
                 'required' => 'required',
             ],
         ]);
+
+        $this->add([
+            'type' => 'DoctrineModule\Form\Element\ObjectSelect',
+            'name' => 'modulo',
+            'options' => [
+                'object_manager' => $em,
+                'target_class' => 'Application\Entity\Modulo',
+                'property' => 'nombre',
+            ],
+            'attributes' => [
+                  'required' => 'required',
+             ],
+
+        ]); 
+
+        $this->add([
+            'type' => 'DoctrineModule\Form\Element\ObjectSelect',
+            'name' => 'sector',
+            'options' => [
+                'object_manager' => $em,
+                'target_class' => 'Application\Entity\Producto',
+                'property' => 'nombre',
+            ],
+            'attributes' => [
+                  'required' => 'required',
+             ],
+
+        ]);
+
+        $this->add([
+            'name' => 'otro',
+            'type' => 'Text',
+            'attributes' => [
+                'required' => 'required',
+            ],
+        ]); 
+
+ 
     }
 
 }

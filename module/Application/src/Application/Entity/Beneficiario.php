@@ -59,7 +59,7 @@ class Beneficiario
 
 
     /**
-    * @ORM\OnetoMany(targetEntity="Familia", mappedBy="nroF")
+    * @ORM\OneToMany(targetEntity="Familia", mappedBy="nroF")
     **/
     protected $fam;
 

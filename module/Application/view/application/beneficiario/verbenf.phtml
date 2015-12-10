@@ -28,6 +28,11 @@
                     <tr class="odd gradeX">
                       <td>
                         <?php echo $beneficiario->getIdBeneficiario() ?>
+                                         
+                          <li><a  href="<?php echo $this->url('nuevo_asismen', array(
+                                  'id' => $beneficiario->getIdBeneficiario())) ?>"><i class="glyphicon glyphicon-plus-sign"></i> Asistencia</a>   </li>
+
+                                
                       </td>
                       <td>
                         <?php echo $beneficiario->getNombre() ?>

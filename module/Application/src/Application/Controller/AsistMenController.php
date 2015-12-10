@@ -24,16 +24,13 @@ class AsistMenController extends AbstractActionController
     public function nuevoAction()
     {
         //hardcodeado
-        $id = $this->params('1');
+        $id = $this->params('id');
         $em = $this->getEntityManager();
         //hardcodeado
-        $asisMen=$em->find('Application\Entity\Beneficiario','1');
-        $asisMenForm = new AsisMenForm($em);
-        $asisMenForm->bind($beneficiario);
-        
-
+        $beneficiario=$em->find('Application\Entity\Beneficiario','id');
         $asisMen = new AsistenciaMensual();
-        $asisMenForm->bind($asisMen);
+        $asisMenForm = new AsisMenForm($em);
+        $asisMenForm->bind($asisMen);     
 
         if($this->request->isPost()) {
             $asisMenForm->setData($this->request->getPost());
@@ -47,7 +44,10 @@ class AsistMenController extends AbstractActionController
         }
 
 
-        return new ViewModel();
+        return new ViewModel([
+                'beneficiario' => $beneficiario,
+                'form' => $asisMenForm
+            ]);
     }
 
     public function editarAction()
