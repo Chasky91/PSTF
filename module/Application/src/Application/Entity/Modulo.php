@@ -14,8 +14,8 @@ class Modulo {
      * @ORM\Id
      * @ORM\GeneratedValue
      */
-
     protected $idModulo;
+
     /**
      * @ORM\Column(type="string", length=140,  nullable=false)
      */
@@ -24,7 +24,6 @@ class Modulo {
      * @ORM\Column(type="string", length=140,  nullable=false)
      */
     protected $tipo;
-
 
     /**
      * Get idModulo

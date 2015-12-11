@@ -9,15 +9,32 @@ use DateTime;
  */
 class AsistenciaMensual
 {
-    /** 
-     * @ORM\Column(type="integer", nullable=false) 
+
+    /**
+     * @ORM\OneToOne(targetEntity="Beneficiario")
+     * @ORM\JoinColumn(name="idPlanilla", referencedColumnName="idBeneficiario")
      * @ORM\Id
      */
-    protected  $idRegistro;
+    protected $idPlanilla;
     /**
-     * @ORM\OneToMany(targetEntity="Beneficiario", mappedBy="idBeneficiario")
+     * @ORM\OneToOne(targetEntity="Registro")
+     * @ORM\JoinColumn(name="registroId", referencedColumnName="idRegistro")
+     * @ORM\Id
      */
-    protected $benificiarioId;
+    protected  $registroId;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Modulo")
+     * @ORM\JoinColumn(name="modulo", referencedColumnName="idModulo")
+     */
+    protected $modulo;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Producto")
+     * @ORM\JoinColumn(name="producto", referencedColumnName="id_producto")
+     */
+    protected $producto;
+
     /** @ORM\Column(type="text", nullable=false) */
     protected $detalleEntrega;
     /** @ORM\Column (type="datetime") */
@@ -27,19 +44,6 @@ class AsistenciaMensual
          $this->fechDeEntrega = new DateTime();  
     }
 
-
-
-    
-
-    /**
-     * Get idRegistro
-     *
-     * @return integer
-     */
-    public function getIdRegistro()
-    {
-        return $this->idRegistro;
-    }
 
     /**
      * Set detalleEntrega
@@ -90,36 +94,98 @@ class AsistenciaMensual
     }
 
     /**
-     * Add benificiarioId
+     * Set idPlanilla
      *
-     * @param \Application\Entity\Beneficiario $benificiarioId
+     * @param \Application\Entity\Beneficiario $idPlanilla
      *
      * @return AsistenciaMensual
      */
-    public function addBenificiarioId(\Application\Entity\Beneficiario $benificiarioId)
+    public function setIdPlanilla(\Application\Entity\Beneficiario $idPlanilla)
     {
-        $this->benificiarioId[] = $benificiarioId;
+        $this->idPlanilla = $idPlanilla;
 
         return $this;
     }
 
     /**
-     * Remove benificiarioId
+     * Get idPlanilla
      *
-     * @param \Application\Entity\Beneficiario $benificiarioId
+     * @return \Application\Entity\Beneficiario
      */
-    public function removeBenificiarioId(\Application\Entity\Beneficiario $benificiarioId)
+    public function getIdPlanilla()
     {
-        $this->benificiarioId->removeElement($benificiarioId);
+        return $this->idPlanilla;
     }
 
     /**
-     * Get benificiarioId
+     * Set registroId
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @param \Application\Entity\Registro $registroId
+     *
+     * @return AsistenciaMensual
      */
-    public function getBenificiarioId()
+    public function setRegistroId(\Application\Entity\Registro $registroId)
     {
-        return $this->benificiarioId;
+        $this->registroId = $registroId;
+
+        return $this;
+    }
+
+    /**
+     * Get registroId
+     *
+     * @return \Application\Entity\Registro
+     */
+    public function getRegistroId()
+    {
+        return $this->registroId;
+    }
+
+    /**
+     * Set modulo
+     *
+     * @param \Application\Entity\Modulo $modulo
+     *
+     * @return AsistenciaMensual
+     */
+    public function setModulo(\Application\Entity\Modulo $modulo = null)
+    {
+        $this->modulo = $modulo;
+
+        return $this;
+    }
+
+    /**
+     * Get modulo
+     *
+     * @return \Application\Entity\Modulo
+     */
+    public function getModulo()
+    {
+        return $this->modulo;
+    }
+
+    /**
+     * Set producto
+     *
+     * @param \Application\Entity\Producto $producto
+     *
+     * @return AsistenciaMensual
+     */
+    public function setProducto(\Application\Entity\Producto $producto = null)
+    {
+        $this->producto = $producto;
+
+        return $this;
+    }
+
+    /**
+     * Get producto
+     *
+     * @return \Application\Entity\Producto
+     */
+    public function getProducto()
+    {
+        return $this->producto;
     }
 }
