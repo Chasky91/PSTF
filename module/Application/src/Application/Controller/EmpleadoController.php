@@ -104,6 +104,7 @@ class EmpleadoController extends AbstractActionController
         $id=$this->params('id');        
         $em=$this->getEntityManager();
         $empleado=$em->find('Application\Entity\Empleado', $id);
+     
         //Elimino a la entidad con entity
         $em->remove($empleado);
         $em->flush();            

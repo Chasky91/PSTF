@@ -25,17 +25,17 @@ class AsistenciaMensual
 
     /**
      * @ORM\OneToOne(targetEntity="Modulo")
-     * @ORM\JoinColumn(name="modulo", referencedColumnName="idModulo")
+     * @ORM\JoinColumn(name="modulo", referencedColumnName="idModulo", nullable=true)
      */
     protected $modulo;
 
     /**
      * @ORM\OneToOne(targetEntity="Producto")
-     * @ORM\JoinColumn(name="producto", referencedColumnName="id_producto")
+     * @ORM\JoinColumn(name="producto", referencedColumnName="id_producto",nullable=true)
      */
     protected $producto;
 
-    /** @ORM\Column(type="text", nullable=false) */
+    /** @ORM\Column(type="text", nullable=true) */
     protected $detalleEntrega;
     /** @ORM\Column (type="datetime") */
     protected $fechDeEntrega;

@@ -29,7 +29,6 @@ class AsistMenController extends AbstractActionController
         return new ViewModel([
             'registros'=>$registros,
         ]);
-        return new ViewModel();
     }
 
     public function nuevoAction()
@@ -41,16 +40,19 @@ class AsistMenController extends AbstractActionController
         $asisMen = new AsistenciaMensual();
         $asisMenForm = new AsisMenForm($em);
         $asisMenForm->bind($asisMen);     
-        
-          
+
         if($this->request->isPost()) {
             $asisMenForm->setData($this->request->getPost());
             if($asisMenForm->isValid()) {
+                $idRegistro = new \Application\Entity\Registro;
+       
+                $em->persist($idRegistro);
+                $em->flush();
                 $em->persist($asisMen);
                 $em->flush();
 
                 $this->flashMessenger()->addSuccessMessage('Registro de asistencia guardado');
-                //return $this->redirect()->toRoute();
+                return $this->redirect()->toRoute('index_asismen');
             }
         }
 
