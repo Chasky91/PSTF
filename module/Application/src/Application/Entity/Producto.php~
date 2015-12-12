@@ -12,7 +12,7 @@ use DateTime;
 //               fecha de ingreso
 /** 
 *
-*@ORM\Entity 
+*@ORM\Entity(repositoryClass="Application\Repository\Producto") 
 *@ORM\Table(name="producto")
 */
 class Producto  
@@ -30,6 +30,8 @@ class Producto
     protected $descripcion;
     /** @ORM\Column (type="integer") */
     protected $cantidad;
+    /** @ORM\Column(name="activo", type="boolean", nullable=false) */
+    protected $activo;
     /** @ORM\Column (type="integer") */
     protected $stockCritico;
     /** @ORM\Column (type="datetime") */

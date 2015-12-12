@@ -10,18 +10,13 @@ use DateTime;
 class AsistenciaMensual
 {
 
+
     /**
-     * @ORM\OneToOne(targetEntity="Beneficiario")
-     * @ORM\JoinColumn(name="idPlanilla", referencedColumnName="idBeneficiario")
+     * @ORM\Column(type="integer",  nullable=false, unique=true)
      * @ORM\Id
+     * @ORM\GeneratedValue
      */
-    protected $idPlanilla;
-    /**
-     * @ORM\OneToOne(targetEntity="Registro")
-     * @ORM\JoinColumn(name="registroId", referencedColumnName="idRegistro")
-     * @ORM\Id
-     */
-    protected  $registroId;
+    protected  $idRegistro;
 
     /**
      * @ORM\OneToOne(targetEntity="Modulo")
@@ -44,6 +39,15 @@ class AsistenciaMensual
          $this->fechDeEntrega = new DateTime();  
     }
 
+    /**
+     * Get idRegistro
+     *
+     * @return integer
+     */
+    public function getIdRegistro()
+    {
+        return $this->idRegistro;
+    }
 
     /**
      * Set detalleEntrega
@@ -91,54 +95,6 @@ class AsistenciaMensual
     public function getFechDeEntrega()
     {
         return $this->fechDeEntrega;
-    }
-
-    /**
-     * Set idPlanilla
-     *
-     * @param \Application\Entity\Beneficiario $idPlanilla
-     *
-     * @return AsistenciaMensual
-     */
-    public function setIdPlanilla(\Application\Entity\Beneficiario $idPlanilla)
-    {
-        $this->idPlanilla = $idPlanilla;
-
-        return $this;
-    }
-
-    /**
-     * Get idPlanilla
-     *
-     * @return \Application\Entity\Beneficiario
-     */
-    public function getIdPlanilla()
-    {
-        return $this->idPlanilla;
-    }
-
-    /**
-     * Set registroId
-     *
-     * @param \Application\Entity\Registro $registroId
-     *
-     * @return AsistenciaMensual
-     */
-    public function setRegistroId(\Application\Entity\Registro $registroId)
-    {
-        $this->registroId = $registroId;
-
-        return $this;
-    }
-
-    /**
-     * Get registroId
-     *
-     * @return \Application\Entity\Registro
-     */
-    public function getRegistroId()
-    {
-        return $this->registroId;
     }
 
     /**

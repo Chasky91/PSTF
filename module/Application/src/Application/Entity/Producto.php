@@ -201,4 +201,28 @@ class Producto
     {
         return $this->modulo_id;
     }
+
+    /**
+     * Set activo
+     *
+     * @param boolean $activo
+     *
+     * @return Producto
+     */
+    public function setActivo($activo)
+    {
+        $this->activo = $activo;
+
+        return $this;
+    }
+
+    /**
+     * Get activo
+     *
+     * @return boolean
+     */
+    public function getActivo()
+    {
+        return $this->activo;
+    }
 }

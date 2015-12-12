@@ -39,15 +39,30 @@ class AsistMenController extends AbstractActionController
         $beneficiario = $em->find('Application\Entity\Beneficiario', $id);  
         $asisMen = new AsistenciaMensual();
         $asisMenForm = new AsisMenForm($em);
-        $asisMenForm->bind($asisMen);     
+        $asisMenForm->bind($asisMen);  
+
+        $idRegistro = new \Application\Entity\Registro;
+        //ingresamos un nuevo registro
+        $em->persist($idRegistro);
+        $em->flush();
+
+        $query = $em->createQueryBuilder()
+            ->select('r')
+            ->from('Application\Entity\Registro', 'r')
+            ->orderBy('r.idRegistro', 'DESC')
+            ->setMaxResults('1')
+            ->getQuery();
+        $registro = $query->getResult();
+   
 
         if($this->request->isPost()) {
             $asisMenForm->setData($this->request->getPost());
+
             if($asisMenForm->isValid()) {
-                $idRegistro = new \Application\Entity\Registro;
-       
-                $em->persist($idRegistro);
-                $em->flush();
+
+                //$idR = $registro[0]->getidRegistro();
+                //$asisMen->getRegistroId($idR); 
+                var_dump($asisMen);die;
                 $em->persist($asisMen);
                 $em->flush();
 
@@ -58,6 +73,7 @@ class AsistMenController extends AbstractActionController
 
 
         return new ViewModel([
+                'registro' => $registro,
                 'beneficiario' => $beneficiario,
                 'form' => $asisMenForm
             ]);
