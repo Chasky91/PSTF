@@ -41,30 +41,36 @@ class AsistMenController extends AbstractActionController
         $asisMenForm = new AsisMenForm($em);
         $asisMenForm->bind($asisMen);  
 
-        $idRegistro = new \Application\Entity\Registro;
-        //ingresamos un nuevo registro
-        $em->persist($idRegistro);
-        $em->flush();
-
-        $query = $em->createQueryBuilder()
-            ->select('r')
-            ->from('Application\Entity\Registro', 'r')
-            ->orderBy('r.idRegistro', 'DESC')
-            ->setMaxResults('1')
-            ->getQuery();
-        $registro = $query->getResult();
-   
-
         if($this->request->isPost()) {
             $asisMenForm->setData($this->request->getPost());
 
             if($asisMenForm->isValid()) {
 
-                //$idR = $registro[0]->getidRegistro();
-                //$asisMen->getRegistroId($idR); 
-                var_dump($asisMen);die;
                 $em->persist($asisMen);
                 $em->flush();
+                //obtenemos el ultimo registro en
+                //la tabla AsistenciaMensual
+                $query = $em->createQueryBuilder()
+                    ->select('am')
+                    ->from('Application\Entity\AsistenciaMensual', 'am')
+                    ->orderBy('am.idRegistro', 'DESC')
+                    ->setMaxResults('1')
+                    ->getQuery();
+                $ultimoRegistro = $query->getResult();
+                $registro = $ultimoRegistro[0]->getIdRegistro();
+                
+                //codigo para hacer el insert en la tabla Planilla    
+                $qb = $em->createQueryBuilder();
+                $q = $qb->update('Application\Entity\Planilla', 'p')
+                        ->set('p.idPlanilla', '?1')
+                        ->set('p.registroId', '?2')
+                        ->setParameter(1, $id)
+                        ->setParameter(2, $registro)
+                        ->getQuery();
+                $p = $q->execute();
+               
+
+        
 
                 $this->flashMessenger()->addSuccessMessage('Registro de asistencia guardado');
                 return $this->redirect()->toRoute('index_asismen');
@@ -73,8 +79,6 @@ class AsistMenController extends AbstractActionController
 
 
         return new ViewModel([
-                'registro' => $registro,
-                'beneficiario' => $beneficiario,
                 'form' => $asisMenForm
             ]);
     }

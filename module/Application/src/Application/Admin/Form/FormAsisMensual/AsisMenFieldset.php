@@ -15,21 +15,7 @@ class AsisMenFieldset extends Fieldset {
         $this->setHydrator(new DoctrineEntity($em, 'Application\Entity\AsistenciaMensual'))
                 ->setObject(new AsistenciaMensual());
         
-        $this->add([
-            'name' => 'idRegistro',
-            'type' => 'Zend\Form\Element\Hidden',
-            'attributes' => [
-                'required' => 'required',
-            ],
-        ]);
 
-        $this->add([
-            'name' => 'idPlanilla',
-            'type' => 'Zend\Form\Element\Hidden',
-            'attributes' => [
-                'required' => 'required',
-            ],
-        ]);
         
         $this->add([
                     'type' => 'DoctrineModule\Form\Element\ObjectSelect',

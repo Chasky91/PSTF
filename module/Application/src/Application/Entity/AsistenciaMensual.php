@@ -20,24 +20,25 @@ class AsistenciaMensual
 
     /**
      * @ORM\OneToOne(targetEntity="Modulo")
-     * @ORM\JoinColumn(name="modulo", referencedColumnName="idModulo", nullable=true)
+     * @ORM\JoinColumn(name="modulo", referencedColumnName="idModulo", nullable=true, unique=true)
      */
     protected $modulo;
 
     /**
      * @ORM\OneToOne(targetEntity="Producto")
-     * @ORM\JoinColumn(name="producto", referencedColumnName="id_producto",nullable=true)
+     * @ORM\JoinColumn(name="producto", referencedColumnName="id_producto", nullable=true, unique=true)
      */
     protected $producto;
 
     /** @ORM\Column(type="text", nullable=true) */
-    protected $detalleEntrega;
+    protected $otro;
     /** @ORM\Column (type="datetime") */
     protected $fechDeEntrega;
 
     public function __construct() {
          $this->fechDeEntrega = new DateTime();  
     }
+
 
     /**
      * Get idRegistro
@@ -50,27 +51,27 @@ class AsistenciaMensual
     }
 
     /**
-     * Set detalleEntrega
+     * Set otro
      *
-     * @param string $detalleEntrega
+     * @param string $otro
      *
      * @return AsistenciaMensual
      */
-    public function setDetalleEntrega($detalleEntrega)
+    public function setOtro($otro)
     {
-        $this->detalleEntrega = $detalleEntrega;
+        $this->otro = $otro;
 
         return $this;
     }
 
     /**
-     * Get detalleEntrega
+     * Get otro
      *
      * @return string
      */
-    public function getDetalleEntrega()
+    public function getOtro()
     {
-        return $this->detalleEntrega;
+        return $this->otro;
     }
 
     /**

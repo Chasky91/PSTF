@@ -1,27 +1,27 @@
 <?php
 
-	namespace Application\Entity;
+namespace Application\Entity;
 
-	use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping as ORM;
 
-	/**
-	 * @oRM\Entity
-	 */
-	class Planilla {
-
+/**
+ * @ORM\Entity
+ */
+class Planilla {
 
     /**
      * @ORM\OneToOne(targetEntity="Beneficiario")
-     * @ORM\JoinColumn(name="idPlanilla", referencedColumnName="idBeneficiario")
+     * @ORM\JoinColumn(name="idPlanilla", referencedColumnName="idBeneficiario",unique=FALSE)
      * @ORM\Id
      */
     protected $idPlanilla;
+
     /**
      * @ORM\OneToOne(targetEntity="AsistenciaMensual")
-     * @ORM\JoinColumn(name="registroId", referencedColumnName="idRegistro")
+     * @ORM\JoinColumn(name="registroId", referencedColumnName="idRegistro",unique=FALSE)
      * @ORM\Id
      */
-    protected  $registroId;
+    protected $registroId;
 
     /**
      * Set idPlanilla
@@ -30,8 +30,7 @@
      *
      * @return Planilla
      */
-    public function setIdPlanilla(\Application\Entity\Beneficiario $idPlanilla)
-    {
+    public function setIdPlanilla(\Application\Entity\Beneficiario $idPlanilla) {
         $this->idPlanilla = $idPlanilla;
 
         return $this;
@@ -42,8 +41,7 @@
      *
      * @return \Application\Entity\Beneficiario
      */
-    public function getIdPlanilla()
-    {
+    public function getIdPlanilla() {
         return $this->idPlanilla;
     }
 
@@ -54,8 +52,7 @@
      *
      * @return Planilla
      */
-    public function setRegistroId(\Application\Entity\AsistenciaMensual $registroId)
-    {
+    public function setRegistroId(\Application\Entity\AsistenciaMensual $registroId) {
         $this->registroId = $registroId;
 
         return $this;
@@ -66,8 +63,8 @@
      *
      * @return \Application\Entity\AsistenciaMensual
      */
-    public function getRegistroId()
-    {
+    public function getRegistroId() {
         return $this->registroId;
     }
+
 }
