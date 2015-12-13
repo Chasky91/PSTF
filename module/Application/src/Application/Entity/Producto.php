@@ -12,7 +12,7 @@ use DateTime;
 //               fecha de ingreso
 /** 
 *
-*@ORM\Entity 
+*@ORM\Entity(repositoryClass="Application\Repository\Producto") 
 *@ORM\Table(name="producto")
 */
 class Producto  
@@ -30,17 +30,23 @@ class Producto
     protected $descripcion;
     /** @ORM\Column (type="integer") */
     protected $cantidad;
+    /** @ORM\Column(name="activo", type="boolean", nullable=false) */
+    protected $activo;
     /** @ORM\Column (type="integer") */
     protected $stockCritico;
     /** @ORM\Column (type="datetime") */
     protected $fecha_ingreso;
-    
+     /**
+     * @ORM\ManyToOne(targetEntity="Modulo")
+     * @ORM\JoinColumn(name="modulo_id", referencedColumnName="idModulo",nullable=true)
+     */
+    protected $modulo_id;
     
     public function __construct() {
         $this->fecha_ingreso = new DateTime();
     }
 
-    
+
 
     /**
      * Get idProducto
@@ -170,5 +176,53 @@ class Producto
     public function getFechaIngreso()
     {
         return $this->fecha_ingreso;
+    }
+
+    /**
+     * Set moduloId
+     *
+     * @param \Application\Entity\Modulo $moduloId
+     *
+     * @return Producto
+     */
+    public function setModuloId(\Application\Entity\Modulo $moduloId = null)
+    {
+        $this->modulo_id = $moduloId;
+
+        return $this;
+    }
+
+    /**
+     * Get moduloId
+     *
+     * @return \Application\Entity\Modulo
+     */
+    public function getModuloId()
+    {
+        return $this->modulo_id;
+    }
+
+    /**
+     * Set activo
+     *
+     * @param boolean $activo
+     *
+     * @return Producto
+     */
+    public function setActivo($activo)
+    {
+        $this->activo = $activo;
+
+        return $this;
+    }
+
+    /**
+     * Get activo
+     *
+     * @return boolean
+     */
+    public function getActivo()
+    {
+        return $this->activo;
     }
 }

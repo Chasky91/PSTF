@@ -21,12 +21,12 @@ class Educacion
     /** @ORM\Column(type="text", nullable=true) */
 	protected $descripcion;
     /**
-    * @ORM\OnetoMany(targetEntity="Beneficiario", mappedBy="idBeneficiario")
+    * @ORM\OnetoMany(targetEntity="Beneficiario", mappedBy="educacion")
     **/
     protected $idBeneficiario;
 
     /**
-    * @ORM\OnetoMany(targetEntity="Familia", mappedBy="nroF")
+    * @ORM\OnetoMany(targetEntity="Familia", mappedBy="educacion")
     **/
     protected $nroF;
 

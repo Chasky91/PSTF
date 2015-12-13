@@ -19,6 +19,7 @@
                         <th>DNI</th>
                         <th>Domicilio</th>
                         <th>Telefono</th>
+                        <th>Estado</th>                        
                     </tr>
                 </thead>
                 <tbody>
@@ -30,25 +31,26 @@
                               <button type="button" class="btn btn-default dropdown-toggle btn btn-default btn-xs" data-toggle="dropdown"><i class="fa fa-plus"> </i><span class="caret"></span>
                               </button>
                               <ul class="dropdown-menu" role="menu">
-                                <!--Opcion uno se dirige a Ingresar Nuevo Familiar-->
-                                <li><a  href="<?php echo $this->url('nuevoFam', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-group"></i>Familia</a></li>
+                                  <!--Opcion uno se dirige a Ingresar Nuevo Familiar-->
+                                  <li><a  href="<?php echo $this->url('nuevoFam', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-group"></i>Familia</a></li>
 
-                         <!--Opcion dos se dirige a Ingresar la Situacion Habitacional-->                          
-                                <li><a  href="<?php echo $this->url('nuevoviv', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-home"></i>Habitacional</a></li>
+                                    <!--Opcion dos se dirige a Ingresar la Situacion Habitacional-->                          
+                                  <li><a  href="<?php echo $this->url('nuevoviv', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-home"></i>Habitacional</a></li>
 
-                          <!--Opcion tres se dirige a Ingresar la Situacion Economica-->
-                                <li><a href="<?php echo $this->url('nuevoE', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-briefcase"></i>Económia</a></li>
+                                      <!--Opcion tres se dirige a Ingresar la Situacion Economica-->
+                                  <li><a href="<?php echo $this->url('nuevoE', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-briefcase"></i>Económia</a></li>
 
-                         <!--Opcion cuatro se dirige a Ingresar la Situacion Sanidad-->
-                                <li><a href="<?php echo $this->url('nuevo_S', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-h-square"></i>Sanidad</a></li>
-                               
-                                <li class="divider"></li>
-                          <!--Opcion cinco se dirige a Modificar Beneficiario-->
-                                <li><a href="<?php echo $this->url('modbeneficiario', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-cog"></i>Modificar</a></li>
-                           <!--Opcion cinco se dirige a Eliminar Beneficiario-->
-                                <li><a href="<?php echo $this->url('del-beneficiario', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-times"></i>Eliminar</a></li>
-                                
+                                    <!--Opcion cuatro se dirige a Ingresar la Situacion Sanidad-->
+                                  <li><a href="<?php echo $this->url('nuevo_S', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-h-square"></i>Sanidad</a></li>
+                                 
+                                  <li class="divider"></li>
+                                      <!--Opcion cinco se dirige a Modificar Beneficiario-->
+                                  <li><a href="<?php echo $this->url('modbeneficiario', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-cog"></i>Modificar</a></li>
+                                      <!--Opcion cinco se dirige a Eliminar Beneficiario-->
+                                  <li><a href="<?php echo $this->url('del-beneficiario', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-times"></i>Eliminar</a></li>                    
                               </ul>
+        
+                              
                       </div>                        
                       </td>
                       <td>
@@ -66,6 +68,53 @@
                       </td>
                       <td>
                         <?php echo $beneficiario->getTelfben() ?>
+                      </td>
+                      <td>
+                          <div class="btn-group">
+                                    <button type="button" class="btn btn-default dropdown-toggle btn btn-default btn-xs" data-toggle="dropdown"><span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">  
+
+                                      <li><a  href="<?php echo $this->url('estado', array('id' => $beneficiario->getIdBeneficiario() )) ?>"><i class="fa fa-check-circle"></i>Aprobado</a></li>
+
+                                      <li><a href="#"><i class="fa fa-times-circle"></i>Rechazado</a></li>
+                                    </ul> 
+
+                          </div>
+                        <?php
+
+                        if ($beneficiario->getActivo() == 'Pendiente') {
+
+                          echo '<span class="label label-warning">Pendiente</span>';
+
+                        } elseif ($beneficiario->getActivo() == 'Aprobado') {
+                          echo '<span class="label label-success">Aprobado</span> ';
+                        } else  {
+                          echo '<span class="label label-danger">Rechazado</span>'; 
+                        }
+                    
+                        ?>
+                 
+
+
+
+
+
+
+                   <!-- 
+
+
+                        <span class="label label-success">Aprobado</span>                      
+                        <span class="label label-warning">Pendiente</span>
+                        <span class="label label-danger">Rechazado</span>
+
+-->
+
+
+
+
+
+
                       </td>
                     </tr>
 

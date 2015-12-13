@@ -32,7 +32,7 @@
                 <?php foreach ($viviendas as $vivienda): ?>
                     <tr class="odd gradeX">
                       <td>
-                        <?php echo $vivienda->getIdVivienda() ?>
+                        
                            <div class="btn-group">
                               <button type="button" class="btn btn-default dropdown-toggle btn btn-default btn-xs" data-toggle="dropdown">
                                <i class="fa fa-plus"> </i><span class="caret"></span>
@@ -41,13 +41,14 @@
                                 <!--Opcion uno se dirige a a la vista de Beneficiario-->
                                 <li><a  href="<?php echo $this->url('ver-beneficiario')?>"><i class="fa fa-user"></i>Ver Beneficiarios</a></li>
                                <li class="divider"></li>
-                       <!--Opcion cinco se dirige a Modificar Vivienda-->
+                                    <!--Opcion cinco se dirige a Modificar Vivienda-->
                                 <li><a href="<?php echo $this->url('modviv', array('id' => $vivienda->getIdVivienda())) ?>"><i class="fa fa-cog"></i>Modificar</a></li>
-                        <!--Opcion cinco se dirige a Eliminar Vivienda-->
+                                   <!--Opcion cinco se dirige a Eliminar Vivienda-->
                                 <li><a href="<?php echo $this->url('delviv', array('id' => $vivienda->getIdVivienda())) ?>"><i class="fa fa-times"></i>Eliminar</a></li>
                                 
                               </ul>
-                            </div>                        
+                            </div> 
+                           <?php echo $vivienda->getIdVivienda() ?>                        
                       </td>
                       <td>
                       <?php $beneficiario = $vivienda->getIdben() ?>  
@@ -60,12 +61,23 @@
                       </td>
                       <td>
                       <!--Booleano de Auto-->
-                        <?php echo $vivienda->getAuto() ?>
+
+                        <?php if ($vivienda->getAuto()=='1') {
+                               echo 'Si';
+                              } else {
+                                echo 'No';
+                              }
+                         ?>
                       </td>
 
                       <td>
                       <!--Booleano Otras propiedades-->
-                        <?php echo $vivienda->getOtraPropiedad() ?>
+                        <?php  if ($vivienda->getOtraPropiedad()=='1') {
+                                echo 'Si';
+                              } else {
+                                echo 'No';
+                              }
+                         ?>
                       </td>
                       <!--Observacion de otras propiedades-->
                       <td>
@@ -77,15 +89,30 @@
                       </td>
                       <!--booleano de Luz-->                      
                       <td>
-                        <?php echo $vivienda->getLuz() ?>
+                        <?php if ($vivienda->getLuz()=='1') {
+                                echo 'Si';
+                              } else {
+                                echo 'No';
+                              }
+                         ?>
                       </td>                      
                      <!--booleanode Agua-->
                       <td>
-                        <?php echo $vivienda->getAgua() ?>
+                        <?php if ($vivienda->getAgua()=='1') {
+                                echo 'Si';
+                              } else {
+                                echo 'No';
+                              }
+                         ?>
                       </td>
                       <!--booleano de Gas-->
                       <td>
-                        <?php echo $vivienda->getGas() ?>
+                        <?php if ($vivienda->getGas()=='1') {
+                                echo 'Si';
+                              } else {
+                                echo 'No';
+                              }
+                         ?>
                       </td>
                       <!--Observacion sobre el estado de la construccion-->
                       <td>

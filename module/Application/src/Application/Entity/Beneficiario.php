@@ -66,11 +66,7 @@ class Beneficiario
 
 
 
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="activo", type="boolean", precision=0, scale=0, nullable=false, unique=false)
-     */
+    /** @ORM\Column(type="string", nullable=true)*/
     private $activo;
 
     /**
@@ -86,7 +82,7 @@ class Beneficiario
     {
 
         $this->fechaAlta = new DateTime();  
-        $this->activo = true;       
+        $this->activo = 'Pendiente';       
     }
 
 
@@ -300,7 +296,7 @@ class Beneficiario
     /**
      * Set activo
      *
-     * @param boolean $activo
+     * @param string $activo
      *
      * @return Beneficiario
      */
@@ -314,7 +310,7 @@ class Beneficiario
     /**
      * Get activo
      *
-     * @return boolean
+     * @return string
      */
     public function getActivo()
     {

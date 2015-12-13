@@ -25,7 +25,7 @@ use DateTime;
 
 class FamiliaController extends AbstractActionController
 {
-
+/*
     public function __construct()
     {
         $events = $this->getEventManager();
@@ -39,7 +39,7 @@ class FamiliaController extends AbstractActionController
             return $this->redirect()->toRoute('login');
         }
     }
-
+*/
      protected function getEntityManager()
     {
         return $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');

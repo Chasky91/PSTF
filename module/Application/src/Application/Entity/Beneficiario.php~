@@ -59,18 +59,14 @@ class Beneficiario
 
 
     /**
-    * @ORM\OnetoMany(targetEntity="Familia", mappedBy="nroF")
+    * @ORM\OneToMany(targetEntity="Familia", mappedBy="idben")
     **/
     protected $fam;
 
 
 
 
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="activo", type="boolean", precision=0, scale=0, nullable=false, unique=false)
-     */
+    /** @ORM\Column(type="string", nullable=true)*/
     private $activo;
 
     /**
@@ -81,11 +77,12 @@ class Beneficiario
     private $fechaAlta;
 
 
+
     public function __construct()
     {
 
         $this->fechaAlta = new DateTime();  
-        $this->activo = true;       
+        $this->activo = 'Pendiente';       
     }
 
 

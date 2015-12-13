@@ -28,7 +28,7 @@
                 <?php foreach ($economias as $economia): ?>
                     <tr class="odd gradeX">
                       <td>
-                        <?php echo $economia->getIdEconomia() ?>
+                        
                            <div class="btn-group">
                               <button type="button" class="btn btn-default dropdown-toggle btn btn-default btn-xs" data-toggle="dropdown"><i class="fa fa-plus"></i><span class="caret"></span>
                               </button>
@@ -36,13 +36,14 @@
                                 <!--Opcion uno se dirige a a la vista de Beneficiario-->
                                 <li><a  href="<?php echo $this->url('ver-beneficiario')?>"><i class="fa fa-user"></i>Ver Beneficiarios</a></li>
                                <li class="divider"></li>
-                       <!--Opcion cinco se dirige a Modificar Economia-->
+                                   <!--Opcion cinco se dirige a Modificar Economia-->
                                 <li><a href="<?php echo $this->url('modE', array('id' => $economia->getIdEconomia())) ?>"><i class="fa fa-cog"></i>Modificar</a></li>
-                        <!--Opcion cinco se dirige a Eliminar Economia-->
+                                 <!--Opcion cinco se dirige a Eliminar Economia-->
                                 <li><a href="<?php echo $this->url('delE', array('id' => $economia->getIdEconomia())) ?>"><i class="fa fa-times"></i>Eliminar</a></li>
                                 
                               </ul>
-                            </div>                        
+                            </div>   
+                         <?php echo $economia->getIdEconomia() ?>                        
                       </td>
                       <td>
                       <?php $beneficiario = $economia->getBeneficiario() ?>  
@@ -50,7 +51,12 @@
                       </td>
                       <td>
                       <!--aqui deberia ir el booleano-->
-                        <?php echo $economia->getTrabajo() ?>
+                        <?php if ($economia->getTrabajo()=='1') {
+                                echo 'Si';
+                              } else {
+                                echo 'No';
+                              }
+                         ?>
                       </td>
                       <td>
                         <?php echo $economia->getNomTrab() ?>
@@ -58,14 +64,24 @@
 
                       <td>
                       <!--aqui deberia ir el booleano-->
-                        <?php echo $economia->getIngreso() ?>
+                        <?php if ($economia->getIngreso()) {
+                                echo 'Si';
+                              } else {
+                                echo 'No';
+                              }
+                         ?>
                       </td>
                       <td>
                         <?php echo $economia->getCanIng() ?>
                       </td>
                       <td>
                       <!--aqui deberia ir el booleano-->
-                        <?php echo $economia->getAyuda() ?>
+                        <?php if ($economia->getAyuda()) {
+                                echo 'Si';
+                              } else {
+                                echo 'No';
+                              }
+                         ?>
                       </td>
                       <td>
                         <?php echo $economia->getTipo() ?>

@@ -28,7 +28,6 @@
                 <?php foreach ($sanidades as $sanidad): ?>
                     <tr class="odd gradeX">
                       <td>
-                        <?php echo $sanidad->getIdSanidad() ?>
                            <div class="btn-group">
                               <button type="button" class="btn btn-default dropdown-toggle btn btn-default btn-xs" data-toggle="dropdown"><i class="fa fa-plus"> </i><span class="caret"></span>
                               </button>
@@ -42,7 +41,8 @@
                                 <li><a href="<?php echo $this->url('delS', array('id' => $sanidad->getIdSanidad())) ?>"><i class="fa fa-times"></i>Eliminar</a></li>
                                 
                               </ul>
-                            </div>                        
+                            </div>
+                           <?php echo $sanidad->getIdSanidad() ?>                       
                       </td>
                       <td>
                       <?php $beneficiario = $sanidad->getBeneficiario() ?>  
@@ -50,7 +50,12 @@
                       </td>
                       <td>
                       <!--aqui deberia ir el booleano-->
-                        <?php echo $sanidad->getCobertura() ?>
+                        <?php if ($sanidad->getCobertura()=='1') {
+                                echo 'Si';
+                              } else {
+                                echo 'No';
+                              }
+                         ?>
                       </td>
                       <td>
                         <?php echo $sanidad->getObraS() ?>
@@ -58,23 +63,43 @@
 
                       <td>
                       <!--aqui deberia ir el booleano-->
-                        <?php echo $sanidad->getAtenHC() ?>
+                        <?php if ($sanidad->getAtenHC()=='1') {
+                                echo 'Si';
+                              } else {
+                                echo 'No';
+                              }
+                         ?>
                       </td>
 
                       <td>
                       <!--aqui deberia ir el booleano-->
-                        <?php echo $sanidad->getOtroCS() ?>
+                        <?php if ($sanidad->getOtroCS()=='1') {
+                                echo 'Si';
+                              } else {
+                                echo 'No';
+                              }
+                         ?>
                       </td>
                       <td>
                         <?php echo $sanidad->getNomCS() ?>
                       </td>
                       <td>
                       <!--aqui deberia ir el booleano-->
-                        <?php echo $sanidad->getDiscapacidad() ?>
+                        <?php if ($sanidad->getDiscapacidad()=='1') {
+                                echo 'Si';
+                              } else {
+                                echo 'No';
+                              }
+                         ?>
                       </td>
                       <td>
                       <!--aqui deberia ir el booleano-->
-                        <?php echo $sanidad->getCertificado() ?>
+                        <?php if ($sanidad->getCertificado()=='1') {
+                                echo 'Si';
+                              } else {
+                                echo 'No';
+                              }
+                         ?>
                       </td>
                     </tr>
 

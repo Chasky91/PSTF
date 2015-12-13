@@ -20,6 +20,15 @@ return array(
                     ),
                 ),
             ),
+/*
+
+    // This should be an array of module namespaces used in the application.
+    'modules' => array(
+        'Application',
+        'DOMPDFModule',
+        ),
+
+        */
 //Esto corresponde al modulo de beneficiarios
             //aqui entramos a la vista o index de la vista de Beneficiario
             'beneficiario'=> array(
@@ -69,6 +78,21 @@ return array(
                                     ),
                                 ),
                             ),
+            //Aqui a la vista de modificar beneficiario
+            'estado'=> array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options'=> array(
+                        'route' => '/estado/:id',
+                         'constraints' => array(
+                            'id' => '[0-9]+',
+                                ),
+                    'defaults'=>array(
+                        'controller'=>'Application\Controller\Beneficiario',
+                        'action'=>'estado',
+
+                                    ),
+                                ),
+                            ),            
             //Aqui a la vista de Eliminar beneficiario
             'del-beneficiario'=> array(
                 'type'=>'Zend\Mvc\Router\Http\Segment',
@@ -570,6 +594,81 @@ return array(
                                     ),
                                 ),
                             ),
+
+
+
+            ///////////////////////
+            //Asistencia mensual//
+            /////////////////////
+
+//Esto corresponde al modulo de Asistencia mensual
+            //aqui entramos a la vista o index de la vista de Asistencia Mensual
+            'index_asismen' => array(
+                'type' => 'Zend\Mvc\Router\Http\literal', // 'Zend\Mvc\Router\Http\Literal'
+                'options' => array(
+                    'route' => '/index-asismen',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\AsistMen',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+
+//Aqui a la vista de nuevo Asistencia Mensual
+            'nuevo_asismen'=> array(
+                'type'=>'Zend\Mvc\Router\Http\Segment',
+                'options'=> array(
+                    'route' => '/nuevo-asismen/:id',
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults'=>array(
+                        'controller'=>'Application\Controller\AsistMen',
+                        'action'=>'nuevo',
+                        ),
+                    ),
+                ),
+            ///////////////////////
+            //Comienza Modulo///
+            //////////////////////
+            
+            //lista de productos
+            'index_producto_en_modulo' => array(
+                'type' => 'literal', // 'Zend\Mvc\Router\Http\Literal'
+                'options' => array(
+                    'route' => '/lista-productos-en-modulo',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Modulo',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+            
+            //seccion nuevo productos del modulo
+            'nuevo_modulo' => array(
+                'type' => 'literal', // 'Zend\Mvc\Router\Http\Literal'
+                'options' => array(
+                    'route' => '/nuevo-modulo',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Modulo',
+                        'action' => 'nuevo',
+                    ),
+                ),
+            ),
+
+            'cargar_modulo' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/cargar-modulo/:id/:idp',                    
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Modulo',
+                        'action' => 'cargar',
+                    ),
+                ),
+            ),
 
 
 

@@ -10,7 +10,7 @@ use Application\Admin\Form\FormEco\econForm;
 
 class EconomiaController extends AbstractActionController
 {
-
+/*
     public function __construct()
     {
         $events = $this->getEventManager();
@@ -24,7 +24,7 @@ class EconomiaController extends AbstractActionController
             return $this->redirect()->toRoute('login');
         }
     }   
-
+*/
      protected function getEntityManager()
     {
         return $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');

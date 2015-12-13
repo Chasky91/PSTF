@@ -1,0 +1,76 @@
+<div class="container">
+    <br>
+    <h1>Asistencia al Beneficiario</h1>
+    <div class="col-xs-12">
+        <div class="panel panel-midnightblue">
+            <div class="panel-heading">                
+                <h4>Formulario de registro para asistencia</h4>
+            </div>
+            <div class="panel-body">
+
+                <h3>Asistencia al beneficiario</h3>
+                <p>Ingrese los datos</p>
+                <p class="text-primary">La fecha de entrega es por defecto la actual.</p>
+
+                <?php $form->prepare(); ?>
+                <?php echo $this->form()->openTag($form->setAttributes(['class' => 'form-horizontal row-border', 'data-validate' => 'parsley', 'id' => 'validate-form'])); ?> 
+                <?php $asisMen = $form->get('asistenciamensual'); ?>
+
+                <div class="form-group">
+                    <label for="fieldname" class="col-md-1 control-label">Modulo</label>
+                    <div class="col-sm-3">
+                        <?php echo $this->formRow($asisMen->get('modulo')->setAttributes([ 'class' => 'form-control', 'minlength' => '4'])); ?>
+                    </div>                    
+                </div> 
+
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <div class="btn-toolbar">
+                            <button type="submit" class="btn-primary btn" >Registrar</button>
+                        </div>
+                    </div>
+                </div>
+                <?php echo $this->form()->closeTag(); ?> 
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel-group panel-info" id="accordion">
+            <div class="panel panel-default">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                    <div class="panel-heading"><h4>Accordion Panel Group #1</h4></div>
+                </a>
+                <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                    <div class="panel-heading"><h4>Accordion Panel Group #2</h4></div>
+                </a>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                    <div class="panel-heading"><h4>Accordion Panel Group #3</h4></div>
+                </a>
+                <div id="collapseThree" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

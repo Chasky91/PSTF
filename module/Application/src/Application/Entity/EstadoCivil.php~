@@ -26,7 +26,7 @@ class EstadoCivil
     protected $idBeneficiario;
 
     /**
-    * @ORM\OnetoMany(targetEntity="Familia", mappedBy="nroF")
+    * @ORM\OnetoMany(targetEntity="Familia", mappedBy="estadocivil")
     **/
     protected $nroF;
 

@@ -25,7 +25,7 @@
                   </tr>
               </thead>
               <tbody>
-                
+
                 <?php foreach ($empleados as $empleado): ?>
               
                   <tr class="even gradeC"> 
@@ -53,12 +53,21 @@
                       <?php echo $empleado->getActivo() ?>
                     </td>
                             <?php  $fechaIngreso  =$empleado->getFechaAlta()  ?>
-                    <td><?php echo $fechaIngreso->format('d-m-Y')  ?></td>
-                    <td>
-                        <a class="btn btn-warning-alt btn-label" href="<?php echo $this->url('editar_empleado', array(
-                      'id' => $empleado->getId())) ?>"><i class="fa fa-cog"></i>Editar</a>     
-                        <a class="btn btn-danger-alt btn-label" href="<?php echo $this->url('eliminar_empleado', 
-                                array('id' => $empleado->getId())) ?>"><i class="fa fa-times"></i>Eliminar</a>                                          
+                    <td><?php echo $fechaIngreso->format('d-m-Y')  ?></td>                   
+                    <td>                        
+                        <div class="btn-toolbar">
+                                <div class="btn-group hidden-xs">
+                                    <a href='#' class="btn btn-default dropdown-toggle" data-toggle='dropdown'><i class="fa fa-cog"></i><span class="hidden-sm"> </span><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li> <a href="<?php echo $this->url('editar_empleado', array(
+                                                'id' => $empleado->getId())) ?>"><i class="fa fa-cog"></i> Editar</a>  </li>
+                                        <li><a  href="<?php echo $this->url('eliminar_empleado', array(
+                                                'id' => $empleado->getId())) ?>"><i class="fa fa-times"></i> Eliminar</a>   </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                           
                     </td>
                   </tr>
                 <?php endforeach; ?>

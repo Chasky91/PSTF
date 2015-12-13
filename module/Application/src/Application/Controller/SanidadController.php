@@ -17,7 +17,7 @@ use Application\Admin\Form\FormSan\sanForm;
 
 class SanidadController extends AbstractActionController
 {
-
+/*
     public function __construct()
     {
         $events = $this->getEventManager();
@@ -31,7 +31,7 @@ class SanidadController extends AbstractActionController
             return $this->redirect()->toRoute('login');
         }
     }
-
+*/
      protected function getEntityManager()
     {
         return $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
