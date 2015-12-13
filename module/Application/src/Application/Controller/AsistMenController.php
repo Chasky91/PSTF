@@ -4,7 +4,7 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Application\Entity\AsistenciaMensual;
+use Application\Entity\RegistroModulo;
 use Application\Admin\Form\FormAsisMensual\AsisMenForm;
 
 
@@ -36,10 +36,10 @@ class AsistMenController extends AbstractActionController
         //hardcodeado
         $id = $this->params('id');
         $em = $this->getEntityManager();
-        $beneficiario = $em->find('Application\Entity\Beneficiario', $id);  
-        $asisMen = new AsistenciaMensual();
+        //$beneficiario = $em->find('Application\Entity\Beneficiario', $id);  
+        $registroModulo= new RegistroModulo();
         $asisMenForm = new AsisMenForm($em);
-        $asisMenForm->bind($asisMen);  
+        $asisMenForm->bind($registroModulo);  
 
         if($this->request->isPost()) {
             $asisMenForm->setData($this->request->getPost());

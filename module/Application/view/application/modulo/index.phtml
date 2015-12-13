@@ -18,7 +18,6 @@
                                         <th>Id</th>
                                         <th>Nombre del modulo</th>
                                         <th>Producto</th>
-                                        <th>Tipo</th>
                                         <th>Cantidad</th>
                                     </tr>
                                 </thead>
@@ -31,7 +30,6 @@
                                             <td><?php echo $modulo->getNombre() ?></td>                                            
                                             <?php $producto=$lpenmodulo->getIdProducto()?>                                            
                                             <td><?php echo $producto->getNombre() ?></td>                                            
-                                            <td><?php echo $modulo->getTipo() ?></td>
                                             <td><?php echo $lpenmodulo->getCantidad() ?></td>
                                         </tr>
                                      <?php endforeach; ?>

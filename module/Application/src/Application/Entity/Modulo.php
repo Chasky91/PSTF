@@ -20,10 +20,7 @@ class Modulo {
      * @ORM\Column(type="string", length=140,  nullable=false)
      */
     protected $nombre;
-    /**
-     * @ORM\Column(type="string", length=140,  nullable=false)
-     */
-    protected $tipo;
+
 
     /**
      * Get idModulo
@@ -57,29 +54,5 @@ class Modulo {
     public function getNombre()
     {
         return $this->nombre;
-    }
-
-    /**
-     * Set tipo
-     *
-     * @param string $tipo
-     *
-     * @return Modulo
-     */
-    public function setTipo($tipo)
-    {
-        $this->tipo = $tipo;
-
-        return $this;
-    }
-
-    /**
-     * Get tipo
-     *
-     * @return string
-     */
-    public function getTipo()
-    {
-        return $this->tipo;
     }
 }

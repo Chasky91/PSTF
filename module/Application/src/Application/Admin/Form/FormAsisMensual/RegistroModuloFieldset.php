@@ -2,18 +2,18 @@
 
 namespace Application\Admin\Form\FormAsisMensual;
 
-use Application\Entity\RegistroProducto;
+use Application\Entity\RegistroModulo;
 use Doctrine\Common\Persistence\ObjectManager;
 use DoctrineORMModule\Stdlib\Hydrator\DoctrineEntity;
 use Zend\Form\Fieldset;
 
-class AsisMenFieldset extends Fieldset {
+class RegistroModuloFieldset extends Fieldset {
 
     public function __construct(ObjectManager $em) {
-        parent::__construct('asistenciamensual');
+        parent::__construct('registromodulo');
 
-        $this->setHydrator(new DoctrineEntity($em, 'Application\Entity\AsistenciaMensual'))
-                ->setObject(new RegistroProducto());
+        $this->setHydrator(new DoctrineEntity($em, 'Application\Entity\RegistroModulo'))
+                ->setObject(new RegistroModulo());
         
 
         
