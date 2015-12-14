@@ -334,7 +334,7 @@ return array(
                 'options' => array(
                     'route' => '/index-asismen',
                     'defaults' => array(
-                        'controller' => 'Application\Controller\AsistMen',
+                        'controller' => 'Application\Controller\Asistencia',
                         'action' => 'index',
                     ),
                 ),
@@ -349,7 +349,7 @@ return array(
                         'id' => '[0-9]+',
                     ),
                     'defaults'=>array(
-                        'controller'=>'Application\Controller\AsistMen',
+                        'controller'=>'Application\Controller\Asistencia',
                         'action'=>'nuevo',
                         ),
                     ),
@@ -834,7 +834,7 @@ return array(
             'Application\Controller\Beneficiario' => 'Application\Controller\BeneficiarioController',
             'Application\Controller\Producto' => 'Application\Controller\ProductoController',  
             'Application\Controller\Stock' => 'Application\Controller\StockController',
-            'Application\Controller\AsistMen' => 'Application\Controller\AsistMenController',
+            'Application\Controller\Asistencia' => 'Application\Controller\AsistenciaController',
             'Application\Controller\Empleado' => 'Application\Controller\EmpleadoController',
             'Application\Controller\Familia' => 'Application\Controller\FamiliaController',
             'Application\Controller\Vivienda' => 'Application\Controller\ViviendaController',

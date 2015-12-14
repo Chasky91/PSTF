@@ -22,15 +22,6 @@ class Modulo {
     protected $nombre;
 
 
-    /**
-     * Get idModulo
-     *
-     * @return integer
-     */
-    public function getIdModulo()
-    {
-        return $this->idModulo;
-    }
 
     /**
      * Set nombre
@@ -54,5 +45,15 @@ class Modulo {
     public function getNombre()
     {
         return $this->nombre;
+    }
+
+    /**
+     * Get idModulo
+     *
+     * @return integer
+     */
+    public function getIdModulo()
+    {
+        return $this->idModulo;
     }
 }

@@ -42,21 +42,18 @@ class Producto
      */
     protected $modulo_id;
     
+   /**
+    * @ORM\OneToMany(targetEntity="RegistroProducto", mappedBy="productoId")
+    **/	
+    protected $registros;
+    
     public function __construct() {
         $this->fecha_ingreso = new DateTime();
     }
 
 
 
-    /**
-     * Get idProducto
-     *
-     * @return integer
-     */
-    public function getIdProducto()
-    {
-        return $this->id_producto;
-    }
+
 
     /**
      * Set nombre
@@ -224,5 +221,49 @@ class Producto
     public function getActivo()
     {
         return $this->activo;
+    }
+
+    /**
+     * Get idProducto
+     *
+     * @return integer
+     */
+    public function getIdProducto()
+    {
+        return $this->id_producto;
+    }
+
+    /**
+     * Add registro
+     *
+     * @param \Application\Entity\RegistroProducto $registro
+     *
+     * @return Producto
+     */
+    public function addRegistro(\Application\Entity\RegistroProducto $registro)
+    {
+        $this->registros[] = $registro;
+
+        return $this;
+    }
+
+    /**
+     * Remove registro
+     *
+     * @param \Application\Entity\RegistroProducto $registro
+     */
+    public function removeRegistro(\Application\Entity\RegistroProducto $registro)
+    {
+        $this->registros->removeElement($registro);
+    }
+
+    /**
+     * Get registros
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRegistros()
+    {
+        return $this->registros;
     }
 }
