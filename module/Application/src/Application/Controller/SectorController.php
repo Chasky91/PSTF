@@ -7,26 +7,11 @@ use Zend\View\Model\ViewModel;
 use Application\Entity\Sector;
 use Application\Admin\Form\FormSector\SectorForm;
 
-use Zend\Mvc\MvcEvent;
 
 
 class SectorController extends AbstractActionController
 {
-    public function __construct()
-    {
-        $events = $this->getEventManager();
-        $events->attach(MvcEvent::EVENT_DISPATCH, array($this, 'checkLogin'));
-    }
 
-    public function checkLogin()
-    {   
-        $authService = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
-        $empleado = $authService->getIdentity();
-        if (!$authService->getIdentity()) {
-            return $this->redirect()->toRoute('login');
-        }
-    }
-    
     protected function getEntityManager() {
         return $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
     }

@@ -41,18 +41,6 @@ class EmpleadoFieldset extends Fieldset
                   'required' => 'required',
             ],
         ]);
-
-        $this->add([
-            'name' => 'email',
-            'type' => 'Email',            
-        ]);
-
-        //para ingresar o cambiar la contraseña 
-        $this->add([
-            'name' => 'contrasena',
-            'type' => 'Password',            
-        ]);
-
         $this->add([
             'type' => 'DoctrineModule\Form\Element\ObjectSelect',
             'name' => 'sector',
@@ -68,18 +56,5 @@ class EmpleadoFieldset extends Fieldset
         ]);        
                 
 
-    }
-    
-
-    public function getInputFilterSpecification()
-    {
-        return [
-            'email' => [
-                'required' => false,
-            ],
-            'contrasena' => [
-                'required' => false,
-            ],
-        ];
     }
 }

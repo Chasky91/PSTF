@@ -1,13 +1,21 @@
-<div class="container">
-<h1>Nuevo empleado</h1>
+<?php include 'encabezado.php'; ?>
+<h1>Editar datos de empleado</h1>
+
+<div class="row">
     <div class="col-xs-12">
         <div class="panel panel-midnightblue">
-            <div class="panel-heading"><h4>Formulario de registro</h4></div>
+            <div class="panel-heading"><h4>Cambio de información</h4></div>
             <div class="panel-body">
+                
                 <?php $form->prepare(); ?>
                     <?php echo $this->form()->openTag($form->setAttributes(['class' => 'form-horizontal row-border', 'data-validate' => 'parsley', 'id' => 'validate-form'])); ?> 
-                    <?php $empleado = $form->get('empleado'); ?>
-                    
+                    <?php $empleado = $form->get('empleado'); ?>                    
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">DNI</label>
+                        <div class="col-sm-6">
+                            <?php echo $this->formRow($empleado->get('dni')->setAttributes(['readonly'=>'readonly','class'=>'form-control'])); ?>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">
                             Nombre
@@ -26,23 +34,6 @@
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">
-                            DNI
-                        </label>
-                        <div class="col-sm-6">
-                            <?php echo $this->formRow($empleado->get('dni')->setAttributes(['type'=>'text','data-type'=>'digits','required' => 'required', 'class' => 'form-control', 'placeholder'=>'Unicamente numeros'])); ?>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">
-                            Email
-                        </label>
-                        <div class="col-sm-6">
-                            <?php echo $this->formRow($empleado->get('email')->setAttributes(['type'=>'email','data-type'=>'email','required' => 'required', 'class' => 'form-control', 'placeholder'=>'ingrese email'])); ?>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">
                             Sector 
                         </label>
                         <div class="col-sm-6">
@@ -55,11 +46,12 @@
                     <div class="col-sm-6 col-sm-offset-3">
                         <div class="btn-toolbar">
                             <button type="submit" class="btn-primary btn" >Registrar</button>
-                        </div>
                     </div>
                 </div>
-                <?php echo $this->form()->closeTag(); ?> 
             </div>
+            <?php echo $this->form()->closeTag(); ?> 
         </div>
     </div>
 </div>
+
+<?php  include 'footer.php'; ?>

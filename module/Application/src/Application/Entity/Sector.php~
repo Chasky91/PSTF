@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="Sector")
+ * @ORM\Table(name="sector")
  */
 class Sector
 {

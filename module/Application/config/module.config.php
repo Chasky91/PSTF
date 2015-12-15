@@ -20,15 +20,6 @@ return array(
                     ),
                 ),
             ),
-/*
-
-    // This should be an array of module namespaces used in the application.
-    'modules' => array(
-        'Application',
-        'DOMPDFModule',
-        ),
-
-        */
 //Esto corresponde al modulo de beneficiarios
             //aqui entramos a la vista o index de la vista de Beneficiario
             'beneficiario'=> array(
@@ -64,105 +55,64 @@ return array(
                                 ),
                             ),
             //Aqui a la vista de modificar beneficiario
-            'modbeneficiario'=> array(
-                'type' => 'Zend\Mvc\Router\Http\Segment',
+            'mod-beneficiario'=> array(
+                'type'=>'Zend\Mvc\Router\Http\Literal',
                 'options'=> array(
-                        'route' => '/mod-beneficiario/:id',
-                         'constraints' => array(
-                            'id' => '[0-9]+',
-                                ),
+                    'route' => '/mod-beneficiario',
                     'defaults'=>array(
                         'controller'=>'Application\Controller\Beneficiario',
                         'action'=>'modificar',
-
                                     ),
                                 ),
                             ),
-            //Aqui a la vista de modificar beneficiario
-            'estado'=> array(
-                'type' => 'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                        'route' => '/estado/:id',
-                         'constraints' => array(
-                            'id' => '[0-9]+',
-                                ),
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Beneficiario',
-                        'action'=>'estado',
-
-                                    ),
-                                ),
-                            ),            
             //Aqui a la vista de Eliminar beneficiario
             'del-beneficiario'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Segment',
+                'type'=>'Zend\Mvc\Router\Http\Literal',
                 'options'=> array(
-                    'route' => '/del-beneficiario/:id',
+                    'route' => '/del-beneficiario',
                     'defaults'=>array(
                         'controller'=>'Application\Controller\Beneficiario',
                         'action'=>'eliminar',
                                     ),
                                 ),
                             ),
-//Esto corresponde al modulo de Famila
-            //aqui entramos a la vista o index de la vista de Familia
-            'familia'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
+
+//Esto corresponde al modulo de Stock
+            //aqui entramos a la vista o index de la vista de Stock
+            'stock'=> array(
+                'type'=>'Zend\Mvc\Router\Http\literal',
                 'options'=> array(
-                    'route' => '/familia',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Familia',
+                    'route' => '/Stock',
+                     'default'=>array(
+                        'controller'=>'Application\Controller\Stock',
                         'action'=>'index',
                                     ),
                                 ),
                             ),
-            //Aqui a la vista de nuevo Familia
-            'nuevoFam'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Segment',
-                    'options'=> array(
-                    'route' => '/nuevo-familiar/:id',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Familia',
-                        'action'=>'nuevo',
-                                    ),
-                                ),
-                            ),
-            'verFam'=> array(
+
+//Aqui a la vista de ver stock
+            'ver-stock'=> array(
                 'type'=>'Zend\Mvc\Router\Http\Literal',
                 'options'=> array(
-                    'route' => '/ver-familias',
+                    'route' => '/ver-stock',
                     'defaults'=>array(
-                        'controller'=>'Application\Controller\Familia',
-                        'action'=>'ver',
+                        'controller'=>'Application\Controller\Stock',
+                        'action'=>'verstock',
                                     ),
                                 ),
                             ),
-            //Aqui a la vista de modificar Familia
-            'modFam'=> array(
-                'type' => 'Zend\Mvc\Router\Http\Segment',
+            //Aqui a la vista de modificar Stock
+            'mod-stock'=> array(
+                'type'=>'Zend\Mvc\Router\Http\Literal',
                 'options'=> array(
-                        'route' => '/mod-Familiar/:id',
-                         'constraints' => array(
-                            'id' => '[0-9]+',
-                                ),
+                    'route' => '/mod-stock',
                     'defaults'=>array(
-                        'controller'=>'Application\Controller\Familia',
-                        'action'=>'modificar',
+                        'controller'=>'Application\Controller\Stock',
+                        'action'=>'modstock',
+                                    ),
+                                ),
+                            ),
 
-                                    ),
-                                ),
-                            ),
-            //Aqui a la vista de Eliminar Familia
-            'delFam'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                    'route' => '/del-Familiar/:id',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Familia',
-                        'action'=>'eliminar',
-                                    ),
-                                ),
-                            ),
 //Esto corresponde al modulo de Asistencia mensual
             //aqui entramos a la vista o index de la vista de Asistencia Mensual
             'asistencia-mensual'=> array(
@@ -371,306 +321,6 @@ return array(
                  ),
             ),
             //Termina eliminar sector
-            
- /////////////////////
-            //Comienza Stock///
-            ////////////////////
-            
-            //seccion lista de stocks
-            'index_stock' => array(
-                'type' => 'literal', // 'Zend\Mvc\Router\Http\Literal'
-                'options' => array(
-                    'route' => '/lista-stock',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Stock',
-                        'action' => 'index',
-                    ),
-                ),
-            ),
-            
-
-//Esto pertenece al Loguin y Logout
-            'login' => array(
-                'type' => 'literal', // 'Zend\Mvc\Router\Http\Literal'
-                'options' => array(
-                    'route' => '/iniciar-sesion',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Empleado',
-                        'action' => 'login',
-                    ),
-                ),
-            ),
-            
-            'logout' => array(
-                'type' => 'literal', // 'Zend\Mvc\Router\Http\Literal'
-                'options' => array(
-                    'route' => '/cerrar-sesion',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Empleado',
-                        'action' => 'logout',
-                    ),
-                ),
-            ),
-//Esto corresponde a Sanidad (Situacion Sanitaria)
-             'sanidad'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
-                    'route' => '/sanidad',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Sanidad',
-                        'action'=>'index',
-                                    ),
-                                ),
-                            ),
-            //Aqui a la vista de nuevo Sanidad
-            'nuevo_S'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                    'route' => '/ingresar-situacionsanitaria/:id',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Sanidad',
-                        'action'=>'nuevo',
-                                    ),
-                                ),
-                            ),
-
-            //Aqui a la vista de ver Sanidad
-            'ver_S'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
-                    'route' => '/ver-situacionsanitaria',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Sanidad',
-                        'action'=>'vers',
-                                    ),
-                                ),
-                            ),
-                            
-            //Aqui a la vista de modificar Sanidad
-            'modS'=> array(
-                'type' => 'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                        'route' => '/mod-situacionsanitaria/:id',
-                         'constraints' => array(
-                            'id' => '[0-9]+',
-                                ),
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Sanidad',
-                        'action'=>'mods',
-
-                                    ),
-                                ),
-                            ),
-            //Aqui a la vista de Eliminar Sanidad
-            'delS'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                    'route' => '/del-situacionSanitaria/:id',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Sanidad',
-                        'action'=>'dels',
-                                    ),
-                                ),
-                            ),                           
-//Esto corresponde a Economia (Situacion Economia)
-             'economia'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
-                    'route' => '/economia',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Economia',
-                        'action'=>'index',
-                                    ),
-                                ),
-                            ),
-            //Aqui a la vista de nuevo Economia
-            'nuevoE'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                    'route' => '/nuevoE/:id',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Economia',
-                        'action'=>'nuevoE',
-                                    ),
-                                ),
-                            ),
-
-            //Aqui a la vista de ver Economia
-            'verE'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
-                    'route' => '/verE',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Economia',
-                        'action'=>'verE',
-                                    ),
-                                ),
-                            ),
-                            
- //Aqui a la vista de modificar Economia
-            'modE'=> array(
-                'type' => 'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                        'route' => '/modE/:id',
-                         'constraints' => array(
-                            'id' => '[0-9]+',
-                                ),
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Economia',
-                        'action'=>'modE',
-
-                                    ),
-                                ),
-                            ),
-            //Aqui a la vista de Eliminar Economia
-            'delE'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                    'route' => '/delE/:id',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Economia',
-                        'action'=>'delE',
-                                    ),
-                                ),
-                            ),
-//Esto corresponde a Vivienda (Situacion Vivienda)
-             'vivienda'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
-                    'route' => '/vivienda',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Vivienda',
-                        'action'=>'index',
-                                    ),
-                                ),
-                            ),
-            //Aqui a la vista de nuevo Vivienda
-            'nuevoviv'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                    'route' => '/nuevoviv/:id',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Vivienda',
-                        'action'=>'nuevoviv',
-                                    ),
-                                ),
-                            ),
-
-            //Aqui a la vista de ver Vivienda
-            'verviv'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
-                    'route' => '/verviv',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Vivienda',
-                        'action'=>'verviv',
-                                    ),
-                                ),
-                            ),
-                            
- //Aqui a la vista de modificar Vivienda
-            'modviv'=> array(
-                'type' => 'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                        'route' => '/modviv/:id',
-                         'constraints' => array(
-                            'id' => '[0-9]+',
-                                ),
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Vivienda',
-                        'action'=>'modviv',
-
-                                    ),
-                                ),
-                            ),
-            //Aqui a la vista de Eliminar Vivienda
-            'delviv'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                    'route' => '/delviv/:id',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Vivienda',
-                        'action'=>'delviv',
-                                    ),
-                                ),
-                            ),
-
-
-
-            ///////////////////////
-            //Asistencia mensual//
-            /////////////////////
-
-//Esto corresponde al modulo de Asistencia mensual
-            //aqui entramos a la vista o index de la vista de Asistencia Mensual
-            'index_asismen' => array(
-                'type' => 'Zend\Mvc\Router\Http\literal', // 'Zend\Mvc\Router\Http\Literal'
-                'options' => array(
-                    'route' => '/index-asismen',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\AsistMen',
-                        'action' => 'index',
-                    ),
-                ),
-            ),
-
-//Aqui a la vista de nuevo Asistencia Mensual
-            'nuevo_asismen'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                    'route' => '/nuevo-asismen/:id',
-                    'constraints' => array(
-                        'id' => '[0-9]+',
-                    ),
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\AsistMen',
-                        'action'=>'nuevo',
-                        ),
-                    ),
-                ),
-            ///////////////////////
-            //Comienza Modulo///
-            //////////////////////
-            
-            //lista de productos
-            'index_producto_en_modulo' => array(
-                'type' => 'literal', // 'Zend\Mvc\Router\Http\Literal'
-                'options' => array(
-                    'route' => '/lista-productos-en-modulo',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Modulo',
-                        'action' => 'index',
-                    ),
-                ),
-            ),
-            
-            //seccion nuevo productos del modulo
-            'nuevo_modulo' => array(
-                'type' => 'literal', // 'Zend\Mvc\Router\Http\Literal'
-                'options' => array(
-                    'route' => '/nuevo-modulo',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Modulo',
-                        'action' => 'nuevo',
-                    ),
-                ),
-            ),
-
-            'cargar_modulo' => array(
-                'type' => 'Zend\Mvc\Router\Http\Segment',
-                'options' => array(
-                    'route' => '/cargar-modulo/:id/:idp',                    
-                    'constraints' => array(
-                        'id' => '[0-9]+',
-                    ),
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Modulo',
-                        'action' => 'cargar',
-                    ),
-                ),
-            ),
-
-
 
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
@@ -731,14 +381,19 @@ return array(
             'Application\Controller\Stock' => 'Application\Controller\StockController',
             'Application\Controller\AsistMen' => 'Application\Controller\AsistMenController',
             'Application\Controller\Empleado' => 'Application\Controller\EmpleadoController',
-            'Application\Controller\Familia' => 'Application\Controller\FamiliaController',
-            'Application\Controller\Sanidad'=> 'Application\Controller\SanidadController',
-            'Application\Controller\Economia'=>'Application\Controller\EconomiaController',
-            'Application\Controller\Vivienda'=> 'Application\Controller\ViviendaController'
+            'Application\Controller\Sector' => 'Application\Controller\SectorController',
+            'Application\Controller\Producto' => 'Application\Controller\ProductoController'
 
 
         ),
     ),
+
+            
+    
+
+
+
+
     'view_manager' => array(
         'display_not_found_reason' => true,
         'display_exceptions'       => true,
@@ -754,10 +409,6 @@ return array(
         'template_path_stack' => array(
             __DIR__ . '/../view',
         ),
-
-        'strategies' => array(
-            'ViewJsonStrategy',
-        ),        
     ),
     // Placeholder for console routes
     'console' => array(
@@ -766,7 +417,8 @@ return array(
             ),
         ),
     ),
-    
+
+
     'doctrine' => array(
         'driver' => array(
             // Definimos como y donde Doctrine va a parsear las configuracion de las entidades 
@@ -785,25 +437,14 @@ return array(
                 ),
             ),
         ),
-
-        'authentication' => array(
-            'orm_default' => array(
-                'object_manager' => 'Doctrine\ORM\EntityManager',
-                'identity_class' => 'Application\Entity\Empleado',
-                'identity_property' => 'email',
-                'credential_property' => 'contrasena',
-                'credential_callable' => function(Application\Entity\Empleado $empleado, $password) {
-                    return $empleado->hashPassword($password);
-                }
-            ),
-        ),        
-    ),    
+    ),
 
     'view_helper_config' => array(
         'flashmessenger' => array(
-            'message_open_format'      => '<div%s><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><ul><li>',
+            'message_open_format'      => '<div class="alert alert-info"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><ul><li>',
             'message_close_string'     => '</li></ul></div>',
             'message_separator_string' => '</li><li>'
         )
-    ),    
+    ),
+    
 );

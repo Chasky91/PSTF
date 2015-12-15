@@ -20,15 +20,10 @@ class Educacion
 
     /** @ORM\Column(type="text", nullable=true) */
 	protected $descripcion;
-    /**
-    * @ORM\OnetoMany(targetEntity="Beneficiario", mappedBy="educacion")
-    **/
-    protected $idBeneficiario;
-
-    /**
-    * @ORM\OnetoMany(targetEntity="Familia", mappedBy="educacion")
-    **/
-    protected $nroF;
+/**
+* @ORM\OnetoMany(targetEntity="Beneficiario", mappedBy="idBeneficiario")
+**/
+protected $idBeneficiario;
 
     /**
      * Constructor
@@ -104,39 +99,5 @@ class Educacion
     public function getIdBeneficiario()
     {
         return $this->idBeneficiario;
-    }
-
-    /**
-     * Add nroF
-     *
-     * @param \Application\Entity\Familia $nroF
-     *
-     * @return Educacion
-     */
-    public function addNroF(\Application\Entity\Familia $nroF)
-    {
-        $this->nroF[] = $nroF;
-
-        return $this;
-    }
-
-    /**
-     * Remove nroF
-     *
-     * @param \Application\Entity\Familia $nroF
-     */
-    public function removeNroF(\Application\Entity\Familia $nroF)
-    {
-        $this->nroF->removeElement($nroF);
-    }
-
-    /**
-     * Get nroF
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getNroF()
-    {
-        return $this->nroF;
     }
 }

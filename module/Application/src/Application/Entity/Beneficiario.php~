@@ -5,9 +5,6 @@ namespace Application\Entity;
 use Doctrine\ORM\Mapping as ORM; 
 use DateTime;
 
-//En teoria esto es para la herencia y que me crea otra tabla aparte
-
-
 /** @ORM\Entity */
 class Beneficiario
 {
@@ -15,7 +12,8 @@ class Beneficiario
     * @ORM\Column(type="integer")
     * @ORM\GeneratedValue
     * @ORM\Id
-    */  
+    */
+  
     protected $idBeneficiario; //TENGO DOS CLAVES PRIMARIAS, idPaciente y dni   
 
     /** @ORM\Column(type="bigint", nullable=false, unique=true) */
@@ -28,14 +26,14 @@ class Beneficiario
     protected $apellido; 
     /** @ORM\Column(type="string", nullable=true)*/
     protected $lugnac;
-    /** @ORM\Column (type="datetime") */
+    /** @ORM\Column (type="date") */
     protected $fechanac;
    
     /**
     * @ORM\ManyToOne(targetEntity="EstadoCivil", inversedBy="idBeneficiario")
     * @ORM\JoinColumn(name="idEstcivil", referencedColumnName="idEstado")
     **/
-    protected $estadocivil;
+    protected $estado_civil;
 
      /**
     * @ORM\ManyToOne(targetEntity="Educacion", inversedBy="idBeneficiario")
@@ -56,38 +54,4 @@ class Beneficiario
     /** @ORM\Column(type="bigint", nullable=true) */
     protected $telfben;
 
-
-
-    /**
-    * @ORM\OneToMany(targetEntity="Familia", mappedBy="idben")
-    **/
-    protected $fam;
-
-
-
-
-    /** @ORM\Column(type="string", nullable=true)*/
-    private $activo;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="fechaAlta", type="datetime", precision=0, scale=0, nullable=false, unique=false)
-     */
-    private $fechaAlta;
-
-
-
-    public function __construct()
-    {
-
-        $this->fechaAlta = new DateTime();  
-        $this->activo = 'Pendiente';       
-    }
-
-
-
-  
-
-    
 }

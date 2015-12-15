@@ -4,15 +4,10 @@ namespace Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use DateTime;
-//producto tiene ID
-//               nombre
-//               descripcion
-//               cantidad
-//               stockCritico
-//               fecha de ingreso
+
 /** 
 *
-*@ORM\Entity(repositoryClass="Application\Repository\Producto") 
+*@ORM\Entity 
 *@ORM\Table(name="producto")
 */
 class Producto  
@@ -25,28 +20,16 @@ class Producto
      */   
     protected $id_producto;
     /** @ORM\Column (length= 200) */
-    protected $nombre;
+    protected $item;
     /** @ORM\Column (length=350) */
     protected $descripcion;
-    /** @ORM\Column (type="integer") */
-    protected $cantidad;
-    /** @ORM\Column(name="activo", type="boolean", nullable=false) */
-    protected $activo;
-    /** @ORM\Column (type="integer") */
-    protected $stockCritico;
     /** @ORM\Column (type="datetime") */
     protected $fecha_ingreso;
-     /**
-     * @ORM\ManyToOne(targetEntity="Modulo")
-     * @ORM\JoinColumn(name="modulo_id", referencedColumnName="idModulo",nullable=true)
-     */
-    protected $modulo_id;
+    
     
     public function __construct() {
         $this->fecha_ingreso = new DateTime();
     }
-
-
 
     /**
      * Get idProducto
@@ -59,27 +42,53 @@ class Producto
     }
 
     /**
-     * Set nombre
+     * Set item
      *
-     * @param string $nombre
+     * @param string $item
      *
      * @return Producto
      */
-    public function setNombre($nombre)
+    public function setItem($item)
     {
-        $this->nombre = $nombre;
+        $this->item = $item;
 
         return $this;
     }
 
     /**
-     * Get nombre
+     * Get item
      *
      * @return string
      */
-    public function getNombre()
+    public function getItem()
     {
-        return $this->nombre;
+        return $this->item;
+    }
+
+    
+
+    /**
+     * Set fechaIngreso
+     *
+     * @param string $fechaIngreso
+     *
+     * @return Producto
+     */
+    public function setFechaIngreso($fechaIngreso)
+    {
+        $this->fecha_ingreso = $fechaIngreso;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaIngreso
+     *
+     * @return string
+     */
+    public function getFechaIngreso()
+    {
+        return $this->fecha_ingreso;
     }
 
     /**
@@ -104,125 +113,5 @@ class Producto
     public function getDescripcion()
     {
         return $this->descripcion;
-    }
-
-    /**
-     * Set cantidad
-     *
-     * @param integer $cantidad
-     *
-     * @return Producto
-     */
-    public function setCantidad($cantidad)
-    {
-        $this->cantidad = $cantidad;
-
-        return $this;
-    }
-
-    /**
-     * Get cantidad
-     *
-     * @return integer
-     */
-    public function getCantidad()
-    {
-        return $this->cantidad;
-    }
-
-    /**
-     * Set stockCritico
-     *
-     * @param integer $stockCritico
-     *
-     * @return Producto
-     */
-    public function setStockCritico($stockCritico)
-    {
-        $this->stockCritico = $stockCritico;
-
-        return $this;
-    }
-
-    /**
-     * Get stockCritico
-     *
-     * @return integer
-     */
-    public function getStockCritico()
-    {
-        return $this->stockCritico;
-    }
-
-    /**
-     * Set fechaIngreso
-     *
-     * @param \DateTime $fechaIngreso
-     *
-     * @return Producto
-     */
-    public function setFechaIngreso($fechaIngreso)
-    {
-        $this->fecha_ingreso = $fechaIngreso;
-
-        return $this;
-    }
-
-    /**
-     * Get fechaIngreso
-     *
-     * @return \DateTime
-     */
-    public function getFechaIngreso()
-    {
-        return $this->fecha_ingreso;
-    }
-
-    /**
-     * Set moduloId
-     *
-     * @param \Application\Entity\Modulo $moduloId
-     *
-     * @return Producto
-     */
-    public function setModuloId(\Application\Entity\Modulo $moduloId = null)
-    {
-        $this->modulo_id = $moduloId;
-
-        return $this;
-    }
-
-    /**
-     * Get moduloId
-     *
-     * @return \Application\Entity\Modulo
-     */
-    public function getModuloId()
-    {
-        return $this->modulo_id;
-    }
-
-    /**
-     * Set activo
-     *
-     * @param boolean $activo
-     *
-     * @return Producto
-     */
-    public function setActivo($activo)
-    {
-        $this->activo = $activo;
-
-        return $this;
-    }
-
-    /**
-     * Get activo
-     *
-     * @return boolean
-     */
-    public function getActivo()
-    {
-        return $this->activo;
     }
 }

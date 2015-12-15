@@ -18,12 +18,6 @@ class RegistroModulo
      */
     protected  $idRegistro;
 
-    /**
-     * @ORM\OneToOne(targetEntity="Modulo")
-     * @ORM\JoinColumn(name="moduloId", referencedColumnName="idModulo", nullable=true, unique=true)
-     */
-    protected $moduloId;
-
 
 
     /**
@@ -36,27 +30,5 @@ class RegistroModulo
         return $this->idRegistro;
     }
 
-    /**
-     * Set moduloId
-     *
-     * @param \Application\Entity\Modulo $moduloId
-     *
-     * @return RegistroModulo
-     */
-    public function setModuloId(\Application\Entity\Modulo $moduloId = null)
-    {
-        $this->moduloId = $moduloId;
 
-        return $this;
-    }
-
-    /**
-     * Get moduloId
-     *
-     * @return \Application\Entity\Modulo
-     */
-    public function getModuloId()
-    {
-        return $this->moduloId;
-    }
 }
