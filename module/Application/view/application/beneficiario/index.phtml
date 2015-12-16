@@ -1,1 +1,101 @@
-Action "index", controller "Beneficiario", module "Application".
+<!--Se modificaran todos los valores del Beneficiario-->
+<div class="container">
+        <h1>Beneficiario</h1>
+    <div class="col-xs-12">
+        <div class="panel panel-midnightblue">
+            <div class="panel-heading"><h4>Legajo n° <?php echo $beneficiario->getIdBeneficiario() ?></h4></div>
+                <div class="panel-body">
+      
+                    <!--Datos personales-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Nombres</label>
+                                <div class="col-sm-2">
+                                
+
+                                </div>            
+
+                            <label class="col-sm-1 control-label">Apellidos</label>                       
+                                <div class="col-sm-2">
+                                   
+                                </div>
+                            <label class="col-sm-1 control-label">DNI</label>
+                              <div class="col-sm-2">
+                              
+                              </div>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label class="col-sm-2 control-label">Lugar de Nacimiento</label>
+                               <div class="col-sm-2">
+                              
+                                </div>
+                            <label class="col-sm-1 control-label">Fecha de Nacimiento</label>
+                                <div class="col-sm-2">
+                                
+                                <div class="input-group date"></div>
+                            </div>
+                        </div>
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label">Estado civil </label>
+                                    <div class="col-sm-3">
+                                        
+                                    </div>
+                            </div>  
+                        </div>
+                <!--Datos del domicilio de Beneficiario-->
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">Domicilio</label>
+                        <div class="col-sm-3">
+                            
+                         </div>
+                    <label class="col-sm-1 control-label">Ciudad</label>
+                        <div class="col-sm-2">
+                            <select id="e1" style="width:100%" class="populate">
+                                    <option value="AK">Alaska</option>
+                                    <option value="HI">Hawaii</option>
+                                    <option value="CA">California</option>
+                                    <option value="NV">Nevada</option>
+                                    <option value="OR">Oregon</option>
+                                    <option value="WA">Washington</option>
+                            </select>
+                        </div>
+                    <label class="col-sm-1 control-label">Provincia</label>
+                        <div class="col-sm-2">
+                            <select id="e2" style="width:100%" class="populate">
+                                    <option value="AK">Alaska</option>
+                                    <option value="HI">Hawaii</option>
+                                    <option value="CA">California</option>
+                                    <option value="NV">Nevada</option>
+                                    <option value="OR">Oregon</option>
+                                    <option value="WA">Washington</option>
+                            </select>
+                        </div>       
+                </div> 
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">Residencia en Catriel</label>
+                        <div class="col-sm-3">
+                           
+                        </div>
+                </div>
+                <div class="form-group">     
+                    <label  class="col-sm-1 control-label">Telefono</label>
+                        <div class="col-sm-3">   
+                           
+                        </div>
+
+                </div>
+                <!--Datos de Estudio y Oficio del Beneficiario-->
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">Tipo de Estudios</label>
+                        <div class="col-sm-3">
+                            
+                        </div> 
+                </div> 
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">Oficio</label>
+                        <div class="col-sm-3">
+                            
+                       </div> 
+                </div>
+            </div>
+        </div>
+</div>

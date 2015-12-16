@@ -16,28 +16,60 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Ítem</th>
+                                        <th>Nombre</th>
                                         <th>Descripción</th>
-                                        <th>Fecha ingreso</th>
+                                        <th>Cantidad</th>
+                                        <th>Estado de stock</th>
+                                        <th>Fecha de  ingreso</th>
                                         <th>Operaciones</th>
+                                        <th>Modulo</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php //($productos);die; ?>
                                     <?php foreach($productos as $producto): ?>
                                         <tr class="odd gradeX">
                                             <td><?php echo $producto->getIdProducto() ?></td>
-                                            <td><?php echo $producto->getItem() ?></td>                                            
+                                            <td><?php echo $producto->getNombre() ?></td>                                            
                                             <td><?php echo $producto->getDescripcion() ?></td>
+                                            <td><?php echo $producto->getCantidad() ?></td>
+                                                     <?php $cantidad = $producto->getCantidad() ?>
+                                                     <?php $stock = $producto->getStockCritico() ?>
+                                            <td> <?php echo $estado = $comparar->comparar($cantidad,$stock)?></td>                                                                                    
                                             <?php  $fechaIngreso  =$producto->getFechaIngreso()  ?>
                                             <td><?php echo $fechaIngreso->format('d-m-Y')  ?></td>
-                                            <td>
-                                                <a class="btn btn-warning-alt btn-label" href="<?php echo $this->url('editar_producto', array(
-                                                'id' => $producto->getIdProducto()))?>">
-                                                    <i class="fa fa-cog"></i>Editar</a>     
-                                                    <a class="btn btn-danger-alt btn-label" href="<?php echo $this->url('eliminar_producto', array(
-                                                'id' => $producto->getIdProducto()))?>">
-                                                        <i class="fa fa-times"></i>Eliminar</a>
+
+                                            <td>                        
+                                                <div class="btn-toolbar">
+                                                        <div class="btn-group hidden-xs">
+                                                            <a href='#' class="btn btn-default dropdown-toggle" data-toggle='dropdown'><i class="fa fa-cog"></i><span class="hidden-sm"> </span><span class="caret"></span></a>
+                                                            <ul class="dropdown-menu">
+                                                                <li> <a href="<?php echo $this->url('editar_producto', array(
+                                                'id' => $producto->getIdProducto()))?>"><i class="fa fa-cog"></i> Editar</a>  </li>
+                                                                <li><a  href="<?php echo $this->url('eliminar_producto', array(
+                                                'id' => $producto->getIdProducto()))?>"><i class="fa fa-times"></i> Eliminar</a>   </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                   
                                             </td>
+                                                                                       
+                                            <?php if (!$producto->getModuloId()): ?>
+                                            
+                                            <td><select class="form-control" id="source" onchange="location = this.options[this.selectedIndex].value;">
+                                                        <option data-hidden="true">Ningun modulo</option>
+                                                    <?php foreach ($modulos as $modulo):?> 
+                                                
+                                                        <option value="<?php echo $this->url('cargar_modulo', array(
+                                                        'id' => $modulo->getIdModulo(),
+                                                        'idp' => $producto->getIdProducto())) ?>"><?php echo $modulo->getNombre() ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </td>
+                                            <?php else:?>}
+                                            <?php $moduloAsignado=$producto->getModuloId() ?>
+                                            <td><?php echo$moduloAsignado->getNombre() ?></td>
+                                            <?php endif ?>
                                            </tr>
                                      <?php endforeach; ?>
                                 </tbody>

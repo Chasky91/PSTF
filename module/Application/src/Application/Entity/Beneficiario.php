@@ -5,6 +5,9 @@ namespace Application\Entity;
 use Doctrine\ORM\Mapping as ORM; 
 use DateTime;
 
+//En teoria esto es para la herencia y que me crea otra tabla aparte
+
+
 /** @ORM\Entity */
 class Beneficiario
 {
@@ -12,8 +15,7 @@ class Beneficiario
     * @ORM\Column(type="integer")
     * @ORM\GeneratedValue
     * @ORM\Id
-    */
-  
+    */  
     protected $idBeneficiario; //TENGO DOS CLAVES PRIMARIAS, idPaciente y dni   
 
     /** @ORM\Column(type="bigint", nullable=false, unique=true) */
@@ -26,14 +28,14 @@ class Beneficiario
     protected $apellido; 
     /** @ORM\Column(type="string", nullable=true)*/
     protected $lugnac;
-    /** @ORM\Column (type="date") */
+    /** @ORM\Column (type="datetime") */
     protected $fechanac;
    
     /**
     * @ORM\ManyToOne(targetEntity="EstadoCivil", inversedBy="idBeneficiario")
     * @ORM\JoinColumn(name="idEstcivil", referencedColumnName="idEstado")
     **/
-    protected $estado_civil;
+    protected $estadocivil;
 
      /**
     * @ORM\ManyToOne(targetEntity="Educacion", inversedBy="idBeneficiario")
@@ -54,6 +56,40 @@ class Beneficiario
     /** @ORM\Column(type="bigint", nullable=true) */
     protected $telfben;
 
+
+
+    /**
+    * @ORM\OneToMany(targetEntity="Familia", mappedBy="idben")
+    **/
+    protected $fam;
+
+
+
+
+    /** @ORM\Column(type="string", nullable=true)*/
+    private $estado;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechaAlta", type="datetime", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $fechaAlta;
+
+
+
+    public function __construct()
+    {
+
+        $this->fechaAlta = new DateTime();  
+        $this->estado = 'Pendiente';       
+    }
+
+
+
+  
+
+    
 
     /**
      * Get idBeneficiario
@@ -170,7 +206,7 @@ class Beneficiario
      */
     public function setFechanac($fechanac)
     {
-        $this->fechanac = new \DateTime ($fechanac);
+        $this->fechanac = $fechanac;
 
         return $this;
     }
@@ -257,28 +293,53 @@ class Beneficiario
         return $this->telfben;
     }
 
+
     /**
-     * Set estadoCivil
+     * Set fechaAlta
      *
-     * @param \Application\Entity\EstadoCivil $estadoCivil
+     * @param \DateTime $fechaAlta
      *
      * @return Beneficiario
      */
-    public function setEstadoCivil(\Application\Entity\EstadoCivil $estadoCivil = null)
+    public function setFechaAlta($fechaAlta)
     {
-        $this->estado_civil = $estadoCivil;
+        $this->fechaAlta = $fechaAlta;
 
         return $this;
     }
 
     /**
-     * Get estadoCivil
+     * Get fechaAlta
+     *
+     * @return \DateTime
+     */
+    public function getFechaAlta()
+    {
+        return $this->fechaAlta;
+    }
+
+    /**
+     * Set estadocivil
+     *
+     * @param \Application\Entity\EstadoCivil $estadocivil
+     *
+     * @return Beneficiario
+     */
+    public function setEstadocivil(\Application\Entity\EstadoCivil $estadocivil = null)
+    {
+        $this->estadocivil = $estadocivil;
+
+        return $this;
+    }
+
+    /**
+     * Get estadocivil
      *
      * @return \Application\Entity\EstadoCivil
      */
-    public function getEstadoCivil()
+    public function getEstadocivil()
     {
-        return $this->estado_civil;
+        return $this->estadocivil;
     }
 
     /**
@@ -327,5 +388,63 @@ class Beneficiario
     public function getProfession()
     {
         return $this->profession;
+    }
+
+    /**
+     * Add fam
+     *
+     * @param \Application\Entity\Familia $fam
+     *
+     * @return Beneficiario
+     */
+    public function addFam(\Application\Entity\Familia $fam)
+    {
+        $this->fam[] = $fam;
+
+        return $this;
+    }
+
+    /**
+     * Remove fam
+     *
+     * @param \Application\Entity\Familia $fam
+     */
+    public function removeFam(\Application\Entity\Familia $fam)
+    {
+        $this->fam->removeElement($fam);
+    }
+
+    /**
+     * Get fam
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFam()
+    {
+        return $this->fam;
+    }
+
+    /**
+     * Set estado
+     *
+     * @param string $estado
+     *
+     * @return Beneficiario
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return string
+     */
+    public function getEstado()
+    {
+        return $this->estado;
     }
 }

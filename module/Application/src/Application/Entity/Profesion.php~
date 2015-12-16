@@ -10,21 +10,25 @@ use DateTime;
 /** @ORM\Entity */
 class Profesion
 {
-	/**
-    * @ORM\Column(type="integer")
-    * @ORM\GeneratedValue
-    * @ORM\Id
-    */
-   
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue
+     * @ORM\Id
+     */
     protected $idProfesion; //TENGO  CLAVES PRIMARIAS, idEstado 
 
     /** @ORM\Column(type="text", nullable=true) */
-	protected $descripcion;
-/**
-* @ORM\OnetoMany(targetEntity="Beneficiario", mappedBy="idBeneficiario")
-**/
-protected $idBeneficiario;
+    protected $descripcion;
 
+    /**                                                                                          
+     * @ORM\OneToMany(targetEntity="Beneficiario", mappedBy="profession")
+     * */
+    protected $idBeneficiario;
+
+    /**
+    * @ORM\OnetoMany(targetEntity="Familia", mappedBy="profession")
+    **/
+    protected $nroF;
 
     /**
      * Constructor
@@ -100,5 +104,39 @@ protected $idBeneficiario;
     public function getIdBeneficiario()
     {
         return $this->idBeneficiario;
+    }
+
+    /**
+     * Add nroF
+     *
+     * @param \Application\Entity\Familia $nroF
+     *
+     * @return Profesion
+     */
+    public function addNroF(\Application\Entity\Familia $nroF)
+    {
+        $this->nroF[] = $nroF;
+
+        return $this;
+    }
+
+    /**
+     * Remove nroF
+     *
+     * @param \Application\Entity\Familia $nroF
+     */
+    public function removeNroF(\Application\Entity\Familia $nroF)
+    {
+        $this->nroF->removeElement($nroF);
+    }
+
+    /**
+     * Get nroF
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNroF()
+    {
+        return $this->nroF;
     }
 }

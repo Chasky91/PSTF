@@ -5,40 +5,118 @@ namespace Application\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use DateTime;
 
-/** 
-*
-*@ORM\Entity 
-*@ORM\Table(name="empleado")
-*/
-
+/**
+ * Empleado
+ *
+ * @ORM\Table(name="empleado")
+ * @ORM\Entity
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="rol", type="string")
+ */
 class Empleado
 {
     /**
-     * @ORM\Column(type="integer",unique=true)
-     * @ORM\GeneratedValue
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=true)
      * @ORM\Id
-     */   
-    protected $id;
-    /** @ORM\Column(unique=true, type="integer") */
-    protected $dni;
-    /** @ORM\Column (length=140) */
-    protected $nombre;
-    /** @ORM\Column (length=140) */
-    protected $apellido;
-    /** @ORM\Column (type="datetime") */
-    protected $fechaAlta;
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
     /**
-    * @ORM\ManyToOne(targetEntity="Sector", inversedBy="empleados")
-    * @ORM\JoinColumn(name="sector_id", referencedColumnName="id")
-    **/
-    protected $sector;
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="contrasena", type="string", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $contrasena;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="salt", type="string", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $salt;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="dni", type="integer", precision=0, scale=0, nullable=false, unique=true)
+     */
+    private $dni;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=140, precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="apellido", type="string", length=140, precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $apellido;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="activo", type="boolean", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $activo;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechaAlta", type="datetime", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $fechaAlta;
+
+    /**
+     * @var \Application\Entity\Sector
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Entity\Sector", inversedBy="empleados")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="sector_id", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $sector;
+
+
+    /*
+
+    Al crear el usuario tengo que hashear la pwd
     
-    public function __construct() {
-   
-        $this->fechaAlta = new DateTime();
+    $usuario = new Usuario();
+    $passwordHasheada = $usuario->hashPassword($data['password']);
+    $usuario->setPassword($passwordHasheada);
+    $em->persist($usuario);
+    $em->flush(); 
+    
+    */
+
+
+    public function __construct()
+    {
+        $this->salt = sha1(mt_rand());
+        $this->fechaAlta = new DateTime();  
+        $this->activo = true;       
     }
-    
-  
+
+    public function hashPassword($password)
+    {
+        $hash = crypt($password, '$5$rounds=1000$' . $this->salt .'$');        
+        return $hash;
+    }   
+
     /**
      * Get id
      *
@@ -50,9 +128,81 @@ class Empleado
     }
 
     /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return Empleado
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set contrasena
+     *
+     * @param string $contrasena
+     *
+     * @return Empleado
+     */
+    public function setContrasena($contrasena)
+    {
+        $this->contrasena = $contrasena;
+
+        return $this;
+    }
+
+    /**
+     * Get contrasena
+     *
+     * @return string
+     */
+    public function getContrasena()
+    {
+        return $this->contrasena;
+    }
+
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     *
+     * @return Empleado
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
+    /**
+     * Get salt
+     *
+     * @return string
+     */
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+
+    /**
      * Set dni
      *
-     * @param string $dni
+     * @param integer $dni
      *
      * @return Empleado
      */
@@ -66,7 +216,7 @@ class Empleado
     /**
      * Get dni
      *
-     * @return string
+     * @return integer
      */
     public function getDni()
     {
@@ -119,6 +269,30 @@ class Empleado
     public function getApellido()
     {
         return $this->apellido;
+    }
+
+    /**
+     * Set activo
+     *
+     * @param boolean $activo
+     *
+     * @return Empleado
+     */
+    public function setActivo($activo)
+    {
+        $this->activo = $activo;
+
+        return $this;
+    }
+
+    /**
+     * Get activo
+     *
+     * @return boolean
+     */
+    public function getActivo()
+    {
+        return $this->activo;
     }
 
     /**
