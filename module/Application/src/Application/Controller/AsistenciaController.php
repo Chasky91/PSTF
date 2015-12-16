@@ -136,7 +136,7 @@ class AsistenciaController extends AbstractActionController
         $em->persist($nuevoRegistro);
         $em->flush();
                 
-            $this->flashMessenger()->addSuccessMessage('Nuevo Modulo!');
+            $this->flashMessenger()->addSuccessMessage('Nuevo Modulo Registrado!');
             return $this->redirect()->toRoute('index_asismen',array( 'planilla' => $id));
         return new ViewModel();
     }
