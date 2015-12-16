@@ -344,21 +344,35 @@ return array(
             ),
 
 //Aqui a la vista de nuevo Asistencia Mensual
-            'nuevo_asismen'=> array(
+            'nuevo_asismen_producto'=> array(
                 'type'=>'Zend\Mvc\Router\Http\Segment',
                 'options'=> array(
-                    'route' => '/nuevo-asismen/:id',
+                    'route' => '/nuevo-asismen-producto/:id',
                     'constraints' => array(
                         'id' => '[0-9]+',
                     ),
                     'defaults'=>array(
                         'controller'=>'Application\Controller\Asistencia',
-                        'action'=>'nuevo',
+                        'action'=>'asistenciaConProducto',
                         ),
                     ),
                 ),
 
-            //Aqui a la vista de modificar Asistencia Mensual
+ //Ruta de Asistencia  mensual para modulo
+            'nuevo_asismen_modulo' =>array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/nuevo-asismen-modulo/:id/:idm',
+                    'constraints' => array(
+                        'id' =>'[0-9]+',
+                        'idm' =>'[0-9]+',
+                    ),
+                    'defaults'=>array(
+                        'controller'=>'Application\Controller\Asistencia',
+                        'action'=>'asistenciaConModulo',
+                    ),
+                ),
+            ),
 
 
 //Esto corresponde a todo lo referido a los empleados
