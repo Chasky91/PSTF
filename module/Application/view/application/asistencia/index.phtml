@@ -60,15 +60,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach($registrosDeModulos as $registroModulo): ?>
+                                    <?php foreach($registrosDeProductos as $registrosDeProducto): ?>
                                         <tr class="odd gradeX">
-                                            <?php var_dump($registroModulo)?>
-                                            <?php  $fechaEntrega =$registro->getFechaEntrega()  ?>
+                                            <?php //var_dump($registroModulo[nombre])?>
+                                            <?php  $fechaEntrega =$registrosDeProducto[0]->getFechaEntrega()  ?>
                                             <td><?php echo $fechaEntrega->format('d-m-Y')  ?></td>                                            
-                                            <td><?php echo $registro->getItemId() ?></td>
+                                            <td><?php echo $registrosDeProducto[nombre] ?></td>
                                             <td></td>                                                                                                                      
                                          </tr>
                                      <?php endforeach; ?>
+                                     <?php foreach($registrosDeModulos as $registrosDeModulo): ?>
+                                        <tr class="odd gradeX">
+                                            <?php //var_dump($registroModulo[nombre])?>
+                                            <?php  $fechaEntrega =$registrosDeModulo[0]->getFechaEntrega()  ?>
+                                            <td><?php echo $fechaEntrega->format('d-m-Y')  ?></td>                                            
+                                            <td><?php echo $registrosDeModulo[nombre] ?></td>
+                                            <td></td>                                                                                                                      
+                                         </tr>
+                                     <?php endforeach; ?>
+                                     
                                 </tbody>
                             </table>
                         </div>

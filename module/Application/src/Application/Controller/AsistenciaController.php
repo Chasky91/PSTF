@@ -33,11 +33,24 @@ class AsistenciaController extends AbstractActionController
                                ->where('r.tipo = ?1')
                                ->setParameter(1,'producto')
                                ->getQuery();
-        $registrosDeModulos = $query2->getResult();
+        $registrosDeProductos = $query2->getResult();
+        
+        //query para modulo
+        $query3 = $em->createQueryBuilder()
+                               ->select('r,m.nombre')
+                               ->from('Application\Entity\Registro', 'r')
+                               ->innerJoin('Application\Entity\Modulo','m', 'WITH', 'r.itemId =m.idModulo')
+                               ->where('r.tipo = ?1')
+                               ->setParameter(1,'modulo')
+                               ->getQuery();
+        $registrosDeModulos = $query3->getResult();
+        
+        //var_dump($registrosDeModulos);die;/
 
         return new ViewModel([
             'beneficiario' =>$beneficiario,
-            'registrosDeModulos' => $registrosDeModulos
+            'registrosDeModulos' => $registrosDeProductos,
+            'registrosDeProductos' =>$registrosDeModulos
         ]);
     }
 
