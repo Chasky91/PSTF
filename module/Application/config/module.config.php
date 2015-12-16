@@ -330,9 +330,12 @@ return array(
 //Esto corresponde al modulo de Asistencia mensual
             //aqui entramos a la vista o index de la vista de Asistencia Mensual
             'index_asismen' => array(
-                'type' => 'Zend\Mvc\Router\Http\literal', // 'Zend\Mvc\Router\Http\Literal'
+                'type' => 'Zend\Mvc\Router\Http\Segment', 
                 'options' => array(
-                    'route' => '/index-asismen',
+                    'route' => '/index-asismen/:planilla',
+                    'constraints' => array(
+                        'planilla' => '[0-9]+',
+                    ),
                     'defaults' => array(
                         'controller' => 'Application\Controller\Asistencia',
                         'action' => 'index',

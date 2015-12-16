@@ -13,31 +13,24 @@
                 <?php $form->prepare() ?>
                 <?php echo $this->form()->openTag($form->setAttributes(['class' => 'form-horizontal', 'data-validate' => 'parsley', 'id' => 'validate-form'])) ?>
                 <?php //var_dump($form);die;
-                $registroPro = $form->get('registro-producto');             
-                ?>
+                $registroPro = $form->get('registro-producto'); ?>
 
                 <div class="form-group">
                     <label for="focusedinput" class="col-sm-3 control-label">Nombre del producto</label>
                     <div class="col-sm-6">
-
-                        <?php echo $this->formRow($registroPro->get('productoId')->setAttributes([ 'id' => 'focusedinput', 'class' => 'form-control'])); ?> 
+                        <?php echo $this->formRow($registroPro->get('beneficiarioId')->setAttributes([ 'value' =>  $id ])); ?>                        
+                        <?php echo $this->formRow($registroPro->get('tipo')->setAttributes([ 'value' => 'producto'])); ?>
+                        <?php echo $this->formRow($registroPro->get('itemId')->setAttributes([ 'id' => 'focusedinput', 'class' => 'form-control'])); ?> 
                     </div>
                 </div>
-                
-                <div class="form-group">
-                    <label for="focusedinput" class="col-sm-3 control-label">Nombre del producto</label>
-                    <div class="col-sm-6">
-
-                        <?php echo $this->formRow($registroPro->get('moduloId')->setAttributes([ 'id' => 'focusedinput', 'class' => 'form-control'])); ?> 
-                    </div>
-                </div>   
+                 
 
                 <div class="form-group">
                         <label class="col-sm-3 control-label">
-                            Otro
+                            cantidad
                         </label>
                         <div class="col-sm-6">
-                            <?php echo $this->formRow($registroPro->get('otro')->setAttributes(['ata-minlength' => '1', 'class' => 'form-control'])); ?>
+                            <?php echo $this->formRow($registroPro->get('cantidad')->setAttributes(['ata-minlength' => '1', 'class' => 'form-control'])); ?>
                         </div>
                     </div>
             </div>

@@ -41,11 +41,7 @@ class Producto
      * @ORM\JoinColumn(name="modulo_id", referencedColumnName="idModulo",nullable=true)
      */
     protected $modulo_id;
-    
-   /**
-    * @ORM\OneToMany(targetEntity="RegistroProducto", mappedBy="productoId")
-    **/	
-    protected $registros;
+
     
     public function __construct() {
         $this->fecha_ingreso = new DateTime();
@@ -53,7 +49,15 @@ class Producto
 
 
 
-
+    /**
+     * Get idProducto
+     *
+     * @return integer
+     */
+    public function getIdProducto()
+    {
+        return $this->id_producto;
+    }
 
     /**
      * Set nombre
@@ -128,6 +132,30 @@ class Producto
     }
 
     /**
+     * Set activo
+     *
+     * @param boolean $activo
+     *
+     * @return Producto
+     */
+    public function setActivo($activo)
+    {
+        $this->activo = $activo;
+
+        return $this;
+    }
+
+    /**
+     * Get activo
+     *
+     * @return boolean
+     */
+    public function getActivo()
+    {
+        return $this->activo;
+    }
+
+    /**
      * Set stockCritico
      *
      * @param integer $stockCritico
@@ -197,73 +225,5 @@ class Producto
     public function getModuloId()
     {
         return $this->modulo_id;
-    }
-
-    /**
-     * Set activo
-     *
-     * @param boolean $activo
-     *
-     * @return Producto
-     */
-    public function setActivo($activo)
-    {
-        $this->activo = $activo;
-
-        return $this;
-    }
-
-    /**
-     * Get activo
-     *
-     * @return boolean
-     */
-    public function getActivo()
-    {
-        return $this->activo;
-    }
-
-    /**
-     * Get idProducto
-     *
-     * @return integer
-     */
-    public function getIdProducto()
-    {
-        return $this->id_producto;
-    }
-
-    /**
-     * Add registro
-     *
-     * @param \Application\Entity\RegistroProducto $registro
-     *
-     * @return Producto
-     */
-    public function addRegistro(\Application\Entity\RegistroProducto $registro)
-    {
-        $this->registros[] = $registro;
-
-        return $this;
-    }
-
-    /**
-     * Remove registro
-     *
-     * @param \Application\Entity\RegistroProducto $registro
-     */
-    public function removeRegistro(\Application\Entity\RegistroProducto $registro)
-    {
-        $this->registros->removeElement($registro);
-    }
-
-    /**
-     * Get registros
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getRegistros()
-    {
-        return $this->registros;
     }
 }

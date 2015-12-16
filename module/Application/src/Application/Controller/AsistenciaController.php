@@ -4,7 +4,7 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Application\Entity\RegistroProducto;
+use Application\Entity\Registro;
 use Application\Admin\Form\FormAsistencia\RegistroProductoForm;
 
 class AsistenciaController extends AbstractActionController
@@ -16,7 +16,29 @@ class AsistenciaController extends AbstractActionController
 
     public function indexAction()
     {
-        return new ViewModel();
+        $id  = $this->params('planilla');
+        $em = $this->getEntityManager();
+        $query = $em->createQueryBuilder()
+                ->select('b')
+                ->from('Application\Entity\Beneficiario', 'b')
+                ->where('b.idBeneficiario = ?1')
+                ->setParameter(1,$id)
+                ->getQuery();
+        $beneficiario = $query->getResult();
+        //query para el innerjoin
+        $query2 = $em->createQueryBuilder()
+                               ->select('r,p.nombre')
+                               ->from('Application\Entity\Registro', 'r')
+                               ->innerJoin('Application\Entity\Producto','p', 'WITH', 'r.itemId =p.id_producto')
+                               ->where('r.tipo = ?1')
+                               ->setParameter(1,'producto')
+                               ->getQuery();
+        $registrosDeModulos = $query2->getResult();
+
+        return new ViewModel([
+            'beneficiario' =>$beneficiario,
+            'registrosDeModulos' => $registrosDeModulos
+        ]);
     }
 
 
@@ -26,22 +48,24 @@ class AsistenciaController extends AbstractActionController
         $em = $this->getEntityManager();
         
         $registroProductoForm = new RegistroProductoForm($em);
-        $registroProducto = new RegistroProducto();
-        $registroProductoForm->bind($registroProducto);
+        $registro = new Registro();
+        $registroProductoForm->bind($registro);
 
         if($this->request->isPost()) {
             $registroProductoForm->setData($this->request->getPost());
             if($registroProductoForm->isValid()) {
-                
-                $em->persist($registroProducto);
+
+                $em->persist($registro);
                 $em->flush();
 
+                                
                 $this->flashMessenger()->addSuccessMessage('Nuevo producto registrado!');
                 return $this->redirect()->toRoute('index_producto');
             }
         }
         return new ViewModel([
-            'form'  => $registroProductoForm
+            'form'  => $registroProductoForm,
+            'id' => $id
             
         ]);
     }
