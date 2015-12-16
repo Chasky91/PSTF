@@ -13,6 +13,8 @@ use Application\Entity\Educacion;
 use Application\Entity\Profesion;
 use Application\Entity\Relacion;
 
+use DOMPDFModule\View\Model\PdfModel;
+
 use Application\Admin\Form\FormBen\nuevobForm;
 
 class BeneficiarioController extends AbstractActionController
@@ -24,26 +26,22 @@ class BeneficiarioController extends AbstractActionController
     }
 
     public function indexAction()
-    {
-                                      $id=$this->params('id');
+    {  
+                  //para un beneficiario
 
-                                        //var_dump($id); echo "tiene ID"; die();
-                                        $em = $this->getEntityManager();
-                                      $beneficiario=$em->find('Application\Entity\Beneficiario', $id);
-                                        //var_dump($em); echo "pertenece EM"; die();
-                                        $query = $em->createQueryBuilder()
-                                                ->select('b')
-                                                ->from('Application\Entity\Beneficiario', 'b')
-                                                ->where('b.idBeneficiario = b')
-                                                //->setParameter(3, $id)    
-                                                ->getQuery();
-                                               $p = $query->execute(); 
-                                        
-                                      $beneficiario = $query->getResult(); //devuelve un arreglo con objetos beneficiario            
-        return new ViewModel([
-            'beneficiario'=>$beneficiario,
-        ]);
-//var_dump($beneficiario); die();
+                       $id  = $this->params('id');
+                             $em = $this->getEntityManager();
+                             $query3 = $em->createQueryBuilder()
+                                ->select('b')
+                                ->from('Application\Entity\Beneficiario', 'b')
+                                ->where('b.idBeneficiario = ?1')
+                                ->setParameter(1,$id)
+                                ->getQuery();
+                         $beneficiarioPrueba = $query3->getResult();                    
+                         var_dump($beneficiarioPrueba);die;
+                    return new ViewModel([
+                        'beneficiarioPrueba'=>$beneficiarioPrueba,
+                    ]);
 
     }
 
@@ -180,6 +178,27 @@ class BeneficiarioController extends AbstractActionController
              $this->flashMessenger()->addSuccessMessage('Beneficiario Rechazado');            
             return $this->redirect()->toRoute('ver-beneficiario');
     }
+    public function registroAction()
+    {
+        $pdf = new PdfModel();
+        
+        $this->layout(false);
+                $pdf->setOption('filename', 'index'); // Esta opcion fuerza la descarga del PDF.
+                                                             // La extension ".pdf" se agrega automaticamente
+                $pdf->setOption('paperOrintation', 'portrait'); //orientacion de la hoja
+                $pdf->setOption('paperSize', 'a4'); // Tamaño del papel
+         
+                // Pasamos variables a la vista
+                $pdf->setVariables(array(
+                    'name'=>'index'
+
+                ));
+         
+                return $pdf;
+    }
+
+
+
 
 
 }
