@@ -74,6 +74,7 @@ class AsistenciaController extends AbstractActionController
 
     public function asistenciaConProductoAction()
     {
+        //id de beneficiario
         $id  = $this->params('id');
         $em = $this->getEntityManager();
 
@@ -84,9 +85,24 @@ class AsistenciaController extends AbstractActionController
         if($this->request->isPost()) {
             $registroProductoForm->setData($this->request->getPost());
             if($registroProductoForm->isValid()) {
-                
                 $em->persist($registro);
                 $em->flush();
+                $data = $this->request->getPost();
+                $arreglo = $data['registro-producto'];
+                //cantidad ingresada al nuevo registro
+                
+                $cant = $arreglo['cantidad'];
+                $cant = (int)$cant;
+                var_dump($cant);die;
+                //query para actualizar el Stock del producto
+                $queryActulizarStock = $em->createQueryBuilder()
+                        ->update('Application\Entity\Producto', 'p')
+                        ->set('p.cantidad', '-?1')
+                        ->where('p.id_producto = ?2')
+                        ->setParameter(1, $username)
+                        ->setParameter(2, $id)
+                        ->getQuery();
+                $ejecutarDescuento = $queryActulizarStock->execute();
 
                                 
                 $this->flashMessenger()->addSuccessMessage('Nuevo producto registrado!');
