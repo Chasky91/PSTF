@@ -3,15 +3,15 @@
 namespace Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use DateTime;
 
 /**
  * Empleado
  *
  * @ORM\Table(name="empleado")
- * @ORM\Entity(repositoryClass="Application\Repository\Empleado")
  * @ORM\InheritanceType("SINGLE_TABLE")
- * @ORM\DiscriminatorColumn(name="rol", type="string")
+ * @ORM\DiscriminatorColumn(name="rol", type="string", length=)
+ * @ORM\DiscriminatorMap({"empleado" = "Application\Entity\Empleado", "admin" = "Application\Entity\Admin", "mesaentrada" = "Application\Entity\MesaEntrada"})
+ * @ORM\Entity
  */
 class Empleado
 {
@@ -90,32 +90,6 @@ class Empleado
      */
     private $sector;
 
-
-    /*
-
-    Al crear el usuario tengo que hashear la pwd
-    
-    $usuario = new Usuario();
-    $passwordHasheada = $usuario->hashPassword($data['password']);
-    $usuario->setPassword($passwordHasheada);
-    $em->persist($usuario);
-    $em->flush(); 
-    
-    */
-
-
-    public function __construct()
-    {
-        $this->salt = sha1(mt_rand());
-        $this->fechaAlta = new DateTime();  
-        $this->activo = true;       
-    }
-
-    public function hashPassword($password)
-    {
-        $hash = crypt($password, '$5$rounds=1000$' . $this->salt .'$');        
-        return $hash;
-    }   
 
     /**
      * Get id
@@ -343,3 +317,4 @@ class Empleado
         return $this->sector;
     }
 }
+

@@ -1,49 +1,83 @@
 <?php
+
 namespace Application\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
-use DateTime;
-//producto tiene ID
-//               nombre
-//               descripcion
-//               cantidad
-//               stockCritico
-//               fecha de ingreso
-/** 
-*
-*@ORM\Entity(repositoryClass="Application\Repository\Producto") 
-*@ORM\Table(name="producto")
-*/
-class Producto  
+
+/**
+ * Producto
+ *
+ * @ORM\Table(name="producto")
+ * @ORM\Entity(repositoryClass="Application\Repository\Producto")
+ */
+class Producto
 {
-    
     /**
-     * @ORM\Column(type="integer",unique=true)
-     * @ORM\GeneratedValue
+     * @var integer
+     *
+     * @ORM\Column(name="id_producto", type="integer", precision=0, scale=0, nullable=false, unique=true)
      * @ORM\Id
-     */   
-    protected $id_producto;
-    /** @ORM\Column (length= 200) */
-    protected $nombre;
-    /** @ORM\Column (length=350) */
-    protected $descripcion;
-    /** @ORM\Column (type="integer") */
-    protected $cantidad;
-    /** @ORM\Column(name="activo", type="boolean", nullable=false) */
-    protected $activo;
-    /** @ORM\Column (type="integer") */
-    protected $stockCritico;
-    /** @ORM\Column (type="datetime") */
-    protected $fecha_ingreso;
-     /**
-     * @ORM\ManyToOne(targetEntity="Modulo")
-     * @ORM\JoinColumn(name="modulo_id", referencedColumnName="idModulo",nullable=true)
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    protected $modulo_id;
-    
-    public function __construct() {
-        $this->fecha_ingreso = new DateTime();
-        $this->activo = true;
+    private $id_producto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=200, precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion", type="string", length=350, precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $descripcion;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cantidad", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $cantidad;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="activo", type="boolean", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $activo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="stockCritico", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $stockCritico;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_ingreso", type="datetime", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $fecha_ingreso;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Application\Entity\ProductosDeModulo", mappedBy="idProducto")
+     */
+    private $modulo_id;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->modulo_id = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
     /**
      * Get idProducto
      *
@@ -53,6 +87,7 @@ class Producto
     {
         return $this->id_producto;
     }
+
     /**
      * Set nombre
      *
@@ -63,8 +98,10 @@ class Producto
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
+
         return $this;
     }
+
     /**
      * Get nombre
      *
@@ -74,6 +111,7 @@ class Producto
     {
         return $this->nombre;
     }
+
     /**
      * Set descripcion
      *
@@ -84,8 +122,10 @@ class Producto
     public function setDescripcion($descripcion)
     {
         $this->descripcion = $descripcion;
+
         return $this;
     }
+
     /**
      * Get descripcion
      *
@@ -95,6 +135,7 @@ class Producto
     {
         return $this->descripcion;
     }
+
     /**
      * Set cantidad
      *
@@ -105,8 +146,10 @@ class Producto
     public function setCantidad($cantidad)
     {
         $this->cantidad = $cantidad;
+
         return $this;
     }
+
     /**
      * Get cantidad
      *
@@ -116,6 +159,7 @@ class Producto
     {
         return $this->cantidad;
     }
+
     /**
      * Set activo
      *
@@ -126,8 +170,10 @@ class Producto
     public function setActivo($activo)
     {
         $this->activo = $activo;
+
         return $this;
     }
+
     /**
      * Get activo
      *
@@ -137,6 +183,7 @@ class Producto
     {
         return $this->activo;
     }
+
     /**
      * Set stockCritico
      *
@@ -147,8 +194,10 @@ class Producto
     public function setStockCritico($stockCritico)
     {
         $this->stockCritico = $stockCritico;
+
         return $this;
     }
+
     /**
      * Get stockCritico
      *
@@ -158,6 +207,7 @@ class Producto
     {
         return $this->stockCritico;
     }
+
     /**
      * Set fechaIngreso
      *
@@ -168,8 +218,10 @@ class Producto
     public function setFechaIngreso($fechaIngreso)
     {
         $this->fecha_ingreso = $fechaIngreso;
+
         return $this;
     }
+
     /**
      * Get fechaIngreso
      *
@@ -179,25 +231,39 @@ class Producto
     {
         return $this->fecha_ingreso;
     }
+
     /**
-     * Set moduloId
+     * Add moduloId
      *
-     * @param \Application\Entity\Modulo $moduloId
+     * @param \Application\Entity\ProductosDeModulo $moduloId
      *
      * @return Producto
      */
-    public function setModuloId(\Application\Entity\Modulo $moduloId = null)
+    public function addModuloId(\Application\Entity\ProductosDeModulo $moduloId)
     {
-        $this->modulo_id = $moduloId;
+        $this->modulo_id[] = $moduloId;
+
         return $this;
     }
+
+    /**
+     * Remove moduloId
+     *
+     * @param \Application\Entity\ProductosDeModulo $moduloId
+     */
+    public function removeModuloId(\Application\Entity\ProductosDeModulo $moduloId)
+    {
+        $this->modulo_id->removeElement($moduloId);
+    }
+
     /**
      * Get moduloId
      *
-     * @return \Application\Entity\Modulo
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getModuloId()
     {
         return $this->modulo_id;
     }
 }
+

@@ -116,12 +116,7 @@ class ProductoController extends AbstractActionController
     {
         $id = $this->params('id');
         $repositorio = $this->getEntityManager()->getRepository('Application\Entity\Producto');
-        $query = $repositorio->getQueryDarDeBaja($id);
-        //$em = $this->getEntityManager();
-       // $producto = $em->find('Application\Entity\Producto',$id);
-        //$em->remove($producto);
-       // $em->flush();
-        
+        $query = $repositorio->getQueryDarDeBaja($id);        
         $this->flashMessenger()->addSuccessMessage('Producto eliminado del sistema');
         return $this->redirect()->toRoute('index_producto');
     }
