@@ -65,8 +65,6 @@ class ProductoController extends AbstractActionController
         $em = $this->getEntityManager();
         //creamos un nuevo formulario con un entity manager
         $productoForm = new ProductoForm($em);
-        
-
         $producto = new Producto();
         $productoForm->bind($producto);
 

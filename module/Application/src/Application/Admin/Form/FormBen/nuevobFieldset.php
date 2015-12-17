@@ -116,12 +116,6 @@ class nuevobFieldset extends  Fieldset
 	            'type' => 'Text',
 	        ]);
 	        
-            //Estado
-              $this->add([
-                'name' => 'activo',
-                'type' => 'Text',
-            ]);
-
 	        //telefono
 	        	$this->add([
 	            'name' => 'telfben',

@@ -71,7 +71,7 @@ class Vivienda
    */ 
     protected $boton;
     /**
-    * @ORM\ManyToOne(targetEntity="Desague", inversedBy="idV")
+    * @ORM\ManyToOne(targetEntity="Desague", inversedBy="idViv")
     * @ORM\JoinColumn(name="idDes", referencedColumnName="idDesague")
     **/
     protected $desagote;
@@ -109,7 +109,7 @@ class Vivienda
    */ 
     protected $luz; 
     /**
-    * @ORM\ManyToOne(targetEntity="Luz", inversedBy="idV")
+    * @ORM\ManyToOne(targetEntity="Luz", inversedBy="idViv")
     * @ORM\JoinColumn(name="idLuz", referencedColumnName="idLuz")
     **/
     protected $medio;     

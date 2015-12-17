@@ -21,7 +21,7 @@ class Luz
     /** @ORM\Column(type="text", nullable=true) */
 	protected $descripcion;
     /**
-    * @ORM\OneToMany(targetEntity="Vivienda", mappedBy="medio")
+    * @ORM\OneToMany(targetEntity="Vivienda", mappedBy="idVivienda")
     **/
     protected $idV;
     /**

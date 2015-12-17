@@ -41,6 +41,7 @@ class Producto
      * @ORM\JoinColumn(name="modulo_id", referencedColumnName="idModulo",nullable=true)
      */
     protected $modulo_id;
+
     
     public function __construct() {
         $this->fecha_ingreso = new DateTime();
@@ -131,6 +132,30 @@ class Producto
     }
 
     /**
+     * Set activo
+     *
+     * @param boolean $activo
+     *
+     * @return Producto
+     */
+    public function setActivo($activo)
+    {
+        $this->activo = $activo;
+
+        return $this;
+    }
+
+    /**
+     * Get activo
+     *
+     * @return boolean
+     */
+    public function getActivo()
+    {
+        return $this->activo;
+    }
+
+    /**
      * Set stockCritico
      *
      * @param integer $stockCritico
@@ -200,29 +225,5 @@ class Producto
     public function getModuloId()
     {
         return $this->modulo_id;
-    }
-
-    /**
-     * Set activo
-     *
-     * @param boolean $activo
-     *
-     * @return Producto
-     */
-    public function setActivo($activo)
-    {
-        $this->activo = $activo;
-
-        return $this;
-    }
-
-    /**
-     * Get activo
-     *
-     * @return boolean
-     */
-    public function getActivo()
-    {
-        return $this->activo;
     }
 }

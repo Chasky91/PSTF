@@ -9,8 +9,8 @@ use Application\Entity\Vivienda;
 use Application\Entity\Beneficiario;
 use Application\Admin\Form\FormViv\vivForm;
 class ViviendaController extends AbstractActionController
-{/*
-    public function __construct()
+{
+        /*public function __construct()
     {
         $events = $this->getEventManager();
         $events->attach(MvcEvent::EVENT_DISPATCH, array($this, 'checkLogin'));
@@ -22,8 +22,8 @@ class ViviendaController extends AbstractActionController
         if (!$authService->getIdentity()) {
             return $this->redirect()->toRoute('login');
         }
-    }
-*/
+    }*/
+
      protected function getEntityManager()
     {
         return $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
@@ -82,7 +82,7 @@ class ViviendaController extends AbstractActionController
                                 $em->flush();
                                 
                                     $this->flashMessenger()->addSuccessMessage(
-                                            sprintf('El registro de Siatuacion Habitacional fue actualizado correctamente', $vivienda->getIdVivienda()));
+                                            sprintf('El registro de Siatuacion Habitacional fue actualizado correctamente', $sanidad->getIdSanidad()));
                             
                                     return $this->redirect()->toRoute('verviv'); 
                                                 }        

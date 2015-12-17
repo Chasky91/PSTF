@@ -21,7 +21,7 @@ class Tenencia
     /** @ORM\Column(type="text", nullable=true) */
 	protected $descripcion;
     /**
-    * @ORM\OneToMany(targetEntity="Vivienda", mappedBy="tenencia")
+    * @ORM\OneToMany(targetEntity="Vivienda", mappedBy="idVivienda")
     **/
     protected $idV;
     /**

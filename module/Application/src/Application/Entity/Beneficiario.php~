@@ -59,15 +59,19 @@ class Beneficiario
 
 
     /**
-    * @ORM\OneToMany(targetEntity="Familia", mappedBy="idben")
+    * @ORM\OneToMany(targetEntity="Familia", mappedBy="nroF")
     **/
     protected $fam;
 
 
 
 
-    /** @ORM\Column(type="string", nullable=true)*/
-    private $estado;
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="activo", type="boolean", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $activo;
 
     /**
      * @var \DateTime
@@ -82,7 +86,7 @@ class Beneficiario
     {
 
         $this->fechaAlta = new DateTime();  
-        $this->activo = 'Pendiente';       
+        $this->activo = true;       
     }
 
 
@@ -296,7 +300,7 @@ class Beneficiario
     /**
      * Set activo
      *
-     * @param string $activo
+     * @param boolean $activo
      *
      * @return Beneficiario
      */
@@ -310,7 +314,7 @@ class Beneficiario
     /**
      * Get activo
      *
-     * @return string
+     * @return boolean
      */
     public function getActivo()
     {

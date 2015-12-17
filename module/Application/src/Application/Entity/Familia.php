@@ -55,7 +55,7 @@ Class Familia {
     protected $relacion;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Beneficiario", inversedBy="fam")
+    * @ORM\ManyToOne(targetEntity="Beneficiario", inversedBy="nroF")
     * @ORM\JoinColumn(name="idben", referencedColumnName="idBeneficiario")
     **/
     protected $idben;
