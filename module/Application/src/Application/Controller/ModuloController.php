@@ -62,6 +62,7 @@ class ModuloController extends AbstractActionController
 
     public function cargarAction()
     {
+        //ids recibidos desde lista de productos
         $id = $this->params('id'); 
         $idp = $this->params('idp');
                   
@@ -86,15 +87,6 @@ class ModuloController extends AbstractActionController
                     return $this->redirect()->toRoute('index_producto_en_modulo'); 
             }        
         }
-        //query update
-        $qb = $em->createQueryBuilder();
-          $query = $qb->update('Application\Entity\Producto', 'p')
-          ->set('p.modulo_id', '?1')
-          ->where('p.id_producto = ?3')
-          ->setParameter(1, $id)
-          ->setParameter(3, $idp)
-          ->getQuery();
-          $p = $query->execute(); 
 
         return new ViewModel([
             'modulo'=>$modulo,

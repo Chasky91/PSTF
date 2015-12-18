@@ -41,6 +41,7 @@ class ProductoController extends AbstractActionController
         $query  = $em->createQueryBuilder()
                 ->select('a')
                 ->from('Application\Entity\Producto', 'a')
+                ->where('a.activo = 1')
                 ->orderBy('a.id_producto','DESC')
                 ->getQuery();
         $productos  = $query->getResult();
@@ -50,12 +51,21 @@ class ProductoController extends AbstractActionController
                 ->orderBy('m.idModulo','DESC')
                 ->getQuery();
         $modulos  = $query2->getResult();
+        
+        //select para todos los productosDeModulo
+        $query3  = $em->createQueryBuilder()
+                ->select('pdm')
+                ->from('Application\Entity\ProductosDeModulo', 'pdm')
+                ->orderBy('pdm.moduloId','DESC')
+                ->getQuery();
+        $productoDeModulos  = $query3->getResult();
 
         $comparar = new ComparaDosCifras();
         return new ViewModel([
             'productos'=>$productos,
             'comparar' => $comparar,
             'modulos'=>$modulos,
+            'productoDeModulos' =>$productoDeModulos
         ]);
     }
 
