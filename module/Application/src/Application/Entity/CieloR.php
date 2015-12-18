@@ -21,7 +21,7 @@ class CieloR
     /** @ORM\Column(type="text", nullable=true) */
 	protected $descripcion;
     /**
-    * @ORM\OneToMany(targetEntity="Vivienda", mappedBy="idVivienda")
+    * @ORM\OneToMany(targetEntity="Vivienda", mappedBy="cielrazo")
     **/
     protected $idV;
     /**

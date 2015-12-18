@@ -71,7 +71,7 @@ class Vivienda
    */ 
     protected $boton;
     /**
-    * @ORM\ManyToOne(targetEntity="Desague", inversedBy="idViv")
+    * @ORM\ManyToOne(targetEntity="Desague", inversedBy="idV")
     * @ORM\JoinColumn(name="idDes", referencedColumnName="idDesague")
     **/
     protected $desagote;
@@ -109,7 +109,7 @@ class Vivienda
    */ 
     protected $luz; 
     /**
-    * @ORM\ManyToOne(targetEntity="Luz", inversedBy="idViv")
+    * @ORM\ManyToOne(targetEntity="Luz", inversedBy="idV")
     * @ORM\JoinColumn(name="idLuz", referencedColumnName="idLuz")
     **/
     protected $medio;     
@@ -447,6 +447,30 @@ class Vivienda
     public function getDasague()
     {
         return $this->dasague;
+    }
+
+    /**
+     * Set boton
+     *
+     * @param boolean $boton
+     *
+     * @return Vivienda
+     */
+    public function setBoton($boton)
+    {
+        $this->boton = $boton;
+
+        return $this;
+    }
+
+    /**
+     * Get boton
+     *
+     * @return boolean
+     */
+    public function getBoton()
+    {
+        return $this->boton;
     }
 
     /**
@@ -1143,29 +1167,5 @@ class Vivienda
     public function getCielrazo()
     {
         return $this->cielrazo;
-    }
-
-    /**
-     * Set boton
-     *
-     * @param boolean $boton
-     *
-     * @return Vivienda
-     */
-    public function setBoton($boton)
-    {
-        $this->boton = $boton;
-
-        return $this;
-    }
-
-    /**
-     * Get boton
-     *
-     * @return boolean
-     */
-    public function getBoton()
-    {
-        return $this->boton;
     }
 }

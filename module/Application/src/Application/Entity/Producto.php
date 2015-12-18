@@ -1,7 +1,5 @@
 <?php
-
 namespace Application\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use DateTime;
 //producto tiene ID
@@ -41,14 +39,11 @@ class Producto
      * @ORM\JoinColumn(name="modulo_id", referencedColumnName="idModulo",nullable=true)
      */
     protected $modulo_id;
-
     
     public function __construct() {
         $this->fecha_ingreso = new DateTime();
+        $this->activo = true;
     }
-
-
-
     /**
      * Get idProducto
      *
@@ -58,7 +53,6 @@ class Producto
     {
         return $this->id_producto;
     }
-
     /**
      * Set nombre
      *
@@ -69,10 +63,8 @@ class Producto
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
-
         return $this;
     }
-
     /**
      * Get nombre
      *
@@ -82,7 +74,6 @@ class Producto
     {
         return $this->nombre;
     }
-
     /**
      * Set descripcion
      *
@@ -93,10 +84,8 @@ class Producto
     public function setDescripcion($descripcion)
     {
         $this->descripcion = $descripcion;
-
         return $this;
     }
-
     /**
      * Get descripcion
      *
@@ -106,7 +95,6 @@ class Producto
     {
         return $this->descripcion;
     }
-
     /**
      * Set cantidad
      *
@@ -117,10 +105,8 @@ class Producto
     public function setCantidad($cantidad)
     {
         $this->cantidad = $cantidad;
-
         return $this;
     }
-
     /**
      * Get cantidad
      *
@@ -130,7 +116,6 @@ class Producto
     {
         return $this->cantidad;
     }
-
     /**
      * Set activo
      *
@@ -141,10 +126,8 @@ class Producto
     public function setActivo($activo)
     {
         $this->activo = $activo;
-
         return $this;
     }
-
     /**
      * Get activo
      *
@@ -154,7 +137,6 @@ class Producto
     {
         return $this->activo;
     }
-
     /**
      * Set stockCritico
      *
@@ -165,10 +147,8 @@ class Producto
     public function setStockCritico($stockCritico)
     {
         $this->stockCritico = $stockCritico;
-
         return $this;
     }
-
     /**
      * Get stockCritico
      *
@@ -178,7 +158,6 @@ class Producto
     {
         return $this->stockCritico;
     }
-
     /**
      * Set fechaIngreso
      *
@@ -189,10 +168,8 @@ class Producto
     public function setFechaIngreso($fechaIngreso)
     {
         $this->fecha_ingreso = $fechaIngreso;
-
         return $this;
     }
-
     /**
      * Get fechaIngreso
      *
@@ -202,7 +179,6 @@ class Producto
     {
         return $this->fecha_ingreso;
     }
-
     /**
      * Set moduloId
      *
@@ -213,10 +189,8 @@ class Producto
     public function setModuloId(\Application\Entity\Modulo $moduloId = null)
     {
         $this->modulo_id = $moduloId;
-
         return $this;
     }
-
     /**
      * Get moduloId
      *

@@ -21,7 +21,7 @@ class Techo
     /** @ORM\Column(type="text", nullable=true) */
 	protected $descripcion;
     /**
-    * @ORM\OneToMany(targetEntity="Vivienda", mappedBy="idVivienda")
+    * @ORM\OneToMany(targetEntity="Vivienda", mappedBy="techo")
     **/
     protected $idV;
     /**

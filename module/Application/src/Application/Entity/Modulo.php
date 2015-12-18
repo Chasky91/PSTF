@@ -1,9 +1,6 @@
 <?php
-
 namespace Application\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
-
 /** 
  * @ORM\Entity 
  */
@@ -15,14 +12,10 @@ class Modulo {
      * @ORM\GeneratedValue
      */
     protected $idModulo;
-
     /**
      * @ORM\Column(type="string", length=140,  nullable=false)
      */
     protected $nombre;
-
-
-
     /**
      * Set nombre
      *
@@ -33,10 +26,8 @@ class Modulo {
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
-
         return $this;
     }
-
     /**
      * Get nombre
      *
@@ -46,7 +37,6 @@ class Modulo {
     {
         return $this->nombre;
     }
-
     /**
      * Get idModulo
      *

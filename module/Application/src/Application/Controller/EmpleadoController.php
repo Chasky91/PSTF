@@ -87,7 +87,7 @@ class EmpleadoController extends AbstractActionController
                 $password = $empleado->getContrasena();                
                 $password = $empleado->hashPassword($password);
                 $empleado->setContrasena($password);   
-               
+                
                 $em->persist($empleado);               
                 $em->flush();
                 $this->flashMessenger()->addSuccessMessage('Empleado nuevo registrado!');

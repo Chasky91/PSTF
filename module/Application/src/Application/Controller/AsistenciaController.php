@@ -90,17 +90,20 @@ class AsistenciaController extends AbstractActionController
                 $data = $this->request->getPost();
                 $arreglo = $data['registro-producto'];
                 //cantidad ingresada al nuevo registro
-                
+                    
+                //recupero cantidad del array
                 $cant = $arreglo['cantidad'];
-                $cant = (int)$cant;
-                var_dump($cant);die;
+                $cantidad = (int)$cant;
+                //recupero el itemId
+                $item = $arreglo['itemId'];
+                $itemAsis = (int)$item;
                 //query para actualizar el Stock del producto
                 $queryActulizarStock = $em->createQueryBuilder()
                         ->update('Application\Entity\Producto', 'p')
-                        ->set('p.cantidad', '-?1')
+                        ->set('p.cantidad', 'p.cantidad - ?1')
                         ->where('p.id_producto = ?2')
-                        ->setParameter(1, $username)
-                        ->setParameter(2, $id)
+                        ->setParameter(1, $cantidad)
+                        ->setParameter(2, $itemAsis)
                         ->getQuery();
                 $ejecutarDescuento = $queryActulizarStock->execute();
 
@@ -129,9 +132,47 @@ class AsistenciaController extends AbstractActionController
                 ->setParameter(1,$idm)
                 ->getQuery();
         $modulo = $query->getResult();
+        
         //obtenemos el id del modulo encontrado por el select
         $idModulo = $modulo[0]->getidModulo();
+               
+        //seleccionamos los producto en modulo, solo los coincidentes con el id
+        $selectPdeM = $em->createQueryBuilder()
+                ->select('pdm')
+                ->from('Application\Entity\ProductosDeModulo', 'pdm')
+                ->where('pdm.moduloId = ?1')
+                ->setParameter(1,$idm)
+                ->getQuery();
+        $listaDeProductos = $selectPdeM->getResult();
         
+        
+        
+        //var_dump($listaDeProductos[0]->getIdProducto());die;
+        //var_dump($listaDeProductos[0]->getIdProducto(),$producto->getCantidad());die;
+        
+        for($i = 0; $i < count($listaDeProductos);$i++){
+            
+            $cantidadEnModulo = $listaDeProductos[$i]->getCantidad();
+            $producto  = $listaDeProductos[$i]->getIdProducto();
+            $cantidadEnProducto  = $producto->getCantidad();
+            if ( $cantidadEnProducto < $cantidadEnModulo ){
+                $this->flashMessenger()->addErrorMessage('No se puede entregar el modulo por falta del producto ',$producto,'');
+                return $this->redirect()->toRoute('index_asismen', array('planilla' => $id));
+            }
+        }
+        
+        for ($i = 0; $i < count($listaDeProductos); $i++) {
+            $descontarProductos = $em->createQueryBuilder()
+                    ->update('Application\Entity\Producto', 'p')
+                    ->set('p.cantidad', 'p.cantidad - ?1')
+                    ->where('p.id_producto = ?2')
+                    ->setParameter(1, $listaDeProductos[$i]->getCantidad())
+                    ->setParameter(2, $listaDeProductos[$i]->getIdProducto())
+                    ->getQuery();
+            $ejecutarActualizacion= $descontarProductos->execute();
+        }
+        
+         //query para beneficiario
         $queryBeneficiario = $em->createQueryBuilder()
                 ->select('b')
                 ->from('Application\Entity\Beneficiario', 'b')
@@ -143,6 +184,7 @@ class AsistenciaController extends AbstractActionController
         //Renombramos la coincidencia encontrada por el select        
         $objectoBene = $beneficiario[0];
         
+        //insertamos manualmenteel registro
         $nuevoRegistro = new Registro();
         $nuevoRegistro->setItemId($idModulo);
         $nuevoRegistro->setTipo('modulo');

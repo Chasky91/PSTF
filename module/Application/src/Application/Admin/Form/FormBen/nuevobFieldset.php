@@ -79,43 +79,31 @@ class nuevobFieldset extends  Fieldset
 	            'name' => 'domben',
 	            'type' => 'Text',
 	        ]);
-
-	    /*    //Ciudad
+          
+            //Ciudad
 	        $this->add([
-            'type' => 'DoctrineModule\Form\Element\ObjectSelect',
-            //Este es el nombre que tendra la etiqueta de select
-            'name' => 'estado_civil',
-            'options' => [
-                'object_manager' => $em,
-                //Aqui lo dirigimos a la carpeta de la entidad
-                'target_class' => 'Application\Entity\EstadoCivil',
-                //Aqui debo poner el nombre de lo que voy a mostrar, en este caso la descirpcion
-                'property' => 'descripcion',
-                'label' => 'Categoria:',
-            		],
+            'name' => 'ciudad',
+            'type' => 'Text',
         	]);
 
         	//Provincia
 	        $this->add([
-            'type' => 'DoctrineModule\Form\Element\ObjectSelect',
-            //Este es el nombre que tendra la etiqueta de select
-            'name' => 'estado_civil',
-            'options' => [
-                'object_manager' => $em,
-                //Aqui lo dirigimos a la carpeta de la entidad
-                'target_class' => 'Application\Entity\EstadoCivil',
-                //Aqui debo poner el nombre de lo que voy a mostrar, en este caso la descirpcion
-                'property' => 'descripcion',
-                'label' => 'Categoria:',
-            		],
+            'name' => 'provincia',
+            'type' => 'Text',
         	]);
-*/
+            
         	//Residencia
       	      $this->add([
 	            'name' => 'resben',
 	            'type' => 'Text',
 	        ]);
 	        
+            //Estado
+              $this->add([
+                'name' => 'activo',
+                'type' => 'Text',
+            ]);
+
 	        //telefono
 	        	$this->add([
 	            'name' => 'telfben',
