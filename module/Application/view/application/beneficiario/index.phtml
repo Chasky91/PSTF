@@ -271,7 +271,10 @@
             <label class="col-sm-1 control-label">Cobertura de Obra Social</label>
               <div class="col-sx-1">
                 <label class="radio-inline">
-                    <?php  if ($cobertura=$sanidad[$i]->getCobertura()=='1') {
+<!-- David problema numero 2!!!! me salta un error diciendo que no esta definido getcobertura en en Entity/Vivienda, error en la linea 274, peroooo el problema que no hay nada repetido, capaz qu al ser demasiado largo no puedo ver el error getCobertura es de Sanidad, y si pones buscar se maneja solo aqui, no entiendo que es lo que esta buscando, tampoco hay variables iguales, creo  -->
+
+
+                    <?php  if ($cobert=$sanidad[$i]->getCobertura()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
@@ -448,7 +451,7 @@
               </div>    
             <label class="col-sm-1 control-label">Modelo</label>
               <div class="col-sm-2">
-                                    
+                   <?php echo $modelo=$vivienda[$i]->getModelo(); ?>                                     
               </div>                  
             <label class="col-sm-1 control-label">Año</label>
               <div class="col-sm-2">
@@ -471,17 +474,18 @@
           <div class="form-group">      
             <label class="col-sm-2 control-label">Detalle de otros tipo de propiedades</label>
               <div class="col-sm-6">
+                   <?php echo $detallprop=$vivienda[$i]->getDetalleprop(); ?>                
               </div>                            
           </div>
                           <!--Datos que corresponde a Ambiente y Mobiliario-->
           <div class="form-group">
             <label class="col-sm-2 control-label">¿Cuántas habitaciones para dormir posee?</label>
               <div class="col-sm-2">
-                                    
+                 <?php echo $habdormir=$vivienda[$i]->getHabitacion(); ?>                   
               </div>
             <label  class="col-sm-1 control-label">Piezas en total</label>
               <div class="col-sm-2">
-                                   
+                 <?php echo $pieza=$vivienda[$i]->getPieza(); ?>                  
               </div>                                                              
           </div>                      
           <div class="form-group">
@@ -517,7 +521,7 @@
             <label class="col-sm-1 control-label">¿El baño es sólo usado por el hogar?</label>
               <div class="col-sm-1">
                 <label class="radio-inline">
-                    <?php  if ($boton=$vivienda[$i]->getBoton()=='1') {
+                    <?php  if ($uso=$vivienda[$i]->getUso()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
@@ -527,11 +531,11 @@
               </div> 
             <label class="col-sm-3 control-label">¿El baño se encuentra en forma interna/externa de la vivienda?</label>
               <div class="col-sm-2">
-                                    
+                 <?php echo $ubban=$vivienda[$i]->getEstado(); ?>                                     
               </div>
             <label  class="col-sm-2 control-label">¿Cómo ésta el estado del baño?</label>
               <div class="col-sm-2">
-                                  
+                 <?php echo $estban=$vivienda[$i]->getUbicacion(); ?>                  
               </div> 
           </div>  
           <div class="form-group">
@@ -548,7 +552,7 @@
               </div> 
             <label class="col-sm-2 control-label">¿Cuantas camas tiene?</label>
               <div class="col-sm-2">
-                                   
+                 <?php echo $camas1=$vivienda[$i]->getCamcant(); ?>                                   
               </div>
           </div>                            
           <div class="form-group">
@@ -589,7 +593,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">Observaciones de Ambiente y Mobiliario</label>
               <div class="col-sm-6">
-
+                <?php echo $obserAmM=$vivienda[$i]->getObser1(); ?> 
               </div>
           </div>  
                         <!--Datos corresponde a los servicios basicos de debería tener la vivienda-->
@@ -658,24 +662,30 @@
             <label class="col-sm-1 control-label">La pared es de</label>   
               <div class="col-sm-2">
               </div>            
-                      
+                      <?php $pared=$vivienda[$i]->getPared(); ?> 
+                      <?php echo $pared->getDescripcion(); ?>                         
             <label class="col-sm-2 control-label">Material predominante del piso</label>   
               <div class="col-sm-2">
+                      <?php $piso=$vivienda[$i]->getPiso(); ?> 
+                      <?php echo $piso->getDescripcion(); ?>               
               </div> 
           </div>        
           <div class="form-group">                        
             <label class="col-sm-1 control-label">El techo es de</label>   
               <div class="col-sm-2">
+                      <?php $techo=$vivienda[$i]->getTecho(); ?> 
+                      <?php echo $techo->getDescripcion(); ?>                 
               </div>  
             <label class="col-sm-2 control-label">El Cielo Razo es de</label>   
               <div class="col-sm-2">
-
+                      <?php $cielorazo=$vivienda[$i]->getCielrazo(); ?> 
+                      <?php echo $cielorazo->getDescripcion(); ?>   
               </div>            
           </div>  
           <div class="form-group">
             <label class="col-sm-2 control-label">Observaciones de la Construcción</label>
               <div class="col-sm-6">
-
+                <?php echo $obserc=$vivienda[$i]->getObser2(); ?>    
               </div>
           </div>
             <?php } ?>

@@ -27,15 +27,10 @@ class EmpleadoController extends AbstractActionController
         $query = $em->createQueryBuilder()
                 ->select('a')
                 ->from('Application\Entity\Empleado', 'a')
+                ->where('a.activo = 1')
                 ->orderBy('a.id', 'DESC')
                 ->getQuery();
-                
-        /*$query = $em->createQueryBuilder()
-                ->select('e,s.nombre as nombreSector')
-                ->from('Application\Entity\Empleado','e')
-                ->join('e.sector','s')
-                ->orderBy('e.id','DESC')
-                ->getQuery();*/
+
         $empleados = $query->getResult();
         return new ViewModel([
             'empleados'=>$empleados,
@@ -83,11 +78,32 @@ class EmpleadoController extends AbstractActionController
             $empleadoForm->setData($this->request->getPost());
             
             if ($empleadoForm->isValid()) {
+                //recupero los datos del getPost objeto
+                $data = $this->request->getPost();
+                //obtengo el arreglo dentro del objeto
+                $arreglo = $data['empleado'];
+                //obtengo un item del arreglo
+                $dni = $arreglo['dni'];
+                //loconvierto a un dato tipo integer
+                $dniNuevo = (int)$dni;
+                //antes de ingresar los datos a nuevo empleado vemos si ya existe uno con el mismo dni
+                $query = $em->createQueryBuilder()
+                        ->select('e')
+                        ->from('Application\Entity\Empleado', 'e')
+                        ->where('e.dni = ?1')
+                        ->setParameter(1, $dniNuevo)
+                        ->getQuery();
+                $dniEmpleado = $query->getResult();
+                //si la consulta sql encuentra un registro el if para la ejecucion del codigo
+                if (!empty($dniEmpleado)){
+                    $this->flashMessenger()->addErrorMessage(sprintf('Ya existe un empleado con el DNI "%s" en la Plataforma de Política Sociales', $dniNuevo));
+                    return $this->redirect()->toRoute('index_empleado');
+                }
                 
                 $password = $empleado->getContrasena();                
                 $password = $empleado->hashPassword($password);
                 $empleado->setContrasena($password);   
-                
+               
                 $em->persist($empleado);               
                 $em->flush();
                 $this->flashMessenger()->addSuccessMessage('Empleado nuevo registrado!');
@@ -100,15 +116,10 @@ class EmpleadoController extends AbstractActionController
     }
     public function eliminarAction()
     {
-        
         $id=$this->params('id');        
-        $em=$this->getEntityManager();
-        $empleado=$em->find('Application\Entity\Empleado', $id);
-     
-        //Elimino a la entidad con entity
-        $em->remove($empleado);
-        $em->flush();            
-        
+        $repositorio = $this->getEntityManager()->getRepository('Application\Entity\Empleado');
+        $query = $repositorio->getQueryDarDeBaja($id);
+
         $this->flashMessenger()->addSuccessMessage('Empleado eliminado del sistema');            
         return $this->redirect()->toRoute('index_empleado');
         

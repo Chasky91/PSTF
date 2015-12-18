@@ -9,7 +9,7 @@ use DateTime;
  * Empleado
  *
  * @ORM\Table(name="empleado")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Application\Repository\Empleado")
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="rol", type="string")
  */

@@ -41,9 +41,6 @@ class BeneficiarioController extends AbstractActionController
                                 ->getQuery();
                          $beneficiarioPrueba = $query3->getResult();                    
                          //var_dump($beneficiarioPrueba);die;
-
-                            
-
                          $query4 = $em->createQueryBuilder()
                                 ->select('f')
                                 ->from('Application\Entity\Familia', 'f')
@@ -52,7 +49,6 @@ class BeneficiarioController extends AbstractActionController
                                 ->getQuery();
                          $familias= $query4->getResult(); 
                          //var_dump(count($familias)); die();
-
                          $query5 = $em->createQueryBuilder()
                                 ->select('e')
                                 ->from('Application\Entity\Economia', 'e')
@@ -60,9 +56,7 @@ class BeneficiarioController extends AbstractActionController
                                 ->setParameter(1,$id)
                                 ->getQuery();
                          $economia= $query5->getResult(); 
-
-
-                          $query6= $em->createQueryBuilder()
+                         $query6= $em->createQueryBuilder()
                                 ->select('s')
                                 ->from('Application\Entity\Sanidad', 's')
                                 ->where('s.beneficiario = ?1')
@@ -77,8 +71,6 @@ class BeneficiarioController extends AbstractActionController
                                 ->setParameter(1,$id)
                                 ->getQuery();
                          $sanidad= $query7->getResult(); 
-
-                         
            return new ViewModel([
                                     'beneficiarioPrueba'=>$beneficiarioPrueba,
                                     'familias'=>$familias,
@@ -92,26 +84,80 @@ class BeneficiarioController extends AbstractActionController
     public function nuevoAction()
     {
         $em = $this->getEntityManager(); //obtengo mi EM             
-                                $form = new nuevobForm($em); //creo el objeto  formulario  
-                                $beneficiario = new Beneficiario();      
-                                $form->bind($beneficiario);
+            $form = new nuevobForm($em); //creo el objeto  formulario  
+            $beneficiario = new Beneficiario();      
+            $form->bind($beneficiario);
 
-                                if ($this->request->isPost()) {
-                                    //var_dump("llego"); die;
-                                    $form->setData($this->request->getPost());
-                                    if ($form->isValid()) {
-                                        // EntityManager guardame el apunte
-                                        
-                                        $em->persist($beneficiario);
-                                        // EntityManager aplicame todos los cambios!
-                                        $em->flush();
+                if ($this->request->isPost()) {
+                    $form->setData($this->request->getPost());
+                      if ($form->isValid()) {
+                          //recupero los datos del getPost objeto
+                          $data = $this->request->getPost();
+                          //obtengo el arreglo dentro del objeto
+                          $arreglo = $data['beneficiario'];
+                          //obtengo un item del arreglo
+                          $dni = $arreglo['dni'];
+                          //loconvierto a un dato tipo integer
+                          $dniNuevo = (int)$dni;
+                           //antes de ingresar los datos a nuevo beneficiario vemos si ya existe uno con el mismo dni
+                          $query1= $em->createQueryBuilder()
+                            ->select('b')
+                            ->from('Application\Entity\Beneficiario', 'b')
+                            ->where('b.dni = ?1')
+                            ->setParameter(1, $dniNuevo)
+                            ->getQuery();
+                          $dniBen= $query1->getResult();
+                          //si la consulta sql encuentra un registro el if para la ejecucion del codigo
+                              if (!empty($dniBen)){
+                                $this->flashMessenger()->addErrorMessage(sprintf('Ya existe un beneficiario con el DNI "%s" 
+                                  en la Plataforma de Política Sociales', $dniNuevo));
+                                  return $this->redirect()->toRoute('ver-beneficiario');
+                                        }
+                      }
+                      elseif ($dniNuevo!=$dniBen) {
 
-                                        $this->flashMessenger()->addSuccessMessage('Nuevo Beneficiario registrado!');
-                                        return $this->redirect()->toRoute('ver-beneficiario');
-                                    }
-                                }       
-                                return new ViewModel(array(
-                                    'form' => $form,
+/*       David problema nro1   
+          El beneficiario con el mismo dni no lo registra, pero no me muestra el cartel, y
+          me registra el familiar, no realiza la comparacion, pasa de largo y lo carga igual                                                                        
+        */
+
+
+
+                          //recupero los datos del getPost objeto
+                          //$data = $this->request->getPost();
+                          //obtengo el arreglo dentro del objeto
+                          //$arreglo = $data['beneficiario'];
+                          //obtengo un item del arreglo
+                          //$dni = $arreglo['dni'];
+                          //loconvierto a un dato tipo integer
+                          //$dniNuevo = (int)$dni;
+                          //antes de ingresar los datos a nuevo beneficiairo vemos si ya existe uno con el mismo dni
+                          $query2= $em->createQueryBuilder()
+                            ->select('f')
+                            ->from('Application\Entity\Familia', 'f')
+                            ->where('f.dni = ?1')
+                            ->setParameter(1, $dniNuevo)
+                            ->getQuery();
+                          $dniFam= $query2->getResult();
+
+                  
+                          //si la consulta sql encuentra un registro el if para la ejecucion del codigo
+                               if (!empty($dniFam)){
+                                  $this->flashMessenger()->addErrorMessage(sprintf('El DNI corresponde a un 
+                                    Familiar cargado en la Plataforma de Política Sociales', $dniNuevo));
+                                    return $this->redirect()->toRoute('ver-beneficiario');
+                                              }
+                        }                
+                  $em->persist($beneficiario);
+                  // EntityManager aplicame todos los cambios!
+                  $em->flush();
+
+                  $this->flashMessenger()->addSuccessMessage('Nuevo Beneficiario registrado!');
+                  return $this->redirect()->toRoute('ver-beneficiario');
+                                   
+              }       
+                  return new ViewModel(array(
+                      'form' => $form,
                                 ));
     }
 
