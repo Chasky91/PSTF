@@ -27,6 +27,7 @@ class EmpleadoController extends AbstractActionController
         $query = $em->createQueryBuilder()
                 ->select('a')
                 ->from('Application\Entity\Empleado', 'a')
+                ->where('a.activo = 1')
                 ->orderBy('a.id', 'DESC')
                 ->getQuery();
 
