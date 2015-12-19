@@ -10,81 +10,67 @@
                              <?php $beneficiario=($form->get('beneficiario'));?>
 <!--Datos personales-->
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Nombres</label>
-                                <div class="col-sm-6">
+                            <label class="col-sm-1 control-label">Nombres</label>
+                                <div class="col-sm-3">
                                 <?php echo $this->formRow($beneficiario->get('nombre')->setAttributes(['placeholder' => 'Ingrese el Nombre completo', 'ata-minlength' => '3', 'required' => 'required', 'class' => 'form-control'])); ?>
                                 </div>            
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Apellidos</label>                       
-                                <div class="col-sm-6">
+                            <label class="col-sm-1 control-label">Apellidos</label>                       
+                                <div class="col-sm-3">
                                     <?php echo $this->formRow($beneficiario->get('apellido')->setAttributes(['placeholder' => 'Ingrese el Apellido completo', 'ata-minlength' => '3', 'required' => 'required', 'class' => 'form-control'])); ?>
                                 </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">DNI</label>
-                              <div class="col-sm-6">
+                            <label class="col-sm-1 control-label">DNI</label>
+                              <div class="col-sm-3">
                                 <?php echo $this->formRow($beneficiario->get('dni')->setAttributes(['type'=>'text','data-type'=>'digits','required' => 'required', 'class' => 'form-control', 'placeholder'=>'Unicamente numeros'])); ?>
                               </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Lugar de Nacimiento</label>
-                               <div class="col-sm-4">
+                            <label class="col-sm-1 control-label">Lugar de Nacimiento</label>
+                               <div class="col-sm-3">
                                <?php echo $this->formRow($beneficiario->get('lugnac')->setAttributes(['class' => 'form-control','required' => 'required', 'minlength'=>'4'])); ?>
                                 </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Fecha de Nacimiento</label>
-                                <div class="col-sm-4">
+                            <label class="col-sm-1 control-label">Fecha de Nacimiento</label>
+                                <div class="col-sm-3">
                                 <?php echo $this->formRow($beneficiario->get('fechanac')->setAttributes(['required' => 'required', 'class' => 'form-control'])); ?>
                                 <div class="input-group date"></div>
                             </div>
                         </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Estado civil </label>
-                                    <div class="col-sm-6">
+                                <label class="col-sm-1 control-label">Estado civil </label>
+                                    <div class="col-sm-3">
                                         <?php echo $this->formRow($beneficiario->get('estadocivil')->setAttributes(['class' => 'form-control', 'id' => 'source'])); ?>
                                     </div>
                             </div>  
                         </div>
 <!--Datos del domicilio de Beneficiario-->
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Domicilio</label>
-                        <div class="col-sm-6">
-                            <?php echo $this->formRow($beneficiario->get('domben')->setAttributes(['class' => 'form-control','required' => 'required', 'minlength'=>'4'])); ?>
+                    <label class="col-sm-1 control-label">Domicilio</label>
+                        <div class="col-sm-3">
+                            <?php echo $this->formRow($beneficiario->get('domben')->setAttributes(['class' => 'form-control','required' => 'required', 'minlength'=>'3'])); ?>
                          </div>
                     <label class="col-sm-1 control-label">Ciudad</label>
-                        <div class="col-sm-3">
-                            <select id="e1" style="width:100%" class="populate">
-                                    <option value="AK">Alaska</option>
-                                    <option value="HI">Hawaii</option>
-                                    <option value="CA">California</option>
-                                    <option value="NV">Nevada</option>
-                                    <option value="OR">Oregon</option>
-                                    <option value="WA">Washington</option>
-                            </select>
+                        <div class="col-sm-2">
+                        <?php echo $this->formRow($beneficiario->get('ciudad')->setAttributes(['placeholder' => 'Ciudad','required' => 'required','class' => 'form-control', 'minlength'=>'4'])); ?>
                         </div>
                     <label class="col-sm-1 control-label">Provincia</label>
-                        <div class="col-sm-3">
-                            <select id="e2" style="width:100%" class="populate">
-                                    <option value="AK">Alaska</option>
-                                    <option value="HI">Hawaii</option>
-                                    <option value="CA">California</option>
-                                    <option value="NV">Nevada</option>
-                                    <option value="OR">Oregon</option>
-                                    <option value="WA">Washington</option>
-                            </select>
+                        <div class="col-sm-2">
+                        <?php echo $this->formRow($beneficiario->get('provincia')->setAttributes(['placeholder' => 'Provincia','required' => 'required','class' => 'form-control', 'minlength'=>'4'])); ?>
                         </div>       
                 </div> 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Residencia en Catriel</label>
-                        <div class="col-sm-6">
+                    <label class="col-sm-1 control-label">Residencia en Catriel</label>
+                        <div class="col-sm-3">
                             <?php echo $this->formRow($beneficiario->get('resben')->setAttributes(['class' => 'form-control','required' => 'required', 'minlength'=>'4'])); ?>
                         </div>
                 </div>
                 <div class="form-group">     
-                    <label for="fieldname" class="col-md-1 control-label">Telefono</label>
-                        <div class="col-md-3">   
+                    <label  class="col-sm-1 control-label">Telefono</label>
+                        <div class="col-sm-3">   
                             <?php echo $this->formRow($beneficiario->get('telfben')->setAttributes(['class' => 'form-control mask', 'minlength'=>'4', 'data-inputmask'=>'mask:(0000) 000-0000' ])); ?>
                                 <p class="help-block">(0000) 000-0000</p>
                         </div>

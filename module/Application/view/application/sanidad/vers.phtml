@@ -1,9 +1,9 @@
 <div class="col-md-12">
   <div class="panel panel-sky">
-    <h1>Registro de Sanidad</h1>
+    <h1>Situación Sanitaria</h1>
   
       <div class="panel-heading">
-          <h4>Registro de Sanidad de Beneficiarios</h4>
+          <h4>Registro de Situaciones de Sanidad de los Beneficiarios</h4>
           <div class="options">
               <a href="javascript:;" class="panel-collapse"><i class="fa fa-chevron-down"></i></a>
           </div>
@@ -22,56 +22,18 @@
                         <th>Centro de Salud</th>
                         <th>Familiar con Discapacidad</th>
                         <th>Poseedor de certificado de Discapacidad</th>
-                        <th>MÁS</th>
-
                     </tr>
                 </thead>
                 <tbody>
                 <?php foreach ($sanidades as $sanidad): ?>
                     <tr class="odd gradeX">
                       <td>
-                        <?php echo $sanidad->getIdSanidad() ?>
-                      </td>
-                      <td>
-                      <?php $beneficiario = $sanidad->getBeneficiario() ?>  
-                        <?php echo $beneficiario->getNombre(); echo "  "; echo $beneficiario->getApellido()?>
-                      </td>
-                      <td>
-                      <!--aqui deberia ir el booleano-->
-                        <?php echo $sanidad->getCobertura() ?>
-                      </td>
-                      <td>
-                        <?php echo $sanidad->getObraS() ?>
-                      </td>
-
-                      <td>
-                      <!--aqui deberia ir el booleano-->
-                        <?php echo $sanidad->getAtenHC() ?>
-                      </td>
-
-                      <td>
-                      <!--aqui deberia ir el booleano-->
-                        <?php echo $sanidad->getOtroCS() ?>
-                      </td>
-                      <td>
-                        <?php echo $sanidad->getNomCS() ?>
-                      </td>
-                      <td>
-                      <!--aqui deberia ir el booleano-->
-                        <?php echo $sanidad->getDiscapacidad() ?>
-                      </td>
-                      <td>
-                      <!--aqui deberia ir el booleano-->
-                        <?php echo $sanidad->getCertificado() ?>
-                      </td>
-                      <td>
                            <div class="btn-group">
-                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                Más <span class="caret"></span>
+                              <button type="button" class="btn btn-default dropdown-toggle btn btn-default btn-xs" data-toggle="dropdown"><i class="fa fa-plus"> </i><span class="caret"></span>
                               </button>
                               <ul class="dropdown-menu" role="menu">
                                 <!--Opcion uno se dirige a a la vista de Beneficiario-->
-                                <li><a  href="<?php echo $this->url('ver-beneficiario')?>"><i class="fa fa-group"></i>Ver Beneficiarios</a></li>
+                                <li><a  href="<?php echo $this->url('ver-beneficiario')?>"><i class="fa fa-user"></i>Ver Beneficiarios</a></li>
                                <li class="divider"></li>
                        <!--Opcion cinco se dirige a Modificar Familia-->
                                 <li><a href="<?php echo $this->url('modS', array('id' => $sanidad->getIdSanidad())) ?>"><i class="fa fa-cog"></i>Modificar</a></li>
@@ -80,6 +42,64 @@
                                 
                               </ul>
                             </div>
+                           <?php echo $sanidad->getIdSanidad() ?>                       
+                      </td>
+                      <td>
+                      <?php $beneficiario = $sanidad->getBeneficiario() ?>  
+                        <?php echo $beneficiario->getNombre(); echo "  "; echo $beneficiario->getApellido()?>
+                      </td>
+                      <td>
+                      <!--aqui deberia ir el booleano-->
+                        <?php if ($sanidad->getCobertura()=='1') {
+                                echo 'Si';
+                              } else {
+                                echo 'No';
+                              }
+                         ?>
+                      </td>
+                      <td>
+                        <?php echo $sanidad->getObraS() ?>
+                      </td>
+
+                      <td>
+                      <!--aqui deberia ir el booleano-->
+                        <?php if ($sanidad->getAtenHC()=='1') {
+                                echo 'Si';
+                              } else {
+                                echo 'No';
+                              }
+                         ?>
+                      </td>
+
+                      <td>
+                      <!--aqui deberia ir el booleano-->
+                        <?php if ($sanidad->getOtroCS()=='1') {
+                                echo 'Si';
+                              } else {
+                                echo 'No';
+                              }
+                         ?>
+                      </td>
+                      <td>
+                        <?php echo $sanidad->getNomCS() ?>
+                      </td>
+                      <td>
+                      <!--aqui deberia ir el booleano-->
+                        <?php if ($sanidad->getDiscapacidad()=='1') {
+                                echo 'Si';
+                              } else {
+                                echo 'No';
+                              }
+                         ?>
+                      </td>
+                      <td>
+                      <!--aqui deberia ir el booleano-->
+                        <?php if ($sanidad->getCertificado()=='1') {
+                                echo 'Si';
+                              } else {
+                                echo 'No';
+                              }
+                         ?>
                       </td>
                     </tr>
 

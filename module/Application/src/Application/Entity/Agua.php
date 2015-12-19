@@ -21,7 +21,7 @@ class Agua
     /** @ORM\Column(type="text", nullable=true) */
 	protected $descripcion;
     /**
-    * @ORM\OneToMany(targetEntity="Vivienda", mappedBy="idVivienda")
+    * @ORM\OneToMany(targetEntity="Vivienda", mappedBy="obtenida")
     **/
     protected $idV;
     /**

@@ -57,25 +57,11 @@
                     </div>
                 <label class="col-sm-1 control-label">Ciudad</label>
                     <div class="col-sm-3">
-                        <select id="e1" style="width:100%" class="populate">
-                                <option value="AK">Alaska</option>
-                                <option value="HI">Hawaii</option>
-                                <option value="CA">California</option>
-                                <option value="NV">Nevada</option>
-                                <option value="OR">Oregon</option>
-                                <option value="WA">Washington</option>
-                        </select>
+                        <?php echo $this->formRow($beneficiario->get('ciudad')->setAttributes(['placeholder' => 'Ciudad','required' => 'required','class' => 'form-control', 'minlength'=>'4'])); ?>
                     </div>
                 <label class="col-sm-1 control-label">Provincia</label>
                     <div class="col-sm-3">
-                        <select id="e2" style="width:100%" class="populate">
-                                <option value="AK">Alaska</option>
-                                <option value="HI">Hawaii</option>
-                                <option value="CA">California</option>
-                                <option value="NV">Nevada</option>
-                                <option value="OR">Oregon</option>
-                                <option value="WA">Washington</option>
-                        </select>
+                        <?php echo $this->formRow($beneficiario->get('provincia')->setAttributes(['placeholder' => 'Provincia','required' => 'required','class' => 'form-control', 'minlength'=>'4'])); ?>
                     </div>       
             </div> 
             <div class="form-group">

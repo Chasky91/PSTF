@@ -21,7 +21,7 @@ class Suelo
     /** @ORM\Column(type="text", nullable=true) */
 	protected $descripcion;
     /**
-    * @ORM\OneToMany(targetEntity="Vivienda", mappedBy="idVivienda")
+    * @ORM\OneToMany(targetEntity="Vivienda", mappedBy="piso")
     **/
     protected $idV;
     /**

@@ -51,6 +51,12 @@ class Beneficiario
 
     /** @ORM\Column(type="string", nullable=true)*/
     protected $domben; 
+    
+    /** @ORM\Column(type="string", nullable=true)*/
+    protected $ciudad; 
+        /** @ORM\Column(type="string", nullable=true)*/
+    protected $provincia; 
+
     /** @ORM\Column(type="string", nullable=true)*/
     protected $resben;
     /** @ORM\Column(type="bigint", nullable=true) */
@@ -59,19 +65,15 @@ class Beneficiario
 
 
     /**
-    * @ORM\OneToMany(targetEntity="Familia", mappedBy="nroF")
+    * @ORM\OneToMany(targetEntity="Familia", mappedBy="idben")
     **/
     protected $fam;
 
 
 
 
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="activo", type="boolean", precision=0, scale=0, nullable=false, unique=false)
-     */
-    private $activo;
+    /** @ORM\Column(type="string", nullable=true)*/
+    private $estado;
 
     /**
      * @var \DateTime
@@ -86,7 +88,7 @@ class Beneficiario
     {
 
         $this->fechaAlta = new DateTime();  
-        $this->activo = true;       
+        $this->estado = 'Pendiente';       
     }
 
 
@@ -94,6 +96,7 @@ class Beneficiario
   
 
     
+
 
     /**
      * Get idBeneficiario
@@ -250,6 +253,54 @@ class Beneficiario
     }
 
     /**
+     * Set ciudad
+     *
+     * @param string $ciudad
+     *
+     * @return Beneficiario
+     */
+    public function setCiudad($ciudad)
+    {
+        $this->ciudad = $ciudad;
+
+        return $this;
+    }
+
+    /**
+     * Get ciudad
+     *
+     * @return string
+     */
+    public function getCiudad()
+    {
+        return $this->ciudad;
+    }
+
+    /**
+     * Set provincia
+     *
+     * @param string $provincia
+     *
+     * @return Beneficiario
+     */
+    public function setProvincia($provincia)
+    {
+        $this->provincia = $provincia;
+
+        return $this;
+    }
+
+    /**
+     * Get provincia
+     *
+     * @return string
+     */
+    public function getProvincia()
+    {
+        return $this->provincia;
+    }
+
+    /**
      * Set resben
      *
      * @param string $resben
@@ -298,27 +349,27 @@ class Beneficiario
     }
 
     /**
-     * Set activo
+     * Set estado
      *
-     * @param boolean $activo
+     * @param string $estado
      *
      * @return Beneficiario
      */
-    public function setActivo($activo)
+    public function setEstado($estado)
     {
-        $this->activo = $activo;
+        $this->estado = $estado;
 
         return $this;
     }
 
     /**
-     * Get activo
+     * Get estado
      *
-     * @return boolean
+     * @return string
      */
-    public function getActivo()
+    public function getEstado()
     {
-        return $this->activo;
+        return $this->estado;
     }
 
     /**
