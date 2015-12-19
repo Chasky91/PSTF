@@ -170,12 +170,12 @@
                 <!--Economia-->
         <div class="tab-pane" id="economia1">
                                             <!--Datos de la situacion economica-->
-                     <?php for($i=0;$i<count($economia);$i++) {?>                                         
+                     <?php// for($i=0;$i<count($economia);$i++) {?>                                         
           <div class="form-group">
             <label class="col-sm-1 control-label">¿Trabaja actualmente?</label>
               <div class="col-sx-1">
                 <label class="radio-inline">
-                   <?php  if ($trab=$economia[$i]->getTrabajo()=='1') {
+                   <?php  if ($trab=$economia[0]->getTrabajo()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
@@ -186,7 +186,7 @@
 
             <label class="col-sm-2 control-label">Nombre del ultimo lugar de trabajo</label>
               <div class="col-sm-3">
-              <?php echo $nomtrab=$economia[$i]->getNomTrab(); ?>
+              <?php echo $nomtrab=$economia[0]->getNomTrab(); ?>
               </div>
           </div>
                   <!--Datos sobre el ingreso que tiene-->
@@ -194,7 +194,7 @@
             <label class="col-sm-1 control-label">¿Esta recibiendo algún Ingreso Económico?</label>
               <div class="col-sx-1">
                 <label class="radio-inline">
-                                   <?php  if ($ing=$economia[$i]->getIngreso()=='1') {
+                                   <?php  if ($ing=$economia[0]->getIngreso()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
@@ -204,17 +204,17 @@
               </div>
             <label class="col-sm-2 control-label">Cantidad aproximada de Ingreso Económico</label>
               <div class="col-sm-2">
-               <?php echo $canting=$economia[$i]->getCanIng(); ?>
+               <?php echo $canting=$economia[0]->getCanIng(); ?>
               </div>
             <label class="col-sm-2 control-label">Periodicidad que lo recibe</label>
               <div class="col-sm-3">
-               <?php echo $tiemping=$economia[$i]->getTiempoIng(); ?>
+               <?php echo $tiemping=$economia[0]->getTiempoIng(); ?>
               </div>                                  
           </div>
           <div class="form-group">
             <label class="col-sm-1 control-label">Otras Observaciones Sobre los Ingresos</label>
               <div class="col-sm-6">
-               <?php echo $obser=$economia[$i]->getObser1(); ?>
+               <?php echo $obser=$economia[0]->getObser1(); ?>
               </div>
           </div>                        
                   <!--Datos de otros tipos de ingreso-->
@@ -222,7 +222,7 @@
             <label class="col-sm-1 control-label">¿Actualmente recibe otro tipo de ayuda Económica?</label>
                 <div class="col-sx-1">
                   <label class="radio-inline">
-                                   <?php  if ($ayuda=$economia[$i]->getAyuda()=='1') {
+                                   <?php  if ($ayuda=$economia[0]->getAyuda()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
@@ -233,23 +233,23 @@
                 </div>                        
               <label class="col-sm-2 control-label">Tipo de Ayuda</label> 
                 <div class="col-sm-2">
-                   <?php echo $tipayuda=$economia[$i]->getTipo(); ?>
+                   <?php echo $tipayuda=$economia[0]->getTipo(); ?>
                 </div>
               <label class="col-sm-2 control-label">Cantidad aproximada de ayuda Económica</label>
                 <div class="col-sm-2">
-                  <?php echo $cantayuda=$economia[$i]->getCanAyuda(); ?>
+                  <?php echo $cantayuda=$economia[0]->getCanAyuda(); ?>
                 </div>
           </div>
           <div class="form-group">  
               <label class="col-sm-1 control-label">Periodicidad que lo recibe</label>
                 <div class="col-sm-2">
-                  <?php echo $tiemayuda=$economia[$i]->getTiempoA(); ?>
+                  <?php echo $tiemayuda=$economia[0]->getTiempoA(); ?>
                 </div>                                  
           </div>
           <div class="form-group">
               <label class="col-sm-1 control-label">Otras Observaciones sobre la ayuda Social</label>
                 <div class="col-sm-6">
-                  <?php echo $obs2=$economia[$i]->getObser2(); ?>
+                  <?php echo $obs2=$economia[0]->getObser2(); ?>
                 </div>
           </div>
 
@@ -257,24 +257,22 @@
           <div class="form-group">
             <label class="col-sm-1 control-label">Observacion Generales</label>
               <div class="col-sm-6">
-                  <?php echo $obs3=$economia[$i]->getObser3(); ?>              
+                  <?php echo $obs3=$economia[0]->getObser3(); ?>              
               </div>
           </div>
-                                <?php } ?>
+                                <?php //} ?>
         </div>
 
                 <!--Sanidad-->
         <div class="tab-pane" id="sanidad1">
                               <!--Datos de la cobertura social-->
-                    <?php for($i=0;$i<count($sanidad);$i++) {?>  
+                    <?php //for($i=0;$i<count($sanidad);$i++) {?>  
           <div class="form-group">
             <label class="col-sm-1 control-label">Cobertura de Obra Social</label>
               <div class="col-sx-1">
                 <label class="radio-inline">
 <!-- David problema numero 2!!!! me salta un error diciendo que no esta definido getcobertura en en Entity/Vivienda, error en la linea 274, peroooo el problema que no hay nada repetido, capaz qu al ser demasiado largo no puedo ver el error getCobertura es de Sanidad, y si pones buscar se maneja solo aqui, no entiendo que es lo que esta buscando, tampoco hay variables iguales, creo  -->
-
-
-                    <?php  if ($cobert=$sanidad[$i]->getCobertura()=='1') {
+                    <?php  if ($cobert=$sanidad[0]->getCobertura()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
@@ -286,11 +284,11 @@
 
             <label class="col-sm-2 control-label">Nombre de Obra Social</label>
               <div class="col-sm-3">
-                   <?php echo $nomobra=$sanidad[$i]->getObraS(); ?>                                         
+                   <?php echo $nomobra=$sanidad[0]->getObraS(); ?>                                         
               </div>
             <label class="col-sm-2 control-label">Miembro Poseedor de la Obra Social</label>
               <div class="col-sm-3">
-                   <?php echo $posedorobra=$sanidad[$i]->getFamOS(); ?>                                        
+                   <?php echo $posedorobra=$sanidad[0]->getFamOS(); ?>                                        
               </div> 
           </div>
                           <!--Datos sobre la atencion medica-->
@@ -298,7 +296,7 @@
             <label class="col-sm-1 control-label">Atención en el Hospital de Catriel</label>
               <div class="col-sm-2">
                 <label class="radio-inline">
-                    <?php  if ($hospital=$sanidad[$i]->getAtenHC()=='1') {
+                    <?php  if ($hospital=$sanidad[0]->getAtenHC()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
@@ -309,7 +307,7 @@
             <label class="col-sm-1 control-label">Atención en otros Centros de Salud</label>
               <div class="col-sm-2">
                 <label class="radio-inline">
-                    <?php  if ($otcentro=$sanidad[$i]->getOtroCS()=='1') {
+                    <?php  if ($otcentro=$sanidad[0]->getOtroCS()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
@@ -319,7 +317,7 @@
               </div>
             <label class="col-sm-2 control-label">Nombre del Centro de Salud</label>
               <div class="col-sm-3">
-                   <?php echo $nomCs=$sanidad[$i]->getNomCS(); ?>                                        
+                   <?php echo $nomCs=$sanidad[0]->getNomCS(); ?>                                        
               </div>
           </div>
                             <!--Datos del familiar o persona con discapacidad-->
@@ -327,7 +325,7 @@
             <label class="col-sm-1 control-label">¿Tiene algun Familiar con discapacidad?</label>
               <div class="col-sm-2">
                 <label class="radio-inline">
-                    <?php  if ($famdisc=$sanidad[$i]->getDiscapacidad()=='1') {
+                    <?php  if ($famdisc=$sanidad[0]->getDiscapacidad()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
@@ -337,16 +335,16 @@
               </div>  
             <label class="col-sm-2 control-label">Miembro de la Familia</label> 
               <div class="col-sm-3">
-                   <?php echo $famdisc=$sanidad[$i]->getFamDisc(); ?>                                           
+                   <?php echo $famdisc=$sanidad[0]->getFamDisc(); ?>                                           
               </div>
             <label class="col-sm-2 control-label">Tipo de Discapacidad</label> 
               <div class="col-sm-3">
-                    <?php echo $tipodisc=$sanidad[$i]->getTipo(); ?>                                         
+                    <?php echo $tipodisc=$sanidad[0]->getTipo(); ?>                                         
               </div>
             <label class="col-sm-1 control-label">¿Posee Certificado unico de Discapacidad</label>
               <div class="col-sm-2">
                 <label class="radio-inline">
-                    <?php  if ($certificado=$sanidad[$i]->getCertificado()=='1') {
+                    <?php  if ($certificado=$sanidad[0]->getCertificado()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
@@ -359,52 +357,52 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">Detalles de la Enfermedad</label>
               <div class="col-sm-3">
-                    <?php echo $pdetalle=$sanidad[$i]->getDetalles(); ?>                                      
+                    <?php echo $pdetalle=$sanidad[0]->getDetalles(); ?>                                      
               </div>
           </div>
                   <!--Otras observaciones-->
           <div class="form-group">
             <label class="col-sm-2 control-label">Otras Observaciones</label>
               <div class="col-sm-3">
-                    <?php echo $obser4=$sanidad[$i]->getObservacion(); ?>  
+                    <?php echo $obser4=$sanidad[0]->getObservacion(); ?>  
               </div>
           </div>
-            <?php } ?>         
+            <?php// } ?>         
         </div>
                 <!--Vivienda-->
         <div class="tab-pane" id="vivienda1">
                 <!--El 1er paso corresponde a los datos principales q otorga el Beneficiario con respecto de la situacion de Habitacional-->
-            <?php for($i=0;$i<count($vivienda);$i++) {?> 
+            <?php //for($i=0;$i<count($vivienda);$i++) {?> 
           <div class="form-group">
             <label class="col-sm-1 control-label">Tipo de Tenencia</label>
               <div class="col-sm-3">
-                      <?php $tenencia=$vivienda[$i]->getTenencia(); ?> 
+                      <?php $tenencia=$vivienda[0]->getTenencia(); ?> 
                       <?php echo $tenencia->getDescripcion(); ?>                                 
               </div>  
           </div>                            
           <div class="form-group">
             <label class="col-sm-1 control-label">Monto de Alquiler</label>
               <div class="col-sm-2">
-                   <?php echo $montAlq=$vivienda[$i]->getMontAlq(); ?>                                     
+                   <?php echo $montAlq=$vivienda[0]->getMontAlq(); ?>                                     
               </div>
             <label class="col-sm-1 control-label">Propietario</label>
               <div class="col-sm-2">
-                   <?php echo $nomprop=$vivienda[$i]->getPropAlq(); ?>                                     
+                   <?php echo $nomprop=$vivienda[0]->getPropAlq(); ?>                                     
               </div>                   
             <label class="col-sm-1 control-label">Tiepo de Alquiler</label>
               <div class="col-sm-2">
-                   <?php echo $tiempAlq=$vivienda[$i]->getTiemAlq(); ?>                                     
+                   <?php echo $tiempAlq=$vivienda[0]->getTiemAlq(); ?>                                     
               </div>      
             <label class="col-sm-1 control-label">Cedida por</label>
               <div class="col-sm-2">
-                   <?php echo $nomCedidor=$vivienda[$i]->getCedida(); ?>                                     
+                   <?php echo $nomCedidor=$vivienda[0]->getCedida(); ?>                                     
               </div>  
           </div>
           <div class="form-group">
             <label class="col-sm-1 control-label">Terreno Propio</label>
               <div class="col-sm-1">
                 <label class="radio-inline">
-                    <?php  if ($terrprop=$vivienda[$i]->getTerrPropio()=='1') {
+                    <?php  if ($terrprop=$vivienda[0]->getTerrPropio()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
@@ -416,7 +414,7 @@
             <label class="col-sm-2 control-label"> El terreno se encuentra pago</label>
               <div class="col-sm-1">
                 <label class="radio-inline">
-                    <?php  if ($terrpag=$vivienda[$i]->getTerrPago()=='1') {
+                    <?php  if ($terrpag=$vivienda[0]->getTerrPago()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
@@ -428,7 +426,7 @@
             <label class="col-sm-1 control-label">Tiene Escritura</label>
               <div class="col-sm-1">
                 <label class="radio-inline">
-                    <?php  if ($escritura=$vivienda[$i]->getEscritura()=='1') {
+                    <?php  if ($escritura=$vivienda[0]->getEscritura()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
@@ -441,7 +439,7 @@
             <label class="col-sm-1 control-label">¿Posee Automóvil?</label>
               <div class="col-sm-1">
                 <label class="radio-inline">
-                    <?php  if ($auto=$vivienda[$i]->getAuto()=='1') {
+                    <?php  if ($auto=$vivienda[0]->getAuto()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
@@ -451,7 +449,7 @@
               </div>    
             <label class="col-sm-1 control-label">Modelo</label>
               <div class="col-sm-2">
-                   <?php echo $modelo=$vivienda[$i]->getModelo(); ?>                                     
+                   <?php echo $modelo=$vivienda[0]->getModelo(); ?>                                     
               </div>                  
             <label class="col-sm-1 control-label">Año</label>
               <div class="col-sm-2">
@@ -462,7 +460,7 @@
             <label class="col-sm-1 control-label">¿Otras propiedades?</label>
               <div class="col-sm-1">
                 <label class="radio-inline">
-                    <?php  if ($otprop=$vivienda[$i]->getOtraPropiedad()=='1') {
+                    <?php  if ($otprop=$vivienda[0]->getOtraPropiedad()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
@@ -474,25 +472,25 @@
           <div class="form-group">      
             <label class="col-sm-2 control-label">Detalle de otros tipo de propiedades</label>
               <div class="col-sm-6">
-                   <?php echo $detallprop=$vivienda[$i]->getDetalleprop(); ?>                
+                   <?php echo $detallprop=$vivienda[0]->getDetalleprop(); ?>                
               </div>                            
           </div>
                           <!--Datos que corresponde a Ambiente y Mobiliario-->
           <div class="form-group">
             <label class="col-sm-2 control-label">¿Cuántas habitaciones para dormir posee?</label>
               <div class="col-sm-2">
-                 <?php echo $habdormir=$vivienda[$i]->getHabitacion(); ?>                   
+                 <?php echo $habdormir=$vivienda[0]->getHabitacion(); ?>                   
               </div>
             <label  class="col-sm-1 control-label">Piezas en total</label>
               <div class="col-sm-2">
-                 <?php echo $pieza=$vivienda[$i]->getPieza(); ?>                  
+                 <?php echo $pieza=$vivienda[0]->getPieza(); ?>                  
               </div>                                                              
           </div>                      
           <div class="form-group">
             <label class="col-sm-1 control-label">¿Tiene baño?</label>
               <div class="col-sm-1">
                 <label class="radio-inline">
-                    <?php  if ($baño=$vivienda[$i]->getBaño()=='1') {
+                    <?php  if ($baño=$vivienda[0]->getBaño()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
@@ -503,7 +501,7 @@
             <label class="col-sm-2 control-label">¿Posee botón de desague el inodoro?</label>
               <div class="col-sm-1">
                 <label class="radio-inline">
-                    <?php  if ($boton=$vivienda[$i]->getBoton()=='1') {
+                    <?php  if ($boton=$vivienda[0]->getBoton()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
@@ -513,7 +511,7 @@
               </div>  
             <label class="col-sm-1 control-label">El Desague es por</label>
               <div class="col-sm-3">
-                      <?php $desague=$vivienda[$i]->getDesagote(); ?> 
+                      <?php $desague=$vivienda[0]->getDesagote(); ?> 
                       <?php echo $desague->getDescripcion(); ?>                                   
               </div>
           </div>
@@ -521,7 +519,7 @@
             <label class="col-sm-1 control-label">¿El baño es sólo usado por el hogar?</label>
               <div class="col-sm-1">
                 <label class="radio-inline">
-                    <?php  if ($uso=$vivienda[$i]->getUso()=='1') {
+                    <?php  if ($uso=$vivienda[0]->getUso()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
@@ -531,18 +529,18 @@
               </div> 
             <label class="col-sm-3 control-label">¿El baño se encuentra en forma interna/externa de la vivienda?</label>
               <div class="col-sm-2">
-                 <?php echo $ubban=$vivienda[$i]->getEstado(); ?>                                     
+                 <?php echo $ubban=$vivienda[0]->getEstado(); ?>                                     
               </div>
             <label  class="col-sm-2 control-label">¿Cómo ésta el estado del baño?</label>
               <div class="col-sm-2">
-                 <?php echo $estban=$vivienda[$i]->getUbicacion(); ?>                  
+                 <?php echo $estban=$vivienda[0]->getUbicacion(); ?>                  
               </div> 
           </div>  
           <div class="form-group">
             <label class="col-sm-1 control-label">¿Posee Camas?</label>
               <div class="col-sm-1">
                 <label class="radio-inline">
-                    <?php  if ($camas=$vivienda[$i]->getCama()=='1') {
+                    <?php  if ($camas=$vivienda[0]->getCama()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
@@ -552,14 +550,14 @@
               </div> 
             <label class="col-sm-2 control-label">¿Cuantas camas tiene?</label>
               <div class="col-sm-2">
-                 <?php echo $camas1=$vivienda[$i]->getCamcant(); ?>                                   
+                 <?php echo $camas1=$vivienda[0]->getCamcant(); ?>                                   
               </div>
           </div>                            
           <div class="form-group">
             <label class="col-sm-1 control-label">¿Mesas y Sillas?</label>
               <div class="col-sm-1">
                 <label class="radio-inline">
-                    <?php  if ($mesas=$vivienda[$i]->getMesa()=='1') {
+                    <?php  if ($mesas=$vivienda[0]->getMesa()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
@@ -570,7 +568,7 @@
             <label class="col-sm-1 control-label">¿Cocina?</label>
               <div class="col-sm-1">
                 <label class="radio-inline">
-                    <?php  if ($cocina=$vivienda[$i]->getCocina()=='1') {
+                    <?php  if ($cocina=$vivienda[0]->getCocina()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
@@ -581,7 +579,7 @@
             <label class="col-sm-1 control-label">¿Heladera?</label>
               <div class="col-sm-1">
                 <label class="radio-inline">
-                    <?php  if ($heladera=$vivienda[$i]->getHeladera()=='1') {
+                    <?php  if ($heladera=$vivienda[0]->getHeladera()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
@@ -593,7 +591,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">Observaciones de Ambiente y Mobiliario</label>
               <div class="col-sm-6">
-                <?php echo $obserAmM=$vivienda[$i]->getObser1(); ?> 
+                <?php echo $obserAmM=$vivienda[0]->getObser1(); ?> 
               </div>
           </div>  
                         <!--Datos corresponde a los servicios basicos de debería tener la vivienda-->
@@ -601,7 +599,7 @@
             <label class="col-sm-1 control-label">Electricidad</label>
               <div class="col-sm-1">
                 <label class="radio-inline">
-                    <?php  if ($luz=$vivienda[$i]->getLuz()=='1') {
+                    <?php  if ($luz=$vivienda[0]->getLuz()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
@@ -611,15 +609,15 @@
               </div>
             <label class="col-sm-2 control-label">¿Por cual medio?</label>   
               <div class="col-sm-3">
-                      <?php $medioluz=$vivienda[$i]->getMedio(); ?> 
-                      <?php echo $mediluz->getDescripcion(); ?>  
+                      <?php $medioluz=$vivienda[0]->getMedio(); ?> 
+                      <?php echo $medioluz->getDescripcion(); ?>  
               </div>            
           </div>
           <div class="form-group">
             <label class="col-sm-1 control-label">Agua</label>
               <div class="col-sm-1">
                 <label class="radio-inline">
-                    <?php  if ($agua=$vivienda[$i]->getAgua()=='1') {
+                    <?php  if ($agua=$vivienda[0]->getAgua()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
@@ -629,12 +627,12 @@
               </div>
             <label class="col-sm-2 control-label">Es Obtenida por</label>   
               <div class="col-sm-3">
-                      <?php $aguaobt=$vivienda[$i]->getObtenida(); ?> 
+                      <?php $aguaobt=$vivienda[0]->getObtenida(); ?> 
                       <?php echo $aguaobt->getDescripcion(); ?>  
               </div>
             <label class="col-sm-1 control-label">¿Proviene de?</label>   
               <div class="col-sm-3">
-                      <?php $aguaproveniente=$vivienda[$i]->getProveniente(); ?> 
+                      <?php $aguaproveniente=$vivienda[0]->getProveniente(); ?> 
                       <?php echo $aguaproveniente->getDescripcion(); ?> 
               </div>  
           </div>                                            
@@ -642,7 +640,7 @@
             <label class="col-sm-1 control-label">Gas</label>
               <div class="col-sm-1">
                 <label class="radio-inline">
-                    <?php  if ($gas=$vivienda[$i]->getGas()=='1') {
+                    <?php  if ($gas=$vivienda[0]->getGas()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
@@ -652,7 +650,7 @@
               </div>
             <label class="col-sm-2 control-label">¿Qué medio utiliza?</label>   
               <div class="col-sm-3">
-                      <?php $gasmedio=$vivienda[$i]->getUtiliza(); ?> 
+                      <?php $gasmedio=$vivienda[0]->getUtiliza(); ?> 
                       <?php echo $gasmedio->getDescripcion(); ?>                                       
               </div>            
           </div>
@@ -662,33 +660,33 @@
             <label class="col-sm-1 control-label">La pared es de</label>   
               <div class="col-sm-2">
               </div>            
-                      <?php $pared=$vivienda[$i]->getPared(); ?> 
+                      <?php $pared=$vivienda[0]->getPared(); ?> 
                       <?php echo $pared->getDescripcion(); ?>                         
             <label class="col-sm-2 control-label">Material predominante del piso</label>   
               <div class="col-sm-2">
-                      <?php $piso=$vivienda[$i]->getPiso(); ?> 
+                      <?php $piso=$vivienda[0]->getPiso(); ?> 
                       <?php echo $piso->getDescripcion(); ?>               
               </div> 
           </div>        
           <div class="form-group">                        
             <label class="col-sm-1 control-label">El techo es de</label>   
               <div class="col-sm-2">
-                      <?php $techo=$vivienda[$i]->getTecho(); ?> 
+                      <?php $techo=$vivienda[0]->getTecho(); ?> 
                       <?php echo $techo->getDescripcion(); ?>                 
               </div>  
             <label class="col-sm-2 control-label">El Cielo Razo es de</label>   
               <div class="col-sm-2">
-                      <?php $cielorazo=$vivienda[$i]->getCielrazo(); ?> 
+                      <?php $cielorazo=$vivienda[0]->getCielrazo(); ?> 
                       <?php echo $cielorazo->getDescripcion(); ?>   
               </div>            
           </div>  
           <div class="form-group">
             <label class="col-sm-2 control-label">Observaciones de la Construcción</label>
               <div class="col-sm-6">
-                <?php echo $obserc=$vivienda[$i]->getObser2(); ?>    
+                <?php echo $obserc=$vivienda[0]->getObser2(); ?>    
               </div>
           </div>
-            <?php } ?>
+            <?php//} ?>
         </div>
 
 
