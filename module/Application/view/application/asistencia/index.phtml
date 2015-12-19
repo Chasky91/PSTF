@@ -8,7 +8,11 @@
                     <div class="col-md-6">
                         <div class="table-responsive">
                             <table class="table table-condensed">
-                                <h3><strong><?php echo $beneficiario->getNombre(), ' ', $beneficiario->getApellido(); ?></strong></h3>
+                                
+                                <h3><strong><?php echo $beneficiario->getNombre(), ' ', $beneficiario->getApellido(); ?></strong> 
+                                    <a href="<?php echo $this->url('pdfAsistencia',array('id'=>$beneficiario->getIdBeneficiario()));?>" class="btn btn-default" >
+                                    <i class="fa fa-cloud-download"></i> Imprimir PDF </a>
+                                </h3>
                                 <!-- <thead>
                                         <tr>
                                                 <th width="50%"></th>

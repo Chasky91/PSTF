@@ -406,7 +406,20 @@ return array(
                         ),
                     ),
                 ),
-
+        //Aqui a la vista de editar Asistencia Mensual
+            'pdfAsistencia'=> array(
+                'type'=>'Zend\Mvc\Router\Http\Segment',
+                'options'=> array(
+                    'route' => '/asistencia-pdf/:id',
+                         'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults'=>array(
+                        'controller'=>'Application\Controller\Asistencia',
+                        'action'=>'pdf',
+                        ),
+                    ),
+                ),
 
 
 

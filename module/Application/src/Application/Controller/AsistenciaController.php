@@ -6,6 +6,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Application\Entity\DetalleDeEntrega;
 use Application\Admin\Form\FormAsistencia\DetalleDeEntregaForm;
+use DOMPDFModule\View\Model\PdfModel;
 
 class AsistenciaController extends AbstractActionController
 {
@@ -71,7 +72,7 @@ class AsistenciaController extends AbstractActionController
         $id = $this->params('id');
         $idBeneficiario =$this->params('idBeneficiario');
         $em  =$this->getEntityManager();
- 
+         
         $detalleDeEntrega = $em->find('Application\Entity\DetalleDeEntrega', $id);      
         $detalleForm = new DetalleDeEntregaForm($em); 
         $detalleForm->bind($detalleDeEntrega);
@@ -94,6 +95,41 @@ class AsistenciaController extends AbstractActionController
             'form'=>$detalleForm, 
             'idBeneficiario' =>$idBeneficiario
                 ]);
+    }
+
+    public function pdfAction()
+    {
+       $em = $this->getEntityManager();
+        $id = $this->params('id');
+        
+         //codigo para buscar al beneficiario
+        $beneficiario = $em->find('Application\Entity\Beneficiario', $id);
+
+        //query para la lista de entregas a un beneficiario
+        $queryListaEntregas = $em->createQueryBuilder()
+                ->select('de')
+                ->from('Application\Entity\DetalleDeEntrega', 'de')
+                ->where('de.beneficiarioId = ?1')
+                ->orderBy('de.idDetalle', 'DESC')
+                ->setParameter(1,$id)
+                ->getQuery();
+        $entrega = $queryListaEntregas->getResult();
+
+        
+        $pdf = new PdfModel();
+
+        $pdf->setOption('filename', 'documentoPdf');//SEta opcion fuerza la descarga pdf
+                                                                        //La extension pdf se agrega automaticamente
+        $pdf->setOption('paperSize', 'a4');
+        $pdf->setOption('paperOrientation', 'lanscape');
+        
+        //pasamos las variables a la vista
+        $pdf->setVariables(array(
+            'beneficiario' =>$beneficiario,
+            'entrega' =>$entrega
+        ));
+        
+        return $pdf;
     }
 
 
