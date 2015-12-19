@@ -50,7 +50,6 @@ class Producto
     {
         return $this->id_producto;
     }
-
     /**
      * Set nombre
      *
@@ -61,10 +60,8 @@ class Producto
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
-
         return $this;
     }
-
     /**
      * Get nombre
      *
@@ -74,7 +71,6 @@ class Producto
     {
         return $this->nombre;
     }
-
     /**
      * Set descripcion
      *
@@ -85,10 +81,8 @@ class Producto
     public function setDescripcion($descripcion)
     {
         $this->descripcion = $descripcion;
-
         return $this;
     }
-
     /**
      * Get descripcion
      *
@@ -98,7 +92,6 @@ class Producto
     {
         return $this->descripcion;
     }
-
     /**
      * Set cantidad
      *
@@ -109,10 +102,8 @@ class Producto
     public function setCantidad($cantidad)
     {
         $this->cantidad = $cantidad;
-
         return $this;
     }
-
     /**
      * Get cantidad
      *
@@ -157,10 +148,8 @@ class Producto
     public function setStockCritico($stockCritico)
     {
         $this->stockCritico = $stockCritico;
-
         return $this;
     }
-
     /**
      * Get stockCritico
      *
@@ -170,7 +159,6 @@ class Producto
     {
         return $this->stockCritico;
     }
-
     /**
      * Set fechaIngreso
      *
@@ -181,10 +169,8 @@ class Producto
     public function setFechaIngreso($fechaIngreso)
     {
         $this->fecha_ingreso = $fechaIngreso;
-
         return $this;
     }
-
     /**
      * Get fechaIngreso
      *
@@ -193,5 +179,26 @@ class Producto
     public function getFechaIngreso()
     {
         return $this->fecha_ingreso;
+    }
+    /**
+     * Set moduloId
+     *
+     * @param \Application\Entity\Modulo $moduloId
+     *
+     * @return Producto
+     */
+    public function setModuloId(\Application\Entity\Modulo $moduloId = null)
+    {
+        $this->modulo_id = $moduloId;
+        return $this;
+    }
+    /**
+     * Get moduloId
+     *
+     * @return \Application\Entity\Modulo
+     */
+    public function getModuloId()
+    {
+        return $this->modulo_id;
     }
 }

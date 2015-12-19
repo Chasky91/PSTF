@@ -5,7 +5,8 @@ return array(
         'Application',
         'ZendDeveloperTools',
         'DoctrineModule',
-        'DoctrineORMModule'
+        'DoctrineORMModule',
+        'DOMPDFModule',
 
     ),
 

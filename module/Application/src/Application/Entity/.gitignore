@@ -1,1 +1,7 @@
 *.php~
+/Beneficiario.php~
+/Educacion.php~
+/EstadoCivil.php~
+/Familia.php~
+/Profesion.php~
+/Relacion.php~

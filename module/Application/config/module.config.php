@@ -20,12 +20,21 @@ return array(
                     ),
                 ),
             ),
+/*
+
+    // This should be an array of module namespaces used in the application.
+    'modules' => array(
+        'Application',
+        'DOMPDFModule',
+        ),
+
+        */
 //Esto corresponde al modulo de beneficiarios
             //aqui entramos a la vista o index de la vista de Beneficiario
             'beneficiario'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
+                'type'=>'Zend\Mvc\Router\Http\Segment',
                 'options'=> array(
-                    'route' => '/beneficiario',
+                    'route' => '/beneficiario/:id',                  
                     'defaults'=>array(
                         'controller'=>'Application\Controller\Beneficiario',
                         'action'=>'index',
@@ -69,6 +78,30 @@ return array(
                                     ),
                                 ),
                             ),
+            //Aqui a la vista de Aprobar beneficiario
+            'aprobar'=> array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options'=> array(
+                        'route' => '/aprobar-beneficiario/:id/',
+                    'defaults'=>array(
+                        'controller'=>'Application\Controller\Beneficiario',
+                        'action'=>'aprobar',
+
+                                    ),
+                                ),
+                            ),   
+             //Aqui a la vista de Aprobar beneficiario
+            'rechazar'=> array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options'=> array(
+                        'route' => '/rechazar-beneficiario/:id/',
+                    'defaults'=>array(
+                        'controller'=>'Application\Controller\Beneficiario',
+                        'action'=>'rechazar',
+
+                                    ),
+                                ),
+                            ),                                     
             //Aqui a la vista de Eliminar beneficiario
             'del-beneficiario'=> array(
                 'type'=>'Zend\Mvc\Router\Http\Segment',
@@ -139,6 +172,7 @@ return array(
                                     ),
                                 ),
                             ),
+
 //Esto corresponde a Vivienda(situacion habitacional)
             'vivienda'=> array(
                 'type'=>'Zend\Mvc\Router\Http\Literal',
@@ -721,6 +755,7 @@ return array(
                                     ),
                                 ),
                             ),
+
 
 
 

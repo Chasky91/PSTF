@@ -1,0 +1,177 @@
+<?php
+
+namespace Application\Entity;
+
+use Doctrine\ORM\Mapping as ORM; 
+use Doctrine\Common\Collections\ArrayCollection;
+//use Doctrine\Common\Collections\Collection;
+use DateTime;
+
+/** @ORM\Entity */
+class Vivienda
+{
+
+	/**
+    * @ORM\Column(type="integer")
+    * @ORM\GeneratedValue
+    * @ORM\Id
+    */  
+    protected $idVivienda; 
+   
+
+	/**
+    * @ORM\OneToOne(targetEntity="Beneficiario")
+    * @ORM\JoinColumn(name="idben", referencedColumnName="idBeneficiario")
+    */
+     private $idben;   
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Tenencia", inversedBy="idV")
+    * @ORM\JoinColumn(name="idTen", referencedColumnName="idTenencia")
+    **/
+    protected $tenencia;
+
+    /** @ORM\Column(type="string", nullable=true)**/
+    protected $montAlq;
+
+    /** @ORM\Column(type="string", nullable=true)**/
+    protected $propAlq;
+    /** @ORM\Column(type="string", nullable=true)**/
+    protected $tiemAlq;
+    /** @ORM\Column(type="string", nullable=true)**/
+    protected $cedida;
+   
+   /**   
+   * @ORM\Column(type="boolean", nullable=true)   
+   */ 
+    protected $terrPropio;
+   /**   
+   * @ORM\Column(type="boolean", nullable=true)   
+   */ 
+    protected $terrPago;
+   /**   
+   * @ORM\Column(type="boolean", nullable=true)   
+   */ 
+    protected $escritura; 
+
+    /** @ORM\Column(type="string", nullable=true)**/
+    protected $habitacion;   
+    /** @ORM\Column(type="string", nullable=true)**/
+    protected $pieza;   
+   /**   
+   * @ORM\Column(type="boolean", nullable=true)   
+   */ 
+    protected $baño;
+   /**   
+   * @ORM\Column(type="boolean", nullable=true)   
+   */ 
+    protected $dasague;    
+      /**   
+   * @ORM\Column(type="boolean", nullable=true)   
+   */ 
+    protected $boton;
+    /**
+    * @ORM\ManyToOne(targetEntity="Desague", inversedBy="idV")
+    * @ORM\JoinColumn(name="idDes", referencedColumnName="idDesague")
+    **/
+    protected $desagote;
+   /**   
+   * @ORM\Column(type="boolean", nullable=true)   
+   */ 
+    protected $uso;      
+    /** @ORM\Column(type="string", nullable=true)**/
+    protected $ubicacion;
+    
+    /** @ORM\Column(type="string", nullable=true)**/
+    protected $estado;    
+   /**   
+   * @ORM\Column(type="boolean", nullable=true)   
+   */ 
+    protected $cama; 
+    /** @ORM\Column(type="string", nullable=true)**/
+    protected $camcant; 
+   /**   
+   * @ORM\Column(type="boolean", nullable=true)   
+   */ 
+    protected $mesa; 
+   /**   
+   * @ORM\Column(type="boolean", nullable=true)   
+   */ 
+    protected $cocina;  
+   /**   
+   * @ORM\Column(type="boolean", nullable=true)   
+   */ 
+    protected $heladera;
+    /** @ORM\Column(type="text", nullable=true)**/
+    protected $obser1;
+   /**   
+   * @ORM\Column(type="boolean", nullable=true)   
+   */ 
+    protected $luz; 
+    /**
+    * @ORM\ManyToOne(targetEntity="Luz", inversedBy="idV")
+    * @ORM\JoinColumn(name="idLuz", referencedColumnName="idLuz")
+    **/
+    protected $medio;     
+   /**   
+   * @ORM\Column(type="boolean", nullable=true)   
+   */ 
+    protected $agua; 
+    /**
+    * @ORM\ManyToOne(targetEntity="Agua", inversedBy="idV")
+    * @ORM\JoinColumn(name="idAg", referencedColumnName="idAgua")
+    **/
+    protected $obtenida;   
+    /**
+    * @ORM\ManyToOne(targetEntity="AguaLug", inversedBy="idV")
+    * @ORM\JoinColumn(name="idAglg", referencedColumnName="idAguaLug")
+    **/
+    protected $proveniente;           
+   /**   
+   * @ORM\Column(type="boolean", nullable=true)   
+   */ 
+    protected $gas; 
+    /**
+    * @ORM\ManyToOne(targetEntity="Gas", inversedBy="idV")
+    * @ORM\JoinColumn(name="idG", referencedColumnName="idGas")
+    **/
+    protected $utiliza; 
+    /**
+    * @ORM\ManyToOne(targetEntity="Pared", inversedBy="idV")
+    * @ORM\JoinColumn(name="idMuro", referencedColumnName="idPared")
+    **/
+    protected $pared; 
+    /**
+    * @ORM\ManyToOne(targetEntity="Suelo", inversedBy="idV")
+    * @ORM\JoinColumn(name="idS", referencedColumnName="idSuelo")
+    **/
+    protected $piso;     
+    /**
+    * @ORM\ManyToOne(targetEntity="Techo", inversedBy="idV")
+    * @ORM\JoinColumn(name="idTec", referencedColumnName="idTecho")
+    **/
+    protected $techo; 
+    /**
+    * @ORM\ManyToOne(targetEntity="CieloR", inversedBy="idV")
+    * @ORM\JoinColumn(name="idciel", referencedColumnName="idCieloR")
+    **/
+    protected $cielrazo; 
+    /** @ORM\Column(type="text", nullable=true)**/
+    protected $obser2;
+   /**   
+   * @ORM\Column(type="boolean", nullable=true)   
+   */ 
+    protected $auto; 
+    /** @ORM\Column(type="string", nullable=true)**/
+    protected $modelo;
+    /** @ORM\Column(type="string", nullable=true)**/
+    protected $año;    
+   /**   
+   * @ORM\Column(type="boolean", nullable=true)   
+   */ 
+    protected $otraPropiedad;
+    /** @ORM\Column(type="text", nullable=true)**/
+    protected $detalleprop;
+
+
+}

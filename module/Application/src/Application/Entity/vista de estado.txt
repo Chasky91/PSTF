@@ -1,0 +1,24 @@
+<div class="col-md-12">
+		<div class="panel panel-info">
+				<div class="panel-heading">
+					<?php $form->prepare();?>
+                    <?php echo $this->form()->openTag($form->setAttributes(['class' => 'form-horizontal', 'data-validate' => 'parsley', 'id' => 'validate-form'])); ?>  
+                    <?php $beneficiario=($form->get('beneficiario'));?>
+
+                         	
+				</div>
+				<div class="panel-body">
+
+							<div class="alert alert-dismissable alert-success">
+								<strong>Aprobando Beneficiario</strong> El estado del Beneficiario dejará de ser "Pendiente" en cuanto confirme su Apobación 
+								<button ><?php echo $this->formRow($beneficiario->get('activo')->setAttributes(['class' => 'close', 'id' => 'source', 'type'=>'button', 'data-dismiss'=>'alert', 'aria-hidden'=>'true', 'value'=>'Aprobado']));?></button>
+							</div>
+							<div class="alert alert-dismissable alert-warning">
+								<strong>Rechazando Beneficiario</strong>¡Cuidado! Si usted esta seguro/a de realizar esta acción haga click en confirmar, si no esta seguro, regrese atrás...
+								<button><?php echo $this->formRow($beneficiario->get('activo')->setAttributes(['class' => 'close', 'id' => 'source', 'type'=>'button', 'data-dismiss'=>'alert', 'aria-hidden'=>'true', 'value'=>'Rechazado']));?></button>
+							</div>
+
+				</div>
+				<?php echo $this->form()->closeTag(); ?> 
+		</div>
+</div>

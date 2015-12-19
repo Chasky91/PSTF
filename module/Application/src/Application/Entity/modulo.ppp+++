@@ -1,0 +1,91 @@
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Modulo")
+     * @ORM\JoinColumn(name="moduloId", referencedColumnName="idModulo",nullable=false, unique=False)
+     * @ORM\Id
+     */
+ 
+    protected $moduloId;
+
+    /**
+     * Set moduloId
+     *
+     * @param \Application\Entity\Modulo $moduloId
+     *
+     * @return ProductosDeModulo
+     */
+    public function setModuloId(\Application\Entity\Modulo $moduloId)
+    {
+        $this->moduloId = $moduloId;
+
+        return $this;
+    }
+
+    /**
+     * Get moduloId
+     *
+     * @return \Application\Entity\Modulo
+     */
+    public function getModuloId()
+    {
+        return $this->moduloId;
+    }
+
+
+     /**
+     * @ORM\ManyToOne(targetEntity="Modulo")
+     * @ORM\JoinColumn(name="modulo_id", referencedColumnName="idModulo",nullable=true)
+     */
+    protected $modulo_id;
+
+
+        /**
+     * Set moduloId
+     *
+     * @param \Application\Entity\Modulo $moduloId
+     *
+     * @return Producto
+     */
+    public function setModuloId(\Application\Entity\Modulo $moduloId = null)
+    {
+        $this->modulo_id = $moduloId;
+
+        return $this;
+    }
+
+    /**
+     * Get moduloId
+     *
+     * @return \Application\Entity\Modulo
+     */
+    public function getModuloId()
+    {
+        return $this->modulo_id;
+    }
+
+
+
+
+    /**
+     * Set moduloId
+     *
+     * @param \Application\Entity\Modulo $moduloId
+     *
+     * @return RegistroModulo
+     */
+    public function setModuloId(\Application\Entity\Modulo $moduloId = null)
+    {
+        $this->moduloId = $moduloId;
+
+        return $this;
+    }
+
+    /**
+     * Get moduloId
+     *
+     * @return \Application\Entity\Modulo
+     */
+    public function getModuloId()
+    {
+        return $this->moduloId;
+    }

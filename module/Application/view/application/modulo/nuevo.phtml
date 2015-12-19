@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4>Nuevo Modulo</h4>
+
+            </div>
+            <div class="panel-body">
+                <h3>Modulo</h3>
+                <p>Ingrese los datos del nuevo modulo</p>
+                <p class="text-primary">El ID de modulo se genera automáticamente.</p>
+                <br>
+                <?php $form->prepare() ?>
+                <?php echo $this->form()->openTag($form->setAttributes(['id'=>'surveyForm','class' => 'form-horizontal', 'data-validate' => 'parsley', 'id' => 'validate-form'])) ?>
+                <?php //var_dump($form);die;
+                $modulo = $form->get('modulo');             
+                ?>
+
+                <div class="form-group">
+                    <label for="focusedinput" class="col-sm-3 control-label">Nombre del modulo</label>
+                    <div class="col-sm-6">
+
+                        <?php echo $this->formRow($modulo->get('nombre')->setAttributes(['placeholder' => 'Ingrese el nombre del tipo de modulo', 'id' => 'focusedinput', 'ata-minlength' => '2',
+                                    'required' => 'required', 'class' => 'form-control', 'type' => 'text'])); ?> 
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="focusedinput" class="col-sm-3 control-label">Tipo de modulo</label>
+                    <div class="col-sm-6">
+
+                        <?php echo $this->formRow($modulo->get('tipo')->setAttributes(['placeholder' => 'Ingrese el nombre del tipo de modulo', 'id' => 'focusedinput', 'ata-minlength' => '2',
+                                    'required' => 'required', 'class' => 'form-control', 'type' => 'text'])); ?> 
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <div class="btn-toolbar">
+                            <button type="submit" class="btn-primary btn">Registrar</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+<?php echo $this->form()->closeTag(); ?> 
+        </div>
+    </div>
+    
+</div>
