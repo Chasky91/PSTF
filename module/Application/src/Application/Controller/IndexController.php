@@ -11,6 +11,7 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use DOMPDFModule\View\Model\PdfModel;
 
 class IndexController extends AbstractActionController
 {
@@ -18,6 +19,25 @@ class IndexController extends AbstractActionController
     {
         return new ViewModel();
     }
+    public function registroAction()
+    {
+        $pdf = new PdfModel();
+        
+        $this->layout(false);
+                $pdf->setOption('filename', 'registro'); // Esta opcion fuerza la descarga del PDF.
+                                                             // La extension ".pdf" se agrega automaticamente
+                $pdf->setOption('paperOrintation', 'portrait'); //orientacion de la hoja
+                $pdf->setOption('paperSize', 'a4'); // Tamaño del papel
+         
+                // Pasamos variables a la vista
+                $pdf->setVariables(array(
+                    'name'=>'Registro de Beneficiario'
+
+                ));
+         
+                return $pdf;
+    }
+
 
    /* //activamos las funcion de beneficiario y producto
     public function beneficiarioaction()
