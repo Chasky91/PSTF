@@ -329,12 +329,12 @@ return array(
 
 //Esto corresponde al modulo de Asistencia mensual
             //aqui entramos a la vista o index de la vista de Asistencia Mensual
-            'index_asismen' => array(
+            'index_asistencia' => array(
                 'type' => 'Zend\Mvc\Router\Http\Segment', 
                 'options' => array(
-                    'route' => '/index-asismen/:planilla',
+                    'route' => '/index-asistencia/:beneficiario',
                     'constraints' => array(
-                        'planilla' => '[0-9]+',
+                        'beneficiario' => '[0-9]+',
                     ),
                     'defaults' => array(
                         'controller' => 'Application\Controller\Asistencia',
@@ -344,35 +344,21 @@ return array(
             ),
 
 //Aqui a la vista de nuevo Asistencia Mensual
-            'nuevo_asismen_producto'=> array(
+            'nuevo_asistencia'=> array(
                 'type'=>'Zend\Mvc\Router\Http\Segment',
                 'options'=> array(
-                    'route' => '/nuevo-asismen-producto/:id',
+                    'route' => '/nuevo-asistencia/:id',
                     'constraints' => array(
                         'id' => '[0-9]+',
                     ),
                     'defaults'=>array(
                         'controller'=>'Application\Controller\Asistencia',
-                        'action'=>'asistenciaConProducto',
+                        'action'=>'nuevo',
                         ),
                     ),
                 ),
 
- //Ruta de Asistencia  mensual para modulo
-            'nuevo_asismen_modulo' =>array(
-                'type' => 'Zend\Mvc\Router\Http\Segment',
-                'options' => array(
-                    'route' => '/nuevo-asismen-modulo/:id/:idm',
-                    'constraints' => array(
-                        'id' =>'[0-9]+',
-                        'idm' =>'[0-9]+',
-                    ),
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Asistencia',
-                        'action'=>'asistenciaConModulo',
-                    ),
-                ),
-            ),
+
 
 
 //Esto corresponde a todo lo referido a los empleados
@@ -527,63 +513,7 @@ return array(
             ),
             //Termina eliminar sector
             
-            ///////////////////////
-            //Comienza Modulo///
-            //////////////////////
-            
-            //lista de productos
-            'index_producto_en_modulo' => array(
-                'type' => 'literal', // 'Zend\Mvc\Router\Http\Literal'
-                'options' => array(
-                    'route' => '/lista-productos-en-modulo',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Modulo',
-                        'action' => 'index',
-                    ),
-                ),
-            ),
-            
-            //seccion nuevo productos del modulo
-            'nuevo_modulo' => array(
-                'type' => 'literal', // 'Zend\Mvc\Router\Http\Literal'
-                'options' => array(
-                    'route' => '/nuevo-modulo',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Modulo',
-                        'action' => 'nuevo',
-                    ),
-                ),
-            ),
-
-            'cargar_modulo' => array(
-                'type' => 'Zend\Mvc\Router\Http\Segment',
-                'options' => array(
-                    'route' => '/cargar-modulo/:id/:idp',                    
-                    'constraints' => array(
-                        'id' => '[0-9]+',
-                    ),
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Modulo',
-                        'action' => 'cargar',
-                    ),
-                ),
-            ),
-            
-            /////////////////////
-            //Comienza Stock///
-            ////////////////////
-            
-            //seccion lista de stocks
-            'index_stock' => array(
-                'type' => 'literal', // 'Zend\Mvc\Router\Http\Literal'
-                'options' => array(
-                    'route' => '/lista-stock',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Stock',
-                        'action' => 'index',
-                    ),
-                ),
-            ),
+           
             
 
 //Esto pertenece al Loguin y Logout

@@ -7,7 +7,6 @@ use Zend\View\Model\ViewModel;
 use Application\Entity\Producto;
 use Application\Admin\Form\FormProducto\ProductoForm;
 use Application\Helper\ComparaDosCifras;
-use Application\Entity\Modulo;
 //moulo para utenticcion
 use Zend\Mvc\MvcEvent;
 
@@ -45,27 +44,12 @@ class ProductoController extends AbstractActionController
                 ->orderBy('a.id_producto','DESC')
                 ->getQuery();
         $productos  = $query->getResult();
-         $query2  = $em->createQueryBuilder()
-                ->select('m')
-                ->from('Application\Entity\Modulo', 'm')
-                ->orderBy('m.idModulo','DESC')
-                ->getQuery();
-        $modulos  = $query2->getResult();
-        
-        //select para todos los productosDeModulo
-        $query3  = $em->createQueryBuilder()
-                ->select('pdm')
-                ->from('Application\Entity\ProductosDeModulo', 'pdm')
-                ->orderBy('pdm.moduloId','DESC')
-                ->getQuery();
-        $productoDeModulos  = $query3->getResult();
+
 
         $comparar = new ComparaDosCifras();
         return new ViewModel([
             'productos'=>$productos,
-            'comparar' => $comparar,
-            'modulos'=>$modulos,
-            'productoDeModulos' =>$productoDeModulos
+            'comparar' => $comparar
         ]);
     }
 

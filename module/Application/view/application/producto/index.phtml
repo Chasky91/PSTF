@@ -22,8 +22,7 @@
                                         <th>Estado de stock</th>
                                         <th>Fecha de  ingreso</th>
                                         <th>Operaciones</th>
-                                        <th>Modulo</th>
-                                        <th>Agregara a modulo</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -54,30 +53,7 @@
                                                     </div>
                                                    
                                             </td>
-                                            <td>
-                                                <?php $idpSimple= $producto->getIdProducto(); ?>
-                                            <?php  foreach ($productoDeModulos as $productoDeModulo):
-                                                        $PEM = $productoDeModulo->getIdProducto();
-                                                        $productoEnM = $PEM->getIdPRoducto();
-                                                        if($productoEnM == $idpSimple): ?>
 
-                                                        <?php    $nombrePEM = $productoDeModulo->getModuloId();
-                                                                  echo $nombrePEM->getNombre();?>   
-
-                                            <?php  endif;
-                                                       endforeach; 
-                                            ?>
-                                            </td>
-                                            <td><select class="form-control" id="source" onchange="location = this.options[this.selectedIndex].value;">
-                                                        <option data-hidden="true">Agregar a modulo </option>
-                                                    <?php foreach ($modulos as $modulo):?> 
-                                                
-                                                        <option value="<?php echo $this->url('cargar_modulo', array(
-                                                        'id' => $modulo->getIdModulo(),
-                                                        'idp' => $producto->getIdProducto())) ?>"><?php echo $modulo->getNombre() ?></option>
-                                                    <?php endforeach; ?>
-                                                </select>
-                                            </td>
 
                                         <?php endforeach; ?>
                                      

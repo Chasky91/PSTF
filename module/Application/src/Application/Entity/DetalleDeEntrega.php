@@ -8,28 +8,19 @@ use DateTime;
 /**
  * @ORM\Entity
  */
-class Registro
+class DetalleDeEntrega
 {
     /**
      * @ORM\Column(type="integer",  nullable=false, unique=true)
      * @ORM\Id
      * @ORM\GeneratedValue
      */
-    protected $idRegistro;
+    protected $idDetalle;
  
     /**
-     * @ORM\Column(type="integer", nullable=false)
+     * @ORM\Column(type="text", nullable=false)
      */
-    protected $itemId;
-    
-    /**
-     * @ORM\Column(type="string" , nullable=true)
-     */
-    protected $tipo;
-    /**
-     * @ORM\Column(name="cantidad", type="integer", nullable=true)
-     */
-    protected $cantidad;
+    protected $descripcion;
     
     /**
      * @ORM\Column(name="fechaEntrega", type="datetime")
@@ -38,7 +29,7 @@ class Registro
     
     /**
      * @ORM\ManyToOne(targetEntity="Beneficiario")
-     * @ORM\JoinColumn(name="beneficiarioId", referencedColumnName="idBeneficiario")
+     * @ORM\JoinColumn(name="beneficiarioId", referencedColumnName="idBeneficiario",nullable=false)
      */
     protected $beneficiarioId;
 
@@ -47,86 +38,39 @@ class Registro
     }
 
 
+
     /**
-     * Get idRegistro
+     * Get idDetalle
      *
      * @return integer
      */
-    public function getIdRegistro()
+    public function getIdDetalle()
     {
-        return $this->idRegistro;
+        return $this->idDetalle;
     }
 
     /**
-     * Set itemId
+     * Set descripcion
      *
-     * @param integer $itemId
+     * @param string $descripcion
      *
-     * @return Registro
+     * @return DetalleDeEntrga
      */
-    public function setItemId($itemId)
+    public function setDescripcion($descripcion)
     {
-        $this->itemId = $itemId;
+        $this->descripcion = $descripcion;
 
         return $this;
     }
 
     /**
-     * Get itemId
-     *
-     * @return integer
-     */
-    public function getItemId()
-    {
-        return $this->itemId;
-    }
-
-    /**
-     * Set tipo
-     *
-     * @param string $tipo
-     *
-     * @return Registro
-     */
-    public function setTipo($tipo)
-    {
-        $this->tipo = $tipo;
-
-        return $this;
-    }
-
-    /**
-     * Get tipo
+     * Get descripcion
      *
      * @return string
      */
-    public function getTipo()
+    public function getDescripcion()
     {
-        return $this->tipo;
-    }
-
-    /**
-     * Set cantidad
-     *
-     * @param integer $cantidad
-     *
-     * @return Registro
-     */
-    public function setCantidad($cantidad)
-    {
-        $this->cantidad = $cantidad;
-
-        return $this;
-    }
-
-    /**
-     * Get cantidad
-     *
-     * @return integer
-     */
-    public function getCantidad()
-    {
-        return $this->cantidad;
+        return $this->descripcion;
     }
 
     /**
@@ -134,7 +78,7 @@ class Registro
      *
      * @param \DateTime $fechaEntrega
      *
-     * @return Registro
+     * @return DetalleDeEntrga
      */
     public function setFechaEntrega($fechaEntrega)
     {
@@ -158,7 +102,7 @@ class Registro
      *
      * @param \Application\Entity\Beneficiario $beneficiarioId
      *
-     * @return Registro
+     * @return DetalleDeEntrga
      */
     public function setBeneficiarioId(\Application\Entity\Beneficiario $beneficiarioId = null)
     {

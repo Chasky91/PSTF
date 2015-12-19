@@ -6,18 +6,18 @@ use Zend\Form\Form;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
-use Application\Admin\Form\FormAsistencia\RegistroProductoFieldset;
+use Application\Admin\Form\FormAsistencia\DetalleDeEntregaFieldset;
 
-class RegistroProductoForm extends Form 
+class DetalleDeEntregaForm extends Form 
 {
     public function __construct(ObjectManager $em) {
-        parent::__construct('registroproducto-form');
+        parent::__construct('detalledeentrega-form');
         
         $this->setHydrator(new DoctrineHydrator($em));
         
-        $registroProFieldset = new RegistroProductoFieldset($em);
-        $registroProFieldset->setUseAsBaseFieldset(true);
-        $this->add($registroProFieldset);
+        $detalleDeEntregaFieldset = new DetalleDeEntregaFieldset($em);
+        $detalleDeEntregaFieldset->setUseAsBaseFieldset(true);
+        $this->add($detalleDeEntregaFieldset);
         
         $this->add([
                'name' => 'type',
