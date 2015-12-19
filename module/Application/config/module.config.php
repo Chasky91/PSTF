@@ -377,7 +377,7 @@ return array(
                 ),
             ),
 
-//Aqui a la vista de nuevo Asistencia Mensual
+//Aqui a la vista de index Asistencia Mensual
             'nuevo_asistencia'=> array(
                 'type'=>'Zend\Mvc\Router\Http\Segment',
                 'options'=> array(
@@ -388,6 +388,21 @@ return array(
                     'defaults'=>array(
                         'controller'=>'Application\Controller\Asistencia',
                         'action'=>'nuevo',
+                        ),
+                    ),
+                ),
+      //Aqui a la vista de editar Asistencia Mensual
+            'editar_asistencia'=> array(
+                'type'=>'Zend\Mvc\Router\Http\Segment',
+                'options'=> array(
+                    'route' => '/editar-asistencia/:id/:idBeneficiario',
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                        'idBeneficiario' => '[0-9]+',
+                    ),
+                    'defaults'=>array(
+                        'controller'=>'Application\Controller\Asistencia',
+                        'action'=>'editar',
                         ),
                     ),
                 ),

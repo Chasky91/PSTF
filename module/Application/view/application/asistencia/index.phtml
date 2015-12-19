@@ -22,7 +22,8 @@
                                     </tr>
                                     <tr>
                                         <td>Fecha de Nacimiento</td>
-                                        <?php //Formateamos el objeto fecha solo para mostrar la fecha y no la hora
+                                        <?php
+                                        //Formateamos el objeto fecha solo para mostrar la fecha y no la hora
                                         $fechaDeNac = $beneficiario->getFechanac();
                                         ?>
                                         <td><?php echo $fechaDeNac->format('d-m-Y'); ?></td>
@@ -50,7 +51,7 @@
                                 </div>
                             </div>
                             <div class="panel-body collapse in">
-                                    <?php echo $this->flashMessenger()->render('success', array('alert', 'alert-dismissable', 'alert-success')); ?>
+                            <?php echo $this->flashMessenger()->render('success', array('alert', 'alert-dismissable', 'alert-success')); ?>
                                 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="editable">
                                     <thead>
                                         <tr>
@@ -61,15 +62,24 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                            <?php for($i = 0; $i < count($entrega); $i++) { ?>
+                                            <?php for ($i = 0; $i < count($entrega); $i++) { ?>
                                             <tr class="odd gradeX">
-                                                <td><?php echo $entrega[$i]->getIdDetalle(); ?></td>
-                                                <?php $fechaEntrega = $entrega[$i]->getFechaEntrega(); ?>
-                                                <td><?php echo $fechaEntrega->format('d-m-Y');?></td>                                            
+                                                <td><?php echo $entrega[$i]->getIdDetalle(); ?>
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-default dropdown-toggle btn btn-default btn-xs" data-toggle="dropdown"><i class="fa fa-plus"> </i><span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu" role="menu">
+                                                            <!--Opcion uno se dirige a Ingresar Nuevo Familiar-->
+                                                            <li><a  href="<?php echo $this->url('editar_asistencia', array('id' => $entrega[$i]->getIdDetalle(),'idBeneficiario' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-cog"></i>Editar</a></li>
+                                                        </ul>
+                                                    </div>  
+                                                </td>
+                                                   <?php $fechaEntrega = $entrega[$i]->getFechaEntrega(); ?>
+                                                <td><?php echo $fechaEntrega->format('d-m-Y'); ?></td>                                            
                                                 <td><?php echo $entrega[$i]->getDescripcion(); ?></td>  
                                                 <td></td>
                                             </tr>
-                                           <?php } ?>
+                                            <?php } ?>
                                     </tbody>
                                 </table>
                             </div>

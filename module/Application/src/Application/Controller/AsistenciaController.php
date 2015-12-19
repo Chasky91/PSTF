@@ -7,13 +7,16 @@ use Zend\View\Model\ViewModel;
 use Application\Entity\DetalleDeEntrega;
 use Application\Admin\Form\FormAsistencia\DetalleDeEntregaForm;
 
-class AsistenciaController extends AbstractActionController {
+class AsistenciaController extends AbstractActionController
+{
 
-    protected function getEntityManager() {
+    protected function getEntityManager()
+    {
         return $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
     }
 
-    public function indexAction() {
+    public function indexAction()
+    {
         $em = $this->getEntityManager();
 
 
@@ -30,14 +33,14 @@ class AsistenciaController extends AbstractActionController {
                 ->setParameter(1,$id)
                 ->getQuery();
         $entrega = $queryListaEntregas->getResult();
-
         return new ViewModel([
             'beneficiario' => $beneficiario,
             'entrega' =>$entrega
         ]);
     }
 
-    public function nuevoAction() {
+    public function nuevoAction()
+    {
         $idbeneficiario = $this->params('id');
         $em = $this->getEntityManager();
 
@@ -62,4 +65,37 @@ class AsistenciaController extends AbstractActionController {
         ]);
     }
 
+    public function editarAction()
+    {
+        //id del detalle de entrega
+        $id = $this->params('id');
+        $idBeneficiario =$this->params('idBeneficiario');
+        $em  =$this->getEntityManager();
+ 
+        $detalleDeEntrega = $em->find('Application\Entity\DetalleDeEntrega', $id);      
+        $detalleForm = new DetalleDeEntregaForm($em); 
+        $detalleForm->bind($detalleDeEntrega);
+          if ($this->request->isPost()){
+            $detalleForm->setData($this->request->getPost());
+            
+            if($detalleForm->isValid()) {
+                
+                $em->persist($detalleDeEntrega);
+                $em->flush();
+                
+                    $this->flashMessenger()->addSuccessMessage(
+                            sprintf('Detalle de entrega "%s" actualizado correctamente', $detalleDeEntrega->getIdDetalle()));
+                    return $this->redirect()->toRoute('index_asistencia',array('beneficiario'=>$idBeneficiario)); 
+            }        
+        }
+
+        return new ViewModel([
+            'detalleEntrega'=>$detalleDeEntrega,
+            'form'=>$detalleForm, 
+            'idBeneficiario' =>$idBeneficiario
+                ]);
+    }
+
+
 }
+

@@ -44,8 +44,12 @@
                                   <li><a href="<?php echo $this->url('nuevo_S', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-h-square"></i>Sanidad</a></li>
                                     
                                     <!--Opcion cinco se dirige a ver todo el contenido de beneficiario-->
-                                  <li><a href="<?php echo $this->url('beneficiario', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-book"></i>Ver registro completo</a></li>                                  
-                                 
+                                  <li><a href="<?php echo $this->url('beneficiario', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-book"></i>Ver registro completo</a></li>
+                                  <!--Opcion que dirige a ver todo el contenido de Asistencia-->
+                                  <li><a href="<?php echo $this->url('index_asistencia', array('beneficiario' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-book"></i>Ver Asistencia Mensual</a></li>
+                                  <!--Opcion que dirige a entregarasistencia a venificiario-->
+                                  <li><a href="<?php echo $this->url('nuevo_asistencia', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-book"></i>Entrega de Asistencia</a></li>
+                                  
                                   <li class="divider"></li>
                                       <!--Opcion seis se dirige a Modificar Beneficiario-->
                                   <li><a href="<?php echo $this->url('modbeneficiario', array('id' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-cog"></i>Modificar</a></li>
