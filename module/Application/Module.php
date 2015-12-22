@@ -141,8 +141,8 @@ class Module
         $acl->addResource('modviv');
         $acl->addResource('delviv');
 
-
-        //denegar a invitado para invitado
+        ////////////////////////////////////////////
+        //denegar a invitado para invitado/////////////
         //Seccion empleado     
         $acl->deny($rolInvitado,'index_empleado');
         $acl->deny($rolInvitado,'nuevo_empleado');
@@ -194,7 +194,7 @@ class Module
         $acl->deny($rolInvitado,'modviv');
         $acl->deny($rolInvitado,'delviv');
       
-
+//////////////////////////////////////////////
         //permitir a inviatdo
         //////////////////////
         $acl->allow($rolInvitado,'login');
@@ -208,7 +208,7 @@ class Module
         $acl->allow($rolMesaEntrada,'editar_asistencia');
         $acl->allow($rolMesaEntrada,'pdfAsistencia');
         
-        
+  ///////////////////////////////////////////////////      
         /////////////////////////////
         //asistentente social permisos
         $acl->allow($rolAsitenteSocial,'modbeneficiario');
@@ -252,6 +252,9 @@ class Module
         $acl->allow($rolAdmin,'nuevo_empleado');
         $acl->allow($rolAdmin,'editar_empleado');
         $acl->allow($rolAdmin,'eliminar_empleado');
+        $acl->allow($rolAdmin,'index_sector');
+        $acl->allow($rolAdmin,'nuevo_sector');
+        $acl->allow($rolAdmin,'editar_sector');
       
         $vista = $e->getApplication()->getMvcEvent()->getViewModel();
         $vista->acl=$acl;
