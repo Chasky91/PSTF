@@ -39,14 +39,13 @@
 
         <ul class="nav navbar-nav pull-right toolbar">
             <li class="dropdown">
-                <?php $sector = $this->empleado->getSector();
-                   $sector->getNombre();
-                ?>
                 <?php if (!$this->empleado): ?>                
                     <a href="<?php echo $this->url('login') ?>" class="dropdown-toggle username" >Iniciar sesión</a>
                 <?php else: ?>
-                    <a href="#" class="dropdown-toggle username" data-toggle="dropdown"><span class="hidden-xs"><?php echo $this->empleado->getNombre() ?>  <i class="fa fa-caret-down"></i></span></a>
+                    <a href="#" class="dropdown-toggle username" data-toggle="dropdown"><span class="hidden-xs">
+                        <?php echo $this->empleado->getNombre() ?>  <i class="fa fa-caret-down"></i></span></a>
                 <?php endif; ?>
+                    
                 <ul class="dropdown-menu userinfo arrow">
                     <li class="userlinks">
                         <ul class="dropdown-menu">
