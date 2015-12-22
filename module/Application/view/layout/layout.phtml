@@ -30,7 +30,8 @@
 </head>
 
 <body class="">
-    <header class="navbar navbar-inverse navbar-fixed-top" role="banner">
+
+<header class="navbar navbar-inverse navbar-fixed-top" role="banner">
         <a id="leftmenu-trigger" class="tooltips" data-toggle="tooltip" data-placement="right" title="Toggle Sidebar"></a>
         <div class="navbar-header pull-left">
             <a class="navbar-brand" href="index.htm">Politica Social</a>
@@ -42,7 +43,7 @@
                 <?php if (!$this->empleado): ?>                
                     <a href="<?php echo $this->url('login') ?>" class="dropdown-toggle username" >Iniciar sesión</a>
                 <?php else: ?>
-                    <a href="#" class="dropdown-toggle username" data-toggle="dropdown"><span class="hidden-xs"><?php echo $this->empleado->getNombre() ?>  <i class="fa fa-caret-down"></i></span><img src="demo/avatar/dangerfield.png" alt="Dangerfield" /></a>
+                    <a href="#" class="dropdown-toggle username" data-toggle="dropdown"><span class="hidden-xs"><?php echo $this->empleado->getNombre() ?>  <i class="fa fa-caret-down"></i></span></a>
                 <?php endif; ?>
                 <ul class="dropdown-menu userinfo arrow">
                     <li class="userlinks">
@@ -60,16 +61,8 @@
         <nav id="page-leftbar" role="navigation">
                 <!-- BEGIN SIDEBAR MENU -->
             <ul class="acc-menu" id="sidebar">
-                <li id="search">
-                    <a href="javascript:;"><i class="fa fa-search opacity-control"></i></a>
-                     <form>
-                        <input type="text" class="search-query" placeholder="Buscar...">
-                        <button type="submit"><i class="fa fa-search"></i></button>
-                    </form>
-                </li>
                 <li class="divider"></li>
-                <li><a href="<?php echo $this->url('home') ?>"></i> <span>Inicio</span></a></li>
-
+                <li><a href="<?php echo $this->url('home') ?>"></i> <span>Inicio</span></a></li>          
                 <li><a href="javascript:;"><i class="fa fa-group"></i> <span>Tramites Beneficiario</span></a>
                     <ul class="acc-menu">
                         <li><a href="javascript:;">Beneficiario</a>
@@ -83,18 +76,7 @@
                         <li><a href="<?php echo $this->url('verE') ?>">Registros de Económia</a></li>
                         <li><a href="<?php echo $this->url('verviv') ?>">Registros de Vivienda</a></li>                        
                     </ul>
-
-                 <ul class="acc-menu">
-                        <li><a href="javascript:;">Asistencia Mensual</a>
-                            <ul class="acc-menu">
-                                <li><a href="#">Registro Asistencia</a></li>
-                                <li><a href="#">Ver Registro Asist.</a></li>
-                                <li><a href="#">Modificar Registro Asist.</a></li>
-                                <li><a href="#">Eliminar Registro Asist.</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-
+                    <!--Falta la asistencia y borre el buscador-->
                 </li> 
                 <li><a href="javascript:;"><i class="fa fa-user"></i> <span>Empleado</span></a>
                     <ul class="acc-menu">

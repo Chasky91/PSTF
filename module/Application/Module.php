@@ -79,7 +79,7 @@ class Module
         $acl->addRole($rolInvitado);
         $acl->addRole($rolMesaEntrada,$rolInvitado);
         $acl->addRole($rolAsitenteSocial,$rolMesaEntrada);
-        $acl->addRole($rolDirector,$rolMesaEntrada);
+        $acl->addRole($rolDirector,$rolAsitenteSocial);
         $acl->addRole($rolAdmin,$rolInvitado);//el admin hereda los permisos de invitado
         
         //seccon de login
