@@ -124,7 +124,7 @@ class AsistenciaController extends AbstractActionController
         //query para la lista de entregas a un beneficiario
         $queryListaEntregas = $em->createQueryBuilder()
                 ->select('de')
-                ->from('Application\Entity\$registroDeEntrega', 'de')
+                ->from('Application\Entity\RegistroDeEntrega', 'de')
                 ->where('de.beneficiarioId = ?1')
                 ->orderBy('de.idRegistro', 'DESC')
                 ->setParameter(1,$id)

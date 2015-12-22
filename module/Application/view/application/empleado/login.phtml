@@ -6,7 +6,7 @@
         <a href=""><img src="/img/logo-big.png" alt="Logo" class="brand" /></a>
         <div class="panel panel-primary">
             <div class="panel-body">
-                <h4 class="text-center" style="margin-bottom: 25px;">Log in to get started or <a href="extras-signupform.htm">Sign Up</a></h4>
+                <h4 class="text-center" style="margin-bottom: 25px;">Inicio de sesion </h4>
                 <?php $form->prepare(); ?>
                 <?php echo $this->form()->openTag($form->setAttributes(['class' => 'form-horizontal', 'style' => 'margin-bottom: 0px !important;'])); ?>				
                 <div class="form-group">
@@ -29,15 +29,12 @@
                 </div>
 
                 <div class="clearfix">
-                    <div class="pull-right"><label><input type="checkbox" style="margin-bottom: 20px" checked=""> Remember Me</label></div>
                 </div>						
             </div>
             <div class="panel-footer">
-                <a href="extras-forgotpassword.htm" class="pull-left btn btn-link" style="padding-left:0">Forgot password?</a>
 
                 <div class="pull-right">
-                    <a href="#" class="btn btn-default">Reset</a>
-                    <button type="submit" class="btn-primary btn" >Registrar</button>					 
+                    <button type="submit" class="btn-primary btn" >Ingresar</button>					 
                 </div>
                 <?php echo $this->formRow($form->get('login_csrf')) ?>
                 <?php echo $this->form()->closeTag(); ?>
