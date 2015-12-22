@@ -96,17 +96,5 @@ class SectorController extends AbstractActionController
         ]);
     }
         
-    public function eliminarAction()
-    {
-        $id = $this->params('id');
-        
-        $em  = $this->getEntityManager();
-        $sector  =$em->find('Application\Entity\Sector',$id);
-        
-        $em->remove($sector);
-        $em->flush();
-        
-        $this->flashMessenger()->addSuccessMessage('Sector eliminado del sistema');
-        return $this->redirect()->toRoute('index_sector');
-    }
+    
 }

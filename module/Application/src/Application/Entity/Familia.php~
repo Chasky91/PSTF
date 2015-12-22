@@ -17,7 +17,7 @@ Class Familia {
     */  
     protected $nroF; //TENGO DOS CLAVES PRIMARIAS, idPaciente y dni   
  
-    /** @ORM\Column(type="string", nullable=false) */
+    /** @ORM\Column(type="integer", nullable=false) */
     protected $dni;
 
     /** @ORM\Column(type="string", nullable=true)*/

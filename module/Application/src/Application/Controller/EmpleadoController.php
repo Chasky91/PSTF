@@ -7,6 +7,9 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Application\Entity\Empleado;
 use Application\Entity\Admin;
+use Application\Entity\MesaEntrada;
+use Application\Entity\AsistenteSocial;
+use Application\Entity\Director;
 use Application\Admin\Form\FormEmp\EmpleadoForm;
 use Application\Admin\Form\FormEmp\LoginForm;
 
@@ -14,8 +17,6 @@ use Application\Admin\Form\FormEmp\LoginForm;
 class EmpleadoController extends AbstractActionController
 {
 
-    
-    
     protected function getEntityManager() 
     {
         return $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
@@ -67,21 +68,56 @@ class EmpleadoController extends AbstractActionController
         public function nuevoAction()   {
         $em = $this->getEntityManager();      
         $repositorioAdmin  = $em->getRepository('Application\Entity\Admin');
-        $empleadoForm = new EmpleadoForm($em);                
-        if($repositorioAdmin->existeAlgunAdmin()) {
-            $empleado = new Empleado();
-        }else{
-            $empleado = new Admin();
+         $repositorioDirector  = $em->getRepository('Application\Entity\Director');
+
+        $empleadoForm = new EmpleadoForm($em);      
+        if(!$repositorioAdmin->existeAlgunAdmin()) {
+            //el primer empledo registrado sera admin
+           $empleado = new Admin();
         }
-        $empleadoForm->bind($empleado);
+       
         if ($this->request->isPost()) {
+            //recupero los datos del getPost objeto
+            $data = $this->request->getPost();
+            $arreglo = $data['empleado'];
+            $idSector =$arreglo['sector'];
+            //buscamos el sector
+            $query1 = $em->createQueryBuilder()
+                        ->select('s')
+                        ->from('Application\Entity\Sector', 's')
+                        ->where('s.id = ?1')
+                        ->setParameter(1, $idSector)
+                        ->getQuery();
+             $arregloSector = $query1->getResult();
+            $sector = $arregloSector[0]->getNombre();
+            if($sector =='Mesa de Entrada') {
+                $empleado = new MesaEntrada();                        
+            }elseif ($sector =='Asistente Social') {
+                $empleado = new AsistenteSocial();
+            }elseif($sector =='Direccion'){
+                $empleado  = new Director();
+                  //existe algun director              
+                if ($repositorioDirector->existeAlgunDirector()) {
+                    $this->flashMessenger()->addErrorMessage('Ya existe el Director en la Plataforma');
+                    return $this->redirect()->toRoute('index_empleado');
+                }
+            }elseif($sector =='Admin'){
+                            //existe algun admin
+                if($repositorioAdmin->existeAlgunAdmin()){
+                    $this->flashMessenger()->addErrorMessage(
+                        sprintf('Ya existe un Admin Plataforma de Política Sociales'));
+                    return $this->redirect()->toRoute('index_empleado');
+                }
+            }
+            $empleadoForm->bind($empleado);
             $empleadoForm->setData($this->request->getPost());
             
             if ($empleadoForm->isValid()) {
+
                 //recupero los datos del getPost objeto
-                $data = $this->request->getPost();
+                //////$data = $this->request->getPost();
                 //obtengo el arreglo dentro del objeto
-                $arreglo = $data['empleado'];
+                //////$arreglo = $data['empleado'];
                 //obtengo un item del arreglo
                 $dni = $arreglo['dni'];
                 //loconvierto a un dato tipo integer
@@ -94,12 +130,14 @@ class EmpleadoController extends AbstractActionController
                         ->setParameter(1, $dniNuevo)
                         ->getQuery();
                 $dniEmpleado = $query->getResult();
+                
                 //si la consulta sql encuentra un registro el if para la ejecucion del codigo
                 if (!empty($dniEmpleado)){
-                    $this->flashMessenger()->addErrorMessage(sprintf('Ya existe un empleado con el DNI "%s" en la Plataforma de Política Sociales', $dniNuevo));
+                    $this->flashMessenger()->addErrorMessage(
+                        sprintf('Ya existe un empleado con el DNI "%s" en la Plataforma de Política Sociales', $dniNuevo));
                     return $this->redirect()->toRoute('index_empleado');
                 }
-                
+
                 $password = $empleado->getContrasena();                
                 $password = $empleado->hashPassword($password);
                 $empleado->setContrasena($password);   
@@ -121,11 +159,9 @@ class EmpleadoController extends AbstractActionController
         $query = $repositorio->getQueryDarDeBaja($id);
 
         $this->flashMessenger()->addSuccessMessage('Empleado eliminado del sistema');            
-        return $this->redirect()->toRoute('index_empleado');
-        
-         
-        
+        return $this->redirect()->toRoute('index_empleado');              
     }
+    
 public function loginAction()
     {
         $form = new LoginForm();
@@ -147,7 +183,7 @@ public function loginAction()
                 //var_dump($authResult->isValid()); die;             
                 if ($authResult->isValid()) {
                     //var_dump("usuario autenticado"); die;
-                    $this->redirect()->toRoute('index_producto');
+                    $this->redirect()->toRoute('index_empleado');
                 } else {
                     //var_dump("no se autentico"); die;
                     $vista->mensaje = 'Usuario y/o contraseña incorrectos';

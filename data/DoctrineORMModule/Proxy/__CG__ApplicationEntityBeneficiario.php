@@ -64,10 +64,10 @@ class Beneficiario extends \Application\Entity\Beneficiario implements \Doctrine
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'idBeneficiario', 'dni', 'nombre', 'apellido', 'lugnac', 'fechanac', 'estadocivil', 'educacion', 'profession', 'domben', 'resben', 'telfben', 'fam', '' . "\0" . 'Application\\Entity\\Beneficiario' . "\0" . 'activo', '' . "\0" . 'Application\\Entity\\Beneficiario' . "\0" . 'fechaAlta');
+            return array('__isInitialized__', 'idBeneficiario', 'dni', 'nombre', 'apellido', 'lugnac', 'fechanac', 'estadocivil', 'educacion', 'profession', 'domben', 'ciudad', 'provincia', 'resben', 'telfben', 'fam', '' . "\0" . 'Application\\Entity\\Beneficiario' . "\0" . 'estado', '' . "\0" . 'Application\\Entity\\Beneficiario' . "\0" . 'fechaAlta');
         }
 
-        return array('__isInitialized__', 'idBeneficiario', 'dni', 'nombre', 'apellido', 'lugnac', 'fechanac', 'estadocivil', 'educacion', 'profession', 'domben', 'resben', 'telfben', 'fam', '' . "\0" . 'Application\\Entity\\Beneficiario' . "\0" . 'activo', '' . "\0" . 'Application\\Entity\\Beneficiario' . "\0" . 'fechaAlta');
+        return array('__isInitialized__', 'idBeneficiario', 'dni', 'nombre', 'apellido', 'lugnac', 'fechanac', 'estadocivil', 'educacion', 'profession', 'domben', 'ciudad', 'provincia', 'resben', 'telfben', 'fam', '' . "\0" . 'Application\\Entity\\Beneficiario' . "\0" . 'estado', '' . "\0" . 'Application\\Entity\\Beneficiario' . "\0" . 'fechaAlta');
     }
 
     /**
@@ -323,6 +323,50 @@ class Beneficiario extends \Application\Entity\Beneficiario implements \Doctrine
     /**
      * {@inheritDoc}
      */
+    public function setCiudad($ciudad)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCiudad', array($ciudad));
+
+        return parent::setCiudad($ciudad);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCiudad()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCiudad', array());
+
+        return parent::getCiudad();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setProvincia($provincia)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProvincia', array($provincia));
+
+        return parent::setProvincia($provincia);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getProvincia()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProvincia', array());
+
+        return parent::getProvincia();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function setResben($resben)
     {
 
@@ -367,23 +411,23 @@ class Beneficiario extends \Application\Entity\Beneficiario implements \Doctrine
     /**
      * {@inheritDoc}
      */
-    public function setActivo($activo)
+    public function setEstado($estado)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setActivo', array($activo));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEstado', array($estado));
 
-        return parent::setActivo($activo);
+        return parent::setEstado($estado);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getActivo()
+    public function getEstado()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getActivo', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEstado', array());
 
-        return parent::getActivo();
+        return parent::getEstado();
     }
 
     /**

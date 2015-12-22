@@ -14,9 +14,14 @@ use Zend\Mvc\MvcEvent;
 use Zend\Validator\AbstractValidator;
 use Zend\Permissions\Acl\Acl;
 use Zend\Permissions\Acl\Role\GenericRole as Role;
-use Application\Entity\Empleado;
 use Application\Entity\Admin;
-        class Module
+use Application\Entity\Director;
+use Application\Entity\MesaEntrada;
+use Application\Entity\AsistenteSocial;
+
+
+
+class Module
 {
     const HTTP_PERMANENT_REDIRECT = 302;
     
@@ -61,19 +66,91 @@ use Application\Entity\Admin;
         
         $rolInvitado = new Role('invitado');
         $admin = new Admin();
+        $director = new Director();
+        $asistenteSocial = new AsistenteSocial();
+        $mesaEntrada = new MesaEntrada();
+        //agregamos  las entidades con roles
         $rolAdmin = new Role($admin->getRol());
+        $rolDirector =new Role($director->getRol());
+        $rolAsitenteSocial = new Role($asistenteSocial->getRol());
+        $rolMesaEntrada = new Role($mesaEntrada->getRol());
         
         //agrego, roles
         $acl->addRole($rolInvitado);
+        $acl->addRole($rolMesaEntrada,$rolInvitado);
+        $acl->addRole($rolAsitenteSocial,$rolInvitado);
+        $acl->addRole($rolDirector,$rolInvitado);
         $acl->addRole($rolAdmin,$rolInvitado);//el admin hereda los permisos de invitado
         
-        $acl->addResource('index_empleado');
+        //seccon de login
         $acl->addResource('login');
+        //Seccion empleado
+        $acl->addResource('index_empleado');
+        $acl->addResource('nuevo_empleado');        
+        $acl->addResource('editar_empleado');
+        $acl->addResource('eliminar_empleado');
         
+         //seccion Asistencia mensual
+         $acl->addResource('index_asistencia');
+         $acl->addResource('nuevo_asistencia');
+         $acl->addResource('editar_asistencia');         
+         
+         //seccion sector
+         $acl->addResource('index_sector');
+         $acl->addResource('nuevo_sector');
+         $acl->addResource('editar_sector');
+        
+
+        //seccion beneficiario
+        //index
+        $acl->addResource('beneficiario');
+        $acl->addResource('nuevo-beneficiario');
+        $acl->addResource('ver-beneficiario');
+        $acl->addResource('modbeneficiario');
+        $acl->addResource('aprobar');
+        $acl->addResource('rechazar');
+        $acl->addResource('del-beneficiario');
+        //seccion famila
+        //index
+        $acl->addResource('familia');
+        $acl->addResource('nuevoFam');
+        $acl->addResource('verFam');
+        $acl->addResource('modFam');
+        $acl->addResource('delFam');
+        //seccion sanidad
+        //index
+        $acl->addResource('sanidad');
+        $acl->addResource('nuevo_S');
+        $acl->addResource('ver_S');
+        $acl->addResource('modS');
+        $acl->addResource('delS');
+        //secion situacion economica
+        //index
+        $acl->addResource('economia');
+        $acl->addResource('nuevoE');
+        $acl->addResource('verE');
+        $acl->addResource('modE');
+        $acl->addResource('delE');
+        
+        //seccion vivienda
+        //index
+        $acl->addResource('vivienda');
+        $acl->addResource('nuevoviv');
+        $acl->addResource('verviv');
+        $acl->addResource('modviv');
+        $acl->addResource('delviv');
+
+
+        //permisos para empleado
         $acl->deny($rolInvitado,'index_empleado');
+
         $acl->allow($rolInvitado,'login');
-        //$acl->allow($rolAdmin, 'login');
         $acl->allow($rolAdmin,'index_empleado');
+        $acl->allow($rolAdmin,'nuevo_empleado');
+        $acl->allow($rolAdmin,'editar_empleado');
+        $acl->allow($rolAdmin,'eliminar_empleado');
+        
+
         
         $vista = $e->getApplication()->getMvcEvent()->getViewModel();
         $vista->acl=$acl;

@@ -4,8 +4,8 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Application\Entity\DetalleDeEntrega;
-use Application\Admin\Form\FormAsistencia\DetalleDeEntregaForm;
+use Application\Entity\RegistroDeEntrega;
+use Application\Admin\Form\FormAsistencia\RegistroDeEntregaForm;
 use DOMPDFModule\View\Model\PdfModel;
 
 class AsistenciaController extends AbstractActionController
@@ -28,9 +28,9 @@ class AsistenciaController extends AbstractActionController
         //query para la lista de entregas a un beneficiario
         $queryListaEntregas = $em->createQueryBuilder()
                 ->select('de')
-                ->from('Application\Entity\DetalleDeEntrega', 'de')
+                ->from('Application\Entity\RegistroDeEntrega', 'de')
                 ->where('de.beneficiarioId = ?1')
-                ->orderBy('de.idDetalle', 'DESC')
+                ->orderBy('de.idRegistro', 'DESC')
                 ->setParameter(1,$id)
                 ->getQuery();
         $entrega = $queryListaEntregas->getResult();
@@ -45,23 +45,23 @@ class AsistenciaController extends AbstractActionController
         $idbeneficiario = $this->params('id');
         $em = $this->getEntityManager();
 
-        $detalleEntregaForm = new DetalleDeEntregaForm($em);
-        $detalleEntrega = new DetalleDeEntrega();
-        $detalleEntregaForm->bind($detalleEntrega);
+        $registroDeEntregaForm = new RegistroDeEntregaForm($em);
+        $registroDeEntrega = new RegistroDeEntrega();
+        $registroDeEntregaForm->bind($registroDeEntrega);
 
         if ($this->request->isPost()) {
-            $detalleEntregaForm->setData($this->request->getPost());
-            if ($detalleEntregaForm->isValid()) {
-                $em->persist($detalleEntrega);
+            $registroDeEntregaForm->setData($this->request->getPost());
+            if ($registroDeEntregaForm->isValid()) {
+                $em->persist($registroDeEntrega);
                 $em->flush();
 
-                $this->flashMessenger()->addSuccessMessage('Nuevo Detalle de Entrega Registrado!');
+                $this->flashMessenger()->addSuccessMessage('Nuevo Registro de Entrega Registrado!');
                 return $this->redirect()->toRoute('index_asistencia',array('beneficiario'=>$idbeneficiario));
             }
         }
 
         return new ViewModel([
-            'form' => $detalleEntregaForm,
+            'form' => $registroDeEntregaForm,
             'idbeneficiario' =>$idbeneficiario
         ]);
     }
@@ -73,26 +73,26 @@ class AsistenciaController extends AbstractActionController
         $idBeneficiario =$this->params('idBeneficiario');
         $em  =$this->getEntityManager();
          
-        $detalleDeEntrega = $em->find('Application\Entity\DetalleDeEntrega', $id);      
-        $detalleForm = new DetalleDeEntregaForm($em); 
-        $detalleForm->bind($detalleDeEntrega);
+        $registroDeEntrega = $em->find('Application\Entity\RegistroDeEntrega', $id);      
+        $registroDeEntregaForm = new RegistroDeEntregaForm($em); 
+        $registroDeEntregaForm->bind($registroDeEntrega);
           if ($this->request->isPost()){
-            $detalleForm->setData($this->request->getPost());
+            $registroDeEntregaForm->setData($this->request->getPost());
             
-            if($detalleForm->isValid()) {
+            if($registroDeEntregaForm->isValid()) {
                 
-                $em->persist($detalleDeEntrega);
+                $em->persist($registroDeEntrega);
                 $em->flush();
                 
                     $this->flashMessenger()->addSuccessMessage(
-                            sprintf('Detalle de entrega "%s" actualizado correctamente', $detalleDeEntrega->getIdDetalle()));
+                            sprintf('Detalle de entrega "%s" actualizado correctamente', $registroDeEntrega->getIdRegistro()));
                     return $this->redirect()->toRoute('index_asistencia',array('beneficiario'=>$idBeneficiario)); 
             }        
         }
 
         return new ViewModel([
-            'detalleEntrega'=>$detalleDeEntrega,
-            'form'=>$detalleForm, 
+            'registroDeEntrega'=>$registroDeEntrega,
+            'form'=>$registroDeEntregaForm, 
             'idBeneficiario' =>$idBeneficiario
                 ]);
     }
@@ -108,9 +108,9 @@ class AsistenciaController extends AbstractActionController
         //query para la lista de entregas a un beneficiario
         $queryListaEntregas = $em->createQueryBuilder()
                 ->select('de')
-                ->from('Application\Entity\DetalleDeEntrega', 'de')
+                ->from('Application\Entity\$registroDeEntrega', 'de')
                 ->where('de.beneficiarioId = ?1')
-                ->orderBy('de.idDetalle', 'DESC')
+                ->orderBy('de.idRegistro', 'DESC')
                 ->setParameter(1,$id)
                 ->getQuery();
         $entrega = $queryListaEntregas->getResult();

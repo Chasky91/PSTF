@@ -68,13 +68,13 @@
                                     <tbody>
                                             <?php for ($i = 0; $i < count($entrega); $i++) { ?>
                                             <tr class="odd gradeX">
-                                                <td><?php echo $entrega[$i]->getIdDetalle(); ?>
+                                                <td><?php echo $entrega[$i]->getIdRegistro(); ?>
                                                     <div class="btn-group">
                                                         <button type="button" class="btn btn-default dropdown-toggle btn btn-default btn-xs" data-toggle="dropdown"><i class="fa fa-plus"> </i><span class="caret"></span>
                                                         </button>
                                                         <ul class="dropdown-menu" role="menu">
                                                             <!--Opcion uno se dirige a Ingresar Nuevo Familiar-->
-                                                            <li><a  href="<?php echo $this->url('editar_asistencia', array('id' => $entrega[$i]->getIdDetalle(),'idBeneficiario' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-cog"></i>Editar</a></li>
+                                                            <li><a  href="<?php echo $this->url('editar_asistencia', array('id' => $entrega[$i]->getIdRegistro(),'idBeneficiario' => $beneficiario->getIdBeneficiario())) ?>"><i class="fa fa-cog"></i>Editar</a></li>
                                                         </ul>
                                                     </div>  
                                                 </td>

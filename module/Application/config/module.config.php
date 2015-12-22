@@ -29,334 +29,328 @@ return array(
         ),
 
         */
-//Esto corresponde al modulo de beneficiarios
+         /////////////////////////////////////////////////////////////////////////////////////////
+         //////////////////RUTAS DE ALEJANDRA comienzo/////////////////////////////////////////////
+         ///////////////////////////////////////////////////////////////////////////////////////
+           
+          
+ //Esto corresponde al modulo de beneficiarios
             //aqui entramos a la vista o index de la vista de Beneficiario
-            'beneficiario'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                    'route' => '/beneficiario/:id',                  
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Beneficiario',
-                        'action'=>'index',
-                                    ),
-                                ),
-                            ),
+            'beneficiario' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/beneficiario/:id',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Beneficiario',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
             //Aqui a la vista de nuevo beneficiario
-            'nuevo-beneficiario'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
+            'nuevo-beneficiario' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
                     'route' => '/nuevo-beneficiario',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Beneficiario',
-                        'action'=>'nuevo',
-                                    ),
-                                ),
-                            ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Beneficiario',
+                        'action' => 'nuevo',
+                    ),
+                ),
+            ),
             //Aqui a la vista de ver beneficiario
-            'ver-beneficiario'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
+            'ver-beneficiario' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
                     'route' => '/ver-beneficiario',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Beneficiario',
-                        'action'=>'verbenf',
-                                    ),
-                                ),
-                            ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Beneficiario',
+                        'action' => 'verbenf',
+                    ),
+                ),
+            ),
             //Aqui a la vista de modificar beneficiario
-            'modbeneficiario'=> array(
+            'modbeneficiario' => array(
                 'type' => 'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                        'route' => '/mod-beneficiario/:id',
-                         'constraints' => array(
-                            'id' => '[0-9]+',
-                                ),
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Beneficiario',
-                        'action'=>'modificar',
-
-                                    ),
-                                ),
-                            ),
+                'options' => array(
+                    'route' => '/mod-beneficiario/:id',
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Beneficiario',
+                        'action' => 'modificar',
+                    ),
+                ),
+            ),
             //Aqui a la vista de Aprobar beneficiario
-            'aprobar'=> array(
+            'aprobar' => array(
                 'type' => 'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                        'route' => '/aprobar-beneficiario/:id/',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Beneficiario',
-                        'action'=>'aprobar',
-
-                                    ),
-                                ),
-                            ),   
-             //Aqui a la vista de Aprobar beneficiario
-            'rechazar'=> array(
+                'options' => array(
+                    'route' => '/aprobar-beneficiario/:id/',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Beneficiario',
+                        'action' => 'aprobar',
+                    ),
+                ),
+            ),
+            //Aqui a la vista de Aprobar beneficiario
+            'rechazar' => array(
                 'type' => 'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                        'route' => '/rechazar-beneficiario/:id/',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Beneficiario',
-                        'action'=>'rechazar',
-
-                                    ),
-                                ),
-                            ),                                     
+                'options' => array(
+                    'route' => '/rechazar-beneficiario/:id/',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Beneficiario',
+                        'action' => 'rechazar',
+                    ),
+                ),
+            ),
             //Aqui a la vista de Eliminar beneficiario
-            'del-beneficiario'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
+            'del-beneficiario' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
                     'route' => '/del-beneficiario/:id',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Beneficiario',
-                        'action'=>'eliminar',
-                                    ),
-                                ),
-                            ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Beneficiario',
+                        'action' => 'eliminar',
+                    ),
+                ),
+            ),
 //Esto corresponde al modulo de Famila
             //aqui entramos a la vista o index de la vista de Familia
-            'familia'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
+            'familia' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
                     'route' => '/familia',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Familia',
-                        'action'=>'index',
-                                    ),
-                                ),
-                            ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Familia',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
             //Aqui a la vista de nuevo Familia
-            'nuevoFam'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Segment',
-                    'options'=> array(
+            'nuevoFam' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
                     'route' => '/nuevo-familiar/:id',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Familia',
-                        'action'=>'nuevo',
-                                    ),
-                                ),
-                            ),
-            'verFam'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Familia',
+                        'action' => 'nuevo',
+                    ),
+                ),
+            ),
+            'verFam' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
                     'route' => '/ver-familias',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Familia',
-                        'action'=>'ver',
-                                    ),
-                                ),
-                            ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Familia',
+                        'action' => 'ver',
+                    ),
+                ),
+            ),
             //Aqui a la vista de modificar Familia
-            'modFam'=> array(
+            'modFam' => array(
                 'type' => 'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                        'route' => '/mod-Familiar/:id',
-                         'constraints' => array(
-                            'id' => '[0-9]+',
-                                ),
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Familia',
-                        'action'=>'modificar',
-
-                                    ),
-                                ),
-                            ),
+                'options' => array(
+                    'route' => '/mod-Familiar/:id',
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Familia',
+                        'action' => 'modificar',
+                    ),
+                ),
+            ),
             //Aqui a la vista de Eliminar Familia
-            'delFam'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
+            'delFam' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
                     'route' => '/del-Familiar/:id',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Familia',
-                        'action'=>'eliminar',
-                                    ),
-                                ),
-                            ),
-
-//Esto corresponde a Vivienda(situacion habitacional)
-            'vivienda'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
-                    'route' => '/SituacionHabitacional',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Vivienda',
-                        'action'=>'index',
-                                    ),
-                                ),
-                            ),
-            //Aqui a la vista de nuevo Vivienda
-            'nuevo'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
-                    'route' => '/Ingresar-SituacionHabitacional',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Vivienda',
-                        'action'=>'nuevoviv',
-                                    ),
-                                ),
-                            ),
-            //Aqui a la vista de ver Vivienda
-            'ver'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
-                        'route' => '/ver-SituacionHabitacional/:id',
-                         'constraints' => array(
-                            'id' => '[0-9]+',
-                                ),
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Vivienda',
-                        'action'=>'verviv',
-                                    ),
-                                ),
-                            ),
-            //Aqui a la vista de modificar Vivienda
-            'mod'=> array(
-                'type' => 'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                        'route' => '/mod-SituacionHabitacional/:id',
-                         'constraints' => array(
-                            'id' => '[0-9]+',
-                                ),
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Vivienda',
-                        'action'=>'modviv',
-
-                                    ),
-                                ),
-                            ),
-            //Aqui a la vista de Eliminar Vivienda
-            'del'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                    'route' => '/del-SituacionHabitacional/:id',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Vivienda',
-                        'action'=>'eliminarviv',
-                                    ),
-                                ),
-                            ), 
-//Esto corresponde a Economia (situacion economica)      
-            'economia'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
-                    'route' => '/SituacionEconomica',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Economia',
-                        'action'=>'index',
-                                    ),
-                                ),
-                            ),
-            //Aqui a la vista de nuevo Econimia
-            'nuevo'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
-                    'route' => '/Ingresar-SituacionEconomica',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Economia',
-                        'action'=>'nuevo',
-                                    ),
-                                ),
-                            ),
-            //Aqui a la vista de ver Economia
-            'ver'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
-                        'route' => '/ver-SituacionEconomica/:id',
-                         'constraints' => array(
-                            'id' => '[0-9]+',
-                                ),
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Economia',
-                        'action'=>'vereco',
-                                    ),
-                                ),
-                            ),
-            //Aqui a la vista de modificar Economia
-            'mod'=> array(
-                'type' => 'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                        'route' => '/mod-SituacionEconomica/:id',
-                         'constraints' => array(
-                            'id' => '[0-9]+',
-                                ),
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Economia',
-                        'action'=>'modeco',
-
-                                    ),
-                                ),
-                            ),
-            //Aqui a la vista de Eliminar Economia
-            'del'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                    'route' => '/del-SituacionEconomica/:id',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Economia',
-                        'action'=>'eliminareco',
-                                    ),
-                                ),
-                            ),  
-//Esto corresponde a Sanidad (Situacion Sanitaria)
-             'sanidad'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
-                    'route' => '/beneficiario',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Sanidad',
-                        'action'=>'index',
-                                    ),
-                                ),
-                            ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Familia',
+                        'action' => 'eliminar',
+                    ),
+                ),
+            ),
+            //Esto corresponde a Sanidad (Situacion Sanitaria)
+            'sanidad' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route' => '/sanidad',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Sanidad',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
             //Aqui a la vista de nuevo Sanidad
-            'nuevo'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
-                    'route' => '/Ingresar-SituacionSanitaria',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Sanidad',
-                        'action'=>'nuevosan',
-                                    ),
-                                ),
-                            ),
-            //Aqui a la vista de ver Sanidad
-            'ver'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
-                    'route' => '/ver-SituacionSanitaria',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Sanidad',
-                        'action'=>'versan',
-                                    ),
-                                ),
-                            ),
-            //Aqui a la vista de modificar Sanidad
-            'mod'=> array(
+            'nuevo_S' => array(
                 'type' => 'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                        'route' => '/mod-SituacionSanitaria/:id',
-                         'constraints' => array(
-                            'id' => '[0-9]+',
-                                ),
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Sanidad',
-                        'action'=>'modsan',
-
-                                    ),
-                                ),
-                            ),
+                'options' => array(
+                    'route' => '/ingresar-situacionsanitaria/:id',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Sanidad',
+                        'action' => 'nuevo',
+                    ),
+                ),
+            ),
+            //Aqui a la vista de ver Sanidad
+            'ver_S' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route' => '/ver-situacionsanitaria',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Sanidad',
+                        'action' => 'vers',
+                    ),
+                ),
+            ),
+            //Aqui a la vista de modificar Sanidad
+            'modS' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/mod-situacionsanitaria/:id',
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Sanidad',
+                        'action' => 'mods',
+                    ),
+                ),
+            ),
             //Aqui a la vista de Eliminar Sanidad
-            'del'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                    'route' => '/del-SituacionSanitaria/:id',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Sanidad',
-                        'action'=>'delsan',
-                                    ),
-                                ),
-                            ),                           
-
+            'delS' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/del-situacionSanitaria/:id',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Sanidad',
+                        'action' => 'dels',
+                    ),
+                ),
+            ),
+            //Esto corresponde a Economia (Situacion Economia)
+            'economia' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route' => '/economia',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Economia',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+            //Aqui a la vista de nuevo Economia
+            'nuevoE' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/nuevoE/:id',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Economia',
+                        'action' => 'nuevoE',
+                    ),
+                ),
+            ),
+            //Aqui a la vista de ver Economia
+            'verE' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route' => '/verE',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Economia',
+                        'action' => 'verE',
+                    ),
+                ),
+            ),
+            //Aqui a la vista de modificar Economia
+            'modE' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/modE/:id',
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Economia',
+                        'action' => 'modE',
+                    ),
+                ),
+            ),
+            //Aqui a la vista de Eliminar Economia
+            'delE' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/delE/:id',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Economia',
+                        'action' => 'delE',
+                    ),
+                ),
+            ),
+            //Esto corresponde a Vivienda (Situacion Vivienda)
+            'vivienda' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route' => '/vivienda',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Vivienda',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+            //Aqui a la vista de nuevo Vivienda
+            'nuevoviv' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/nuevoviv/:id',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Vivienda',
+                        'action' => 'nuevoviv',
+                    ),
+                ),
+            ),
+            //Aqui a la vista de ver Vivienda
+            'verviv' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route' => '/verviv',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Vivienda',
+                        'action' => 'verviv',
+                    ),
+                ),
+            ),
+            //Aqui a la vista de modificar Vivienda
+            'modviv' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/modviv/:id',
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Vivienda',
+                        'action' => 'modviv',
+                    ),
+                ),
+            ),
+            //Aqui a la vista de Eliminar Vivienda
+            'delviv' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/delviv/:id',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Vivienda',
+                        'action' => 'delviv',
+                    ),
+                ),
+            ),
+            /////////////////////////////////////////////////////////////////////////////////////////
+         //////////////////RUTAS DE ALEJANDRA FIN/////////////////////////////////////////////
+         ///////////////////////////////////////////////////////////////////////////////////////
+           
             ///////////////////////
             //Asistencia mensual//
             /////////////////////
@@ -512,69 +506,10 @@ return array(
                     ),
                 ),
             ),
-            //Eliminar sector
-            'eliminar_sector'=>array(
-                'type'=>'Zend\Mvc\Router\Http\Segment',
-                'options'=>array(
-                    'route'=>'/eliminar-sector/:id',
-                    'defaults'=>array(
-                         'controller'=>'Application\Controller\Sector',
-                         'action'=>'eliminar',
-                    ),
-                 ),
-            ),
+
             //Termina eliminar sector
             
-            ////Comienza Producto
-            //index Producto
-             'index_producto' => array(
-                'type' => 'literal', // 'Zend\Mvc\Router\Http\Literal'
-                'options' => array(
-                    'route' => '/lista-producto',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Producto',
-                        'action' => 'index',
-                    ),
-                ),
-            ),
-            //seccion nuevo Producto
-            'nuevo_producto' => array(
-                'type' => 'literal', // 'Zend\Mvc\Router\Http\Literal'
-                'options' => array(
-                    'route' => '/nuevo-producto',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Producto',
-                        'action' => 'nuevo',
-                    ),
-                ),
-            ),
-            //Seccion editar Producto
-            'editar_producto' => array(
-                'type' => 'Zend\Mvc\Router\Http\Segment',
-                'options' => array(
-                    'route' => '/editar-producto/:id',                    
-                    'constraints' => array(
-                        'id' => '[0-9]+',
-                    ),
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Producto',
-                        'action' => 'editar',
-                    ),
-                ),
-            ),
-            //Eliminar Producto
-            'eliminar_producto'=>array(
-                'type'=>'Zend\Mvc\Router\Http\Segment',
-                'options'=>array(
-                    'route'=>'/eliminar-producto/:id',
-                    'defaults'=>array(
-                         'controller'=>'Application\Controller\Producto',
-                         'action'=>'eliminar',
-                    ),
-                 ),
-            ),
-            //Termina eliminar sector
-            
+                       
            
             
 
@@ -600,191 +535,6 @@ return array(
                     ),
                 ),
             ),
-//Esto corresponde a Sanidad (Situacion Sanitaria)
-             'sanidad'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
-                    'route' => '/sanidad',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Sanidad',
-                        'action'=>'index',
-                                    ),
-                                ),
-                            ),
-            //Aqui a la vista de nuevo Sanidad
-            'nuevo_S'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                    'route' => '/ingresar-situacionsanitaria/:id',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Sanidad',
-                        'action'=>'nuevo',
-                                    ),
-                                ),
-                            ),
-
-            //Aqui a la vista de ver Sanidad
-            'ver_S'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
-                    'route' => '/ver-situacionsanitaria',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Sanidad',
-                        'action'=>'vers',
-                                    ),
-                                ),
-                            ),
-                            
-            //Aqui a la vista de modificar Sanidad
-            'modS'=> array(
-                'type' => 'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                        'route' => '/mod-situacionsanitaria/:id',
-                         'constraints' => array(
-                            'id' => '[0-9]+',
-                                ),
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Sanidad',
-                        'action'=>'mods',
-
-                                    ),
-                                ),
-                            ),
-            //Aqui a la vista de Eliminar Sanidad
-            'delS'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                    'route' => '/del-situacionSanitaria/:id',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Sanidad',
-                        'action'=>'dels',
-                                    ),
-                                ),
-                            ),                           
-//Esto corresponde a Economia (Situacion Economia)
-             'economia'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
-                    'route' => '/economia',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Economia',
-                        'action'=>'index',
-                                    ),
-                                ),
-                            ),
-            //Aqui a la vista de nuevo Economia
-            'nuevoE'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                    'route' => '/nuevoE/:id',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Economia',
-                        'action'=>'nuevoE',
-                                    ),
-                                ),
-                            ),
-
-            //Aqui a la vista de ver Economia
-            'verE'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
-                    'route' => '/verE',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Economia',
-                        'action'=>'verE',
-                                    ),
-                                ),
-                            ),
-                            
- //Aqui a la vista de modificar Economia
-            'modE'=> array(
-                'type' => 'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                        'route' => '/modE/:id',
-                         'constraints' => array(
-                            'id' => '[0-9]+',
-                                ),
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Economia',
-                        'action'=>'modE',
-
-                                    ),
-                                ),
-                            ),
-            //Aqui a la vista de Eliminar Economia
-            'delE'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                    'route' => '/delE/:id',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Economia',
-                        'action'=>'delE',
-                                    ),
-                                ),
-                            ),
-//Esto corresponde a Vivienda (Situacion Vivienda)
-             'vivienda'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
-                    'route' => '/vivienda',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Vivienda',
-                        'action'=>'index',
-                                    ),
-                                ),
-                            ),
-            //Aqui a la vista de nuevo Vivienda
-            'nuevoviv'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                    'route' => '/nuevoviv/:id',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Vivienda',
-                        'action'=>'nuevoviv',
-                                    ),
-                                ),
-                            ),
-
-            //Aqui a la vista de ver Vivienda
-            'verviv'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Literal',
-                'options'=> array(
-                    'route' => '/verviv',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Vivienda',
-                        'action'=>'verviv',
-                                    ),
-                                ),
-                            ),
-                            
- //Aqui a la vista de modificar Vivienda
-            'modviv'=> array(
-                'type' => 'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                        'route' => '/modviv/:id',
-                         'constraints' => array(
-                            'id' => '[0-9]+',
-                                ),
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Vivienda',
-                        'action'=>'modviv',
-
-                                    ),
-                                ),
-                            ),
-            //Aqui a la vista de Eliminar Vivienda
-            'delviv'=> array(
-                'type'=>'Zend\Mvc\Router\Http\Segment',
-                'options'=> array(
-                    'route' => '/delviv/:id',
-                    'defaults'=>array(
-                        'controller'=>'Application\Controller\Vivienda',
-                        'action'=>'delviv',
-                                    ),
-                                ),
-                            ),
-
-
 
 
             // The following is a route to simplify getting started creating

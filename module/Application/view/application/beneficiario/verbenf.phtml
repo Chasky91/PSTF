@@ -87,11 +87,8 @@
                       </td>
                       <td>
                        <?php
-
                           if ($beneficiario->getEstado() == 'Pendiente') {
-
                             echo '<span class="label label-warning">Pendiente</span>';
-
                           } elseif ($beneficiario->getEstado() == 'Aprobado') {
                             echo '<span class="label label-success">Aprobado</span> ';
                           } else  {

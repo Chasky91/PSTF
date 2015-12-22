@@ -12,7 +12,7 @@ class MesaEntrada extends Empleado
 {
     public function getRol() 
     {
-        return 'mesaEntrada';
+        return 'mesa entrada';
     }
     
 }

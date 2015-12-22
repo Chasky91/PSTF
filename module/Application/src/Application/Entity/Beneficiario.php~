@@ -65,11 +65,7 @@ class Beneficiario
 
 
     /**
-<<<<<<< HEAD
-    * @ORM\OneToMany(targetEntity="Familia", mappedBy="nroF")
-=======
     * @ORM\OneToMany(targetEntity="Familia", mappedBy="idben")
->>>>>>> 4e878ac0011233f9b5ca9469379bfd83e16e7010
     **/
     protected $fam;
 
@@ -101,10 +97,7 @@ class Beneficiario
 
     
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 4e878ac0011233f9b5ca9469379bfd83e16e7010
     /**
      * Get idBeneficiario
      *
@@ -260,8 +253,6 @@ class Beneficiario
     }
 
     /**
-<<<<<<< HEAD
-=======
      * Set ciudad
      *
      * @param string $ciudad
@@ -310,7 +301,6 @@ class Beneficiario
     }
 
     /**
->>>>>>> 4e878ac0011233f9b5ca9469379bfd83e16e7010
      * Set resben
      *
      * @param string $resben
@@ -359,17 +349,6 @@ class Beneficiario
     }
 
     /**
-<<<<<<< HEAD
-     * Set activo
-     *
-     * @param boolean $activo
-     *
-     * @return Beneficiario
-     */
-    public function setActivo($activo)
-    {
-        $this->activo = $activo;
-=======
      * Set estado
      *
      * @param string $estado
@@ -379,21 +358,11 @@ class Beneficiario
     public function setEstado($estado)
     {
         $this->estado = $estado;
->>>>>>> 4e878ac0011233f9b5ca9469379bfd83e16e7010
 
         return $this;
     }
 
     /**
-<<<<<<< HEAD
-     * Get activo
-     *
-     * @return boolean
-     */
-    public function getActivo()
-    {
-        return $this->activo;
-=======
      * Get estado
      *
      * @return string
@@ -401,7 +370,6 @@ class Beneficiario
     public function getEstado()
     {
         return $this->estado;
->>>>>>> 4e878ac0011233f9b5ca9469379bfd83e16e7010
     }
 
     /**

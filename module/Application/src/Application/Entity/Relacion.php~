@@ -22,7 +22,7 @@ class Relacion
 	protected $descripcion;
 
     /**
-    * @ORM\OneToMany(targetEntity="Familia", mappedBy="nroF")
+    * @ORM\OneToMany(targetEntity="Familia", mappedBy="relacion")
     **/
     protected $nroF;
     /**

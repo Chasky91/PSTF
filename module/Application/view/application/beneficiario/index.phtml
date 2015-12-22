@@ -26,73 +26,86 @@
                                                 <!--Datos del beneficiario-->  
           <div class="tab-pane active" id="beneficiario1">
                                                       <!--Datos personales-->
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">Nombre y Apellido</label>
-                    <div class="col-sm-2">
-
-                      <?php echo $beneficiarioPrueba[0]->getNombre(); echo'       ' ?><?php echo'       '; echo $beneficiarioPrueba[0]->getApellido() ?>
-                    </div>            
-                  <label class="col-sm-1 control-label">DNI</label>
+                <div class="form-group col-sm-3">
+                  <strong><h4>Nombre y Apellido</h4></strong>
+                    <div class="col-sm-6" >
+                      <?php echo $beneficiarioPrueba[0]->getNombre(); ?>
+                    </div>
+                    <div class="col-sm-1" >
+                      <?php echo' '; echo $beneficiarioPrueba[0]->getApellido();?>
+                    </div> 
+                </div>
+                <div class="form-group col-sm-2">               
+                  <strong><h4>DNI</h4></strong>
                     <div class="col-sm-1">
                      <?php echo $beneficiarioPrueba[0]->getDni() ?>
                     </div>
                 </div>
-                <div class="form-group col-lg-12">
-                    <label class="col-sm-2 control-label">Lugar de Nacimiento</label>
-                        <div class="col-sm-2">
+                <div class="form-group col-md-3">
+                    <strong><h4>Lugar de Nacimiento</h4></strong>
+                        <div class="col-sm-1" >
                             <?php echo $beneficiarioPrueba[0]->getLugnac() ?>
                         </div>
-                    <label class="col-sm-2 control-label">Fecha de Nacimiento</label>
-                        <div class="col-sm-2">
+                </div>
+                <div class="form-group col-sm-3">
+                    <strong><h4>Fecha de Nacimiento</h4></strong>
+                        <div class="col-sm-6">
                             <?php  $fechanac=$beneficiarioPrueba[0]->getFechanac()  ?>
                             <?php echo $fechanac->format('d-m-Y')  ?>
                               <div class="input-group date"></div>
                         </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-1 control-label">Estado civil </label>
+             
+                <div class="form-group col-md-12">
+                  <strong><h4>Estado civil</h4></strong>
                     <div class="col-sm-2">
                     <?php $estC=$beneficiarioPrueba[0]->getEstadocivil(); ?> 
                       <?php echo $estC->getDescripcion(); ?>
                     </div>
                 </div>  
+              
                             <!--Datos del domicilio de Beneficiario-->
-                <div class="form-group">
-                  <label class="col-sm-1 control-label">Domicilio</label>
-                    <div class="col-sm-2">
-                      <?php echo $beneficiarioPrueba[0]->getDomben() ?> 
+                <div class="form-group col-md-3">
+                  <strong><h4>Domicilio</h4></strong>
+                    <div class="col-sm-8">
+                      <?php echo $beneficiarioPrueba[0]->getDomben(); ?> 
                     </div>
-                  <label class="col-sm-1 control-label">Ciudad</label>
-                    <div class="col-sm-2">
-                      <?php echo $beneficiarioPrueba[0]->getCiudad() ?>
+                </div>
+                <div class="form-group col-md-2">                    
+                  <strong><h4>Ciudad</h4></strong>
+                    <div class="col-sm-4">
+                      <?php echo $beneficiarioPrueba[0]->getCiudad(); ?>
                     </div>
-                  <label class="col-sm-1 control-label">Provincia</label>
-                    <div class="col-sm-2">
-                      <?php echo $beneficiarioPrueba[0]->getProvincia() ?>
+                </div>
+                <div class="form-group col-md-2">                     
+                  <strong><h4>Provincia</h4></strong>
+                    <div class="col-md-8">
+                      <?php echo $beneficiarioPrueba[0]->getProvincia(); ?>
                     </div>       
                 </div> 
-                <div class="form-group col-lg-12">
-                  <label class="col-sm-1 control-label">Residencia en Catriel</label>
+                <div class="form-group col-xs-3">
+                  <strong><h4>Residencia en Catriel</h4></strong>
                     <div class="col-sm-2">
-                      <?php echo $beneficiarioPrueba[0]->getResben() ?>
+                      <?php echo $beneficiarioPrueba[0]->getResben(); ?>
                     </div>
-                    
-                  <label  class="col-sm-1 control-label">Telefono</label>
-                    <div class="col-sm-2">   
-                      <?php echo $beneficiarioPrueba[0]->getTelfben() ?>
+                </div>
+                <div class="form-group col-xs-2">                    
+                  <strong><h4>Telefono</h4></strong>
+                    <div class="col-sm-3">   
+                      <?php echo $beneficiarioPrueba[0]->getTelfben(); ?>
                     </div>
 
                 </div>
                                 <!--Datos de Estudio y Oficio del Beneficiario-->
-                <div class="form-group">
-                  <label class="col-sm-1 control-label">Tipo de Estudios</label>
+                <div class="form-group col-md-12">
+                  <strong><h4>Tipo de Estudios</h4></strong>
                     <div class="col-sm-2">
                       <?php $est=$beneficiarioPrueba[0]->getEducacion(); ?> 
                       <?php echo $est->getDescripcion(); ?>                    
                     </div> 
                 </div> 
-                <div class="form-group">
-                  <label class="col-sm-1 control-label">Oficio</label>
+                <div class="form-group col-md-12">
+                  <strong><h4>Oficio</h4></strong>
                     <div class="col-sm-2">
                       <?php $of=$beneficiarioPrueba[0]->getProfession(); ?> 
                       <?php echo $of->getDescripcion(); ?>                                              
@@ -169,179 +182,180 @@
 
                 <!--Economia-->
         <div class="tab-pane" id="economia1">
-                                            <!--Datos de la situacion economica-->
-                     <?php// for($i=0;$i<count($economia);$i++) {?>                                         
-          <div class="form-group">
-            <label class="col-sm-1 control-label">¿Trabaja actualmente?</label>
-              <div class="col-sx-1">
-                <label class="radio-inline">
+                                            <!--Datos de la situacion economica-->                                      
+          <div class="form-group col-md-3">
+            <strong><h4>¿Trabaja actualmente?</h4></strong>
+              <div class="col-sm-1">
                    <?php  if ($trab=$economia[0]->getTrabajo()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
                                  }
                     ?>
-                </label>
               </div>
-
-            <label class="col-sm-2 control-label">Nombre del ultimo lugar de trabajo</label>
-              <div class="col-sm-3">
+          </div>
+          <div class="form-group col-md-12">          
+            <strong><h4>Nombre del ultimo lugar de trabajo</h4></strong>
+              <div class="col-md-9">
               <?php echo $nomtrab=$economia[0]->getNomTrab(); ?>
               </div>
           </div>
-                  <!--Datos sobre el ingreso que tiene-->
-          <div class="form-group">
-            <label class="col-sm-1 control-label">¿Esta recibiendo algún Ingreso Económico?</label>
-              <div class="col-sx-1">
-                <label class="radio-inline">
+                      <!--Datos sobre el ingreso que tiene-->
+          <div class="form-group col-md-4">
+            <strong><h4>¿Recibe algún Ingreso Económico?</h4></strong>
+              <div class="col-sm-1">
                                    <?php  if ($ing=$economia[0]->getIngreso()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
                                  }
                     ?>
-                </label>
               </div>
-            <label class="col-sm-2 control-label">Cantidad aproximada de Ingreso Económico</label>
+          </div>
+          <div class="form-group col-md-3">          
+            <strong><h4>Ingreso Económico</h4></strong>
               <div class="col-sm-2">
                <?php echo $canting=$economia[0]->getCanIng(); ?>
               </div>
-            <label class="col-sm-2 control-label">Periodicidad que lo recibe</label>
+          </div>    
+          <div class="form-group col-md-3">  
+            <strong><h4>Periodicidad que lo Recibe</h4></strong>
               <div class="col-sm-3">
                <?php echo $tiemping=$economia[0]->getTiempoIng(); ?>
               </div>                                  
           </div>
-          <div class="form-group">
-            <label class="col-sm-1 control-label">Otras Observaciones Sobre los Ingresos</label>
-              <div class="col-sm-6">
+          <div class="form-group col-md-12">
+            <strong><h4>Otras Observaciones Sobre los Ingresos</h4></strong>
+              <div class="col-sm-12">
                <?php echo $obser=$economia[0]->getObser1(); ?>
               </div>
           </div>                        
                   <!--Datos de otros tipos de ingreso-->
-          <div class="form-group">
-            <label class="col-sm-1 control-label">¿Actualmente recibe otro tipo de ayuda Económica?</label>
+          <div class="form-group col-md-12">
+            <strong><h4>¿Actualmente recibe otro tipo de ayuda Económica?</h4></strong>
                 <div class="col-sx-1">
-                  <label class="radio-inline">
                                    <?php  if ($ayuda=$economia[0]->getAyuda()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
                                  }
                     ?>
-                
-                    </label>
-                </div>                        
-              <label class="col-sm-2 control-label">Tipo de Ayuda</label> 
-                <div class="col-sm-2">
+                </div>  
+          </div>      
+          <div class="form-group col-md-4">                                     
+              <strong><h4>Tipo de Ayuda</h4></strong>
+                <div class="col-sm-5">
                    <?php echo $tipayuda=$economia[0]->getTipo(); ?>
                 </div>
-              <label class="col-sm-2 control-label">Cantidad aproximada de ayuda Económica</label>
+          </div>
+          <div class="form-group col-md-3"> 
+              <strong><h4>Cantidad aproximada</h4></strong>
                 <div class="col-sm-2">
                   <?php echo $cantayuda=$economia[0]->getCanAyuda(); ?>
                 </div>
           </div>
-          <div class="form-group">  
-              <label class="col-sm-1 control-label">Periodicidad que lo recibe</label>
+          <div class="form-group col-md-4">  
+              <strong><h4>Periodicidad que lo recibe</h4></strong>
                 <div class="col-sm-2">
                   <?php echo $tiemayuda=$economia[0]->getTiempoA(); ?>
                 </div>                                  
           </div>
-          <div class="form-group">
-              <label class="col-sm-1 control-label">Otras Observaciones sobre la ayuda Social</label>
-                <div class="col-sm-6">
+          <div class="form-group col-md-12">
+              <strong><h4>Otras Observaciones sobre la ayuda Social</h4></strong>
+                <div class="col-sm-12">
                   <?php echo $obs2=$economia[0]->getObser2(); ?>
                 </div>
           </div>
-
                     <!--Otras observaciones-->
-          <div class="form-group">
-            <label class="col-sm-1 control-label">Observacion Generales</label>
-              <div class="col-sm-6">
+          <div class="form-group col-md-12">
+            <strong><h4>Observacion Generales</h4></strong>
+              <div class="col-sm-12">
                   <?php echo $obs3=$economia[0]->getObser3(); ?>              
               </div>
-          </div>
-                                <?php //} ?>
+          </div>             
         </div>
 
                 <!--Sanidad-->
         <div class="tab-pane" id="sanidad1">
                               <!--Datos de la cobertura social-->
-                    <?php //for($i=0;$i<count($sanidad);$i++) {?>  
-          <div class="form-group">
-            <label class="col-sm-1 control-label">Cobertura de Obra Social</label>
+          <div class="form-group col-md-3">
+            <strong><h4>Cobertura de Obra Social</h4></strong>
               <div class="col-sx-1">
-                <label class="radio-inline">
-<!-- David problema numero 2!!!! me salta un error diciendo que no esta definido getcobertura en en Entity/Vivienda, error en la linea 274, peroooo el problema que no hay nada repetido, capaz qu al ser demasiado largo no puedo ver el error getCobertura es de Sanidad, y si pones buscar se maneja solo aqui, no entiendo que es lo que esta buscando, tampoco hay variables iguales, creo  -->
                     <?php  if ($cobert=$sanidad[0]->getCobertura()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
                                  }
                     ?>                          
-
-                </label>
               </div>
-
-            <label class="col-sm-2 control-label">Nombre de Obra Social</label>
+          </div>
+          <div class="form-group col-md-3">
+            <strong><h4>Nombre de Obra Social</h4></strong>
               <div class="col-sm-3">
                    <?php echo $nomobra=$sanidad[0]->getObraS(); ?>                                         
               </div>
-            <label class="col-sm-2 control-label">Miembro Poseedor de la Obra Social</label>
+          </div>
+          <div class="form-group col-md-12">
+            <strong><h4>Miembro Poseedor de la Obra Social</h4></strong>
               <div class="col-sm-3">
                    <?php echo $posedorobra=$sanidad[0]->getFamOS(); ?>                                        
               </div> 
           </div>
-                          <!--Datos sobre la atencion medica-->
-          <div class="form-group">
-            <label class="col-sm-1 control-label">Atención en el Hospital de Catriel</label>
+                                    <!--Datos sobre la atencion medica-->
+          <div class="form-group col-md-3">
+            <strong><h4>Atención en el Hospital de Catriel</h4></strong>
               <div class="col-sm-2">
-                <label class="radio-inline">
                     <?php  if ($hospital=$sanidad[0]->getAtenHC()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
                                  }
                     ?>                                             
-                </label>
               </div>
-            <label class="col-sm-1 control-label">Atención en otros Centros de Salud</label>
+          </div>
+          <div class="form-group col-md-3">          
+            <strong><h4>Atención en otros Centros de Salud</h4></strong>
               <div class="col-sm-2">
-                <label class="radio-inline">
                     <?php  if ($otcentro=$sanidad[0]->getOtroCS()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
                                  }
                     ?>                                             
-                </label>
               </div>
-            <label class="col-sm-2 control-label">Nombre del Centro de Salud</label>
+          </div>
+          <div class="form-group col-md-3">
+            <strong><h4>Nombre del Centro de Salud</h4></strong>
               <div class="col-sm-3">
                    <?php echo $nomCs=$sanidad[0]->getNomCS(); ?>                                        
               </div>
           </div>
                             <!--Datos del familiar o persona con discapacidad-->
-          <div class="form-group">
-            <label class="col-sm-1 control-label">¿Tiene algun Familiar con discapacidad?</label>
+          <div class="form-group col-md-3">
+            <strong><h4>¿Tiene algun Familiar con discapacidad?</h4></strong>
               <div class="col-sm-2">
-                <label class="radio-inline">
                     <?php  if ($famdisc=$sanidad[0]->getDiscapacidad()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
                                  }
-                    ?>                                           
-                </label>
-              </div>  
-            <label class="col-sm-2 control-label">Miembro de la Familia</label> 
+                    ?>  
+              </div>                                               
+          </div> 
+        <div class="form-group col-md-3">           
+            <strong><h4>Miembro de la Familia</h4></strong>
               <div class="col-sm-3">
                    <?php echo $famdisc=$sanidad[0]->getFamDisc(); ?>                                           
               </div>
-            <label class="col-sm-2 control-label">Tipo de Discapacidad</label> 
+        </div>
+        <div class="form-group col-md-3">
+            <strong><h4>Tipo de Discapacidad</h4></strong>
               <div class="col-sm-3">
                     <?php echo $tipodisc=$sanidad[0]->getTipo(); ?>                                         
               </div>
-            <label class="col-sm-1 control-label">¿Posee Certificado unico de Discapacidad</label>
+        </div>
+        <div class="form-group col-md-3">
+            <strong><h4>¿Posee Certificado unico de Discapacidad</h4></strong>
               <div class="col-sm-2">
                 <label class="radio-inline">
                     <?php  if ($certificado=$sanidad[0]->getCertificado()=='1') {
@@ -354,339 +368,347 @@
               </div> 
           </div>
                             <!--Datos sobre la enfermedad-->
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Detalles de la Enfermedad</label>
-              <div class="col-sm-3">
+          <div class="form-group col-md-12">
+            <strong><h4>Detalles de la Enfermedad</h4></strong>
+              <div class="col-sm-12">
                     <?php echo $pdetalle=$sanidad[0]->getDetalles(); ?>                                      
               </div>
           </div>
                   <!--Otras observaciones-->
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Otras Observaciones</label>
-              <div class="col-sm-3">
+          <div class="form-group col-md-12">
+            <strong><h4>Otras Observaciones</h4></strong>
+              <div class="col-sm-12">
                     <?php echo $obser4=$sanidad[0]->getObservacion(); ?>  
               </div>
           </div>
-            <?php// } ?>         
         </div>
-                <!--Vivienda-->
+                        <!--Vivienda-->
         <div class="tab-pane" id="vivienda1">
                 <!--El 1er paso corresponde a los datos principales q otorga el Beneficiario con respecto de la situacion de Habitacional-->
-            <?php //for($i=0;$i<count($vivienda);$i++) {?> 
-          <div class="form-group">
-            <label class="col-sm-1 control-label">Tipo de Tenencia</label>
+
+          <div class="form-group col-md-3">
+            <strong><h4>Tipo de Tenencia</h4></strong>
               <div class="col-sm-3">
                       <?php $tenencia=$vivienda[0]->getTenencia(); ?> 
                       <?php echo $tenencia->getDescripcion(); ?>                                 
               </div>  
           </div>                            
-          <div class="form-group">
-            <label class="col-sm-1 control-label">Monto de Alquiler</label>
+          <div class="form-group col-md-3">
+            <strong><h4>Monto de Alquiler</h4></strong>
               <div class="col-sm-2">
                    <?php echo $montAlq=$vivienda[0]->getMontAlq(); ?>                                     
               </div>
-            <label class="col-sm-1 control-label">Propietario</label>
+          </div>
+          <div class="form-group col-md-3">
+            <strong><h4>Propietario</h4></strong>
               <div class="col-sm-2">
                    <?php echo $nomprop=$vivienda[0]->getPropAlq(); ?>                                     
-              </div>                   
-            <label class="col-sm-1 control-label">Tiepo de Alquiler</label>
+              </div> 
+          </div>
+          <div class="form-group col-md-3">                  
+            <strong><h4>Tiepo de Alquiler</h4></strong>
               <div class="col-sm-2">
                    <?php echo $tiempAlq=$vivienda[0]->getTiemAlq(); ?>                                     
-              </div>      
-            <label class="col-sm-1 control-label">Cedida por</label>
+              </div> 
+          </div>
+          <div class="form-group col-md-3">     
+            <strong><h4>Cedida por</h4></strong>
               <div class="col-sm-2">
                    <?php echo $nomCedidor=$vivienda[0]->getCedida(); ?>                                     
               </div>  
           </div>
-          <div class="form-group">
-            <label class="col-sm-1 control-label">Terreno Propio</label>
+          <div class="form-group col-md-3"> 
+            <strong><h4>Terreno Propio</h4></strong>
               <div class="col-sm-1">
-                <label class="radio-inline">
                     <?php  if ($terrprop=$vivienda[0]->getTerrPropio()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
                                  }
                     ?>                                         
-
-                </label>
               </div>
-            <label class="col-sm-2 control-label"> El terreno se encuentra pago</label>
+          </div>
+          <div class="form-group col-md-3"> 
+            <strong><h4>El terreno se encuentra pago</h4></strong>
               <div class="col-sm-1">
-                <label class="radio-inline">
                     <?php  if ($terrpag=$vivienda[0]->getTerrPago()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
                                  }
                     ?> 
-
-                </label>
               </div>
-            <label class="col-sm-1 control-label">Tiene Escritura</label>
+          </div>
+          <div class="form-group col-md-3"> 
+            <strong><h4>Tiene Escritura</h4></strong>
               <div class="col-sm-1">
-                <label class="radio-inline">
                     <?php  if ($escritura=$vivienda[0]->getEscritura()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
                                  }
                     ?> 
-                </label>
               </div>                          
           </div>            
-          <div class="form-group">
-            <label class="col-sm-1 control-label">¿Posee Automóvil?</label>
+          <div class="form-group col-md-3"> 
+            <strong><h4>¿Posee Automóvil?</h4></strong>
               <div class="col-sm-1">
-                <label class="radio-inline">
                     <?php  if ($auto=$vivienda[0]->getAuto()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
                                  }
                     ?>                                           
-                </label>
-              </div>    
-            <label class="col-sm-1 control-label">Modelo</label>
+              </div> 
+          </div>  
+          <div class="form-group col-md-3">  
+            <strong><h4>Modelo</h4></strong>
               <div class="col-sm-2">
                    <?php echo $modelo=$vivienda[0]->getModelo(); ?>                                     
-              </div>                  
-            <label class="col-sm-1 control-label">Año</label>
+              </div> 
+          </div>    
+          <div class="form-group col-md-3">                   
+             <strong><h4>Año</h4></strong>
               <div class="col-sm-2">
-                                    
+                 <?php echo $ano=$vivienda[0]->getAño(); ?>                   
               </div>  
           </div>
-          <div class="form-group">
-            <label class="col-sm-1 control-label">¿Otras propiedades?</label>
+          <div class="form-group col-md-3"> 
+            <strong><h4>¿Otras propiedades?</h4></strong>
               <div class="col-sm-1">
-                <label class="radio-inline">
                     <?php  if ($otprop=$vivienda[0]->getOtraPropiedad()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
                                  }
                     ?>                                            
-                </label>
               </div>    
           </div>
-          <div class="form-group">      
-            <label class="col-sm-2 control-label">Detalle de otros tipo de propiedades</label>
-              <div class="col-sm-6">
+          <div class="form-group col-md-12">      
+            <strong><h4>Detalle de otros tipo de propiedades</h4></strong>
+              <div class="col-sm-12">
                    <?php echo $detallprop=$vivienda[0]->getDetalleprop(); ?>                
               </div>                            
           </div>
                           <!--Datos que corresponde a Ambiente y Mobiliario-->
-          <div class="form-group">
-            <label class="col-sm-2 control-label">¿Cuántas habitaciones para dormir posee?</label>
+          <div class="form-group col-md-6">
+            <strong><h4>Habitaciones para dormir</h4></strong>
               <div class="col-sm-2">
                  <?php echo $habdormir=$vivienda[0]->getHabitacion(); ?>                   
               </div>
-            <label  class="col-sm-1 control-label">Piezas en total</label>
+          </div>
+          <div class="form-group col-md-3">
+            <strong><h4>Piezas en total</h4></strong>
               <div class="col-sm-2">
                  <?php echo $pieza=$vivienda[0]->getPieza(); ?>                  
               </div>                                                              
           </div>                      
-          <div class="form-group">
-            <label class="col-sm-1 control-label">¿Tiene baño?</label>
+          <div class="form-group col-md-3">
+            <strong><h4>¿Tiene baño?</h4></strong>
               <div class="col-sm-1">
-                <label class="radio-inline">
                     <?php  if ($baño=$vivienda[0]->getBaño()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
                                  }
                     ?>                                         
-                </label>
               </div> 
-            <label class="col-sm-2 control-label">¿Posee botón de desague el inodoro?</label>
+          </div>
+          <div class="form-group col-md-4">
+            <strong><h4>botón de desague el inodoro</h4></strong>
               <div class="col-sm-1">
-                <label class="radio-inline">
                     <?php  if ($boton=$vivienda[0]->getBoton()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
                                  }
                     ?>                                         
-                </label>
-              </div>  
-            <label class="col-sm-1 control-label">El Desague es por</label>
+              </div> 
+          </div>
+          <div class="form-group col-md-3"> 
+            <strong><h4>El Desague es por</h4></strong>
               <div class="col-sm-3">
                       <?php $desague=$vivienda[0]->getDesagote(); ?> 
                       <?php echo $desague->getDescripcion(); ?>                                   
               </div>
           </div>
-          <div class="form-group">                                          
-            <label class="col-sm-1 control-label">¿El baño es sólo usado por el hogar?</label>
+          <div class="form-group col-md-3">                                          
+            <strong><h4>Usado por el Hogar</h4></strong>
               <div class="col-sm-1">
-                <label class="radio-inline">
                     <?php  if ($uso=$vivienda[0]->getUso()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
                                  }
                     ?>                                         
-                </label>
-              </div> 
-            <label class="col-sm-3 control-label">¿El baño se encuentra en forma interna/externa de la vivienda?</label>
+              </div>
+          <div class="form-group col-md-4"> 
+            <strong><h4>Estado de Baño</h4></strong>
               <div class="col-sm-2">
                  <?php echo $ubban=$vivienda[0]->getEstado(); ?>                                     
               </div>
-            <label  class="col-sm-2 control-label">¿Cómo ésta el estado del baño?</label>
+          </div>
+          <div class="form-group col-md-4">
+            <strong><h4>¿Cómo ésta el estado del baño?</h4></strong>
               <div class="col-sm-2">
                  <?php echo $estban=$vivienda[0]->getUbicacion(); ?>                  
               </div> 
           </div>  
-          <div class="form-group">
-            <label class="col-sm-1 control-label">¿Posee Camas?</label>
+          <div class="form-group col-md-3">
+            <strong><h4>¿Posee Camas?</h4></strong>
               <div class="col-sm-1">
-                <label class="radio-inline">
                     <?php  if ($camas=$vivienda[0]->getCama()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
                                  }
                     ?>                                         
-                </label>
               </div> 
-            <label class="col-sm-2 control-label">¿Cuantas camas tiene?</label>
+          </div>
+          <div class="form-group col-md-4">
+            <strong><h4>¿Cuantas camas tiene?</h4></strong>
               <div class="col-sm-2">
                  <?php echo $camas1=$vivienda[0]->getCamcant(); ?>                                   
               </div>
           </div>                            
-          <div class="form-group">
-            <label class="col-sm-1 control-label">¿Mesas y Sillas?</label>
+          <div class="form-group col-md-4">
+            <strong><h4>¿Mesas y Sillas?</h4></strong>
               <div class="col-sm-1">
-                <label class="radio-inline">
                     <?php  if ($mesas=$vivienda[0]->getMesa()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
                                  }
                     ?>                                         
-                </label>
               </div> 
-            <label class="col-sm-1 control-label">¿Cocina?</label>
+          </div>
+          <div class="form-group col-md-3">
+            <strong><h4>¿Cocina?</h4></strong>
               <div class="col-sm-1">
-                <label class="radio-inline">
                     <?php  if ($cocina=$vivienda[0]->getCocina()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
                                  }
                     ?>                                         
-                </label>
               </div> 
-            <label class="col-sm-1 control-label">¿Heladera?</label>
+          </div>
+          <div class="form-group col-md-3">
+            <strong><h4>¿Heladera?</h4></strong>
               <div class="col-sm-1">
-                <label class="radio-inline">
                     <?php  if ($heladera=$vivienda[0]->getHeladera()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
                                  }
                     ?>                         
-                </label>
               </div>
           </div> 
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Observaciones de Ambiente y Mobiliario</label>
-              <div class="col-sm-6">
+          <div class="form-group col-md-12">
+            <strong><h4>Observaciones de Ambiente y Mobiliario</h4></strong>
+              <div class="col-sm-12">
                 <?php echo $obserAmM=$vivienda[0]->getObser1(); ?> 
               </div>
           </div>  
                         <!--Datos corresponde a los servicios basicos de debería tener la vivienda-->
-          <div class="form-group">
-            <label class="col-sm-1 control-label">Electricidad</label>
+          <div class="form-group col-md-4">
+            <strong><h4>Electricidad</h4></strong>
               <div class="col-sm-1">
-                <label class="radio-inline">
                     <?php  if ($luz=$vivienda[0]->getLuz()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
                                  }
                     ?>                         
-                </label>
               </div>
-            <label class="col-sm-2 control-label">¿Por cual medio?</label>   
-              <div class="col-sm-3">
+          </div>
+          <div class="form-group col-md-4">
+            <strong><h4>¿Por cual medio?</h4></strong>  
+              <div class="col-sm-4">
                       <?php $medioluz=$vivienda[0]->getMedio(); ?> 
                       <?php echo $medioluz->getDescripcion(); ?>  
               </div>            
           </div>
-          <div class="form-group">
-            <label class="col-sm-1 control-label">Agua</label>
+          <div class="form-group col-md-3">
+            <strong><h4>Agua</h4></strong>
               <div class="col-sm-1">
-                <label class="radio-inline">
                     <?php  if ($agua=$vivienda[0]->getAgua()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
                                  }
                     ?> 
-                </label>
               </div>
-            <label class="col-sm-2 control-label">Es Obtenida por</label>   
-              <div class="col-sm-3">
+          </div>
+          <div class="form-group col-md-4">
+            <strong><h4>Es Obtenida por</h4></strong> 
+              <div class="col-sm-4">
                       <?php $aguaobt=$vivienda[0]->getObtenida(); ?> 
                       <?php echo $aguaobt->getDescripcion(); ?>  
               </div>
-            <label class="col-sm-1 control-label">¿Proviene de?</label>   
-              <div class="col-sm-3">
+          </div>
+          <div class="form-group col-md-4">
+            <strong><h4>¿Proviene de?</h4></strong>  
+              <div class="col-sm-4">
                       <?php $aguaproveniente=$vivienda[0]->getProveniente(); ?> 
                       <?php echo $aguaproveniente->getDescripcion(); ?> 
               </div>  
           </div>                                            
-          <div class="form-group">
-            <label class="col-sm-1 control-label">Gas</label>
+          <div class="form-group col-md-4">
+            <strong><h4>Gas</h4></strong>
               <div class="col-sm-1">
-                <label class="radio-inline">
                     <?php  if ($gas=$vivienda[0]->getGas()=='1') {
                                     echo 'Si';
                                  } else {
                                    echo 'No';
                                  }
                     ?>                                           
-                </label>
               </div>
-            <label class="col-sm-2 control-label">¿Qué medio utiliza?</label>   
-              <div class="col-sm-3">
+          </div>
+          <div class="form-group col-md-4">
+            <strong><h4>¿Qué medio utiliza?</h4></strong>   
+              <div class="col-sm-4">
                       <?php $gasmedio=$vivienda[0]->getUtiliza(); ?> 
                       <?php echo $gasmedio->getDescripcion(); ?>                                       
               </div>            
           </div>
 
                   <!--Datos 4to será sobre el tipo de contruccion de la vivienda-->
-          <div class="form-group">
-            <label class="col-sm-1 control-label">La pared es de</label>   
-              <div class="col-sm-2">
-              </div>            
+          <div class="form-group col-md-4">
+            <strong><h4>La pared es de</h4></strong> 
+              <div class="col-sm-5">
+                         
                       <?php $pared=$vivienda[0]->getPared(); ?> 
-                      <?php echo $pared->getDescripcion(); ?>                         
-            <label class="col-sm-2 control-label">Material predominante del piso</label>   
-              <div class="col-sm-2">
+                     <?php echo $pared->getDescripcion(); ?>          
+              </div>                        
+          </div>
+          <div class="form-group col-md-5">  
+            <strong><h4>Material predominante del piso</h4></strong>  
+              <div class="col-sm-4">
                       <?php $piso=$vivienda[0]->getPiso(); ?> 
                       <?php echo $piso->getDescripcion(); ?>               
               </div> 
           </div>        
-          <div class="form-group">                        
-            <label class="col-sm-1 control-label">El techo es de</label>   
-              <div class="col-sm-2">
+          <div class="form-group col-md-4">                        
+            <strong><h4>El techo es de</h4></strong>   
+              <div class="col-sm-4">
                       <?php $techo=$vivienda[0]->getTecho(); ?> 
                       <?php echo $techo->getDescripcion(); ?>                 
-              </div>  
-            <label class="col-sm-2 control-label">El Cielo Razo es de</label>   
-              <div class="col-sm-2">
+              </div>
+          </div>
+          <div class="form-group col-md-4">  
+            <strong><h4>El Cielo Razo es de</h4></strong>  
+              <div class="col-sm-4">
                       <?php $cielorazo=$vivienda[0]->getCielrazo(); ?> 
                       <?php echo $cielorazo->getDescripcion(); ?>   
               </div>            
           </div>  
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Observaciones de la Construcción</label>
-              <div class="col-sm-6">
+          <div class="form-group col-md-12">  
+            <strong><h4>Observaciones de la Construcción</h4></strong> 
+              <div class="col-sm-12">
                 <?php echo $obserc=$vivienda[0]->getObser2(); ?>    
               </div>
           </div>
-            <?php//} ?>
         </div>
 
 
@@ -699,10 +721,8 @@
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3">
                             <div class="btn-toolbar">
-
-                              <button class="btn btn-primary btn-label" onClick="window.print()"><i class="fa fa-print"></i>Imprimir</button>
-
-
+<script type='text/javascript' src='/javascript:windows.print()'></script> 
+                              <button class="btn btn-primary btn-label" src="mActionFilePrint.PNG" width=" " alt=""><i class="fa fa-print"></i>Imprimir</button>
 
                             </div>
                         </div>
