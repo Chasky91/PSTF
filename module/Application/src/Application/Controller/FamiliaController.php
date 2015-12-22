@@ -16,21 +16,21 @@ use Zend\Mvc\MvcEvent;
 use DateTime;
 
 class FamiliaController extends AbstractActionController {
-    /*
+    
       public function __construct()
       {
-      $events = $this->getEventManager();
-      $events->attach(MvcEvent::EVENT_DISPATCH, array($this, 'checkLogin'));
+        $events = $this->getEventManager();
+        $events->attach(MvcEvent::EVENT_DISPATCH, array($this, 'checkLogin'));
       }
 
       public function checkLogin()
       {
-      $authService = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
-      if (!$authService->getIdentity()) {
-      return $this->redirect()->toRoute('login');
+        $authService = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
+            if (!$authService->getIdentity()) {
+            return $this->redirect()->toRoute('login');
+        }
       }
-      }
-     */
+     
 
     protected function getEntityManager() {
         return $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');

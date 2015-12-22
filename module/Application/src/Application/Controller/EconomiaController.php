@@ -7,24 +7,25 @@ use Zend\View\Model\ViewModel;
 
 use Application\Entity\Economia;
 use Application\Admin\Form\FormEco\econForm;
+use Zend\Mvc\MvcEvent;
 
 class EconomiaController extends AbstractActionController
 {
-/*
+
     public function __construct()
-    {
+      {
         $events = $this->getEventManager();
         $events->attach(MvcEvent::EVENT_DISPATCH, array($this, 'checkLogin'));
-    }
+      }
 
-    public function checkLogin()
-    {
+      public function checkLogin()
+      {
         $authService = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
-        if (!$authService->getIdentity()) {
+            if (!$authService->getIdentity()) {
             return $this->redirect()->toRoute('login');
         }
-    }   
-*/
+      }
+
      protected function getEntityManager()
     {
         return $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');

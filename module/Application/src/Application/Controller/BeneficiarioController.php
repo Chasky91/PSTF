@@ -14,6 +14,7 @@ use Application\Entity\EstadoCivil;
 use Application\Entity\Educacion;
 use Application\Entity\Profesion;
 use Application\Entity\Relacion;
+use Zend\Mvc\MvcEvent;
 
 use DOMPDFModule\View\Model\PdfModel;
 
@@ -21,11 +22,24 @@ use Application\Admin\Form\FormBen\nuevobForm;
 
 class BeneficiarioController extends AbstractActionController
 {
-
+    
     protected function getEntityManager()
     {
         return $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
     }
+    public function __construct()
+      {
+        $events = $this->getEventManager();
+        $events->attach(MvcEvent::EVENT_DISPATCH, array($this, 'checkLogin'));
+      }
+
+      public function checkLogin()
+      {
+        $authService = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
+            if (!$authService->getIdentity()) {
+            return $this->redirect()->toRoute('login');
+        }
+      }
 
     public function indexAction()
     {  

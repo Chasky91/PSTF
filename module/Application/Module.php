@@ -43,7 +43,7 @@ class Module
         $serviceManager = $e->getApplication()->getServiceManager();
         $autenticacion = $serviceManager->get('Zend\Authentication\AuthenticationService');
         $vista = $e->getApplication()->getMvcEvent()->getViewModel();
-        $vista->empleado = $autenticacion->getIdentity();         
+        $vista->empleado = $autenticacion->getIdentity();    
     }
 
     protected function setupTraduccionesDelValidador(MvcEvent $e)
@@ -84,6 +84,7 @@ class Module
         
         //seccon de login
         $acl->addResource('login');
+
         //Seccion empleado
         $acl->addResource('index_empleado');
         $acl->addResource('nuevo_empleado');        
@@ -267,10 +268,9 @@ class Module
         $autentication  =  $serviceManager->get('Zend\Authentication\AuthenticationService');
         $rol  =($empleado = $autentication->getIdentity())?
                     $empleado->getRol():
-                        'invitado';
+                       'invitado';
         $ruta = $e->getRouteMatch()->getMatchedRouteName();
         try {
-            //var_dump($this->acl->isAllowed($rol, $ruta));die;
                 if (!$this->acl->isAllowed($rol, $ruta)) {
                     $url=$e ->getRouter()->assemble(array(), array('name' => 'login'));
                     $response =  $e->getResponse();

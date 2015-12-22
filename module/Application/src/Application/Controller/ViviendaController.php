@@ -8,8 +8,10 @@ use Zend\View\Model\ViewModel;
 use Application\Entity\Vivienda;
 use Application\Entity\Beneficiario;
 use Application\Admin\Form\FormViv\vivForm;
+use Zend\Mvc\MvcEvent;
+
 class ViviendaController extends AbstractActionController
-{/*
+{
     public function __construct()
     {
         $events = $this->getEventManager();
@@ -23,7 +25,7 @@ class ViviendaController extends AbstractActionController
             return $this->redirect()->toRoute('login');
         }
     }
-*/
+
      protected function getEntityManager()
     {
         return $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');

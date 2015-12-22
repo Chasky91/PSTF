@@ -7,15 +7,31 @@ use Zend\View\Model\ViewModel;
 use Application\Entity\RegistroDeEntrega;
 use Application\Admin\Form\FormAsistencia\RegistroDeEntregaForm;
 use DOMPDFModule\View\Model\PdfModel;
+use Zend\Mvc\MvcEvent;
 
 class AsistenciaController extends AbstractActionController
 {
+        public function __construct()
+      {
+        $events = $this->getEventManager();
+        $events->attach(MvcEvent::EVENT_DISPATCH, array($this, 'checkLogin'));
+      }
 
+      public function checkLogin()
+      {
+        $authService = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
+            if (!$authService->getIdentity()) {
+            return $this->redirect()->toRoute('login');
+        }
+      }
+    
     protected function getEntityManager()
     {
         return $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
     }
+    
 
+      
     public function indexAction()
     {
         $em = $this->getEntityManager();

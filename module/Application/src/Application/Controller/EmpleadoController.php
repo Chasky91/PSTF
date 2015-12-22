@@ -12,6 +12,7 @@ use Application\Entity\AsistenteSocial;
 use Application\Entity\Director;
 use Application\Admin\Form\FormEmp\EmpleadoForm;
 use Application\Admin\Form\FormEmp\LoginForm;
+use Zend\Mvc\MvcEvent;
 
 
 class EmpleadoController extends AbstractActionController
@@ -21,6 +22,8 @@ class EmpleadoController extends AbstractActionController
     {
         return $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
     }
+    
+    
     
     public function indexAction()
     {
