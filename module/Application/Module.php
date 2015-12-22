@@ -78,8 +78,8 @@ class Module
         //agrego, roles
         $acl->addRole($rolInvitado);
         $acl->addRole($rolMesaEntrada,$rolInvitado);
-        $acl->addRole($rolAsitenteSocial,$rolInvitado);
-        $acl->addRole($rolDirector,$rolInvitado);
+        $acl->addRole($rolAsitenteSocial,$rolMesaEntrada);
+        $acl->addRole($rolDirector,$rolMesaEntrada);
         $acl->addRole($rolAdmin,$rolInvitado);//el admin hereda los permisos de invitado
         
         //seccon de login
@@ -93,7 +93,8 @@ class Module
          //seccion Asistencia mensual
          $acl->addResource('index_asistencia');
          $acl->addResource('nuevo_asistencia');
-         $acl->addResource('editar_asistencia');         
+         $acl->addResource('editar_asistencia'); 
+         $acl->addResource('pdfAsistencia');
          
          //seccion sector
          $acl->addResource('index_sector');
@@ -141,17 +142,117 @@ class Module
         $acl->addResource('delviv');
 
 
-        //permisos para empleado
+        //denegar a invitado para invitado
+        //Seccion empleado     
         $acl->deny($rolInvitado,'index_empleado');
+        $acl->deny($rolInvitado,'nuevo_empleado');
+        $acl->deny($rolInvitado,'editar_empleado');
+        $acl->deny($rolInvitado,'eliminar_empleado');
+        //sector
+        $acl->deny($rolInvitado,'index_sector');
+        $acl->deny($rolInvitado,'nuevo_sector');
+        $acl->deny($rolInvitado,'editar_sector');
+        //asistencia
+        $acl->deny($rolInvitado,'index_asistencia');
+        $acl->deny($rolInvitado,'nuevo_asistencia');
+        $acl->deny($rolInvitado,'editar_asistencia');
+        $acl->deny($rolInvitado,'pdfAsistencia');
+        ///beneficiario
+        $acl->deny($rolInvitado,'beneficiario');
+        $acl->deny($rolInvitado,'nuevo-beneficiario');
+        $acl->deny($rolInvitado,'ver-beneficiario');
+        $acl->deny($rolInvitado,'modbeneficiario');
+        $acl->deny($rolInvitado,'del-beneficiario');
+        ///familia
+        $acl->deny($rolInvitado,'familia');
+        $acl->deny($rolInvitado,'nuevoFam');
+        $acl->deny($rolInvitado,'verFam');
+        $acl->deny($rolInvitado,'modFam');
+        $acl->deny($rolInvitado,'delFam');
+        //sanidad
+        $acl->deny($rolInvitado,'sanidad');
+        $acl->deny($rolInvitado,'nuevo_S');
+        $acl->deny($rolInvitado,'ver_S');
+        $acl->deny($rolInvitado,'modS');
+        $acl->deny($rolInvitado,'delS');
+        //economia
+        $acl->deny($rolInvitado,'economia');
+        $acl->deny($rolInvitado,'nuevoE');
+        $acl->deny($rolInvitado,'verE');
+        $acl->deny($rolInvitado,'modE');
+        $acl->deny($rolInvitado,'delE');
+        //economia
+        $acl->deny($rolInvitado,'economia');
+        $acl->deny($rolInvitado,'nuevoE');
+        $acl->deny($rolInvitado,'verE');
+        $acl->deny($rolInvitado,'modE');
+        $acl->deny($rolInvitado,'delE');
+        //seccion vivienda
+        $acl->deny($rolInvitado,'vivienda');
+        $acl->deny($rolInvitado,'nuevoviv');
+        $acl->deny($rolInvitado,'verviv');
+        $acl->deny($rolInvitado,'modviv');
+        $acl->deny($rolInvitado,'delviv');
+      
 
+        //permitir a inviatdo
+        //////////////////////
         $acl->allow($rolInvitado,'login');
+        //permitir a Mesa de entrada
+        $acl->allow($rolMesaEntrada,'beneficiario');
+        $acl->allow($rolMesaEntrada,'nuevo-beneficiario');
+        $acl->allow($rolMesaEntrada,'ver-beneficiario');
+        $acl->allow($rolMesaEntrada,'modbeneficiario');
+        $acl->allow($rolMesaEntrada,'index_asistencia');
+        $acl->allow($rolMesaEntrada,'nuevo_asistencia');
+        $acl->allow($rolMesaEntrada,'editar_asistencia');
+        $acl->allow($rolMesaEntrada,'pdfAsistencia');
+        
+        
+        /////////////////////////////
+        //asistentente social permisos
+        $acl->allow($rolAsitenteSocial,'modbeneficiario');
+        $acl->allow($rolAsitenteSocial,'del-beneficiario');
+        //familia permisos        
+        $acl->allow($rolAsitenteSocial,'familia');
+        $acl->allow($rolAsitenteSocial,'nuevoFam');
+        $acl->allow($rolAsitenteSocial,'verFam');
+        $acl->allow($rolAsitenteSocial,'modFam');
+        $acl->allow($rolAsitenteSocial,'delFam');
+        //sanidad permisos
+        $acl->allow($rolAsitenteSocial,'sanidad');
+        $acl->allow($rolAsitenteSocial,'nuevo_S');
+        $acl->allow($rolAsitenteSocial,'ver_S');
+        $acl->allow($rolAsitenteSocial,'modS');
+        $acl->allow($rolAsitenteSocial,'delS');
+        //economia
+        $acl->allow($rolAsitenteSocial,'economia');
+        $acl->allow($rolAsitenteSocial,'nuevoE');
+        $acl->allow($rolAsitenteSocial,'ver_S');
+        $acl->allow($rolAsitenteSocial,'verE');
+        $acl->allow($rolAsitenteSocial,'delE');
+
+        //vivienda permisos
+        $acl->allow($rolAsitenteSocial,'vivienda');
+        $acl->allow($rolAsitenteSocial,'nuevoviv');
+        $acl->allow($rolAsitenteSocial,'verviv');
+        $acl->allow($rolAsitenteSocial,'modviv');
+        $acl->allow($rolAsitenteSocial,'delviv');
+
+        ///////////////////////////////////////////
+        //director
+        $acl->allow($rolDirector,'index_sector');
+        $acl->allow($rolDirector,'nuevo_sector');
+        $acl->allow($rolDirector,'index_empleado');
+        $acl->allow($rolDirector,'nuevo_sector');
+        $acl->allow($rolDirector,'editar_sector');
+        
+        ////Admin
         $acl->allow($rolAdmin,'index_empleado');
         $acl->allow($rolAdmin,'nuevo_empleado');
         $acl->allow($rolAdmin,'editar_empleado');
         $acl->allow($rolAdmin,'eliminar_empleado');
-        
-
-        
+      
         $vista = $e->getApplication()->getMvcEvent()->getViewModel();
         $vista->acl=$acl;
         $this->acl = $acl;

@@ -88,26 +88,26 @@ class EmpleadoController extends AbstractActionController
                         ->where('s.id = ?1')
                         ->setParameter(1, $idSector)
                         ->getQuery();
-             $arregloSector = $query1->getResult();
+            $arregloSector = $query1->getResult();
             $sector = $arregloSector[0]->getNombre();
-            if($sector =='Mesa de Entrada') {
-                $empleado = new MesaEntrada();                        
-            }elseif ($sector =='Asistente Social') {
-                $empleado = new AsistenteSocial();
-            }elseif($sector =='Direccion'){
-                $empleado  = new Director();
-                  //existe algun director              
-                if ($repositorioDirector->existeAlgunDirector()) {
-                    $this->flashMessenger()->addErrorMessage('Ya existe el Director en la Plataforma');
-                    return $this->redirect()->toRoute('index_empleado');
-                }
-            }elseif($sector =='Admin'){
-                            //existe algun admin
-                if($repositorioAdmin->existeAlgunAdmin()){
-                    $this->flashMessenger()->addErrorMessage(
-                        sprintf('Ya existe un Admin Plataforma de Política Sociales'));
-                    return $this->redirect()->toRoute('index_empleado');
-                }
+                if($sector =='Mesa de Entrada') {
+                    $empleado = new MesaEntrada();                        
+                }elseif ($sector =='Asistente Social') {
+                    $empleado = new AsistenteSocial();
+                }elseif($sector =='Direccion'){
+                    $empleado  = new Director();
+                      //existe algun director              
+                    if ($repositorioDirector->existeAlgunDirector()) {
+                        $this->flashMessenger()->addErrorMessage('Ya existe el Director en la Plataforma');
+                        return $this->redirect()->toRoute('index_empleado');
+                    }
+                }elseif($sector =='Admin'){
+                                //existe algun admin
+                    if($repositorioAdmin->existeAlgunAdmin()){
+                        $this->flashMessenger()->addErrorMessage(
+                            sprintf('Ya existe un Admin Plataforma de Política Sociales'));
+                        return $this->redirect()->toRoute('index_empleado');
+                    }
             }
             $empleadoForm->bind($empleado);
             $empleadoForm->setData($this->request->getPost());
@@ -171,19 +171,20 @@ public function loginAction()
         ]);     
 
         if ($this->request->isPost()) {
+
             $form->setData($this->request->getPost());
+            
             if ($form->isValid()) {
                 $data = $this->getRequest()->getPost();
                 $authService = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
                 $adapter = $authService->getAdapter();
-               // var_dump($data['password']); die;
+                
                 $adapter->setIdentityValue($data['email']);
                 $adapter->setCredentialValue($data['password']);
+
                 $authResult = $authService->authenticate();
-                //var_dump($authResult->isValid()); die;             
                 if ($authResult->isValid()) {
-                    //var_dump("usuario autenticado"); die;
-                    $this->redirect()->toRoute('index_empleado');
+                    $this->redirect()->toRoute('home');
                 } else {
                     //var_dump("no se autentico"); die;
                     $vista->mensaje = 'Usuario y/o contraseña incorrectos';

@@ -592,15 +592,13 @@ return array(
         'invokables' => array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
             'Application\Controller\Beneficiario' => 'Application\Controller\BeneficiarioController',
-            'Application\Controller\Producto' => 'Application\Controller\ProductoController',  
-            'Application\Controller\Stock' => 'Application\Controller\StockController',
+            'Application\Controller\Sector' => 'Application\Controller\SectorController',  
             'Application\Controller\Asistencia' => 'Application\Controller\AsistenciaController',
             'Application\Controller\Empleado' => 'Application\Controller\EmpleadoController',
             'Application\Controller\Familia' => 'Application\Controller\FamiliaController',
             'Application\Controller\Vivienda' => 'Application\Controller\ViviendaController',
             'Application\Controller\Economia'=> 'Application\Controller\EconomiaController',
-            'Application\Controller\Sanidad'=> 'Application\Controller\SanidadController',
-            'Application\Controller\Modulo'=> 'Application\Controller\ModuloController'
+            'Application\Controller\Sanidad'=> 'Application\Controller\SanidadController'
 
 
         ),

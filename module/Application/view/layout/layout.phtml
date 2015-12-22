@@ -38,6 +38,7 @@
 
         <ul class="nav navbar-nav pull-right toolbar">
             <li class="dropdown">
+                <?php //var_dump($this->empleado);die; ?>
                 <?php if (!$this->empleado): ?>                
                     <a href="<?php echo $this->url('login') ?>" class="dropdown-toggle username" >Iniciar sesión</a>
                 <?php else: ?>
