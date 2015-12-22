@@ -8,7 +8,7 @@ use DateTime;
 /**
  * @ORM\Entity
  */
-class DetalleDeEntrega
+class RegistroDeModulo
 {
     /**
      * @ORM\Column(type="integer",  nullable=false, unique=true)

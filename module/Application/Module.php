@@ -56,12 +56,14 @@ use Application\Entity\Admin;
     //funcion agregada por david
     public function setupAcl(MvcEvent $e) {
         
+        //controla los rles de usuario
         $acl  = new Acl();
         
         $rolInvitado = new Role('invitado');
         $admin = new Admin();
         $rolAdmin = new Role($admin->getRol());
         
+        //agrego, roles
         $acl->addRole($rolInvitado);
         $acl->addRole($rolAdmin,$rolInvitado);//el admin hereda los permisos de invitado
         
