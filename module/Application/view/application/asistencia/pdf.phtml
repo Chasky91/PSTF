@@ -15,9 +15,12 @@ td {
 <td colspan="20">Planilla de Asistencia</td>
 </tr>
 <tfoot>
-<tr>
-<td colspan="20">Footer</td>
-</tr>
+<tr><td colspan="20"><?php echo $beneficiario->getNombre(),$beneficiario->getApellido(); ?></td></tr>
+<tr><td colspan="20"><?php echo $beneficiario->getDni(); ?></td></tr>
+<tr><td colspan="20"><?php $fecha  = $beneficiario->getFechanac();
+                                                    echo $fecha->format('d-m-Y');
+                                        ?></td></tr>
+<tr><td colspan="20"><?php echo $beneficiario->getDomben(); ?></td></tr>
 </tfoot>
 <tr>
     <th>Numero de Entrega</th>
@@ -27,12 +30,20 @@ td {
 </thead>
 
 <tr>
+ <tr>
 <td style="color: black;">Numero de Entrega</td>
 <td style="color: black;">Fecha de Entrega</td>
 <td style="color: black;">Detalle de entrega</td>
-<td style="color: black;">4</td>
-
 </tr>
+    <?php for($i = 0;$i <count($entrega);$i++){ ?>
+        <tr>
+        <td style="color: black;"><?php echo $entrega[$i]->getDescripcion(); ?></td>
+       <td style="color: black;"><?php  $fechaE= $entrega[$i]->getFechaEntrega();
+                                                            echo $fecha->format('d-m-Y');
+                                                ?></td>
+       <td style="color: black;"><?php echo $entrega[$i]->getDescripcion(); ?></td>
+       </tr>
+    <?php } ?>
 
 
 </table>

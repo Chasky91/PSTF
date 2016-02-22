@@ -23,9 +23,10 @@
   </div>
   <div class="panel-body">
     <div class="tab-content">
-                                                <!--Datos del beneficiario-->  
-          <div class="tab-pane active" id="beneficiario1">
+                                                
+          <div class="tab-pane active" id="beneficiario1"><!--Aqui Inicia la Etiqueta de Datos del beneficiario-->  
                                                       <!--Datos personales-->
+                  <legend>Datos Personales del Beneficiario</legend>
                 <div class="form-group col-sm-3">
                   <strong><h4>Nombre y Apellido</h4></strong>
                     <div class="col-sm-6" >
@@ -65,6 +66,7 @@
                 </div>  
               
                             <!--Datos del domicilio de Beneficiario-->
+                  <legend>Domicilio del Beneficiario</legend>
                 <div class="form-group col-md-3">
                   <strong><h4>Domicilio</h4></strong>
                     <div class="col-sm-8">
@@ -97,6 +99,7 @@
 
                 </div>
                                 <!--Datos de Estudio y Oficio del Beneficiario-->
+                    <legend>Estudios y Oficios del Beneficiario</legend>
                 <div class="form-group col-md-12">
                   <strong><h4>Tipo de Estudios</h4></strong>
                     <div class="col-sm-2">
@@ -110,19 +113,33 @@
                       <?php $of=$beneficiarioPrueba[0]->getProfession(); ?> 
                       <?php echo $of->getDescripcion(); ?>                                              
                     </div> 
-                </div>      
-          </div>
-               <!--Familia-->
-        <div class="tab-pane" id="familia1">
-          <div class="form-group">    
+                </div> 
+          </div><!--Aqui Termina la Etiqueta de Datos del beneficiario--> 
+               
+        <div class="tab-pane" id="familia1"><!--Aqui inicia la etiqueta de Familia-->
+
+        
+          <div class="form-group">  
+                            <?php for($i=0;$i<count($familias);$i++) {
+
+
+                  if ($familias[$i]->getIdben()=="null") {  ?>          
+
+                        <div class="alert alert-dismissable alert-info">
+                          <strong>No Existe Registro!</strong> El Beneficiario no tiene cargado ningun registro de Familia
+                          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        </div>
+                    
+                    <?php } else {?> 
+                <legend>Datos de la Familia del Beneficiario</legend>
                 <table class="table table-condensed">
                   <thead>
                       <tr>
                             <th>Nro Legajo</th>
                             <th>Nombre y Apellido</th>
                             <th>DNI</th>                                    
-                            <th>Lugar de Nacimiento</th>
-                            <th>Fecha de Nacimiento</th>                        
+                            <th>Lugar de Nac.</th>
+                            <th>Fecha de Nac.</th>                        
                             <th>Estado Civil</th>
                             <th>Educación</th>
                             <th>Relación</th>
@@ -130,7 +147,7 @@
                   </thead>
                   <tbody>
 
-                  <?php for($i=0;$i<count($familias);$i++) {?>
+                  <?php for($i=0;$i<count($familias);$i++) { ?>
                       <tr class="odd gradeX">
                           <td> 
                             <!--Legajo Familia-->  
@@ -174,15 +191,28 @@
                           </td>   
 
                       </tr>
-                      <?php } ?>
+                    <?php } ?>
                 </tbody>
-              </table>
-          </div>
-        </div>
 
-                <!--Economia-->
-        <div class="tab-pane" id="economia1">
-                                            <!--Datos de la situacion economica-->                                      
+                <?php } }?>
+              </table>
+          </div> 
+        </div><!--Aqui Termina la etiqueta de Familia-->
+                
+        <div class="tab-pane" id="economia1"><!--Inicia la Etiqueta de Economia-->
+                                            <!--Datos de la situacion economica-->       
+              <?php for ($i=0; $i<count($economia); $i++){
+               
+               if($economia[$i]->getbeneficiario()=="null") { ?>
+
+                        <div class="alert alert-dismissable alert-info">
+                          <strong>No Existe Registro!</strong> El Beneficiario no tiene cargado ningun registro de Economia
+                          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        </div>
+                    
+                    <?php } else {
+              ?>   
+            <legend>Situación Económica</legend>
           <div class="form-group col-md-3">
             <strong><h4>¿Trabaja actualmente?</h4></strong>
               <div class="col-sm-1">
@@ -195,14 +225,15 @@
               </div>
           </div>
           <div class="form-group col-md-12">          
-            <strong><h4>Nombre del ultimo lugar de trabajo</h4></strong>
+            <strong><h4>Último lugar de trabajo</h4></strong>
               <div class="col-md-9">
               <?php echo $nomtrab=$economia[0]->getNomTrab(); ?>
               </div>
           </div>
                       <!--Datos sobre el ingreso que tiene-->
+                  <legend>Tipo de Ingresos</legend>
           <div class="form-group col-md-4">
-            <strong><h4>¿Recibe algún Ingreso Económico?</h4></strong>
+            <strong><h4>Ingreso Económico</h4></strong>
               <div class="col-sm-1">
                                    <?php  if ($ing=$economia[0]->getIngreso()=='1') {
                                     echo 'Si';
@@ -213,7 +244,7 @@
               </div>
           </div>
           <div class="form-group col-md-3">          
-            <strong><h4>Ingreso Económico</h4></strong>
+            <strong><h4>Cantidad Percibida</h4></strong>
               <div class="col-sm-2">
                <?php echo $canting=$economia[0]->getCanIng(); ?>
               </div>
@@ -225,14 +256,14 @@
               </div>                                  
           </div>
           <div class="form-group col-md-12">
-            <strong><h4>Otras Observaciones Sobre los Ingresos</h4></strong>
+            <strong><h4>Observación de los Ingresos</h4></strong>
               <div class="col-sm-12">
                <?php echo $obser=$economia[0]->getObser1(); ?>
               </div>
           </div>                        
                   <!--Datos de otros tipos de ingreso-->
           <div class="form-group col-md-12">
-            <strong><h4>¿Actualmente recibe otro tipo de ayuda Económica?</h4></strong>
+            <strong><h4>Ayuda Económica</h4></strong>
                 <div class="col-sx-1">
                                    <?php  if ($ayuda=$economia[0]->getAyuda()=='1') {
                                     echo 'Si';
@@ -249,7 +280,7 @@
                 </div>
           </div>
           <div class="form-group col-md-3"> 
-              <strong><h4>Cantidad aproximada</h4></strong>
+              <strong><h4>Cantidad Percibida</h4></strong>
                 <div class="col-sm-2">
                   <?php echo $cantayuda=$economia[0]->getCanAyuda(); ?>
                 </div>
@@ -261,23 +292,37 @@
                 </div>                                  
           </div>
           <div class="form-group col-md-12">
-              <strong><h4>Otras Observaciones sobre la ayuda Social</h4></strong>
+              <strong><h4>Observación de la Ayuda Social</h4></strong>
                 <div class="col-sm-12">
                   <?php echo $obs2=$economia[0]->getObser2(); ?>
                 </div>
           </div>
                     <!--Otras observaciones-->
+                    <legend>Otras Observaciones sobre la Situación Económica</legend>
           <div class="form-group col-md-12">
             <strong><h4>Observacion Generales</h4></strong>
               <div class="col-sm-12">
                   <?php echo $obs3=$economia[0]->getObser3(); ?>              
               </div>
-          </div>             
-        </div>
+          </div> 
+          <?php             
+          }} ?>            
+        </div><!--Aqui termina la Etiqueta de Economia-->
+                
+        <div class="tab-pane" id="sanidad1"><!--Aqui inicia la etiqueta de Sanidad-->
+                              <!--Datos de la cobertura social-->                 
+            <?php for ($i=0; $i<count($sanidad); $i++){
+               
+               if($sanidad[$i]->getbeneficiario()=="null") { ?>
 
-                <!--Sanidad-->
-        <div class="tab-pane" id="sanidad1">
-                              <!--Datos de la cobertura social-->
+                        <div class="alert alert-dismissable alert-info">
+                          <strong>No Existe Registro!</strong> El Beneficiario no tiene cargado ningun registro de Sanidad
+                          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        </div>
+                    
+                    <?php }  else {
+              ?>   
+                        <legend>Cobertura Social</legend>
           <div class="form-group col-md-3">
             <strong><h4>Cobertura de Obra Social</h4></strong>
               <div class="col-sx-1">
@@ -296,12 +341,13 @@
               </div>
           </div>
           <div class="form-group col-md-12">
-            <strong><h4>Miembro Poseedor de la Obra Social</h4></strong>
+            <strong><h4>Poseedor de la Obra Social</h4></strong>
               <div class="col-sm-3">
                    <?php echo $posedorobra=$sanidad[0]->getFamOS(); ?>                                        
               </div> 
           </div>
                                     <!--Datos sobre la atencion medica-->
+              <legend>Atención Medica</legend>
           <div class="form-group col-md-3">
             <strong><h4>Atención en el Hospital de Catriel</h4></strong>
               <div class="col-sm-2">
@@ -314,7 +360,7 @@
               </div>
           </div>
           <div class="form-group col-md-3">          
-            <strong><h4>Atención en otros Centros de Salud</h4></strong>
+            <strong><h4>Otro Centro de Salud</h4></strong>
               <div class="col-sm-2">
                     <?php  if ($otcentro=$sanidad[0]->getOtroCS()=='1') {
                                     echo 'Si';
@@ -331,8 +377,9 @@
               </div>
           </div>
                             <!--Datos del familiar o persona con discapacidad-->
+              <legend>Familiar con Discapacidad</legend>
           <div class="form-group col-md-3">
-            <strong><h4>¿Tiene algun Familiar con discapacidad?</h4></strong>
+            <strong><h4>Familiar con discapacidad</h4></strong>
               <div class="col-sm-2">
                     <?php  if ($famdisc=$sanidad[0]->getDiscapacidad()=='1') {
                                     echo 'Si';
@@ -354,8 +401,8 @@
                     <?php echo $tipodisc=$sanidad[0]->getTipo(); ?>                                         
               </div>
         </div>
-        <div class="form-group col-md-3">
-            <strong><h4>¿Posee Certificado unico de Discapacidad</h4></strong>
+        <div class="form-group col-md-4">
+            <strong><h4>¿Posee Certificado unico de Discapacidad?</h4></strong>
               <div class="col-sm-2">
                 <label class="radio-inline">
                     <?php  if ($certificado=$sanidad[0]->getCertificado()=='1') {
@@ -368,6 +415,7 @@
               </div> 
           </div>
                             <!--Datos sobre la enfermedad-->
+              <legend>Información de la Discapacidad o Enfermedad</legend>
           <div class="form-group col-md-12">
             <strong><h4>Detalles de la Enfermedad</h4></strong>
               <div class="col-sm-12">
@@ -381,11 +429,24 @@
                     <?php echo $obser4=$sanidad[0]->getObservacion(); ?>  
               </div>
           </div>
-        </div>
-                        <!--Vivienda-->
-        <div class="tab-pane" id="vivienda1">
-                <!--El 1er paso corresponde a los datos principales q otorga el Beneficiario con respecto de la situacion de Habitacional-->
+          <?php }} ?>
+        </div><!--Aqui termina la etiqueta de Salud-->
+                        
+        <div class="tab-pane" id="vivienda1"><!--Aqui inicia la etiqueta de Vivienda-->
+              <?php for ($i=0; $i<count($vivienda); $i++){
+               
+               if($vivienda[$i]->getIdben()=="null") {  ?>
 
+                        <div class="alert alert-dismissable alert-info">
+                          <strong>No Existe Registro!</strong> El Beneficiario no tiene cargado ningun registro de Vivienda
+                          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        </div>
+                    
+                    <?php } else {
+              ?> 
+
+                <!--El 1er paso corresponde a los datos principales q otorga el Beneficiario con respecto de la situacion de Habitacional-->
+                <legend>Situación Habitacional</legend>
           <div class="form-group col-md-3">
             <strong><h4>Tipo de Tenencia</h4></strong>
               <div class="col-sm-3">
@@ -490,7 +551,9 @@
                    <?php echo $detallprop=$vivienda[0]->getDetalleprop(); ?>                
               </div>                            
           </div>
+
                           <!--Datos que corresponde a Ambiente y Mobiliario-->
+            <legend>Ambiente y Mobiliario</legend>
           <div class="form-group col-md-6">
             <strong><h4>Habitaciones para dormir</h4></strong>
               <div class="col-sm-2">
@@ -542,6 +605,7 @@
                                  }
                     ?>                                         
               </div>
+          </div>    
           <div class="form-group col-md-4"> 
             <strong><h4>Estado de Baño</h4></strong>
               <div class="col-sm-2">
@@ -610,7 +674,8 @@
                 <?php echo $obserAmM=$vivienda[0]->getObser1(); ?> 
               </div>
           </div>  
-                        <!--Datos corresponde a los servicios basicos de debería tener la vivienda-->
+              <!--Datos corresponde a los servicios basicos de debería tener la vivienda-->
+            <legend>Servicios Básicos</legend>
           <div class="form-group col-md-4">
             <strong><h4>Electricidad</h4></strong>
               <div class="col-sm-1">
@@ -673,7 +738,10 @@
               </div>            
           </div>
 
+
                   <!--Datos 4to será sobre el tipo de contruccion de la vivienda-->
+
+            <legend>Tipo de Construcción</legend>
           <div class="form-group col-md-4">
             <strong><h4>La pared es de</h4></strong> 
               <div class="col-sm-5">
@@ -709,21 +777,20 @@
                 <?php echo $obserc=$vivienda[0]->getObser2(); ?>    
               </div>
           </div>
-        </div>
-
-
-
+          <?php }} ?>
+        </div><!--Aqui termina Vivienda-->
 
     </div>
   </div>
 </div>
+
+
                 <!--Boton-->
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3">
                             <div class="btn-toolbar">
-<script type='text/javascript' src='/javascript:windows.print()'></script> 
-                              <button class="btn btn-primary btn-label" src="mActionFilePrint.PNG" width=" " alt=""><i class="fa fa-print"></i>Imprimir</button>
-
+                              <button class="btn btn-inverse btn-label" onclick="history.back()"><i class="fa fa-reply"></i>Volver al Listado</button>
+                              <button class="btn btn-primary btn-label" src="mActionFilePrint.PNG" width=" " alt="" onClick="window.print()"><i class="fa fa-print"></i>Imprimir</button>
                             </div>
                         </div>
                     </div>
