@@ -276,10 +276,21 @@ class BeneficiarioController extends AbstractActionController
          
                 return $pdf;
     }
-
-
-
-
+    
+    public function tieneFamilia()
+    {
+        $id= $this->params('id');
+        //llamamos  ala funcion para obtener el entity manager
+        $em=$this->getEntityManager();
+        $tieneFamilia=$em->find('Application\Entity\Familia', $id);
+        var_dump($beneficiario);die;
+        $em=$this->getEntityManager();
+        
+        
+        return new ViewModel([
+                                    'tieneFamilia'=>$tieneFamilia            
+                                        ]);
+    }
 
 }
 

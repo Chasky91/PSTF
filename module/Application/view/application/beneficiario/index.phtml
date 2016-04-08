@@ -25,7 +25,7 @@
     <div class="tab-content">
                                                 
           <div class="tab-pane active" id="beneficiario1"><!--Aqui Inicia la Etiqueta de Datos del beneficiario-->  
-                                                      <!--Datos personales-->
+              <!--Datos personales-->
                   <legend>Datos Personales del Beneficiario</legend>
                 <div class="form-group col-sm-3">
                   <strong><h4>Nombre y Apellido</h4></strong>
@@ -117,20 +117,21 @@
           </div><!--Aqui Termina la Etiqueta de Datos del beneficiario--> 
                
         <div class="tab-pane" id="familia1"><!--Aqui inicia la etiqueta de Familia-->
-
         
           <div class="form-group">  
-                            <?php for($i=0;$i<count($familias);$i++) {
+              
+              <?php if (empty( $familias )) { 
 
-
-                  if ($familias[$i]->getIdben()=="null") {  ?>          
-
-                        <div class="alert alert-dismissable alert-info">
-                          <strong>No Existe Registro!</strong> El Beneficiario no tiene cargado ningun registro de Familia
+              ?>                                                                                         <!-- Con esta comprobamos si tiene algu familiar-->
+                   <div class="alert alert-dismissable alert-info">
+                          <strong>No Existe Registro!</strong> 
+                          El Beneficiario no tiene cargado ningun registro de Familia
                           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         </div>
                     
                     <?php } else {?> 
+ 
+
                 <legend>Datos de la Familia del Beneficiario</legend>
                 <table class="table table-condensed">
                   <thead>
@@ -191,27 +192,28 @@
                           </td>   
 
                       </tr>
-                    <?php } ?>
+                    <?php } ?><!-- final for familia-->
                 </tbody>
 
-                <?php } }?>
+                <?php }?><!-- final de if familia--->
               </table>
           </div> 
         </div><!--Aqui Termina la etiqueta de Familia-->
                 
         <div class="tab-pane" id="economia1"><!--Inicia la Etiqueta de Economia-->
                                             <!--Datos de la situacion economica-->       
-              <?php for ($i=0; $i<count($economia); $i++){
-               
-               if($economia[$i]->getbeneficiario()=="null") { ?>
+              <?php  if(empty($economia)) { ?>
 
                         <div class="alert alert-dismissable alert-info">
                           <strong>No Existe Registro!</strong> El Beneficiario no tiene cargado ningun registro de Economia
                           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         </div>
                     
-                    <?php } else {
-              ?>   
+                    <?php } else {      ?>   
+                                                
+               <?php for ($i=0; $i<count($economia); $i++){ ?>
+               
+ 
             <legend>Situación Económica</legend>
           <div class="form-group col-md-3">
             <strong><h4>¿Trabaja actualmente?</h4></strong>
@@ -305,15 +307,16 @@
                   <?php echo $obs3=$economia[0]->getObser3(); ?>              
               </div>
           </div> 
-          <?php             
-          }} ?>            
+                    
+               <?php   } /// fin for de economia
+                        }     // fin de if economia
+               ?>            
         </div><!--Aqui termina la Etiqueta de Economia-->
                 
         <div class="tab-pane" id="sanidad1"><!--Aqui inicia la etiqueta de Sanidad-->
-                              <!--Datos de la cobertura social-->                 
-            <?php for ($i=0; $i<count($sanidad); $i++){
-               
-               if($sanidad[$i]->getbeneficiario()=="null") { ?>
+                              <!--Datos de la cobertura social--> 
+                              
+            <?php if(empty($sanidad)) { ?>
 
                         <div class="alert alert-dismissable alert-info">
                           <strong>No Existe Registro!</strong> El Beneficiario no tiene cargado ningun registro de Sanidad
@@ -321,7 +324,11 @@
                         </div>
                     
                     <?php }  else {
-              ?>   
+              ?>    
+                              
+            <?php for ($i=0; $i<count($sanidad); $i++){ ?>
+               
+              
                         <legend>Cobertura Social</legend>
           <div class="form-group col-md-3">
             <strong><h4>Cobertura de Obra Social</h4></strong>
@@ -429,21 +436,20 @@
                     <?php echo $obser4=$sanidad[0]->getObservacion(); ?>  
               </div>
           </div>
-          <?php }} ?>
+          <?php }} ?><!--final de  if y for para sanidad  -->
         </div><!--Aqui termina la etiqueta de Salud-->
                         
         <div class="tab-pane" id="vivienda1"><!--Aqui inicia la etiqueta de Vivienda-->
-              <?php for ($i=0; $i<count($vivienda); $i++){
-               
-               if($vivienda[$i]->getIdben()=="null") {  ?>
+             
+               <?php if(empty($vivienda)) {  ?>
 
                         <div class="alert alert-dismissable alert-info">
                           <strong>No Existe Registro!</strong> El Beneficiario no tiene cargado ningun registro de Vivienda
                           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         </div>
                     
-                    <?php } else {
-              ?> 
+              <?php } else {   ?> 
+             <?php for ($i=0; $i<count($vivienda); $i++){ ?>
 
                 <!--El 1er paso corresponde a los datos principales q otorga el Beneficiario con respecto de la situacion de Habitacional-->
                 <legend>Situación Habitacional</legend>
